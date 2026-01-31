@@ -1,0 +1,130 @@
+import { Metadata } from "next";
+import Link from "next/link";
+import { FiMail, FiSend, FiArrowLeft } from "react-icons/fi";
+import { IoMailOutline } from "react-icons/io5";
+
+export const metadata: Metadata = {
+    title: "Contact Us | Spin Wheel Support | SpinPickOnline",
+    description: "Contact SpinPickOnline for support with our spin the wheel tool, random picker wheel, or wheel of names spinner. Get help with features, feedback, or custom requests. Free support.",
+    alternates: {
+        canonical: "/contact",
+    },
+    robots: {
+        index: true,
+        follow: true,
+    },
+};
+
+export default function ContactPage() {
+    return (
+        <div className="min-h-screen bg-gradient-to-b from-blue-50 via-purple-50/30 to-white py-8 sm:py-12 lg:py-16">
+            <div className="mx-auto max-w-2xl px-4 sm:px-6">
+                {/* Back Button */}
+                <Link
+                    href="/"
+                    className="inline-flex cursor-pointer items-center gap-2 text-sm font-semibold text-gray-600 hover:text-blue-600 transition-colors mb-6 sm:mb-8"
+                >
+                    <FiArrowLeft className="w-4 h-4" />
+                    Back to Home
+                </Link>
+
+                {/* Header */}
+                <div className="text-center mb-5 sm:mb-8">
+                    <div className="flex justify-center mb-3 sm:mb-4">
+                        <div className="bg-linear-to-br from-blue-500 to-purple-600 p-3 sm:p-4 rounded-xl shadow-lg">
+                            <IoMailOutline className="text-2xl sm:text-3xl text-white" />
+                        </div>
+                    </div>
+                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2 sm:mb-3">Contact Us</h1>
+                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed px-2">
+                        Have questions about our spin wheel, random picker, or wheel of names features? We're here to help!
+                    </p>
+                </div>
+
+                {/* Contact Form Card */}
+                <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 p-4 sm:p-6 lg:p-8">
+                    <form className="space-y-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-1.5">Name</label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    className="w-full px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:border-blue-400 transition-all"
+                                    placeholder="John Doe"
+                                />
+                            </div>
+
+                            <div>
+                                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-1.5">Email</label>
+                                <div className="relative">
+                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <FiMail className="text-gray-400 text-sm" />
+                                    </div>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        className="w-full pl-9 pr-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:border-blue-400 transition-all"
+                                        placeholder="you@example.com"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-1.5">Message</label>
+                            <textarea
+                                id="message"
+                                rows={3}
+                                className="w-full px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:border-blue-400 transition-all resize-none"
+                                placeholder="How can we help you?"
+                            ></textarea>
+                        </div>
+
+                        <button
+                            type="button"
+                            className="w-full cursor-pointer bg-linear-to-r from-blue-600 to-purple-600 text-white font-bold py-2.5 sm:py-3 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all shadow-md hover:shadow-lg active:scale-95 flex items-center justify-center gap-2 text-sm"
+                        >
+                            <FiSend className="w-4 h-4" />
+                            Send Message
+                        </button>
+                    </form>
+
+                    {/* Direct Email Section */}
+                    <div className="mt-6 text-center pt-5 border-t border-gray-200">
+                        <p className="text-xs sm:text-sm text-gray-600 mb-2">
+                            Or email us at:
+                        </p>
+                        <a 
+                            href="mailto:support@spinpickonline.com" 
+                            className="inline-flex items-center gap-2 text-sm sm:text-base font-bold text-blue-600 hover:text-blue-700 transition-colors"
+                        >
+                            <FiMail className="w-4 h-4" />
+                            support@spinpickonline.com
+                        </a>
+                    </div>
+                </div>
+
+                {/* Help Topics */}
+                <div className="mt-8 sm:mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                    <div className="bg-white p-4 sm:p-5 rounded-xl border-2 border-gray-100 hover:border-blue-300 transition-all">
+                        <h3 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">🎯 Feature Requests</h3>
+                        <p className="text-xs sm:text-sm text-gray-600">Suggest new features for our wheel spinner and random picker tools</p>
+                    </div>
+                    <div className="bg-white p-4 sm:p-5 rounded-xl border-2 border-gray-100 hover:border-purple-300 transition-all">
+                        <h3 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">🐛 Bug Reports</h3>
+                        <p className="text-xs sm:text-sm text-gray-600">Report issues with spin the wheel or randomizer functionality</p>
+                    </div>
+                    <div className="bg-white p-4 sm:p-5 rounded-xl border-2 border-gray-100 hover:border-green-300 transition-all">
+                        <h3 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">💼 Business Inquiries</h3>
+                        <p className="text-xs sm:text-sm text-gray-600">Custom wheel of names solutions for your organization</p>
+                    </div>
+                    <div className="bg-white p-4 sm:p-5 rounded-xl border-2 border-gray-100 hover:border-pink-300 transition-all">
+                        <h3 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">❓ General Support</h3>
+                        <p className="text-xs sm:text-sm text-gray-600">Questions about using our decision wheel and picker wheel</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
