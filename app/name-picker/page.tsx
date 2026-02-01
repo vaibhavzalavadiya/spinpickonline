@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import { WheelPageTemplate } from "@/components/WheelPageTemplate";
-import { FiEdit, FiSettings, FiRotateCw, FiShare2 } from "react-icons/fi";
+import { FiEdit, FiSettings, FiRotateCw, FiShare2, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
+import Link from "next/link";
 
 export const metadata: Metadata = {
     title: "Random Name Picker | Pick A Random Name | SpinPickOnline",
@@ -173,6 +174,45 @@ export default function NamePickerPage() {
                 </div>
             </section>
 
+            {/* Related Tools Section */}
+            <section className="bg-white py-10 lg:py-16">
+                <div className="container mx-auto px-4">
+                    <h2 className="md:text-3xl text-xl font-bold text-gray-900 md:mb-6 mb-4">Related Picker Tools</h2>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <Link href="/classroom-activities" className="group bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-xl border-2 border-green-200 hover:border-green-400 hover:shadow-lg transition-all">
+                            <h3 className="font-bold text-gray-900 mb-2 group-hover:text-green-600">🎓 Classroom Activities</h3>
+                            <p className="text-sm text-gray-600 mb-2">Perfect name picker for teachers and classroom random selection.</p>
+                            <span className="text-sm font-semibold text-green-600 inline-flex items-center gap-1">Learn more <FiArrowRight className="text-xs" /></span>
+                        </Link>
+                        <Link href="/giveaway-winner" className="group bg-gradient-to-br from-pink-50 to-pink-100 p-4 rounded-xl border-2 border-pink-200 hover:border-pink-400 hover:shadow-lg transition-all">
+                            <h3 className="font-bold text-gray-900 mb-2 group-hover:text-pink-600">🎁 Giveaway Winner</h3>
+                            <p className="text-sm text-gray-600 mb-2">Pick random winners for Instagram, YouTube, and social media contests.</p>
+                            <span className="text-sm font-semibold text-pink-600 inline-flex items-center gap-1">Learn more <FiArrowRight className="text-xs" /></span>
+                        </Link>
+                        <Link href="/spin-wheel-for-giveaway" className="group bg-gradient-to-br from-rose-50 to-rose-100 p-4 rounded-xl border-2 border-rose-200 hover:border-rose-400 hover:shadow-lg transition-all">
+                            <h3 className="font-bold text-gray-900 mb-2 group-hover:text-rose-600">🎯 Giveaway Wheel</h3>
+                            <p className="text-sm text-gray-600 mb-2">Spin wheel built specifically for transparent giveaways.</p>
+                            <span className="text-sm font-semibold text-rose-600 inline-flex items-center gap-1">Learn more <FiArrowRight className="text-xs" /></span>
+                        </Link>
+                        <Link href="/team-picker" className="group bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-xl border-2 border-blue-200 hover:border-blue-400 hover:shadow-lg transition-all">
+                            <h3 className="font-bold text-gray-900 mb-2 group-hover:text-blue-600">👥 Team Picker</h3>
+                            <p className="text-sm text-gray-600 mb-2">Random team generator for sports, work, and group activities.</p>
+                            <span className="text-sm font-semibold text-blue-600 inline-flex items-center gap-1">Learn more <FiArrowRight className="text-xs" /></span>
+                        </Link>
+                        <Link href="/yes-no-wheel" className="group bg-gradient-to-br from-purple-50 to-purple-100 p-4 rounded-xl border-2 border-purple-200 hover:border-purple-400 hover:shadow-lg transition-all">
+                            <h3 className="font-bold text-gray-900 mb-2 group-hover:text-purple-600">✅ Yes/No Wheel</h3>
+                            <p className="text-sm text-gray-600 mb-2">Quick yes or no decisions with fair 50/50 random selection.</p>
+                            <span className="text-sm font-semibold text-purple-600 inline-flex items-center gap-1">Learn more <FiArrowRight className="text-xs" /></span>
+                        </Link>
+                        <Link href="/guides/how-to-use-random-picker-wheel" className="group bg-gradient-to-br from-amber-50 to-amber-100 p-4 rounded-xl border-2 border-amber-200 hover:border-amber-400 hover:shadow-lg transition-all">
+                            <h3 className="font-bold text-gray-900 mb-2 group-hover:text-amber-600">📖 How to Use Guide</h3>
+                            <p className="text-sm text-gray-600 mb-2">Step-by-step guide with screenshots and tips for using the picker wheel.</p>
+                            <span className="text-sm font-semibold text-amber-600 inline-flex items-center gap-1">Read guide <FiArrowRight className="text-xs" /></span>
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
             {/* FAQ Section */}
             <section className="bg-white py-10 lg:py-16">
                 <div className="container mx-auto px-4">
@@ -208,7 +248,7 @@ export default function NamePickerPage() {
                     </div>
                 </div>
             </section>
-            <CallToAction/>
+            <CallToAction />
         </>
     );
 }

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { generateMetadata } from "@/lib/seo";
 import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiZap, FiTarget, FiSmile, FiSmartphone, FiArrowRight, FiCheckCircle } from "react-icons/fi";
+import Link from "next/link";
 
 export const metadata: Metadata = generateMetadata({
   title: "Yes or No Wheel | Free Decision Maker | SpinPickOnline",
@@ -9,12 +10,19 @@ export const metadata: Metadata = generateMetadata({
   canonical: "/yes-no-wheel",
 });
 
+// Default entries for Yes/No wheel
+const YES_NO_ENTRIES = [
+  { id: "yes", label: "Yes", color: "#10b981" },
+  { id: "no", label: "No", color: "#ef4444" },
+];
+
 export default function YesNoWheelPage() {
   return (
     <WheelPageTemplate
       title="Yes or No Wheel"
       description="Make quick decisions with our yes or no wheel"
       h1="Yes or No Wheel – Free Decision Maker"
+      defaultEntries={YES_NO_ENTRIES}
       benefits={[
         "Instant yes/no decisions",
         "Fair 50/50 random selection",
@@ -185,6 +193,45 @@ export default function YesNoWheelPage() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Related Tools Section */}
+      <section className="py-10 lg:py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="sm:text-2xl md:text-3xl text-xl font-bold text-gray-900 mb-6">Explore More Decision Tools</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/decision-wheel" className="group bg-white p-4 rounded-xl border-2 border-blue-200 hover:border-blue-400 hover:shadow-lg transition-all">
+              <h3 className="font-bold text-gray-900 mb-2 group-hover:text-blue-600">🎯 Decision Wheel</h3>
+              <p className="text-sm text-gray-600 mb-2">Add multiple options and let the wheel decide for you.</p>
+              <span className="text-sm font-semibold text-blue-600 inline-flex items-center gap-1">Try it <FiArrowRight className="text-xs" /></span>
+            </Link>
+            <Link href="/random-choice-picker" className="group bg-white p-4 rounded-xl border-2 border-purple-200 hover:border-purple-400 hover:shadow-lg transition-all">
+              <h3 className="font-bold text-gray-900 mb-2 group-hover:text-purple-600">🔀 Random Choice Picker</h3>
+              <p className="text-sm text-gray-600 mb-2">Pick randomly from any list of options or choices.</p>
+              <span className="text-sm font-semibold text-purple-600 inline-flex items-center gap-1">Try it <FiArrowRight className="text-xs" /></span>
+            </Link>
+            <Link href="/name-picker" className="group bg-white p-4 rounded-xl border-2 border-green-200 hover:border-green-400 hover:shadow-lg transition-all">
+              <h3 className="font-bold text-gray-900 mb-2 group-hover:text-green-600">👤 Name Picker</h3>
+              <p className="text-sm text-gray-600 mb-2">Pick random names for raffles, classrooms, and more.</p>
+              <span className="text-sm font-semibold text-green-600 inline-flex items-center gap-1">Try it <FiArrowRight className="text-xs" /></span>
+            </Link>
+            <Link href="/picker-wheel" className="group bg-white p-4 rounded-xl border-2 border-orange-200 hover:border-orange-400 hover:shadow-lg transition-all">
+              <h3 className="font-bold text-gray-900 mb-2 group-hover:text-orange-600">🎡 Picker Wheel</h3>
+              <p className="text-sm text-gray-600 mb-2">Universal picker wheel for any type of random selection.</p>
+              <span className="text-sm font-semibold text-orange-600 inline-flex items-center gap-1">Try it <FiArrowRight className="text-xs" /></span>
+            </Link>
+            <Link href="/wheel-spinner" className="group bg-white p-4 rounded-xl border-2 border-pink-200 hover:border-pink-400 hover:shadow-lg transition-all">
+              <h3 className="font-bold text-gray-900 mb-2 group-hover:text-pink-600">🔄 Wheel Spinner</h3>
+              <p className="text-sm text-gray-600 mb-2">Create and spin custom wheels for any purpose.</p>
+              <span className="text-sm font-semibold text-pink-600 inline-flex items-center gap-1">Try it <FiArrowRight className="text-xs" /></span>
+            </Link>
+            <Link href="/guides/how-to-use-random-picker-wheel" className="group bg-white p-4 rounded-xl border-2 border-amber-200 hover:border-amber-400 hover:shadow-lg transition-all">
+              <h3 className="font-bold text-gray-900 mb-2 group-hover:text-amber-600">📖 How to Guide</h3>
+              <p className="text-sm text-gray-600 mb-2">Learn how to use our random picker wheel step-by-step.</p>
+              <span className="text-sm font-semibold text-amber-600 inline-flex items-center gap-1">Read guide <FiArrowRight className="text-xs" /></span>
+            </Link>
           </div>
         </div>
       </section>

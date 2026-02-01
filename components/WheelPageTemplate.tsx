@@ -1,6 +1,7 @@
 
 import HomeWheel from "@/components/HomeWheel";
 import { CallToAction } from "@/components/CallToAction";
+import { WheelEntry } from "@/lib/types";
 
 interface WheelPageTemplateProps {
     title: string;
@@ -10,6 +11,7 @@ interface WheelPageTemplateProps {
     useCases: string[];
     ctaText?: string;
     showWheel?: boolean;
+    defaultEntries?: WheelEntry[];
     children?: React.ReactNode;
 }
 
@@ -21,6 +23,7 @@ export function WheelPageTemplate({
     useCases,
     ctaText = "Try It Now",
     showWheel = true,
+    defaultEntries,
     children,
 }: WheelPageTemplateProps) {
     return (
@@ -32,7 +35,7 @@ export function WheelPageTemplate({
                         <div className="text-center lg:mb-12 sm:mb-8 mb-5">
                             <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">{h1}</h1>
                         </div>
-                        <HomeWheel />
+                        <HomeWheel defaultEntries={defaultEntries} />
                     </div>
                 </section>
             )}
@@ -41,3 +44,4 @@ export function WheelPageTemplate({
         </div>
     );
 }
+

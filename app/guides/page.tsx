@@ -37,6 +37,22 @@ export default function GuidesPage() {
                     </p>
                 </div>
 
+                {/* Featured Guide */}
+                <Link href="/guides/how-to-use-random-picker-wheel" className="block bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-4 md:p-6 shadow-lg mb-6 hover:shadow-xl transition-shadow group">
+                    <div className="flex items-center gap-2 text-blue-100 text-sm mb-2">
+                        <span className="bg-white/20 px-2 py-1 rounded text-xs font-semibold">FEATURED GUIDE</span>
+                    </div>
+                    <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 group-hover:underline">
+                        How to Use a Random Picker Wheel: Complete Guide
+                    </h2>
+                    <p className="text-blue-100 text-sm mb-3">
+                        Step-by-step tutorial with screenshots, tips for teachers, giveaways, and decision making. Learn everything you need to know!
+                    </p>
+                    <span className="text-white font-semibold text-sm inline-flex items-center gap-2">
+                        Read Full Guide →
+                    </span>
+                </Link>
+
                 {/* Guides */}
                 <div className="space-y-4">
                     <div className="bg-white rounded-xl p-4 md:p-6 shadow-sm border border-gray-200">

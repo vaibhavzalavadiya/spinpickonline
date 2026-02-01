@@ -43,8 +43,12 @@ const DEFAULT_ENTRIES: WheelEntry[] = [
   { id: "5", label: "Eve", color: "#8b5cf6" },
 ];
 
-export default function HomeWheel() {
-  const [entries, setEntries] = useState<WheelEntry[]>(DEFAULT_ENTRIES);
+interface HomeWheelProps {
+  defaultEntries?: WheelEntry[];
+}
+
+export default function HomeWheel({ defaultEntries }: HomeWheelProps = {}) {
+  const [entries, setEntries] = useState<WheelEntry[]>(defaultEntries || DEFAULT_ENTRIES);
   const [newEntry, setNewEntry] = useState("");
   const [result, setResult] = useState<string | null>(null);
   const [results, setResults] = useState<string[]>([]);

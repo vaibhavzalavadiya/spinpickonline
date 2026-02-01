@@ -190,6 +190,43 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Explore More Tools Section - Internal Links */}
+      <section className="pb-10 lg:pb-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-6 sm:mb-10">
+            <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Explore Our Wheel Tools</h2>
+            <p className="lg:text-base text-sm text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Discover more ways to use our random picker wheel. From name picking to giveaways, we have the perfect tool for you!
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+            {[
+              { href: "/name-picker", label: "Name Picker", desc: "Random name selector" },
+              { href: "/yes-no-wheel", label: "Yes/No Wheel", desc: "Quick decisions" },
+              { href: "/random-picker-wheel", label: "Random Picker", desc: "Pick anything" },
+              { href: "/spin-wheel-for-giveaway", label: "Giveaway Wheel", desc: "Contest winners" },
+              { href: "/decision-wheel", label: "Decision Wheel", desc: "Can't decide?" },
+              { href: "/picker-wheel", label: "Picker Wheel", desc: "Universal picker" },
+              { href: "/wheel-spinner", label: "Wheel Spinner", desc: "Custom wheels" },
+              { href: "/lucky-draw-wheel", label: "Lucky Draw", desc: "Event drawings" },
+              { href: "/raffle-wheel", label: "Raffle Wheel", desc: "Prize drawings" },
+              { href: "/prize-wheel", label: "Prize Wheel", desc: "Win prizes" },
+              { href: "/random-number-wheel", label: "Number Wheel", desc: "Random numbers" },
+              { href: "/guides/how-to-use-random-picker-wheel", label: "How to Guide", desc: "Step-by-step" },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="group bg-gradient-to-br from-gray-50 to-gray-100 hover:from-blue-50 hover:to-blue-100 p-3 sm:p-4 rounded-xl border border-gray-200 hover:border-blue-300 transition-all hover:shadow-md"
+              >
+                <span className="font-semibold text-gray-900 group-hover:text-blue-600 text-sm sm:text-base block mb-1 transition-colors">{link.label}</span>
+                <span className="text-xs text-gray-500">{link.desc}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section - Enhanced with Keywords */}
       <section className="bg-gradient-to-b from-gray-50 via-purple-50/20 to-white py-10 lg:py-16">
         <div className="container mx-auto px-4">

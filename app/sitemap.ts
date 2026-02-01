@@ -21,6 +21,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/privacy-policy",
     "/terms-of-service",
+    // SEO landing pages
+    "/lucky-draw-wheel",
+    "/raffle-wheel",
+    "/prize-wheel",
+    "/random-number-wheel",
+    "/spin-wheel-for-giveaway",
+    "/random-choice-picker",
+    "/wheel-spinner",
+    "/picker-wheel",
+    "/decision-wheel",
+    // Guides
+    "/guides/how-to-use-random-picker-wheel",
   ];
 
   // Use case pages

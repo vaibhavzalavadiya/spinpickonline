@@ -1,0 +1,251 @@
+import { Metadata } from "next";
+import HomeWheel from "@/components/HomeWheel";
+import { CallToAction } from "@/components/CallToAction";
+import Link from "next/link";
+import { FiCheck, FiArrowRight, FiInstagram, FiYoutube } from "react-icons/fi";
+import { IoGiftOutline, IoShieldCheckmarkOutline, IoVideocamOutline, IoPeopleOutline } from "react-icons/io5";
+import { FaTiktok } from "react-icons/fa";
+
+export const metadata: Metadata = {
+    title: "Spin Wheel for Giveaway | Free Winner Picker | SpinPickOnline",
+    description: "Free spin wheel for giveaways. Perfect for Instagram, YouTube, TikTok contests. Transparent winner selection, cryptographically fair, no signup required.",
+    alternates: {
+        canonical: "/spin-wheel-for-giveaway",
+    },
+    robots: {
+        index: true,
+        follow: true,
+    },
+    openGraph: {
+        title: "Spin Wheel for Giveaway | Free Winner Picker | SpinPickOnline",
+        description: "Free spin wheel for social media giveaways. Transparent and fair winner selection.",
+        type: "website",
+        url: "https://spinpickonline.com/spin-wheel-for-giveaway",
+    },
+};
+
+export default function SpinWheelGiveawayPage() {
+    return (
+        <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
+            {/* Hero Section with Wheel */}
+            <section className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-gradient-to-b from-rose-50/50 to-white">
+                <div className="container mx-auto px-4">
+                    <div className="text-center lg:mb-12 sm:mb-8 mb-5">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-rose-100 text-rose-700 rounded-full text-sm font-semibold mb-4">
+                            <IoGiftOutline className="text-lg" />
+                            <span>Giveaway Tool</span>
+                        </div>
+                        <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                            Spin Wheel for Giveaway – Free Winner Picker
+                        </h1>
+                        <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">
+                            Run fair, transparent giveaways on Instagram, YouTube, TikTok, or any platform. Our spin wheel builds trust with your audience by showing the random selection process live.
+                        </p>
+                    </div>
+                    <HomeWheel />
+                </div>
+            </section>
+
+            {/* Social Platforms */}
+            <section className="py-10 lg:py-16 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="text-center md:mb-8 mb-6">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+                            Perfect for Social Media Giveaways
+                        </h2>
+                        <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">
+                            Build trust with your followers by showing transparent winner selection
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 md:gap-6 gap-4">
+                        <div className="bg-gradient-to-br from-pink-50 to-rose-50 md:p-5 p-4 md:rounded-xl rounded-lg border-2 border-pink-200 hover:shadow-lg transition-shadow">
+                            <div className="bg-pink-100 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
+                                <FiInstagram className="text-xl text-pink-600" />
+                            </div>
+                            <h3 className="font-bold text-gray-900 mb-2">Instagram</h3>
+                            <p className="md:text-base text-sm text-gray-600">Perfect for IG giveaways, story contests, and follower engagement campaigns.</p>
+                        </div>
+
+                        <div className="bg-gradient-to-br from-red-50 to-rose-50 md:p-5 p-4 md:rounded-xl rounded-lg border-2 border-red-200 hover:shadow-lg transition-shadow">
+                            <div className="bg-red-100 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
+                                <FiYoutube className="text-xl text-red-600" />
+                            </div>
+                            <h3 className="font-bold text-gray-900 mb-2">YouTube</h3>
+                            <p className="md:text-base text-sm text-gray-600">Subscriber milestones, comment giveaways, and live stream prize drawings.</p>
+                        </div>
+
+                        <div className="bg-gradient-to-br from-gray-50 to-slate-50 md:p-5 p-4 md:rounded-xl rounded-lg border-2 border-gray-200 hover:shadow-lg transition-shadow">
+                            <div className="bg-gray-800 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
+                                <FaTiktok className="text-xl text-white" />
+                            </div>
+                            <h3 className="font-bold text-gray-900 mb-2">TikTok</h3>
+                            <p className="md:text-base text-sm text-gray-600">Duet challenges, follower giveaways, and viral content rewards.</p>
+                        </div>
+
+                        <div className="bg-gradient-to-br from-purple-50 to-violet-50 md:p-5 p-4 md:rounded-xl rounded-lg border-2 border-purple-200 hover:shadow-lg transition-shadow">
+                            <div className="bg-purple-100 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
+                                <IoVideocamOutline className="text-xl text-purple-600" />
+                            </div>
+                            <h3 className="font-bold text-gray-900 mb-2">Twitch</h3>
+                            <p className="md:text-base text-sm text-gray-600">Subscriber rewards, bit giveaways, and stream milestone celebrations.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Why Use This */}
+            <section className="py-10 lg:py-16 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <div className="text-center md:mb-8 mb-6">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+                            Why Content Creators Love Our Giveaway Wheel
+                        </h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 md:gap-6 gap-4 max-w-4xl mx-auto">
+                        <div className="text-center bg-white md:p-5 p-4 md:rounded-xl rounded-lg shadow-sm">
+                            <div className="bg-green-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <IoShieldCheckmarkOutline className="text-2xl text-green-600" />
+                            </div>
+                            <h3 className="font-bold text-gray-900 mb-2">Build Trust</h3>
+                            <p className="md:text-base text-sm text-gray-600">Your audience sees the wheel spin live. No hidden algorithms, no accusations of favoritism.</p>
+                        </div>
+
+                        <div className="text-center bg-white md:p-5 p-4 md:rounded-xl rounded-lg shadow-sm">
+                            <div className="bg-blue-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <IoPeopleOutline className="text-2xl text-blue-600" />
+                            </div>
+                            <h3 className="font-bold text-gray-900 mb-2">Boost Engagement</h3>
+                            <p className="md:text-base text-sm text-gray-600">The spinning wheel creates excitement and increases viewer retention during live reveals.</p>
+                        </div>
+
+                        <div className="text-center bg-white md:p-5 p-4 md:rounded-xl rounded-lg shadow-sm">
+                            <div className="bg-purple-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <IoGiftOutline className="text-2xl text-purple-600" />
+                            </div>
+                            <h3 className="font-bold text-gray-900 mb-2">No Cost</h3>
+                            <p className="md:text-base text-sm text-gray-600">Completely free to use. No watermarks, no signup required, unlimited giveaways.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* How to Run Giveaway */}
+            <section className="py-10 lg:py-16 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="text-center md:mb-8 mb-6">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+                            How to Run Your Giveaway
+                        </h2>
+                    </div>
+
+                    <div className="max-w-3xl mx-auto">
+                        <div className="space-y-4">
+                            {[
+                                { step: "1", title: "Collect Entries", desc: "Gather usernames from comments, likes, or however you defined entry requirements" },
+                                { step: "2", title: "Add to Wheel", desc: "Enter all valid participant names into the giveaway wheel" },
+                                { step: "3", title: "Record or Go Live", desc: "Screen record the spin or do it live for maximum transparency" },
+                                { step: "4", title: "Announce Winner", desc: "Share the spin video and tag the winner. Everyone sees it was fair!" },
+                            ].map((item) => (
+                                <div key={item.step} className="flex gap-4 items-start bg-gray-50 md:p-5 p-4 md:rounded-xl rounded-lg">
+                                    <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-rose-500 to-pink-500 text-white rounded-full flex items-center justify-center font-bold">
+                                        {item.step}
+                                    </div>
+                                    <div>
+                                        <h3 className="font-bold text-gray-900">{item.title}</h3>
+                                        <p className="md:text-base text-sm text-gray-600">{item.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Related Pages */}
+            <section className="py-10 lg:py-16 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <div className="text-center md:mb-8 mb-6">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+                            More Giveaway Tools
+                        </h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 md:gap-6 gap-4 max-w-4xl mx-auto">
+                        <div className="bg-white md:p-5 p-4 md:rounded-xl rounded-lg border border-gray-200">
+                            <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                                <FiCheck className="text-green-500" /> Giveaway Winner Page
+                            </h3>
+                            <p className="md:text-base text-sm text-gray-600 mb-3">Dedicated page for running transparent winner selection for any contest or promotion.</p>
+                            <Link href="/giveaway-winner" className="text-sm font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1">
+                                Giveaway Winner <FiArrowRight className="text-xs" />
+                            </Link>
+                        </div>
+
+                        <div className="bg-white md:p-5 p-4 md:rounded-xl rounded-lg border border-gray-200">
+                            <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                                <FiCheck className="text-green-500" /> Lucky Draw Wheel
+                            </h3>
+                            <p className="md:text-base text-sm text-gray-600 mb-3">For event-style lucky draws with prizes and multiple winners.</p>
+                            <Link href="/lucky-draw-wheel" className="text-sm font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1">
+                                Lucky Draw <FiArrowRight className="text-xs" />
+                            </Link>
+                        </div>
+
+                        <div className="bg-white md:p-5 p-4 md:rounded-xl rounded-lg border border-gray-200">
+                            <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                                <FiCheck className="text-green-500" /> Prize Wheel
+                            </h3>
+                            <p className="md:text-base text-sm text-gray-600 mb-3">Create spin-to-win experiences with custom prizes for followers.</p>
+                            <Link href="/prize-wheel" className="text-sm font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1">
+                                Prize Wheel <FiArrowRight className="text-xs" />
+                            </Link>
+                        </div>
+
+                        <div className="bg-white md:p-5 p-4 md:rounded-xl rounded-lg border border-gray-200">
+                            <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                                <FiCheck className="text-green-500" /> Name Picker
+                            </h3>
+                            <p className="md:text-base text-sm text-gray-600 mb-3">Simple and fast name picker for quick winner selection.</p>
+                            <Link href="/name-picker" className="text-sm font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1">
+                                Name Picker <FiArrowRight className="text-xs" />
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Internal Links */}
+            <section className="py-10 lg:py-16 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="text-center mb-6">
+                        <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+                            Explore All Wheel Tools
+                        </h2>
+                    </div>
+                    <div className="flex flex-wrap justify-center gap-3">
+                        {[
+                            { href: "/raffle-wheel", label: "Raffle Wheel" },
+                            { href: "/wheel-spinner", label: "Wheel Spinner" },
+                            { href: "/picker-wheel", label: "Picker Wheel" },
+                            { href: "/random-picker-wheel", label: "Random Picker" },
+                            { href: "/random-choice-picker", label: "Choice Picker" },
+                            { href: "/decision-wheel", label: "Decision Wheel" },
+                        ].map((link) => (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-full text-sm font-medium text-gray-700 hover:border-blue-300 hover:text-blue-600 transition-all"
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <CallToAction />
+        </div>
+    );
+}
