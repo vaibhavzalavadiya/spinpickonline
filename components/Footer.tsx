@@ -67,7 +67,7 @@ export default function Footer() {
               <li>
                 <Link href="/random-picker-wheel" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 bg-blue-600 rounded-full group-hover:w-2 transition-all"></span>
-                 Random Picker Wheel
+                  Random Picker Wheel
                 </Link>
               </li>
               <li>

@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/how-it-works",
     "/guides",
     "/contact",
+    "/about",
     "/privacy-policy",
     "/terms-of-service",
     // SEO landing pages

@@ -66,8 +66,8 @@ export default function FAQPage() {
 
             <div className="space-y-3">
               <details className="group bg-blue-50 rounded-lg p-3.5 sm:p-4 border border-blue-200">
-                <summary className="flex items-start gap-2 cursor-pointer list-none">
-                  <span className="flex-shrink-0 w-5 h-5 rounded bg-blue-500 text-white text-xs font-bold flex items-center justify-center mt-0.5">Q</span>
+                <summary className="flex items-center gap-2 cursor-pointer list-none">
+                  <span className="flex-shrink-0 w-5 h-5 rounded bg-blue-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
                   <span className="text-xs sm:text-sm font-bold text-gray-900 flex-1 leading-tight">Is this the same as a wheel of names spinner?</span>
                   <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />

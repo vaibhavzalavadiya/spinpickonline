@@ -23,7 +23,7 @@ export const NAV_ITEMS = [
   { label: "Name Picker", href: "/name-picker" },
   { label: "Yes/No Wheel", href: "/yes-no-wheel" },
   { label: "Features", href: "/features", hasDropdown: true },
-  { label: "How It Works", href: "/how-it-works" },
+  { label: "About", href: "/about" },
 ] as const;
 
 // Use cases data for programmatic pages
