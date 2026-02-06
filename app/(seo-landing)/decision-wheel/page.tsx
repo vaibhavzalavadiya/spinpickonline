@@ -259,6 +259,53 @@ export default function DecisionWheelPage() {
                 </div>
             </section>
 
+            {/* FAQ Section */}
+            <section className="py-10 lg:py-16 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-3xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">Decision Wheel FAQ</h2>
+                        <div className="space-y-4">
+                            <details className="group bg-white rounded-xl p-4 md:p-5 shadow-sm border border-gray-200 hover:shadow-md transition-all">
+                                <summary className="flex items-center gap-3 cursor-pointer list-none">
+                                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
+                                    <span className="text-sm md:text-base font-bold text-gray-900 flex-1">What is a decision wheel and how does it work?</span>
+                                </summary>
+                                <p className="text-sm md:text-base text-gray-600 mt-3 ml-9 leading-relaxed">
+                                    A decision wheel is a random picker tool that helps you make choices when you're stuck between options. Simply add your options to the wheel, spin it, and let randomness decide for you. Our decision maker uses cryptographic RNG for truly fair, unbiased results.
+                                </p>
+                            </details>
+                            <details className="group bg-white rounded-xl p-4 md:p-5 shadow-sm border border-gray-200 hover:shadow-md transition-all">
+                                <summary className="flex items-center gap-3 cursor-pointer list-none">
+                                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
+                                    <span className="text-sm md:text-base font-bold text-gray-900 flex-1">Is the decision wheel truly random?</span>
+                                </summary>
+                                <p className="text-sm md:text-base text-gray-600 mt-3 ml-9 leading-relaxed">
+                                    Yes! Unlike basic randomizers, our spin the wheel uses Web Crypto API for cryptographically secure random number generation. Every option has exactly equal probability of being selected – no hidden bias or patterns.
+                                </p>
+                            </details>
+                            <details className="group bg-white rounded-xl p-4 md:p-5 shadow-sm border border-gray-200 hover:shadow-md transition-all">
+                                <summary className="flex items-center gap-3 cursor-pointer list-none">
+                                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
+                                    <span className="text-sm md:text-base font-bold text-gray-900 flex-1">Can I use the decision wheel for what to eat?</span>
+                                </summary>
+                                <p className="text-sm md:text-base text-gray-600 mt-3 ml-9 leading-relaxed">
+                                    Absolutely! Our decision wheel is perfect for food choices. Add restaurants like pizza, sushi, Thai, or burgers, and spin to end the "what should we eat?" debate. It's the ultimate lunch decision randomizer!
+                                </p>
+                            </details>
+                            <details className="group bg-white rounded-xl p-4 md:p-5 shadow-sm border border-gray-200 hover:shadow-md transition-all">
+                                <summary className="flex items-center gap-3 cursor-pointer list-none">
+                                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-orange-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
+                                    <span className="text-sm md:text-base font-bold text-gray-900 flex-1">How is this different from flipping a coin?</span>
+                                </summary>
+                                <p className="text-sm md:text-base text-gray-600 mt-3 ml-9 leading-relaxed">
+                                    Our decision wheel handles any number of options (not just two), provides visual excitement, and offers a more engaging experience than a coin flip. Plus, you can save your wheels and share them with friends for group decisions!
+                                </p>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <CallToAction />
         </div>
     );

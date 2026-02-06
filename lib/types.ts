@@ -9,6 +9,7 @@ export interface WheelEntry {
 export interface WheelState {
   entries: WheelEntry[];
   result: string | null;
+  results?: string[]; // History of results
   isSpinning: boolean;
   wheelName?: string;
   description?: string;

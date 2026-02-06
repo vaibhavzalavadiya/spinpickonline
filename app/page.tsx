@@ -21,7 +21,7 @@ export default function Home() {
       <section id="try-wheel" className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-4">
           <div className="text-center lg:mb-12 sm:mb-8 mb-3">
-            <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900">Spin the Wheel – Free Random Picker Tool</h1>
+            <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900">Spin the Wheel – Free Random Picker Wheel</h1>
           </div>
           <HomeWheel />
         </div>

@@ -79,8 +79,8 @@ export default function FAQPage() {
               </details>
 
               <details className="group bg-purple-50 rounded-lg p-3.5 sm:p-4 border border-purple-200">
-                <summary className="flex items-start gap-2 cursor-pointer list-none">
-                  <span className="flex-shrink-0 w-5 h-5 rounded bg-purple-500 text-white text-xs font-bold flex items-center justify-center mt-0.5">Q</span>
+                <summary className="flex items-center gap-2 cursor-pointer list-none">
+                  <span className="flex-shrink-0 w-5 h-5 rounded bg-purple-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
                   <span className="text-xs sm:text-sm font-bold text-gray-900 flex-1 leading-tight">Can I use this as a random number generator?</span>
                   <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -92,8 +92,8 @@ export default function FAQPage() {
               </details>
 
               <details className="group bg-green-50 rounded-lg p-3.5 sm:p-4 border border-green-200">
-                <summary className="flex items-start gap-2 cursor-pointer list-none">
-                  <span className="flex-shrink-0 w-5 h-5 rounded bg-green-500 text-white text-xs font-bold flex items-center justify-center mt-0.5">Q</span>
+                <summary className="flex items-center gap-2 cursor-pointer list-none">
+                  <span className="flex-shrink-0 w-5 h-5 rounded bg-green-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
                   <span className="text-xs sm:text-sm font-bold text-gray-900 flex-1 leading-tight">What makes this random picker wheel special?</span>
                   <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -105,8 +105,8 @@ export default function FAQPage() {
               </details>
 
               <details className="group bg-pink-50 rounded-lg p-3.5 sm:p-4 border border-pink-200">
-                <summary className="flex items-start gap-2 cursor-pointer list-none">
-                  <span className="flex-shrink-0 w-5 h-5 rounded bg-pink-500 text-white text-xs font-bold flex items-center justify-center mt-0.5">Q</span>
+                <summary className="flex items-center gap-2 cursor-pointer list-none">
+                  <span className="flex-shrink-0 w-5 h-5 rounded bg-pink-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
                   <span className="text-xs sm:text-sm font-bold text-gray-900 flex-1 leading-tight">Can I use this for yes or no decisions?</span>
                   <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -114,6 +114,58 @@ export default function FAQPage() {
                 </summary>
                 <p className="text-xs sm:text-sm text-gray-700 mt-2.5 ml-7 leading-relaxed">
                   Yes! Our yes or no wheel is perfect for quick binary decisions. Add "Yes" and "No" as entries and spin. Also works as a coin flipper alternative with "Heads" and "Tails".
+                </p>
+              </details>
+
+              <details className="group bg-orange-50 rounded-lg p-3.5 sm:p-4 border border-orange-200">
+                <summary className="flex items-center gap-2 cursor-pointer list-none">
+                  <span className="flex-shrink-0 w-5 h-5 rounded bg-orange-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
+                  <span className="text-xs sm:text-sm font-bold text-gray-900 flex-1 leading-tight">How do I use the spin wheel for Instagram or YouTube giveaways?</span>
+                  <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <p className="text-xs sm:text-sm text-gray-700 mt-2.5 ml-7 leading-relaxed">
+                  Simply add all participant names to the random picker wheel, then spin live on stream or record the spin. Our wheel of names provides transparent, fair giveaway results that build trust with your audience. Share results directly on social media!
+                </p>
+              </details>
+
+              <details className="group bg-teal-50 rounded-lg p-3.5 sm:p-4 border border-teal-200">
+                <summary className="flex items-center gap-2 cursor-pointer list-none">
+                  <span className="flex-shrink-0 w-5 h-5 rounded bg-teal-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
+                  <span className="text-xs sm:text-sm font-bold text-gray-900 flex-1 leading-tight">Can teachers use this as a classroom name picker?</span>
+                  <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <p className="text-xs sm:text-sm text-gray-700 mt-2.5 ml-7 leading-relaxed">
+                  Absolutely! Teachers love our random name picker for fair student selection. Add student names, display on your classroom screen, and spin to pick who answers questions, presents, or participates. The visual wheel of names keeps students engaged!
+                </p>
+              </details>
+
+              <details className="group bg-indigo-50 rounded-lg p-3.5 sm:p-4 border border-indigo-200">
+                <summary className="flex items-center gap-2 cursor-pointer list-none">
+                  <span className="flex-shrink-0 w-5 h-5 rounded bg-indigo-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
+                  <span className="text-xs sm:text-sm font-bold text-gray-900 flex-1 leading-tight">Does the team picker work for creating random groups?</span>
+                  <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <p className="text-xs sm:text-sm text-gray-700 mt-2.5 ml-7 leading-relaxed">
+                  Yes! Our random picker wheel is perfect as a team picker and random group generator. Add all names, then spin repeatedly to assign people to teams fairly. Great for sports, work projects, classroom groups, and any activity needing fair team distribution.
+                </p>
+              </details>
+
+              <details className="group bg-rose-50 rounded-lg p-3.5 sm:p-4 border border-rose-200">
+                <summary className="flex items-center gap-2 cursor-pointer list-none">
+                  <span className="flex-shrink-0 w-5 h-5 rounded bg-rose-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
+                  <span className="text-xs sm:text-sm font-bold text-gray-900 flex-1 leading-tight">Can I save my wheel of names for later use?</span>
+                  <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <p className="text-xs sm:text-sm text-gray-700 mt-2.5 ml-7 leading-relaxed">
+                  Yes! Your wheel entries are automatically saved in your browser's local storage. You can also generate shareable links to save and share your custom spin wheel configurations. Return anytime to use your personalized random picker wheel!
                 </p>
               </details>
             </div>

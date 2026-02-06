@@ -245,6 +245,53 @@ export default function SpinWheelGiveawayPage() {
                 </div>
             </section>
 
+            {/* FAQ Section */}
+            <section className="py-10 lg:py-16 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-3xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">Giveaway Wheel FAQ</h2>
+                        <div className="space-y-4">
+                            <details className="group bg-white rounded-xl p-4 md:p-5 shadow-sm border border-gray-200 hover:shadow-md transition-all">
+                                <summary className="flex items-center gap-3 cursor-pointer list-none">
+                                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-pink-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
+                                    <span className="text-sm md:text-base font-bold text-gray-900 flex-1">How do I run a fair Instagram giveaway?</span>
+                                </summary>
+                                <p className="text-sm md:text-base text-gray-600 mt-3 ml-9 leading-relaxed">
+                                    Collect all eligible participant names from your Instagram comments or story responses. Add them to our giveaway wheel, then screen record the spin or go live to show your followers the transparent winner selection. Share the recording to prove fairness!
+                                </p>
+                            </details>
+                            <details className="group bg-white rounded-xl p-4 md:p-5 shadow-sm border border-gray-200 hover:shadow-md transition-all">
+                                <summary className="flex items-center gap-3 cursor-pointer list-none">
+                                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-red-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
+                                    <span className="text-sm md:text-base font-bold text-gray-900 flex-1">Can I use this for YouTube subscriber giveaways?</span>
+                                </summary>
+                                <p className="text-sm md:text-base text-gray-600 mt-3 ml-9 leading-relaxed">
+                                    Yes! Our spin wheel for giveaway is perfect for YouTube contests. Add subscriber names or comment authors, record the wheel spin, and include it in your video. It creates engaging content while ensuring transparent winner selection!
+                                </p>
+                            </details>
+                            <details className="group bg-white rounded-xl p-4 md:p-5 shadow-sm border border-gray-200 hover:shadow-md transition-all">
+                                <summary className="flex items-center gap-3 cursor-pointer list-none">
+                                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
+                                    <span className="text-sm md:text-base font-bold text-gray-900 flex-1">Is the giveaway wheel really free?</span>
+                                </summary>
+                                <p className="text-sm md:text-base text-gray-600 mt-3 ml-9 leading-relaxed">
+                                    Absolutely! Our giveaway winner picker is 100% free with no signup required. There are no watermarks, no entry limits, and no hidden fees. You can run unlimited giveaways at no cost!
+                                </p>
+                            </details>
+                            <details className="group bg-white rounded-xl p-4 md:p-5 shadow-sm border border-gray-200 hover:shadow-md transition-all">
+                                <summary className="flex items-center gap-3 cursor-pointer list-none">
+                                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
+                                    <span className="text-sm md:text-base font-bold text-gray-900 flex-1">How do I prove the giveaway was fair?</span>
+                                </summary>
+                                <p className="text-sm md:text-base text-gray-600 mt-3 ml-9 leading-relaxed">
+                                    Our cryptographic random number generator ensures true fairness. We recommend going live or screen recording your spin the wheel session. Share the video with your audience so they can see the unbiased results first-hand!
+                                </p>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <CallToAction />
         </div>
     );

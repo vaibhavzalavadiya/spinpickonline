@@ -355,5 +355,30 @@ export const FAQS = [
     answer: "Our random picker wheel offers a visual, engaging experience with fair randomization, mobile optimization, easy sharing, and full customization - all completely free with no signup required.",
     keywords: ["comparison", "difference", "advantages"],
   },
+  {
+    question: "Can teachers use this for classroom activities?",
+    answer: "Absolutely! Our wheel of names is perfect for classrooms. Teachers use it for randomly selecting students, assigning tasks, creating groups, and making participation fun. The visual wheel keeps students engaged and makes selection transparent.",
+    keywords: ["teachers", "classroom", "education", "students"],
+  },
+  {
+    question: "Is this good for Instagram and YouTube giveaways?",
+    answer: "Yes! Our random picker wheel is ideal for social media giveaways. The spinning animation creates excitement, and our cryptographic RNG ensures fair, trustworthy results. You can spin live on stream or record for later posting.",
+    keywords: ["giveaways", "Instagram", "YouTube", "contests"],
+  },
+  {
+    question: "Can I use this as a team picker for sports?",
+    answer: "Perfect for team picking! Add all player names, then spin to fairly assign players to teams. Our random group generator ensures balanced, unbiased team distribution for sports, work projects, or classroom activities.",
+    keywords: ["team picker", "sports", "groups", "randomizer"],
+  },
+  {
+    question: "Does this work as a decision wheel for choices?",
+    answer: "Yes! Use our decision wheel for any choice you need to make. Add your options like restaurants, movies, or activities, and let the spin wheel decide. It's perfect for indecisive moments or group decisions.",
+    keywords: ["decision wheel", "choices", "options", "randomizer"],
+  },
+  {
+    question: "Is there an API for the random picker wheel?",
+    answer: "Currently we don't offer a public API, but contact us if you need custom integration solutions. Our wheel runs entirely in-browser for privacy, but we can discuss custom implementations for organizations.",
+    keywords: ["API", "integration", "developers", "custom"],
+  },
 ] as const;
 

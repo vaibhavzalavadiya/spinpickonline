@@ -1,17 +1,22 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { WheelEntry, WheelState } from "@/lib/types";
 import Wheel from "@/components/Wheel";
 import ResultModal from "@/components/ResultModal";
 import Toast from "@/components/Toast";
 import ConfirmationModal from "@/components/ConfirmationModal";
+import BulkAddModal from "@/components/BulkAddModal";
 import {
   generateEntryId,
   generateDefaultColors,
   saveWheelToStorage,
   loadWheelFromStorage,
-  validateEntries
+  validateEntries,
+  decodeWheelFromShare,
+  generateShareUrl,
+  copyToClipboard
 } from "@/lib/wheel-utils";
 import {
   FiPlus,
@@ -41,7 +46,7 @@ const DEFAULT_ENTRIES: WheelEntry[] = [
   { id: "5", label: "Eve", color: "#8b5cf6" },
 ];
 
-export default function WheelPage() {
+function WheelPageContent() {
   const [entries, setEntries] = useState<WheelEntry[]>([]);
   const [newEntry, setNewEntry] = useState("");
   const [result, setResult] = useState<string | null>(null);
@@ -49,6 +54,7 @@ export default function WheelPage() {
   const [isSpinning, setIsSpinning] = useState(false);
   const [wheelName, setWheelName] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [showBulkModal, setShowBulkModal] = useState(false);
   const [activeTab, setActiveTab] = useState<"entries" | "results">("entries");
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [editValue, setEditValue] = useState("");
@@ -65,19 +71,51 @@ export default function WheelPage() {
     onConfirm: () => { },
   });
 
-  // Load from localStorage on mount
+  const searchParams = useSearchParams();
+  const [isSharedWheel, setIsSharedWheel] = useState(false);
+  const [sharedResult, setSharedResult] = useState<string | null>(null);
+
+  // Load from localStorage or shared URL on mount
   useEffect(() => {
+    // Check for shared wheel in URL
+    const shareData = searchParams.get("share");
+    if (shareData) {
+      const decoded = decodeWheelFromShare(shareData);
+      if (decoded) {
+        setEntries(decoded.entries);
+        setWheelName(decoded.wheelName || "");
+        setIsSharedWheel(true);
+
+        // If there are shared results, show them
+        if (decoded.results && decoded.results.length > 0) {
+          setResults(decoded.results);
+          const latestResult = decoded.results[decoded.results.length - 1];
+          setResult(latestResult);
+          setSharedResult(latestResult);
+          setShowModal(true);
+          setToast({ message: `Shared wheel loaded with ${decoded.results.length} result(s)!`, type: "success" });
+        } else {
+          setToast({ message: "Shared wheel loaded! You can spin it or save your own version.", type: "success" });
+        }
+        return;
+      }
+    }
+
+    // Otherwise load from localStorage
     const saved = loadWheelFromStorage();
     if (saved && saved.entries.length > 0) {
       setEntries(saved.entries);
+      setEntries(saved.entries);
       setResult(saved.result);
+      if (saved.results) setResults(saved.results);
       setWheelName(saved.wheelName || "");
     } else {
       setEntries(DEFAULT_ENTRIES);
       setResult(null);
+      setResults([]);
       setWheelName("");
     }
-  }, []);
+  }, [searchParams]);
 
   // Save to localStorage whenever entries change
   useEffect(() => {
@@ -85,12 +123,13 @@ export default function WheelPage() {
       const state: WheelState = {
         entries,
         result,
+        results,
         isSpinning,
         wheelName: wheelName || undefined,
       };
       saveWheelToStorage(state);
     }
-  }, [entries, result, isSpinning, wheelName]);
+  }, [entries, result, results, isSpinning, wheelName]);
 
   const addEntry = () => {
     const trimmed = newEntry.trim();
@@ -114,6 +153,30 @@ export default function WheelPage() {
 
     setEntries(newEntries);
     setNewEntry("");
+  };
+
+  const handleBulkAdd = (newLabels: string[]) => {
+    // 1. Deduplicate the new list itself
+    const uniqueInput = Array.from(new Set(newLabels.map(l => l.trim()))).filter(l => l.length > 0);
+
+    // 2. Filter out entries that already exist in the wheel
+    const uniqueNewLabels = uniqueInput.filter(
+      (label) => !entries.some((e) => e.label.toLowerCase() === label.toLowerCase())
+    );
+
+    if (uniqueNewLabels.length === 0) {
+      setToast({ message: "No new unique entries to add!", type: "info" });
+      return;
+    }
+
+    const addedEntries = uniqueNewLabels.map((label, index) => ({
+      id: generateEntryId(),
+      label,
+      color: generateDefaultColors(entries.length + uniqueNewLabels.length)[entries.length + index] || "#3b82f6",
+    }));
+
+    setEntries([...entries, ...addedEntries]);
+    setToast({ message: `Added ${uniqueNewLabels.length} entries!`, type: "success" });
   };
 
   const removeEntry = (id: string) => {
@@ -230,11 +293,19 @@ export default function WheelPage() {
     });
   };
 
-  const shareWheel = () => {
-    const shareText = `Random Picker Wheel Results:\n${result ? `Result: ${result}\n` : ""}Entries: ${entries.map(e => e.label).join(", ")}`;
-    navigator.clipboard.writeText(shareText).then(() => {
-      setToast({ message: "copied to clipboard!", type: "success" });
-    });
+  const shareWheel = async () => {
+    const shareUrl = generateShareUrl(entries, wheelName, results);
+    if (!shareUrl) {
+      setToast({ message: "Failed to generate share link", type: "error" });
+      return;
+    }
+
+    const success = await copyToClipboard(shareUrl);
+    if (success) {
+      setToast({ message: "Share link copied to clipboard!", type: "success" });
+    } else {
+      setToast({ message: "Failed to copy link", type: "error" });
+    }
   };
 
   return (
@@ -358,10 +429,19 @@ export default function WheelPage() {
 
                   {/* Add Entry */}
                   <div className="bg-linear-to-r from-blue-50 to-purple-50 sm:p-4 p-3 rounded-xl border-2 border-blue-100">
-                    <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                      <FiPlus className="text-base text-blue-600" />
-                      <span>Add New Entry</span>
-                    </label>
+                    <div className="flex items-center justify-between mb-2">
+                      <label className="block text-sm font-semibold text-gray-700 flex items-center gap-2">
+                        <FiPlus className="text-base text-blue-600" />
+                        <span>Add New Entry</span>
+                      </label>
+                      <button
+                        onClick={() => setShowBulkModal(true)}
+                        className="text-xs font-semibold text-blue-600 hover:text-blue-800 hover:bg-blue-50 px-2 py-1 rounded transition-colors flex items-center gap-1 cursor-pointer"
+                      >
+                        <FiList className="text-xs" />
+                        Bulk Add
+                      </button>
+                    </div>
                     <div className="flex gap-2">
                       <input
                         type="text"
@@ -494,10 +574,10 @@ export default function WheelPage() {
                     <div className="space-y-3">
                       <button
                         onClick={shareWheel}
-                        className="w-full md:px-6 px-4  lg:py-3 py-2 bg-white border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all flex items-center justify-center gap-2 text-sm cursor-pointer"
+                        className="w-full md:px-6 px-4  lg:py-3 py-2 bg-linear-to-r from-green-50 to-emerald-50 border-2 border-green-200 text-green-700 font-semibold rounded-xl hover:from-green-100 hover:to-emerald-100 hover:border-green-300 transition-all flex items-center justify-center gap-2 text-sm cursor-pointer"
                       >
                         <FiShare2 className="text-lg" />
-                        <span>Share Results</span>
+                        <span>Share Wheel Link</span>
                       </button>
                       <button
                         onClick={clearAll}
@@ -595,7 +675,13 @@ export default function WheelPage() {
         message={confirmModal.message}
         onConfirm={confirmModal.onConfirm}
         onCancel={() => setConfirmModal((prev) => ({ ...prev, isOpen: false }))}
-        type={confirmModal.title.includes("Clear") ? "danger" : "warning"}
+        type="warning"
+      />
+
+      <BulkAddModal
+        isOpen={showBulkModal}
+        onClose={() => setShowBulkModal(false)}
+        onAdd={handleBulkAdd}
       />
 
       <style jsx>{`
@@ -628,5 +714,17 @@ export default function WheelPage() {
         }
       `}</style>
     </div>
+  );
+}
+
+export default function WheelPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600"></div>
+      </div>
+    }>
+      <WheelPageContent />
+    </Suspense>
   );
 }

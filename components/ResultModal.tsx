@@ -107,7 +107,7 @@ export default function ResultModal({
                         <div className="space-y-2.5">
                             <button
                                 onClick={onContinue}
-                                className="w-full cursor-pointer md:text-sm text-xs md:px-5 px-4 md:py-2.5 py-2 bg-linear-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 text-sm"
+                                className="w-full cursor-pointer md:text-sm text-xs md:px-5 px-4 py-2.5 bg-linear-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 text-sm"
                             >
                                 <MdOutlineCasino className="text-lg" />
                                 <span>Spin Again</span>
@@ -116,7 +116,7 @@ export default function ResultModal({
                             {onRemove && (
                                 <button
                                     onClick={onRemove}
-                                    className="w-full cursor-pointer md:text-sm text-xs md:px-5 px-4 md:py-2.5 py-2 bg-linear-to-r from-red-50 to-pink-50 text-red-600 font-semibold rounded-xl hover:from-red-100 hover:to-pink-100 transition-all border-2 border-red-200 hover:border-red-300 flex items-center justify-center gap-2 text-sm"
+                                    className="w-full cursor-pointer md:text-sm text-xs md:px-5 px-4 py-2.5 bg-linear-to-r from-red-50 to-pink-50 text-red-600 font-semibold rounded-xl hover:from-red-100 hover:to-pink-100 transition-all border-2 border-red-200 hover:border-red-300 flex items-center justify-center gap-2 text-sm"
                                 >
                                     <FiX className="text-base" />
                                     <span>Remove "{result}" and continue</span>

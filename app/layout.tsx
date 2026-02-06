@@ -17,8 +17,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = genMeta({
-  title: "Spin Wheel | Random Picker Wheel | Free Online Tool | SpinPickOnline",
-  description: "Spin wheel online for free! Create and spin a random picker wheel instantly. No signup required. Fair, fast, and mobile-friendly. Perfect for teams, classrooms, giveaways, and daily decisions.",
+  title: "Spin the Wheel – Free Random Picker Wheel Online",
+  description: "Spin the wheel online for free. Create random name pickers, yes-or-no wheels, giveaway winners, and more. No signup required. Fast, fun, and mobile-friendly.",
   canonical: "/",
 });
 

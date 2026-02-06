@@ -235,6 +235,97 @@ export default function YesNoWheelPage() {
           </div>
         </div>
       </section>
+
+      {/* Why Use Our Yes No Wheel Section */}
+      <section className="py-10 lg:py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="sm:text-2xl md:text-3xl text-xl font-bold text-gray-900 mb-6">Why Use Our Yes or No Wheel?</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <h3 className="font-bold text-gray-900 mb-2">⚖️ Guaranteed Fairness</h3>
+              <p className="text-sm text-gray-700">Powered by the Web Crypto API, our yes no spinner provides true 50/50 probability. No bias, just pure random chance.</p>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <h3 className="font-bold text-gray-900 mb-2">⚡ Instant Decisions</h3>
+              <p className="text-sm text-gray-700">End analysis paralysis in seconds. Add your options and spin to get a clear answer immediately.</p>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <h3 className="font-bold text-gray-900 mb-2">🎨 Fully Customizable</h3>
+              <p className="text-sm text-gray-700">Beyond simple yes or no, add custom choices like "Maybe," "Later," or "Try Again" to suit your decision.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* Advanced Tips Section */}
+      <section className="py-10 lg:py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="sm:text-2xl md:text-3xl text-xl font-bold text-gray-900 mb-6">Pro Tips for Using the Yes No Wheel</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-white md:p-5 p-4 rounded-xl shadow-sm border border-gray-200">
+              <h3 className="font-bold text-gray-900 mb-2">💡 Customize Beyond Yes/No</h3>
+              <p className="text-gray-700 md:text-base text-sm leading-relaxed">
+                Add "Maybe" or "Ask Later" for a Magic 8-Ball style randomizer. Try "Heads/Tails" for a virtual coin flipper, or add custom options like "Now/Later" for timing decisions.
+              </p>
+            </div>
+            <div className="bg-white md:p-5 p-4 rounded-xl shadow-sm border border-gray-200">
+              <h3 className="font-bold text-gray-900 mb-2">🎯 Honor the Spin</h3>
+              <p className="text-gray-700 md:text-base text-sm leading-relaxed">
+                To overcome analysis paralysis, commit to following the yes no wheel result before spinning. This turns our random picker into a powerful decision-making tool!
+              </p>
+            </div>
+            <div className="bg-white md:p-5 p-4 rounded-xl shadow-sm border border-gray-200">
+              <h3 className="font-bold text-gray-900 mb-2">📱 Use on the Go</h3>
+              <p className="text-gray-700 md:text-base text-sm leading-relaxed">
+                Bookmark our yes or no wheel on your phone for instant decisions anywhere. Our mobile-friendly spinner wheel works offline after initial load!
+              </p>
+            </div>
+            <div className="bg-white md:p-5 p-4 rounded-xl shadow-sm border border-gray-200">
+              <h3 className="font-bold text-gray-900 mb-2">🎮 Make It Fun</h3>
+              <p className="text-gray-700 md:text-base text-sm leading-relaxed">
+                Use for party games like Truth or Dare, choosing who goes first, or settling friendly debates. Our decision wheel adds excitement to any group activity!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-10 lg:py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="sm:text-2xl md:text-3xl text-xl font-bold text-gray-900 mb-6">Yes or No Wheel FAQ</h2>
+          <div className="space-y-4">
+            <div className="bg-white md:p-6 md:rounded-xl p-4 rounded-lg border-2 border-gray-200">
+              <h3 className="sm:text-xl text-lg font-semibold text-gray-900 sm:mb-3 mb-2">Is the yes or no wheel truly random and fair?</h3>
+              <p className="text-gray-700 leading-relaxed md:text-base text-sm">
+                Yes! Our yes or no wheel uses a cryptographically secure random number generator (RNG), ensuring a perfect 50/50 probability. Unlike basic spinner wheels, our decision wheel provides truly unbiased random results.
+              </p>
+            </div>
+
+            <div className="bg-white md:p-6 md:rounded-xl p-4 rounded-lg border-2 border-gray-200">
+              <h3 className="sm:text-xl text-lg font-semibold text-gray-900 sm:mb-3 mb-2">How is this different from a coin flip?</h3>
+              <p className="text-gray-700 leading-relaxed md:text-base text-sm">
+                While both provide 50/50 odds, our yes no wheel is more engaging with visual spinning motion. It's perfect for streaming, group decisions, and adding excitement. Plus, you can customize it with different options beyond just yes and no!
+              </p>
+            </div>
+
+            <div className="bg-white md:p-6 md:rounded-xl p-4 rounded-lg border-2 border-gray-200">
+              <h3 className="sm:text-xl text-lg font-semibold text-gray-900 sm:mb-3 mb-2">Can I add more options beyond yes and no?</h3>
+              <p className="text-gray-700 leading-relaxed md:text-base text-sm">
+                Absolutely! While we default to yes and no for the decision wheel, you can add any options you want. Try "maybe", "ask later", or any custom choices. Our spin wheel is fully customizable for any decision you need to make.
+              </p>
+            </div>
+
+            <div className="bg-white md:p-6 md:rounded-xl p-4 rounded-lg border-2 border-gray-200">
+              <h3 className="sm:text-xl text-lg font-semibold text-gray-900 sm:mb-3 mb-2">Does the yes no spinner work on mobile?</h3>
+              <p className="text-gray-700 leading-relaxed md:text-base text-sm">
+                Yes! Our yes or no wheel is fully optimized for mobile devices with touch-friendly controls. The spinner wheel works smoothly on phones, tablets, and desktops. No app download required - just open and spin!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </WheelPageTemplate>
   );
 }

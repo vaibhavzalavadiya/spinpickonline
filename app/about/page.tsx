@@ -287,6 +287,87 @@ export default function AboutPage() {
                     </div>
                 </section>
 
+                {/* FAQ Section */}
+                <section className="py-10 lg:py-16 bg-gray-50 rounded-2xl md:rounded-3xl mx-2 md:mx-4 my-6">
+                    <div className="container mx-auto px-4">
+                        <div className="max-w-4xl mx-auto">
+                            <div className="text-center md:mb-8 mb-6">
+                                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3">About SpinPickOnline FAQ</h2>
+                                <p className="text-gray-600 md:text-base text-sm max-w-3xl mx-auto">
+                                    Common questions about our free random picker wheel and spin wheel tools
+                                </p>
+                            </div>
+
+                            <div className="space-y-4">
+                                <details className="group bg-white rounded-xl p-4 md:p-5 shadow-sm border border-gray-200 hover:shadow-md transition-all">
+                                    <summary className="flex items-center gap-3 cursor-pointer list-none">
+                                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
+                                        <span className="text-sm md:text-base font-bold text-gray-900 flex-1">What is SpinPickOnline and what does it offer?</span>
+                                        <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </summary>
+                                    <p className="text-sm md:text-base text-gray-600 mt-3 ml-9 leading-relaxed">
+                                        SpinPickOnline is a free online random picker wheel tool (also known as wheel of names or spin wheel). We provide fair, instant random selection tools including name pickers, decision wheels, yes/no wheels, and giveaway spinners for teachers, content creators, and anyone who needs unbiased random picks.
+                                    </p>
+                                </details>
+
+                                <details className="group bg-white rounded-xl p-4 md:p-5 shadow-sm border border-gray-200 hover:shadow-md transition-all">
+                                    <summary className="flex items-center gap-3 cursor-pointer list-none">
+                                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
+                                        <span className="text-sm md:text-base font-bold text-gray-900 flex-1">Is SpinPickOnline completely free to use?</span>
+                                        <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </summary>
+                                    <p className="text-sm md:text-base text-gray-600 mt-3 ml-9 leading-relaxed">
+                                        Yes! SpinPickOnline is 100% free forever with no hidden fees, premium tiers, or feature limits. You get full access to our random picker wheel, name picker, decision wheel, yes/no wheel, and all customization options without paying anything or signing up.
+                                    </p>
+                                </details>
+
+                                <details className="group bg-white rounded-xl p-4 md:p-5 shadow-sm border border-gray-200 hover:shadow-md transition-all">
+                                    <summary className="flex items-center gap-3 cursor-pointer list-none">
+                                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
+                                        <span className="text-sm md:text-base font-bold text-gray-900 flex-1">How does the random picker wheel ensure fair results?</span>
+                                        <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </summary>
+                                    <p className="text-sm md:text-base text-gray-600 mt-3 ml-9 leading-relaxed">
+                                        We use cryptographically secure random number generation (RNG) via the Web Crypto API. This ensures every spin the wheel result is truly random and unbiased. Each entry on the wheel of names has exactly equal probability of being selected.
+                                    </p>
+                                </details>
+
+                                <details className="group bg-white rounded-xl p-4 md:p-5 shadow-sm border border-gray-200 hover:shadow-md transition-all">
+                                    <summary className="flex items-center gap-3 cursor-pointer list-none">
+                                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-pink-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
+                                        <span className="text-sm md:text-base font-bold text-gray-900 flex-1">Who uses the SpinPickOnline wheel spinner?</span>
+                                        <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </summary>
+                                    <p className="text-sm md:text-base text-gray-600 mt-3 ml-9 leading-relaxed">
+                                        Teachers use our name picker for classroom activities. Content creators run transparent Instagram and YouTube giveaways. Event organizers use our spin wheel for raffles and prize draws. Teams use the random picker for fair task assignment. Anyone needing random selection!
+                                    </p>
+                                </details>
+
+                                <details className="group bg-white rounded-xl p-4 md:p-5 shadow-sm border border-gray-200 hover:shadow-md transition-all">
+                                    <summary className="flex items-center gap-3 cursor-pointer list-none">
+                                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-orange-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
+                                        <span className="text-sm md:text-base font-bold text-gray-900 flex-1">Is my data private when using the spin wheel?</span>
+                                        <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </summary>
+                                    <p className="text-sm md:text-base text-gray-600 mt-3 ml-9 leading-relaxed">
+                                        Absolutely! All wheel entries and random calculations happen locally in your browser. Your data is never sent to our servers. We don't collect, store, or track your wheel of names entries, making SpinPickOnline one of the most privacy-focused random picker tools available.
+                                    </p>
+                                </details>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <CallToAction />
             </div>
         </div>

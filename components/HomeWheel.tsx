@@ -6,10 +6,13 @@ import Wheel from "@/components/Wheel";
 import ResultModal from "@/components/ResultModal";
 import Toast from "@/components/Toast";
 import ConfirmationModal from "@/components/ConfirmationModal";
+import BulkAddModal from "@/components/BulkAddModal";
 import {
   generateEntryId,
   generateDefaultColors,
-  validateEntries
+  validateEntries,
+  generateShareUrl,
+  copyToClipboard
 } from "@/lib/wheel-utils";
 import Link from "next/link";
 import {
@@ -22,7 +25,8 @@ import {
   FiCheckCircle,
   FiX,
   FiExternalLink,
-  FiArrowRight
+  FiArrowRight,
+  FiShare2
 } from "react-icons/fi";
 import {
   IoTrophyOutline,
@@ -43,6 +47,8 @@ const DEFAULT_ENTRIES: WheelEntry[] = [
   { id: "5", label: "Eve", color: "#8b5cf6" },
 ];
 
+const HOME_WHEEL_STORAGE_KEY = "homeWheelState";
+
 interface HomeWheelProps {
   defaultEntries?: WheelEntry[];
 }
@@ -57,6 +63,7 @@ export default function HomeWheel({ defaultEntries }: HomeWheelProps = {}) {
   const [editValue, setEditValue] = useState("");
   const [activeTab, setActiveTab] = useState<"entries" | "results">("entries");
   const [showModal, setShowModal] = useState(false);
+  const [showBulkModal, setShowBulkModal] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" | "info" } | null>(null);
   const [confirmModal, setConfirmModal] = useState<{
     isOpen: boolean;
@@ -69,6 +76,54 @@ export default function HomeWheel({ defaultEntries }: HomeWheelProps = {}) {
     message: "",
     onConfirm: () => { },
   });
+
+  // Load from localStorage on mount
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    try {
+      const saved = localStorage.getItem(HOME_WHEEL_STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed.entries && parsed.entries.length > 0) {
+          setEntries(parsed.entries);
+        }
+        if (parsed.results && parsed.results.length > 0) {
+          setResults(parsed.results);
+        }
+      }
+    } catch (e) {
+      console.error("Failed to load home wheel state:", e);
+    }
+  }, []);
+
+  // Save to localStorage whenever entries or results change
+  useEffect(() => {
+    if (typeof window === "undefined" || entries.length === 0) return;
+
+    try {
+      localStorage.setItem(HOME_WHEEL_STORAGE_KEY, JSON.stringify({ entries, results }));
+    } catch (e) {
+      console.error("Failed to save home wheel state:", e);
+    }
+  }, [entries, results]);
+
+  // Share wheel function - generates live shareable link with results
+  const shareWheel = async () => {
+    const shareUrl = generateShareUrl(entries, undefined, results);
+    if (!shareUrl) {
+      setToast({ message: "Failed to generate share link", type: "error" });
+      return;
+    }
+
+    const success = await copyToClipboard(shareUrl);
+    if (success) {
+      setToast({ message: "Share link copied to clipboard!", type: "success" });
+    } else {
+      setToast({ message: "Failed to copy link", type: "error" });
+    }
+  };
+
 
   const addEntry = () => {
     const trimmed = newEntry.trim();
@@ -91,6 +146,30 @@ export default function HomeWheel({ defaultEntries }: HomeWheelProps = {}) {
 
     setEntries(newEntries);
     setNewEntry("");
+  };
+
+  const handleBulkAdd = (newLabels: string[]) => {
+    // 1. Deduplicate the new list itself
+    const uniqueInput = Array.from(new Set(newLabels.map(l => l.trim()))).filter(l => l.length > 0);
+
+    // 2. Filter out entries that already exist in the wheel
+    const uniqueNewLabels = uniqueInput.filter(
+      (label) => !entries.some((e) => e.label.toLowerCase() === label.toLowerCase())
+    );
+
+    if (uniqueNewLabels.length === 0) {
+      setToast({ message: "No new unique entries to add!", type: "info" });
+      return;
+    }
+
+    const addedEntries = uniqueNewLabels.map((label, index) => ({
+      id: generateEntryId(),
+      label,
+      color: generateDefaultColors(entries.length + uniqueNewLabels.length)[entries.length + index] || "#3b82f6",
+    }));
+
+    setEntries([...entries, ...addedEntries]);
+    setToast({ message: `Added ${uniqueNewLabels.length} entries!`, type: "success" });
   };
 
   const removeEntry = (id: string) => {
@@ -149,10 +228,19 @@ export default function HomeWheel({ defaultEntries }: HomeWheelProps = {}) {
   };
 
   const handleSpin = () => {
-    if (!validateEntries(entries)) {
+    if (entries.length === 0) {
       setToast({ message: "Please add at least one entry!", type: "error" });
       return;
     }
+
+    // Check for duplicates
+    const labels = entries.map(e => e.label.trim().toLowerCase());
+    const uniqueLabels = new Set(labels);
+    if (labels.length !== uniqueLabels.size) {
+      setToast({ message: "Remove duplicate entries before spinning!", type: "error" });
+      return;
+    }
+
     if (isSpinning) return;
     setResult(null);
     setIsSpinning(true);
@@ -295,10 +383,19 @@ export default function HomeWheel({ defaultEntries }: HomeWheelProps = {}) {
 
                 {/* Add Entry - Enhanced with react-icons */}
                 <div className="bg-linear-to-r from-blue-50 to-purple-50 sm:p-4 p-3 rounded-xl border-2 border-blue-100">
-                  <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                    <FiPlus className="text-base text-blue-600" />
-                    <span>Add New Entry</span>
-                  </label>
+                  <div className="flex items-center justify-between mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 flex items-center gap-2">
+                      <FiPlus className="text-base text-blue-600" />
+                      <span>Add New Entry</span>
+                    </label>
+                    <button
+                      onClick={() => setShowBulkModal(true)}
+                      className="text-xs font-semibold text-blue-600 hover:text-blue-800 hover:bg-blue-50 px-2 py-1 rounded transition-colors flex items-center gap-1 cursor-pointer"
+                    >
+                      <FiList className="text-xs" />
+                      Bulk Add
+                    </button>
+                  </div>
                   <div className="flex gap-2">
                     <input
                       type="text"
@@ -422,6 +519,17 @@ export default function HomeWheel({ defaultEntries }: HomeWheelProps = {}) {
                     </>
                   )}
                 </button>
+
+                {/* Share Button */}
+                {entries.length > 0 && (
+                  <button
+                    onClick={shareWheel}
+                    className="w-full cursor-pointer md:px-6 px-4 lg:py-3 py-2 bg-white border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all flex items-center justify-center gap-2 text-sm"
+                  >
+                    <FiShare2 className="text-lg" />
+                    <span>Share Wheel</span>
+                  </button>
+                )}
               </div>
             ) : (
               <div className="space-y-4">
@@ -517,6 +625,12 @@ export default function HomeWheel({ defaultEntries }: HomeWheelProps = {}) {
         onConfirm={confirmModal.onConfirm}
         onCancel={() => setConfirmModal((prev) => ({ ...prev, isOpen: false }))}
         type="warning"
+      />
+
+      <BulkAddModal
+        isOpen={showBulkModal}
+        onClose={() => setShowBulkModal(false)}
+        onAdd={handleBulkAdd}
       />
     </div>
   );

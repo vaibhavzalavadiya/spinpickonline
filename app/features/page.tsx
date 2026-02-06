@@ -55,6 +55,34 @@ export default function FeaturesPage() {
           ))}
         </div>
 
+        {/* What Sets Us Apart Section */}
+        <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl shadow-lg border-2 border-blue-200 md:p-8 p-4 lg:p-12 mb-12">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-6 text-center">What Sets Our Random Picker Apart</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-200">
+              <div className="text-2xl mb-2">🔐</div>
+              <h3 className="font-bold text-gray-900 mb-2">Cryptographic RNG</h3>
+              <p className="text-sm text-gray-600">Unlike basic Math.random() functions, our random number generator uses Web Crypto API for truly unpredictable results.</p>
+            </div>
+            <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-200">
+              <div className="text-2xl mb-2">∞</div>
+              <h3 className="font-bold text-gray-900 mb-2">Unlimited Everything</h3>
+              <p className="text-sm text-gray-600">No caps on entries, spins, or features. Our randomizer supports unlimited options, unlimited customization, and unlimited use.</p>
+            </div>
+            <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-200">
+              <div className="text-2xl mb-2">🚀</div>
+              <h3 className="font-bold text-gray-900 mb-2">Zero Latency</h3>
+              <p className="text-sm text-gray-600">All spinner wheel calculations happen locally in your browser. No server round-trips means instant, responsive spinning!</p>
+            </div>
+            <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-200">
+              <div className="text-2xl mb-2">🔗</div>
+              <h3 className="font-bold text-gray-900 mb-2">Shareable Wheels</h3>
+              <p className="text-sm text-gray-600">Create unique links for your custom random picker wheel. Share with friends, students, or audiences anywhere!</p>
+            </div>
+          </div>
+        </div>
+
+
         {/* Why Section */}
         <div className="bg-white rounded-2xl shadow-lg border-2 border-gray-200 md:p-8 p-4 lg:p-12 mb-12">
           <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-4 text-center">Why Our Spinner Wheel Stands Out</h2>
@@ -80,6 +108,64 @@ export default function FeaturesPage() {
               <h3 className="font-bold text-gray-900 mb-2">Secure RNG</h3>
               <p className="text-sm text-gray-600">Cryptographic random number generator ensures fair results for your decision wheel and name picker.</p>
             </div>
+          </div>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="mt-12 mb-8">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-6 text-center">Random Picker Wheel Features FAQ</h2>
+          <div className="grid md:grid-cols-2 gap-4 max-w-5xl mx-auto">
+            <details className="group bg-white rounded-xl p-4 md:p-5 shadow-sm border-2 border-gray-200 hover:border-purple-300 transition-all">
+              <summary className="flex items-center gap-3 cursor-pointer list-none">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
+                <span className="text-sm md:text-base font-bold text-gray-900 flex-1">How can I customize the random picker wheel?</span>
+                <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <p className="text-sm text-gray-600 mt-3 ml-9 leading-relaxed">
+                Our spinner wheel offers full customization! Change colors for each segment using our random color generator, add custom labels, adjust wheel size, and save your configurations. Perfect for creating branded wheels of names for events or classrooms.
+              </p>
+            </details>
+
+            <details className="group bg-white rounded-xl p-4 md:p-5 shadow-sm border-2 border-gray-200 hover:border-blue-300 transition-all">
+              <summary className="flex items-center gap-3 cursor-pointer list-none">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
+                <span className="text-sm md:text-base font-bold text-gray-900 flex-1">Does the spin wheel work on mobile devices?</span>
+                <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <p className="text-sm text-gray-600 mt-3 ml-9 leading-relaxed">
+                Yes! Our random picker wheel is fully optimized for mobile with a touch-friendly interface. Works perfectly on phones and tablets - no app download needed, just open in your mobile browser and start spinning!
+              </p>
+            </details>
+
+            <details className="group bg-white rounded-xl p-4 md:p-5 shadow-sm border-2 border-gray-200 hover:border-green-300 transition-all">
+              <summary className="flex items-center gap-3 cursor-pointer list-none">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
+                <span className="text-sm md:text-base font-bold text-gray-900 flex-1">Can I share my wheel of names with others?</span>
+                <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <p className="text-sm text-gray-600 mt-3 ml-9 leading-relaxed">
+                Absolutely! Generate shareable links for your custom wheels, share directly on social media, or copy results to clipboard. Perfect for Instagram giveaways, YouTube contests, and team activities with live spin results!
+              </p>
+            </details>
+
+            <details className="group bg-white rounded-xl p-4 md:p-5 shadow-sm border-2 border-gray-200 hover:border-pink-300 transition-all">
+              <summary className="flex items-center gap-3 cursor-pointer list-none">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-pink-500 text-white text-xs font-bold flex items-center justify-center">Q</span>
+                <span className="text-sm md:text-base font-bold text-gray-900 flex-1">Is the randomization truly fair and unbiased?</span>
+                <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <p className="text-sm text-gray-600 mt-3 ml-9 leading-relaxed">
+                Yes! We use cryptographically secure random number generation (RNG) via the Web Crypto API. This professional-grade randomization ensures every entry has exactly equal probability - no bias, no patterns, completely transparent results.
+              </p>
+            </details>
           </div>
         </div>
 

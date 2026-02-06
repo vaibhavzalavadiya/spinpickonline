@@ -213,6 +213,57 @@ export default function NamePickerPage() {
                 </div>
             </section>
 
+            {/* Best Practices Section */}
+            <section className="bg-gray-50 py-10 lg:py-16">
+                <div className="container mx-auto px-4">
+                    <h2 className="md:text-3xl text-xl font-bold text-gray-900 md:mb-6 mb-4">Best Practices for Random Name Selection</h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-200">
+                            <div className="text-2xl mb-2">📋</div>
+                            <h3 className="font-bold text-gray-900 mb-2">Prepare Your List</h3>
+                            <p className="text-sm text-gray-600">Double-check all names are spelled correctly before spinning. Our wheel of names saves your entries automatically for easy reuse.</p>
+                        </div>
+                        <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-200">
+                            <div className="text-2xl mb-2">🔄</div>
+                            <h3 className="font-bold text-gray-900 mb-2">Remove After Selection</h3>
+                            <p className="text-sm text-gray-600">For fair rotation, remove selected names from the random picker. This ensures everyone gets a turn before repeats.</p>
+                        </div>
+                        <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-200">
+                            <div className="text-2xl mb-2">🎨</div>
+                            <h3 className="font-bold text-gray-900 mb-2">Use Color Coding</h3>
+                            <p className="text-sm text-gray-600">Assign team colors using our random color generator. Great for visual organization in classrooms and events!</p>
+                        </div>
+                        <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-200">
+                            <div className="text-2xl mb-2">📱</div>
+                            <h3 className="font-bold text-gray-900 mb-2">Display on Big Screen</h3>
+                            <p className="text-sm text-gray-600">Project the name spinner on your classroom Smartboard or TV for maximum engagement and transparency.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Why Use Our Name Picker Section */}
+            <section className="bg-white py-10 lg:py-16">
+                <div className="container mx-auto px-4">
+                    <h2 className="md:text-3xl text-xl font-bold text-gray-900 md:mb-6 mb-4">Why Use Our Random Name Picker?</h2>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <h3 className="font-bold text-gray-900 mb-2">🎈 Engaging & Fun</h3>
+                            <p className="text-sm text-gray-700">The spinning wheel animation creates suspense and excitement, making name selection a highlight of your activity or event.</p>
+                        </div>
+                        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <h3 className="font-bold text-gray-900 mb-2">⚖️ Transparent Fairness</h3>
+                            <p className="text-sm text-gray-700">Every participant sees the wheel spin and land on a result. Our cryptographic RNG ensures the pick is 100% unbiased.</p>
+                        </div>
+                        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <h3 className="font-bold text-gray-900 mb-2">📱 Accessible Anywhere</h3>
+                            <p className="text-sm text-gray-700">No need for physical tools or accounts. Access our name spinner from any phone, tablet, or classroom Smartboard.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
             {/* FAQ Section */}
             <section className="bg-white py-10 lg:py-16">
                 <div className="container mx-auto px-4">
@@ -243,6 +294,20 @@ export default function NamePickerPage() {
                             <h3 className="sm:text-xl text-lg font-semibold text-gray-900 sm:mb-3 mb-2">Can I use this for giveaways and contests?</h3>
                             <p className="text-gray-700 leading-relaxed md:text-base text-sm">
                                 Yes! Our random picker wheel is perfect for transparent giveaway selection. Use it as a name picker for Instagram contests, YouTube giveaways, or any random name generator needs. The wheel spinner builds excitement and trust with your audience!
+                            </p>
+                        </div>
+
+                        <div className="bg-white md:p-6 md:rounded-xl p-4 rounded-lg border-2 border-gray-200">
+                            <h3 className="sm:text-xl text-lg font-semibold text-gray-900 sm:mb-3 mb-2">Can I save my list of names for later?</h3>
+                            <p className="text-gray-700 leading-relaxed md:text-base text-sm">
+                                Yes! Your wheel of names entries are saved automatically in your browser. You can also generate a shareable link to save and share your custom name picker configuration. Perfect for teachers who need the same student list repeatedly!
+                            </p>
+                        </div>
+
+                        <div className="bg-white md:p-6 md:rounded-xl p-4 rounded-lg border-2 border-gray-200">
+                            <h3 className="sm:text-xl text-lg font-semibold text-gray-900 sm:mb-3 mb-2">Does the name picker work on mobile phones?</h3>
+                            <p className="text-gray-700 leading-relaxed md:text-base text-sm">
+                                Absolutely! Our random name picker is fully responsive and touch-friendly. The spin wheel works perfectly on phones and tablets with smooth animations. No app download needed - just open the website and start spinning!
                             </p>
                         </div>
                     </div>

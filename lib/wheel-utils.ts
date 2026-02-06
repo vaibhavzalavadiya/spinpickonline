@@ -15,7 +15,7 @@ export function getSecureRandom(): number {
 // Generate random result from entries
 export function spinWheel(entries: WheelEntry[]): string {
   if (entries.length === 0) return "";
-  
+
   const random = getSecureRandom();
   const index = Math.floor(random * entries.length);
   return entries[index].label;
@@ -28,7 +28,7 @@ export function generateDefaultColors(count: number): string[] {
     "#F7DC6F", "#BB8FCE", "#85C1E2", "#F8B739", "#52BE80",
     "#EC7063", "#5DADE2", "#58D68D", "#F4D03F", "#AF7AC5",
   ];
-  
+
   const result: string[] = [];
   for (let i = 0; i < count; i++) {
     result.push(colors[i % colors.length]);
@@ -39,7 +39,7 @@ export function generateDefaultColors(count: number): string[] {
 // Save wheel state to localStorage
 export function saveWheelToStorage(state: WheelState): void {
   if (typeof window === "undefined") return;
-  
+
   try {
     localStorage.setItem("wheelState", JSON.stringify(state));
   } catch (error) {
@@ -50,11 +50,11 @@ export function saveWheelToStorage(state: WheelState): void {
 // Load wheel state from localStorage
 export function loadWheelFromStorage(): WheelState | null {
   if (typeof window === "undefined") return null;
-  
+
   try {
     const stored = localStorage.getItem("wheelState");
     if (!stored) return null;
-    
+
     return JSON.parse(stored) as WheelState;
   } catch (error) {
     console.error("Failed to load wheel state:", error);
@@ -75,13 +75,13 @@ export function generateWheelId(): string {
 // Validate wheel entries
 export function validateEntries(entries: WheelEntry[]): boolean {
   if (entries.length === 0) return false;
-  
+
   // Check for duplicate labels
   const labels = entries.map(e => e.label.trim().toLowerCase());
   const uniqueLabels = new Set(labels);
-  
+
   if (labels.length !== uniqueLabels.size) return false;
-  
+
   // Check for empty labels
   return entries.every(e => e.label.trim().length > 0);
 }
@@ -90,11 +90,11 @@ export function validateEntries(entries: WheelEntry[]): boolean {
 export function calculateSegmentAngles(count: number): number[] {
   const anglePerSegment = 360 / count;
   const angles: number[] = [];
-  
+
   for (let i = 0; i < count; i++) {
     angles.push(i * anglePerSegment);
   }
-  
+
   return angles;
 }
 
@@ -103,3 +103,100 @@ export function formatResult(result: string): string {
   return result.trim();
 }
 
+// ============================================
+// SHARE LINK UTILITIES
+// ============================================
+
+interface ShareableWheelData {
+  entries: { l: string; c: string }[]; // l=label, c=color (shortened for URL)
+  name?: string;
+  results?: string[]; // All spin results to share with other users
+}
+
+// Encode wheel data for sharing via URL
+export function encodeWheelForShare(entries: WheelEntry[], wheelName?: string, results?: string[]): string {
+  const data: ShareableWheelData = {
+    entries: entries.map(e => ({ l: e.label, c: e.color })),
+    name: wheelName,
+    results: results && results.length > 0 ? results : undefined,
+  };
+
+  try {
+    const jsonString = JSON.stringify(data);
+    // Use base64 encoding for URL safety
+    const encoded = btoa(encodeURIComponent(jsonString));
+    return encoded;
+  } catch (error) {
+    console.error("Failed to encode wheel data:", error);
+    return "";
+  }
+}
+
+// Decode wheel data from shared URL
+export function decodeWheelFromShare(encodedData: string): { entries: WheelEntry[]; wheelName?: string; results?: string[] } | null {
+  try {
+    const jsonString = decodeURIComponent(atob(encodedData));
+    const data: ShareableWheelData = JSON.parse(jsonString);
+
+    const entries: WheelEntry[] = data.entries.map((e) => ({
+      id: generateEntryId(),
+      label: e.l,
+      color: e.c,
+    }));
+
+    return {
+      entries,
+      wheelName: data.name,
+      results: data.results,
+    };
+  } catch (error) {
+    console.error("Failed to decode wheel data:", error);
+    return null;
+  }
+}
+
+// Generate share URL
+export function generateShareUrl(entries: WheelEntry[], wheelName?: string, results?: string[]): string {
+  const encoded = encodeWheelForShare(entries, wheelName, results);
+  if (!encoded) return "";
+
+  const baseUrl = typeof window !== "undefined"
+    ? `${window.location.origin}/wheel`
+    : "https://spinpickonline.com/wheel";
+
+  return `${baseUrl}?share=${encoded}`;
+}
+
+// Robust copy to clipboard function (handles HTTP/HTTPS)
+export async function copyToClipboard(text: string): Promise<boolean> {
+  if (typeof navigator !== "undefined" && navigator.clipboard && navigator.clipboard.writeText) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch (err) {
+      // console.warn("Clipboard API failed, trying fallback...", err);
+    }
+  }
+
+  // Fallback for HTTP or older browsers
+  try {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+
+    // Ensure it's not visible but part of the DOM
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+    textArea.style.top = "0";
+    document.body.appendChild(textArea);
+
+    textArea.focus();
+    textArea.select();
+
+    const successful = document.execCommand("copy");
+    document.body.removeChild(textArea);
+    return successful;
+  } catch (err) {
+    console.error("Fallback copy failed:", err);
+    return false;
+  }
+}

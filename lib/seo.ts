@@ -22,14 +22,14 @@ export function generateMetadata({
   ogImage?: string;
 }): Metadata {
   // Validate title length (30-60 chars)
-  if (title.length < 30 || title.length > 60) {
-    console.warn(`Title "${title}" is ${title.length} characters. Should be 30-60.`);
-  }
+  // if (title.length < 30 || title.length > 60) {
+  //   console.warn(`Title "${title}" is ${title.length} characters. Should be 30-60.`);
+  // }
 
   // Validate description length (120-160 chars)
-  if (description.length < 120 || description.length > 160) {
-    console.warn(`Description "${description}" is ${description.length} characters. Should be 120-160.`);
-  }
+  // if (description.length < 120 || description.length > 160) {
+  //   console.warn(`Description "${description}" is ${description.length} characters. Should be 120-160.`);
+  // }
 
   const canonicalUrl = getCanonicalUrl(canonical);
   const [index, follow] = robots.split(", ");
@@ -52,13 +52,13 @@ export function generateMetadata({
       siteName: SITE_CONFIG.name,
       images: ogImage
         ? [
-            {
-              url: ogImage,
-              width: 1200,
-              height: 630,
-              alt: `${title} - ${SITE_CONFIG.name}`,
-            },
-          ]
+          {
+            url: ogImage,
+            width: 1200,
+            height: 630,
+            alt: `${title} - ${SITE_CONFIG.name}`,
+          },
+        ]
         : [],
     },
     twitter: {
