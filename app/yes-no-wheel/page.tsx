@@ -1,8 +1,9 @@
 import { Metadata } from "next";
-import { generateMetadata } from "@/lib/seo";
+import { generateMetadata, generateWebApplicationSchema, generateFAQSchema } from "@/lib/seo";
 import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiZap, FiTarget, FiSmile, FiSmartphone, FiArrowRight, FiCheckCircle } from "react-icons/fi";
 import Link from "next/link";
+import YesNoWheel from "@/components/YesNoWheel";
 
 export const metadata: Metadata = generateMetadata({
   title: "Yes or No Wheel | Free Decision Maker | SpinPickOnline",
@@ -10,19 +11,33 @@ export const metadata: Metadata = generateMetadata({
   canonical: "/yes-no-wheel",
 });
 
-// Default entries for Yes/No wheel
-const YES_NO_ENTRIES = [
-  { id: "yes", label: "Yes", color: "#10b981" },
-  { id: "no", label: "No", color: "#ef4444" },
-];
-
 export default function YesNoWheelPage() {
+  const applicationSchema = generateWebApplicationSchema();
+  const faqSchema = generateFAQSchema([
+    {
+      question: "Is the yes or no wheel truly random and fair?",
+      answer: "Yes! Our yes or no wheel uses a cryptographically secure random number generator (RNG), ensuring a perfect 50/50 probability. Unlike basic spinner wheels, our decision wheel provides truly unbiased random results."
+    },
+    {
+      question: "How is this different from a coin flip?",
+      answer: "While both provide 50/50 odds, our yes no wheel is more engaging with visual spinning motion. It's perfect for streaming, group decisions, and adding excitement. Plus, you can customize it with different options beyond just yes and no!"
+    },
+    {
+      question: "Can I add more options beyond yes and no?",
+      answer: "Absolutely! While we default to yes and no for the decision wheel, you can add any options you want. Try \"maybe\", \"ask later\", or any custom choices. Our spin wheel is fully customizable for any decision you need to make."
+    },
+    {
+      question: "Does the yes no spinner work on mobile?",
+      answer: "Yes! Our yes or no wheel is fully optimized for mobile devices with touch-friendly controls. The spinner wheel works smoothly on phones, tablets, and desktops. No app download required - just open and spin!"
+    }
+  ]);
+
   return (
     <WheelPageTemplate
       title="Yes or No Wheel"
       description="Make quick decisions with our yes or no wheel"
       h1="Yes or No Wheel – Free Decision Maker"
-      defaultEntries={YES_NO_ENTRIES}
+      showWheel={false}
       benefits={[
         "Instant yes/no decisions",
         "Fair 50/50 random selection",
@@ -36,6 +51,26 @@ export default function YesNoWheelPage() {
         "Fun with friends"
       ]}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(applicationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
+      {/* Custom Yes/No Wheel Section */}
+      <section id="try-wheel" className="pb-10 lg:pb-16 lg:pt-10 pt-4 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center lg:mb-12 sm:mb-8 mb-5">
+            <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">Yes or No Wheel – Free Decision Maker</h1>
+            <p className="text-gray-500 text-sm sm:text-base">Spin the wheel to decide instantly!</p>
+          </div>
+          <YesNoWheel />
+        </div>
+      </section>
+
       {/* What is Section */}
       <section className="pb-10 lg:pb-16 bg-white">
         <div className="container mx-auto px-4">
