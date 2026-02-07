@@ -54,6 +54,7 @@ interface HomeWheelProps {
 }
 
 export default function HomeWheel({ defaultEntries }: HomeWheelProps = {}) {
+
   const [entries, setEntries] = useState<WheelEntry[]>(defaultEntries || DEFAULT_ENTRIES);
   const [newEntry, setNewEntry] = useState("");
   const [result, setResult] = useState<string | null>(null);
@@ -77,7 +78,7 @@ export default function HomeWheel({ defaultEntries }: HomeWheelProps = {}) {
     onConfirm: () => { },
   });
 
-  // Load from localStorage on mount
+  // Load from localStorage on client mount (after hydration)
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -93,7 +94,7 @@ export default function HomeWheel({ defaultEntries }: HomeWheelProps = {}) {
         }
       }
     } catch (e) {
-      console.error("Failed to load home wheel state:", e);
+      console.error("Failed to load home wheel results:", e);
     }
   }, []);
 
