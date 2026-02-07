@@ -4,6 +4,7 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight, FiHelpCircle } from "react-icons/fi";
 import { IoCompassOutline, IoFlashOutline, IoHeartOutline, IoRestaurantOutline } from "react-icons/io5";
+import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
     title: "Decision Wheel | Free Decision Maker Spinner | SpinPickOnline",
@@ -23,9 +24,46 @@ export const metadata: Metadata = {
     },
 };
 
+// Default decision entries (food choices)
+const DECISION_ENTRIES = [
+    { id: "1", label: "Pizza", color: "#ef4444" },
+    { id: "2", label: "Sushi", color: "#f59e0b" },
+    { id: "3", label: "Burgers", color: "#22c55e" },
+    { id: "4", label: "Thai Food", color: "#8b5cf6" },
+];
+
 export default function DecisionWheelPage() {
+    // Generate schemas for SEO
+    const webAppSchema = generateWebApplicationSchema();
+    const faqSchema = generateFAQSchema([
+        {
+            question: "What is a decision wheel and how does it work?",
+            answer: "A decision wheel is a random picker tool that helps you make choices when you're stuck between options. Simply add your options to the wheel, spin it, and let randomness decide for you. Our decision maker uses cryptographic RNG for truly fair, unbiased results."
+        },
+        {
+            question: "Is the decision wheel truly random?",
+            answer: "Yes! Unlike basic randomizers, our spin the wheel uses Web Crypto API for cryptographically secure random number generation. Every option has exactly equal probability of being selected – no hidden bias or patterns."
+        },
+        {
+            question: "Can I use the decision wheel for what to eat?",
+            answer: "Absolutely! Our decision wheel is perfect for food choices. Add restaurants like pizza, sushi, Thai, or burgers, and spin to end the \"what should we eat?\" debate. It's the ultimate lunch decision randomizer!"
+        },
+        {
+            question: "How is this different from flipping a coin?",
+            answer: "Our decision wheel handles any number of options (not just two), provides visual excitement, and offers a more engaging experience than a coin flip. Plus, you can save your wheels and share them with friends for group decisions!"
+        }
+    ]);
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
             {/* Hero Section with Wheel */}
             <section className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-gradient-to-b from-blue-50/50 to-white">
                 <div className="container mx-auto px-4">
@@ -41,7 +79,7 @@ export default function DecisionWheelPage() {
                             Stuck on a decision? Add your options to our decision wheel and let fate decide for you. No more analysis paralysis – just spin and go with the result!
                         </p>
                     </div>
-                    <HomeWheel />
+                    <HomeWheel defaultEntries={DECISION_ENTRIES} />
                 </div>
             </section>
 

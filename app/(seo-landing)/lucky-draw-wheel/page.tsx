@@ -4,6 +4,7 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight } from "react-icons/fi";
 import { IoGiftOutline, IoTrophyOutline, IoSparklesOutline, IoShieldCheckmarkOutline } from "react-icons/io5";
+import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
     title: "Lucky Draw Wheel | Free Online Spinner | SpinPickOnline",
@@ -23,9 +24,42 @@ export const metadata: Metadata = {
     },
 };
 
+// Default lucky draw entries
+const LUCKY_DRAW_ENTRIES = [
+    { id: "1", label: "Entry 1", color: "#3b82f6" },
+    { id: "2", label: "Entry 2", color: "#ef4444" },
+    { id: "3", label: "Entry 3", color: "#22c55e" },
+    { id: "4", label: "Entry 4", color: "#f59e0b" },
+    { id: "5", label: "Entry 5", color: "#8b5cf6" },
+];
+
 export default function LuckyDrawWheelPage() {
+    const webAppSchema = generateWebApplicationSchema();
+    const faqSchema = generateFAQSchema([
+        {
+            question: "How does the lucky draw wheel ensure fairness?",
+            answer: "Our lucky draw wheel uses cryptographically secure random number generation (RNG) to ensure every participant has an equal chance. Our randomizer provides transparent, verifiable results for your events and promotions."
+        },
+        {
+            question: "Can I use this for trade show lucky draws?",
+            answer: "Absolutely! Our lucky draw spinner is perfect for trade shows, conferences, and promotional events. The visual wheel creates excitement and engagement at your booth while ensuring fair winner selection!"
+        },
+        {
+            question: "Is the lucky draw wheel free to use?",
+            answer: "Yes! Our lucky draw wheel is 100% free with unlimited draws and participants. No signup, no downloads - just open the page and start your lucky draw!"
+        }
+    ]);
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
             {/* Hero Section with Wheel */}
             <section className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-gradient-to-b from-yellow-50/50 to-white">
                 <div className="container mx-auto px-4">
@@ -41,7 +75,7 @@ export default function LuckyDrawWheelPage() {
                             Create exciting lucky draws for your events, promotions, or parties. Our lucky draw wheel ensures fair, transparent winner selection every time.
                         </p>
                     </div>
-                    <HomeWheel />
+                    <HomeWheel defaultEntries={LUCKY_DRAW_ENTRIES} />
                 </div>
             </section>
 

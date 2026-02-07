@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { FAQS } from "@/lib/constants";
+import { generateFAQSchema } from "@/lib/seo";
 import Link from "next/link";
 import { FiArrowLeft, FiHelpCircle } from "react-icons/fi";
 import { IoSparklesOutline } from "react-icons/io5";
@@ -17,8 +18,50 @@ export const metadata: Metadata = {
 };
 
 export default function FAQPage() {
+  // Generate FAQ schema for all FAQs on the page (main + additional SEO FAQs)
+  const allFAQs = [
+    ...FAQS,
+    {
+      question: "Is this the same as a wheel of names spinner?",
+      answer: "Yes! Our tool works as a wheel of names, random name picker, name spinner, and general purpose spin wheel. Whether you call it a wheel spinner, picker wheel, or randomizer, it's the same powerful tool."
+    },
+    {
+      question: "Can I use this as a random number generator?",
+      answer: "Absolutely! Use it as a random number generator, random word generator, or random color generator. Our cryptographically secure RNG ensures truly random results every time you spin."
+    },
+    {
+      question: "What makes this random picker wheel special?",
+      answer: "Our random picker wheel offers full customization, unlimited entries, and shareable links. Advanced cryptographic RNG ensures professional-grade randomization, and it's completely free without signup requirements."
+    },
+    {
+      question: "Can I use this for yes or no decisions?",
+      answer: "Yes! Our yes or no wheel is perfect for quick binary decisions. Add \"Yes\" and \"No\" as entries and spin. Also works as a coin flipper alternative with \"Heads\" and \"Tails\"."
+    },
+    {
+      question: "How do I use the spin wheel for Instagram or YouTube giveaways?",
+      answer: "Simply add all participant names to the random picker wheel, then spin live on stream or record the spin. Our wheel of names provides transparent, fair giveaway results that build trust with your audience. Share results directly on social media!"
+    },
+    {
+      question: "Can teachers use this as a classroom name picker?",
+      answer: "Absolutely! Teachers love our random name picker for fair student selection. Add student names, display on your classroom screen, and spin to pick who answers questions, presents, or participates. The visual wheel of names keeps students engaged!"
+    },
+    {
+      question: "Does the team picker work for creating random groups?",
+      answer: "Yes! Our random picker wheel is perfect as a team picker and random group generator. Add all names, then spin repeatedly to assign people to teams fairly. Great for sports, work projects, classroom groups, and any activity needing fair team distribution."
+    },
+    {
+      question: "Can I save my wheel of names for later use?",
+      answer: "Yes! Your wheel entries are automatically saved in your browser's local storage. You can also generate shareable links to save and share your custom spin wheel configurations. Return anytime to use your personalized random picker wheel!"
+    },
+  ];
+  const faqSchema = generateFAQSchema(allFAQs);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-6 sm:py-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         {/* Back Button */}
         <Link

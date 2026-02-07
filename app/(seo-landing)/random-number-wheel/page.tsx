@@ -4,10 +4,11 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight, FiHash } from "react-icons/fi";
 import { IoCalculatorOutline, IoShieldCheckmarkOutline, IoSparklesOutline, IoDiceOutline } from "react-icons/io5";
+import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
     title: "Random Number Wheel | Free Number Spinner | SpinPickOnline",
-    description: "Free random number wheel spinner. Generate random numbers instantly with our spinning wheel. Perfect for games, lotteries, and number selection.",
+    description: "Free random number wheel spinner. Generate random numbers instantly with our spinning wheel. Perfect for games, lotteries, and  number selection.",
     alternates: {
         canonical: "/random-number-wheel",
     },
@@ -38,29 +39,46 @@ const NUMBER_ENTRIES = [
 ];
 
 export default function RandomNumberWheelPage() {
+    const webAppSchema = generateWebApplicationSchema();
+    const faqSchema = generateFAQSchema([
+        {
+            question: "How does the random number wheel work?",
+            answer: "Our number wheel uses cryptographically secure random number generation to select numbers fairly. Add your custom number range (1-10, 1-100, or specific numbers), spin the wheel, and watch the visual animation reveal your random number!"
+        },
+        {
+            question: "Can I customize the number range?",
+            answer: "Yes! You can add any numbers you want to the wheel - use 1-10 for simple games, 1-100 for more options, or add specific custom numbers. Perfect for dice replacement, lottery picks, or any number selection needs!"
+        },
+        {
+            question: "Is this better than a random number generator?",
+            answer: "Our random number wheel combines the reliability of cryptographic RNG with engaging visual spinning animation. It's more fun and interactive than a basic number generator while maintaining true randomness. Perfect for classrooms, games, and presentations!"
+        }
+    ]);
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
             {/* Hero Section with Wheel */}
             <section className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-gradient-to-b from-indigo-50/50 to-white">
                 <div className="container mx-auto px-4">
                     <div className="text-center lg:mb-12 sm:mb-8 mb-5">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold mb-4">
-                            <FiHash className="text-lg" />
-                            <span>Number Generator</span>
-                        </div>
                         <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                             Random Number Wheel – Free Number Spinner
                         </h1>
-                        <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">
-                            Generate random numbers with our visual spinning wheel. More engaging than a basic random number generator – perfect for games, educational activities, and fair number selection.
-                        </p>
                     </div>
                     <HomeWheel defaultEntries={NUMBER_ENTRIES} />
                 </div>
             </section>
 
             {/* Benefits */}
-            <section className="py-10 lg:py-16 bg-white">
+            <section className="pb-10 lg:pb-16 bg-white">
                 <div className="container mx-auto px-4">
                     <div className="text-center md:mb-8 mb-6">
                         <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3">

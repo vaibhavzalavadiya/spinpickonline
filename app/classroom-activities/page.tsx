@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiUserPlus, FiSettings, FiRotateCw, FiSave } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
+import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
     title: "Classroom Activities Wheel | Teachers Tool | SpinPickOnline",
@@ -11,14 +12,53 @@ export const metadata: Metadata = {
     },
 };
 
+// Default classroom entries
+const CLASSROOM_ENTRIES = [
+    { id: "1", label: "Student 1", color: "#3b82f6" },
+    { id: "2", label: "Student 2", color: "#ef4444" },
+    { id: "3", label: "Student 3", color: "#22c55e" },
+    { id: "4", label: "Student 4", color: "#f59e0b" },
+    { id: "5", label: "Student 5", color: "#8b5cf6" },
+];
+
 export default function ClassroomActivitiesPage() {
+    // Generate schemas for SEO
+    const webAppSchema = generateWebApplicationSchema();
+    const faqSchema = generateFAQSchema([
+        {
+            question: "Is this random name picker truly fair for students?",
+            answer: "Yes! Our classroom wheel uses a cryptographically secure random number generator (RNG), ensuring every student has an equal chance of being selected. Our randomizer provides transparent, unbiased results that students and parents can trust."
+        },
+        {
+            question: "Can I use this wheel of names on my classroom Smartboard?",
+            answer: "Absolutely! Our spinner wheel works perfectly on interactive whiteboards, Smartboards, iPads, and all devices. The touch-friendly name spinner makes it easy for both teachers and students to spin the wheel during lessons."
+        },
+        {
+            question: "How is this different from other random pickers?",
+            answer: "Our random picker offers unlimited names, custom color generator for visual appeal, save and share features, and works offline after initial load. Our spinning wheel is specifically designed for education with engaging animations that keep students excited about participation!"
+        },
+        {
+            question: "Can I save my student names for daily use?",
+            answer: "Yes! Our picker wheel lets you save classroom configurations for recurring use. Perfect for daily morning meetings, random questioning routines, or consistent group formation. Create multiple wheels for different classes or purposes - all free with no account required!"
+        }
+    ]);
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
             <WheelPageTemplate
                 title="Classroom Activities"
                 h1="Classroom Activity Wheel"
                 description="Make learning interactive! Use the wheel to pick random students for questions, assign classroom jobs, or choose the next fun activity. Teachers love the engagement it brings."
                 ctaText="Spin for Activities"
+                defaultEntries={CLASSROOM_ENTRIES}
                 benefits={[
                     "Increases Participation",
                     "Fair Student Selection",

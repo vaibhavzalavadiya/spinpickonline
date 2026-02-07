@@ -4,6 +4,7 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight, FiGift } from "react-icons/fi";
 import { IoRibbonOutline, IoSparklesOutline, IoStarOutline, IoTrophyOutline } from "react-icons/io5";
+import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
     title: "Prize Wheel | Free Spin to Win Wheel | SpinPickOnline",
@@ -23,9 +24,41 @@ export const metadata: Metadata = {
     },
 };
 
+// Default prize entries
+const PRIZE_ENTRIES = [
+    { id: "1", label: "10% Off", color: "#3b82f6" },
+    { id: "2", label: "Free Item", color: "#22c55e" },
+    { id: "3", label: "Grand Prize", color: "#f59e0b" },
+    { id: "4", label: "Try Again", color: "#6366f1" },
+];
+
 export default function PrizeWheelPage() {
+    const webAppSchema = generateWebApplicationSchema();
+    const faqSchema = generateFAQSchema([
+        {
+            question: "Can I customize the prizes on the wheel?",
+            answer: "Yes! Our prize wheel is fully customizable. Add your own prizes like discounts, free items, upgrades, or grand prizes. Change colors to match your brand and create the perfect spin-to-win experience."
+        },
+        {
+            question: "Is the prize wheel random and fair?",
+            answer: "Absolutely! Our prize wheel uses cryptographic random number generation (RNG) for truly fair, unbiased results. Every spin is completely random - no manipulation possible!"
+        },
+        {
+            question: "Can I use this for trade show giveaways?",
+            answer: "Perfect for trade shows! Our prize wheel attracts booth traffic, creates engagement, and makes lead collection fun. Works great on tablets, laptops, and large displays. Fully free with no signup required!"
+        }
+    ]);
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
             {/* Hero Section with Wheel */}
             <section className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-gradient-to-b from-amber-50/50 to-white">
                 <div className="container mx-auto px-4">
@@ -41,7 +74,7 @@ export default function PrizeWheelPage() {
                             Create exciting spin-to-win experiences with our free prize wheel. Add your prizes, customize colors, and let visitors spin for rewards. Perfect for promotions, trade shows, and customer engagement.
                         </p>
                     </div>
-                    <HomeWheel />
+                    <HomeWheel defaultEntries={PRIZE_ENTRIES} />
                 </div>
             </section>
 

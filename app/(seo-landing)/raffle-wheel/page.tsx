@@ -4,6 +4,7 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight } from "react-icons/fi";
 import { IoTicketOutline, IoShieldCheckmarkOutline, IoSparklesOutline, IoPeopleOutline } from "react-icons/io5";
+import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
     title: "Raffle Wheel | Free Online Raffle Spinner | SpinPickOnline",
@@ -23,9 +24,42 @@ export const metadata: Metadata = {
     },
 };
 
+// Default raffle entries
+const RAFFLE_ENTRIES = [
+    { id: "1", label: "Ticket #001", color: "#3b82f6" },
+    { id: "2", label: "Ticket #002", color: "#ef4444" },
+    { id: "3", label: "Ticket #003", color: "#22c55e" },
+    { id: "4", label: "Ticket #004", color: "#f59e0b" },
+    { id: "5", label: "Ticket #005", color: "#8b5cf6" },
+];
+
 export default function RaffleWheelPage() {
+    const webAppSchema = generateWebApplicationSchema();
+    const faqSchema = generateFAQSchema([
+        {
+            question: "How do I enter raffle tickets into the wheel?",
+            answer: "Simply enter your raffle ticket numbers or participant names into the wheel. You can add unlimited entries - perfect for large fundraising raffles or small community drawings!"
+        },
+        {
+            question: "Is the raffle wheel truly random?",
+            answer: "Yes! Our raffle wheel uses cryptographically secure random number generation (RNG) to ensure every ticket has an equal chance. The transparent spinning process builds trust with your raffle participants."
+        },
+        {
+            question: "Can I use this for charity fundraisers?",
+            answer: "Absolutely! Our raffle wheel is perfect for charity events, school fundraisers, and community raffles. The visual spinning wheel creates excitement while ensuring transparent, verifiable winner selection. Completely free - no signup required!"
+        }
+    ]);
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
             {/* Hero Section with Wheel */}
             <section className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-gradient-to-b from-pink-50/50 to-white">
                 <div className="container mx-auto px-4">
@@ -41,7 +75,7 @@ export default function RaffleWheelPage() {
                             Run fair and exciting raffle drawings with our free raffle wheel. Perfect for fundraisers, charity events, school raffles, and community gatherings. Completely transparent and verifiable.
                         </p>
                     </div>
-                    <HomeWheel />
+                    <HomeWheel defaultEntries={RAFFLE_ENTRIES} />
                 </div>
             </section>
 

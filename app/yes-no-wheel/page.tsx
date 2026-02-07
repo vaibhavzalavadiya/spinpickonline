@@ -64,8 +64,7 @@ export default function YesNoWheelPage() {
       <section id="try-wheel" className="pb-10 lg:pb-16 lg:pt-10 pt-4 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center lg:mb-12 sm:mb-8 mb-5">
-            <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">Yes or No Wheel – Free Decision Maker</h1>
-            <p className="text-gray-500 text-sm sm:text-base">Spin the wheel to decide instantly!</p>
+            <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">Yes or No Wheel – Spin the Decision Maker Online Free</h1>
           </div>
           <YesNoWheel />
         </div>

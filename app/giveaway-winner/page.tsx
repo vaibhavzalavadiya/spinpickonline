@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiUserPlus, FiSettings, FiVideo, FiShare2 } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
+import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
     title: "Giveaway Winner Picker | Viral Contest Tool | SpinPickOnline",
@@ -11,14 +12,53 @@ export const metadata: Metadata = {
     },
 };
 
+// Default giveaway entries
+const GIVEAWAY_ENTRIES = [
+    { id: "1", label: "Participant 1", color: "#3b82f6" },
+    { id: "2", label: "Participant 2", color: "#ef4444" },
+    { id: "3", label: "Participant 3", color: "#22c55e" },
+    { id: "4", label: "Participant 4", color: "#f59e0b" },
+    { id: "5", label: "Participant 5", color: "#8b5cf6" },
+];
+
 export default function GiveawayWinnerPage() {
+    // Generate schemas for SEO
+    const webAppSchema = generateWebApplicationSchema();
+    const faqSchema = generateFAQSchema([
+        {
+            question: "Is this random picker truly fair for contest winners?",
+            answer: "Yes! Our giveaway winner picker uses a cryptographically secure random number generator (RNG), ensuring every participant has an equal chance of winning. Our randomizer provides transparent, verifiable results that protect your brand reputation."
+        },
+        {
+            question: "Can I use this wheel of names for Instagram and YouTube giveaways?",
+            answer: "Absolutely! Influencers and brands love using our name spinner for social media contests. The visual spinning wheel creates engaging content for Instagram Stories, YouTube videos, TikTok reveals, and Twitch streams!"
+        },
+        {
+            question: "How is this different from other giveaway tools?",
+            answer: "Our random picker wheel offers unlimited entries, custom random color generator for branding, shareable links, screen-recording friendly interface, and super smooth animations perfect for livestreams. Our spinning wheel is specifically designed for social media reveals with engaging visuals!"
+        },
+        {
+            question: "Can I record the wheel spin for later announcement?",
+            answer: "Yes! Our picker wheel works perfectly for both live and recorded reveals. Screen record the random name generator in action for YouTube videos, Instagram Reels, or TikTok content. The spinner wheel animation creates exciting content that keeps your audience engaged throughout the selection process!"
+        }
+    ]);
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
             <WheelPageTemplate
                 title="Giveaway Winner Picker"
                 h1="Giveaway Winner Picker"
                 description="Running a contest? Don't just pick a name from a list—spin the wheel! Create excitement for your audience and show them the selection is 100% random and fair."
                 ctaText="Pick a Winner"
+                defaultEntries={GIVEAWAY_ENTRIES}
                 benefits={[
                     "Builds Suspense",
                     "Visually Fair",

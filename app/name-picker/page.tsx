@@ -3,6 +3,7 @@ import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiEdit, FiSettings, FiRotateCw, FiShare2, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
+import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
     title: "Random Name Picker | Pick A Random Name | SpinPickOnline",
@@ -12,14 +13,61 @@ export const metadata: Metadata = {
     },
 };
 
+// Default name entries
+const NAME_ENTRIES = [
+    { id: "1", label: "Alice", color: "#3b82f6" },
+    { id: "2", label: "Bob", color: "#ef4444" },
+    { id: "3", label: "Charlie", color: "#22c55e" },
+    { id: "4", label: "Diana", color: "#f59e0b" },
+    { id: "5", label: "Eve", color: "#8b5cf6" },
+];
+
 export default function NamePickerPage() {
+    // Generate schemas for SEO
+    const webAppSchema = generateWebApplicationSchema();
+    const faqSchema = generateFAQSchema([
+        {
+            question: "Is this name picker truly random?",
+            answer: "Yes! Our random name picker uses a cryptographically secure random number generator (RNG), making it far more reliable than basic spinner wheel tools. Every name has an equal chance of being selected."
+        },
+        {
+            question: "Can I use this as a wheel of names for my classroom?",
+            answer: "Absolutely! Teachers love using our name spinner and wheel of names for fair student selection. It works perfectly as a classroom random picker, participation spinner, or question randomizer. The visual spinning wheel keeps students engaged!"
+        },
+        {
+            question: "How is this different from other picker wheels?",
+            answer: "We offer unlimited entries, custom random color generator, mobile optimization, and shareable links. Our randomizer is also more secure with cryptographic RNG for truly fair selection!"
+        },
+        {
+            question: "Can I use this for giveaways and contests?",
+            answer: "Yes! Our random picker wheel is perfect for transparent giveaway selection. Use it as a name picker for Instagram contests, YouTube giveaways, or any random name generator needs. The wheel spinner builds excitement and trust with your audience!"
+        },
+        {
+            question: "Can I save my list of names for later?",
+            answer: "Yes! Your wheel of names entries are saved automatically in your browser. You can also generate a shareable link to save and share your custom name picker configuration. Perfect for teachers who need the same student list repeatedly!"
+        },
+        {
+            question: "Does the name picker work on mobile phones?",
+            answer: "Absolutely! Our random name picker is fully responsive and touch-friendly. The spin wheel works perfectly on phones and tablets with smooth animations. No app download needed - just open the website and start spinning!"
+        }
+    ]);
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
             <WheelPageTemplate
                 title="Random Name Picker"
                 h1="Wheel of Names - Random Name Picker"
                 description="Need to pick a name fairly? Our Random Name Picker wheel does the heavy lifting for you. Just enter the names and spin to see who the lucky winner is!"
                 ctaText="Pick a Name Now"
+                defaultEntries={NAME_ENTRIES}
                 benefits={[
                     "100% Fair & Random",
                     "Unlimited Names",

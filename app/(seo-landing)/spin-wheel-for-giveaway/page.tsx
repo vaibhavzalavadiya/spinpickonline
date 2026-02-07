@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FiCheck, FiArrowRight, FiInstagram, FiYoutube } from "react-icons/fi";
 import { IoGiftOutline, IoShieldCheckmarkOutline, IoVideocamOutline, IoPeopleOutline } from "react-icons/io5";
 import { FaTiktok } from "react-icons/fa";
+import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
     title: "Spin Wheel for Giveaway | Free Winner Picker | SpinPickOnline",
@@ -24,9 +25,46 @@ export const metadata: Metadata = {
     },
 };
 
+// Default giveaway entries (social media usernames)
+const GIVEAWAY_USERNAMES = [
+    { id: "1", label: "@user_one", color: "#3b82f6" },
+    { id: "2", label: "@user_two", color: "#ef4444" },
+    { id: "3", label: "@user_three", color: "#22c55e" },
+    { id: "4", label: "@user_four", color: "#f59e0b" },
+    { id: "5", label: "@user_five", color: "#8b5cf6" },
+];
+
 export default function SpinWheelGiveawayPage() {
+    const webAppSchema = generateWebApplicationSchema();
+    const faqSchema = generateFAQSchema([
+        {
+            question: "How do I run a fair Instagram giveaway?",
+            answer: "Collect all eligible participant names from your Instagram comments or story responses. Add them to our giveaway wheel, then screen record the spin or go live to show your followers the transparent winner selection. Share the recording to prove fairness!"
+        },
+        {
+            question: "Can I use this for YouTube subscriber giveaways?",
+            answer: " Yes! Our spin wheel for giveaway is perfect for YouTube contests. Add subscriber names or comment authors, record the wheel spin, and include it in your video. It creates engaging content while ensuring transparent winner selection!"
+        },
+        {
+            question: "Is the giveaway wheel really free?",
+            answer: "Absolutely! Our giveaway winner picker is 100% free with no signup required. There are no watermarks, no entry limits, and no hidden fees. You can run unlimited giveaways at no cost!"
+        },
+        {
+            question: "How do I prove the giveaway was fair?",
+            answer: "Our cryptographic random number generator ensures true fairness. We recommend going live or screen recording your spin the wheel session. Share the video with your audience so they can see the unbiased results first-hand!"
+        }
+    ]);
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
             {/* Hero Section with Wheel */}
             <section className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-gradient-to-b from-rose-50/50 to-white">
                 <div className="container mx-auto px-4">
@@ -42,7 +80,7 @@ export default function SpinWheelGiveawayPage() {
                             Run fair, transparent giveaways on Instagram, YouTube, TikTok, or any platform. Our spin wheel builds trust with your audience by showing the random selection process live.
                         </p>
                     </div>
-                    <HomeWheel />
+                    <HomeWheel defaultEntries={GIVEAWAY_USERNAMES} />
                 </div>
             </section>
 

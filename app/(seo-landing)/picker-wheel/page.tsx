@@ -4,6 +4,7 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight, FiTarget } from "react-icons/fi";
 import { IoHandLeftOutline, IoListOutline, IoShieldCheckmarkOutline, IoSparklesOutline } from "react-icons/io5";
+import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
     title: "Picker Wheel | Free Random Selection Wheel | SpinPickOnline",
@@ -23,9 +24,42 @@ export const metadata: Metadata = {
     },
 };
 
+// Default picker entries
+const PICKER_ENTRIES = [
+    { id: "1", label: "Option 1", color: "#3b82f6" },
+    { id: "2", label: "Option 2", color: "#ef4444" },
+    { id: "3", label: "Option 3", color: "#22c55e" },
+    { id: "4", label: "Option 4", color: "#f59e0b" },
+    { id: "5", label: "Option 5", color: "#8b5cf6" },
+];
+
 export default function PickerWheelPage() {
+    const webAppSchema = generateWebApplicationSchema();
+    const faqSchema = generateFAQSchema([
+        {
+            question: "How does the picker wheel ensure fairness?",
+            answer: "Our picker wheel uses cryptographic random number generation (RNG) to ensure every item has an equal chance of being selected. No favoritism, no bias – just truly random picks every time."
+        },
+        {
+            question: "Can I use this for classroom name picking?",
+            answer: "Absolutely! Teachers love our random picker for fair student selection. It works perfectly as a name spinner, question randomizer, or participation picker - keeping students engaged with visual spinning!"
+        },
+        {
+            question: "Is the picker wheel free to use?",
+            answer: "Yes! Our picker wheel is 100% free with unlimited spins and entries. No signup, no hidden costs - just open the page and start picking randomly!"
+        }
+    ]);
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
             {/* Hero Section with Wheel */}
             <section className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-gradient-to-b from-emerald-50/50 to-white">
                 <div className="container mx-auto px-4">
@@ -41,7 +75,7 @@ export default function PickerWheelPage() {
                             Need to pick something randomly? Our picker wheel makes selection easy and fun. Add your items, spin the wheel, and get an instant random pick. No bias, no favoritism – just fair random selection.
                         </p>
                     </div>
-                    <HomeWheel />
+                    <HomeWheel defaultEntries={PICKER_ENTRIES} />
                 </div>
             </section>
 

@@ -66,12 +66,11 @@ export default function YesNoWheel() {
 
     return (
         <>
-            <div className="w-full mx-auto container px-4">
                 <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] md:gap-8 gap-5 lg:gap-12 items-start">
 
                     {/* Left: Wheel Section */}
                     <div className="flex flex-col items-center justify-start order-1 lg:order-1">
-                        <div className="relative w-full max-w-[500px] lg:max-w-full aspect-square">
+                        <div className="relative w-full max-w-[500px] lg:max-w-full">
                             <Wheel
                                 entries={entries}
                                 onResult={handleResult}
@@ -119,7 +118,7 @@ export default function YesNoWheel() {
                         <button
                             onClick={handleSpin}
                             disabled={isSpinning}
-                            className="w-full cursor-pointer md:py-5 py-2 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-black text-base md:text-xl md:rounded-2xl rounded-xl shadow-xl shadow-blue-200 hover:shadow-2xl hover:shadow-blue-300 transform hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed group"
+                            className="w-full cursor-pointer md:py-5 py-2 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-black text-base md:text-xl md:rounded-2xl rounded-xl shadow-xl hover:shadow-2xl hover:shadow-blue-300 transform hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed group"
                         >
                             {isSpinning ? (
                                 <>
@@ -199,7 +198,6 @@ export default function YesNoWheel() {
                         </div>
                     </div>
                 </div>
-            </div>
 
             {/* Result Modal */}
             {result && (

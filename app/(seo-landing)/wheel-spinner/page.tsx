@@ -4,6 +4,7 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight, FiRotateCw } from "react-icons/fi";
 import { IoColorPaletteOutline, IoSparklesOutline, IoPhonePortraitOutline, IoShareSocialOutline } from "react-icons/io5";
+import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
     title: "Wheel Spinner | Free Online Spinning Wheel | SpinPickOnline",
@@ -23,9 +24,42 @@ export const metadata: Metadata = {
     },
 };
 
+// Default spinner entries
+const SPINNER_ENTRIES = [
+    { id: "1", label: "Choice A", color: "#3b82f6" },
+    { id: "2", label: "Choice B", color: "#ef4444" },
+    { id: "3", label: "Choice C", color: "#22c55e" },
+    { id: "4", label: "Choice D", color: "#f59e0b" },
+    { id: "5", label: "Choice E", color: "#8b5cf6" },
+];
+
 export default function WheelSpinnerPage() {
+    const webAppSchema = generateWebApplicationSchema();
+    const faqSchema = generateFAQSchema([
+        {
+            question: "Can I customize my wheel spinner?",
+            answer: "Yes! Our wheel spinner is fully customizable. Change colors for each segment, add custom labels, adjust entries, and create unique spinning wheels for any occasion. Perfect for games, decisions, giveaways, or presentations!"
+        },
+        {
+            question: "Does the wheel spinner work on mobile?",
+            answer: "Absolutely! Our spinning wheel works perfectly on desktop, tablet, and mobile devices. No download needed - just open in your browser and start spinning. Optimized for touch screens!"
+        },
+        {
+            question: "Is the wheel spinner free to use?",
+            answer: "Yes! Our online spinning wheel is 100% free with unlimited spins and entries. No signup, no watermarks, completely free wheel spinner tool!"
+        }
+    ]);
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
             {/* Hero Section with Wheel */}
             <section className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-gradient-to-b from-violet-50/50 to-white">
                 <div className="container mx-auto px-4">
@@ -41,7 +75,7 @@ export default function WheelSpinnerPage() {
                             The ultimate free wheel spinner for any purpose. Add your entries, customize colors, and spin! Perfect for games, decisions, raffles, or just for fun. Works on any device, no download needed.
                         </p>
                     </div>
-                    <HomeWheel />
+                    <HomeWheel defaultEntries={SPINNER_ENTRIES} />
                 </div>
             </section>
 

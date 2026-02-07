@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { generateMetadata as genMeta } from "@/lib/seo";
+import { generateMetadata as genMeta, generateFAQSchema } from "@/lib/seo";
 import { FEATURES } from "@/lib/constants";
 import Link from "next/link";
 import { FiDroplet, FiSmartphone, FiLock } from "react-icons/fi";
@@ -11,8 +11,32 @@ export const metadata: Metadata = genMeta({
 });
 
 export default function FeaturesPage() {
+  // Generate FAQ schema for SEO
+  const faqSchema = generateFAQSchema([
+    {
+      question: "How can I customize the random picker wheel?",
+      answer: "Our spinner wheel offers full customization! Change colors for each segment using our random color generator, add custom labels, adjust wheel size, and save your configurations. Perfect for creating branded wheels of names for events or classrooms."
+    },
+    {
+      question: "Does the spin wheel work on mobile devices?",
+      answer: "Yes! Our random picker wheel is fully optimized for mobile with a touch-friendly interface. Works perfectly on phones and tablets - no app download needed, just open in your mobile browser and start spinning!"
+    },
+    {
+      question: "Can I share my wheel of names with others?",
+      answer: "Absolutely! Generate shareable links for your custom wheels, share directly on social media, or copy results to clipboard. Perfect for Instagram giveaways, YouTube contests, and team activities with live spin results!"
+    },
+    {
+      question: "Is the randomization truly fair and unbiased?",
+      answer: "Yes! We use cryptographically secure random number generation (RNG) via the Web Crypto API. This professional-grade randomization ensures every entry has exactly equal probability - no bias, no patterns, completely transparent results."
+    }
+  ]);
+
   return (
     <div className="bg-gradient-to-b from-gray-50 to-white py-10 lg:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="container px-4 mx-auto max-w-6xl">
         {/* Hero Section */}
         <div className="text-center lg:mb-12 mb-6">

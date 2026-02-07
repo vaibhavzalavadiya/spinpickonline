@@ -4,6 +4,7 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight, FiList } from "react-icons/fi";
 import { IoOptionsOutline, IoShuffleOutline, IoSparklesOutline, IoFlashOutline } from "react-icons/io5";
+import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
     title: "Random Choice Picker | Free Choice Wheel | SpinPickOnline",
@@ -23,9 +24,41 @@ export const metadata: Metadata = {
     },
 };
 
+// Default choice entries
+const CHOICE_ENTRIES = [
+    { id: "1", label: "Coffee", color: "#6f4e37" },
+    { id: "2", label: "Tea", color: "#22c55e" },
+    { id: "3", label: "Juice", color: "#f59e0b" },
+    { id: "4", label: "Smoothie", color: "#8b5cf6" },
+];
+
 export default function RandomChoicePickerPage() {
+    const webAppSchema = generateWebApplicationSchema();
+    const faqSchema = generateFAQSchema([
+        {
+            question: "How does the random choice picker work?",
+            answer: "Our choice picker uses cryptographic random number generation to select from your options. Just add your choices (restaurants, movies, activities, etc.), spin the wheel, and let randomness decide! Perfect for ending decision paralysis."
+        },
+        {
+            question: "Can I use this to decide what to eat?",
+            answer: "Absolutely! Our random choice picker is perfect for food decisions. Add restaurant names or meal options, spin, and solve the eternal \"where should we eat?\" debate. It's the ultimate choice randomizer!"
+        },
+        {
+            question: "Is the choice picker really random?",
+            answer: "Yes! We use cryptographically secure randomization to ensure every option has exactly equal chance of being selected. No bias, completely fair choice picker wheel!"
+        }
+    ]);
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
             {/* Hero Section with Wheel */}
             <section className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-gradient-to-b from-cyan-50/50 to-white">
                 <div className="container mx-auto px-4">
@@ -41,7 +74,7 @@ export default function RandomChoicePickerPage() {
                             Can't decide between options? Add your choices to our random choice picker and let the wheel make the decision for you. No more endless debates or decision fatigue!
                         </p>
                     </div>
-                    <HomeWheel />
+                    <HomeWheel defaultEntries={CHOICE_ENTRIES} />
                 </div>
             </section>
 

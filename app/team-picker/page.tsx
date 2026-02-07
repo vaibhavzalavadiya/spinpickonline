@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiUsers, FiHash, FiRotateCw, FiShare2 } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
+import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
     title: "Team Picker Wheel | Random Group Generator | SpinPickOnline",
@@ -15,14 +16,54 @@ export const metadata: Metadata = {
     },
 };
 
+// Default team entries
+const TEAM_ENTRIES = [
+    { id: "1", label: "Player 1", color: "#3b82f6" },
+    { id: "2", label: "Player 2", color: "#ef4444" },
+    { id: "3", label: "Player 3", color: "#22c55e" },
+    { id: "4", label: "Player 4", color: "#f59e0b" },
+    { id: "5", label: "Player 5", color: "#8b5cf6" },
+    { id: "6", label: "Player 6", color: "#ec4899" },
+];
+
 export default function TeamPickerPage() {
+    // Generate schemas for SEO
+    const webAppSchema = generateWebApplicationSchema();
+    const faqSchema = generateFAQSchema([
+        {
+            question: "How does the random team generator ensure fairness?",
+            answer: "Our team picker wheel uses a cryptographically secure random number generator (RNG) to ensure every person has an equal chance of being assigned to any team. Our randomizer provides transparent, verifiable results."
+        },
+        {
+            question: "Can I use this as a wheel of names for classroom teams?",
+            answer: "Absolutely! Teachers love using our random group generator and name spinner for fair classroom team formation. It works perfectly as a student selector, participation randomizer, or group project team picker. The visual spinning wheel keeps students engaged while ensuring fairness."
+        },
+        {
+            question: "How is this different from other team pickers?",
+            answer: "Our random team picker offers smart team balancing, handles odd numbers automatically, includes a random color generator for team identification, and provides shareable results. Our spinner wheel is also more secure with cryptographic RNG for truly fair team formation."
+        },
+        {
+            question: "Can I save my team picker results?",
+            answer: "Yes! Our random picker wheel lets you save and share team assignments. Perfect for sending team lists to participants via email, posting to social media, or documenting fair team selection for sports leagues, classroom activities, or corporate events."
+        }
+    ]);
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
             <WheelPageTemplate
                 title="Team Picker & Random Group Generator"
                 h1="Random Team Picker | Group Generator Wheel"
                 description="Avoid arguments and let our spin the wheel decide the teams! Perfect random team selector for sports, board games, or classroom projects. Works as a name picker, random group generator, and team randomizer. Fair, fast, and completely free - no signup required."
                 ctaText="Generate Teams Now"
+                defaultEntries={TEAM_ENTRIES}
                 benefits={[
                     "Instant Team Sorting & Distribution - Fair random selection",
                     "Random Group Generator - Create balanced teams quickly",

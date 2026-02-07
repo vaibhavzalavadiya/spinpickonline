@@ -12,6 +12,15 @@ export const metadata: Metadata = {
     },
 };
 
+// Default name spinner entries
+const NAME_SPINNER_ENTRIES = [
+    { id: "1", label: "Alex", color: "#3b82f6" },
+    { id: "2", label: "Jordan", color: "#ef4444" },
+    { id: "3", label: "Taylor", color: "#22c55e" },
+    { id: "4", label: "Casey", color: "#f59e0b" },
+    { id: "5", label: "Morgan", color: "#8b5cf6" },
+];
+
 export default function NameSpinnerPage() {
     return (
         <>
@@ -20,6 +29,7 @@ export default function NameSpinnerPage() {
                 h1="Wheel of Names - Advanced Name Spinner"
                 description="More than just a randomizer. Our wheel of names spinner ensures every name gets a fair chance with our RNG (random number generator). Visualize the selection process with our spinning wheel and build anticipation. Perfect as a random name picker, decision wheel, or picker wheel for any random selection needs!"
                 ctaText="Spin the Wheel of Names"
+                defaultEntries={NAME_SPINNER_ENTRIES}
                 benefits={[
                     "Visual Integrity - Transparent spinning wheel animation",
                     "Smooth Physics - Realistic wheel spinner motion",
