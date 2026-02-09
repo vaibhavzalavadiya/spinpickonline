@@ -1,6 +1,5 @@
 
 import HomeWheel from "@/components/HomeWheel";
-import { CallToAction } from "@/components/CallToAction";
 import { WheelEntry } from "@/lib/types";
 
 interface WheelPageTemplateProps {

@@ -1,4 +1,3 @@
-export const dynamic = "force-dynamic";
 import { Metadata } from "next";
 import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiLock, FiTarget, FiShield, FiArrowRight, FiZap, FiCheck } from "react-icons/fi";
