@@ -68,10 +68,6 @@ export default function DecisionWheelPage() {
             <section className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-gradient-to-b from-blue-50/50 to-white">
                 <div className="container mx-auto px-4">
                     <div className="text-center lg:mb-12 sm:mb-8 mb-5">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-4">
-                            <FiHelpCircle className="text-lg" />
-                            <span>Let the Wheel Decide</span>
-                        </div>
                         <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                             Decision Wheel – Free Decision Maker
                         </h1>

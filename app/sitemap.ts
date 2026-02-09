@@ -32,6 +32,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/wheel-spinner",
     "/picker-wheel",
     "/decision-wheel",
+    "/task-assignment",
+    "/presentation-picker",
+    "/chore-assignment",
+    "/fair-randomization",
+    "/lunch-decisions",
     // Guides
     "/guides/how-to-use-random-picker-wheel",
   ];
