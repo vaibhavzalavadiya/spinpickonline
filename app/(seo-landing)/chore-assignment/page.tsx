@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     },
 };
 
+// Force dynamic rendering to prevent Vercel SSG caching
+export const dynamic = "force-dynamic";
+
 // Default chore entries
 const CHORE_ENTRIES = [
     { id: "1", label: "Dishes", color: "#3b82f6" },

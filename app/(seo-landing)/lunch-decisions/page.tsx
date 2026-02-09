@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     },
 };
 
+// Force dynamic rendering to prevent Vercel SSG caching
+export const dynamic = "force-dynamic";
+
 // Default lunch entries
 const LUNCH_ENTRIES = [
     { id: "1", label: "Pizza", color: "#ef4444" },

@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     },
 };
 
+// Force dynamic rendering to prevent Vercel SSG caching
+export const dynamic = "force-dynamic";
+
 // Default presentation entries
 const PRESENTATION_ENTRIES = [
     { id: "1", label: "Speaker 1", color: "#3b82f6" },

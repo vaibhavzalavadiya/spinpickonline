@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     },
 };
 
+// Force dynamic rendering to prevent Vercel SSG caching
+export const dynamic = "force-dynamic";
+
 // Default randomization entries
 const FAIR_ENTRIES = [
     { id: "1", label: "Result A", color: "#3b82f6" },

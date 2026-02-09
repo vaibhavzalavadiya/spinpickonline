@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     },
 };
 
+// Force dynamic rendering to prevent Vercel SSG caching
+export const dynamic = "force-dynamic";
+
 // Default task entries
 const TASK_ENTRIES = [
     { id: "1", label: "Write Code", color: "#3b82f6" },
