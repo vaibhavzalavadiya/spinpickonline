@@ -1,8 +1,8 @@
 import { Metadata } from "next";
-import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiUsers, FiHash, FiRotateCw, FiShare2 } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
+import TeamPickerWheel from "@/components/TeamPickerWheel";
 
 export const metadata: Metadata = {
     title: "Team Picker Wheel | Random Group Generator | SpinPickOnline",
@@ -58,33 +58,14 @@ export default function TeamPickerPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
-            <WheelPageTemplate
-                title="Team Picker & Random Group Generator"
-                h1="Random Team Picker | Group Generator Wheel"
-                description="Avoid arguments and let our spin the wheel decide the teams! Perfect random team selector for sports, board games, or classroom projects. Works as a name picker, random group generator, and team randomizer. Fair, fast, and completely free - no signup required."
-                ctaText="Generate Teams Now"
-                defaultEntries={TEAM_ENTRIES}
-                benefits={[
-                    "Instant Team Sorting & Distribution - Fair random selection",
-                    "Random Group Generator - Create balanced teams quickly",
-                    "Works as Name Picker - Select team captains or members",
-                    "Handles Odd Numbers - Smart team balancing algorithm",
-                    "Mobile-Friendly Interface - Use on any device",
-                    "100% Free - Unlimited team generation, no signup",
-                    "Save & Share Results - Export team lists easily",
-                    "Fun & Engaging Spinner - Makes team selection exciting",
-                ]}
-                useCases={[
-                    "Pickup Sports Games - Soccer, Basketball, Volleyball teams",
-                    "Classroom Group Projects - Fair student team distribution",
-                    "Board Game Teams - Settle who plays together",
-                    "Office Team Building - Random work group assignments",
-                    "Hackathon & Competition Groups - Fair team formation",
-                    "Workshop Breakout Sessions - Random participant grouping",
-                    "PE Class Teams - Physical education fair selection",
-                    "Esports Team Formation - Gaming squad randomizer",
-                ]}
-            />
+            <section className="bg-gradient-to-b from-white to-gray-50 py-10 lg:py-16">
+                <div className="container">
+                    <div className="text-center mb-8 lg:mb-12">
+                        <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">Random Team Picker | Group Generator Wheel</h1>
+                    </div>
+                    <TeamPickerWheel />
+                </div>
+            </section>
 
             {/* What is Section */}
             <section className="bg-white pb-10 lg:pb-16">
