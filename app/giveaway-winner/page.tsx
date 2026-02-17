@@ -59,6 +59,7 @@ export default function GiveawayWinnerPage() {
                 description="Running a contest? Don't just pick a name from a list—spin the wheel! Create excitement for your audience and show them the selection is 100% random and fair."
                 ctaText="Pick a Winner"
                 defaultEntries={GIVEAWAY_ENTRIES}
+                storageKey="giveawayWinnerWheelState"
                 benefits={[
                     "Builds Suspense",
                     "Visually Fair",

@@ -36,23 +36,23 @@ export function generateDefaultColors(count: number): string[] {
   return result;
 }
 
-// Save wheel state to localStorage
-export function saveWheelToStorage(state: WheelState): void {
+// Save wheel state to localStorage with optional key
+export function saveWheelToStorage(state: WheelState, storageKey: string = "wheelState"): void {
   if (typeof window === "undefined") return;
 
   try {
-    localStorage.setItem("wheelState", JSON.stringify(state));
+    localStorage.setItem(storageKey, JSON.stringify(state));
   } catch (error) {
     console.error("Failed to save wheel state:", error);
   }
 }
 
-// Load wheel state from localStorage
-export function loadWheelFromStorage(): WheelState | null {
+// Load wheel state from localStorage with optional key
+export function loadWheelFromStorage(storageKey: string = "wheelState"): WheelState | null {
   if (typeof window === "undefined") return null;
 
   try {
-    const stored = localStorage.getItem("wheelState");
+    const stored = localStorage.getItem(storageKey);
     if (!stored) return null;
 
     return JSON.parse(stored) as WheelState;

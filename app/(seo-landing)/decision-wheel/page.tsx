@@ -75,7 +75,7 @@ export default function DecisionWheelPage() {
                             Stuck on a decision? Add your options to our decision wheel and let fate decide for you. No more analysis paralysis – just spin and go with the result!
                         </p>
                     </div>
-                    <HomeWheel defaultEntries={DECISION_ENTRIES} />
+                    <HomeWheel defaultEntries={DECISION_ENTRIES} storageKey="decisionWheelState" />
                 </div>
             </section>
 

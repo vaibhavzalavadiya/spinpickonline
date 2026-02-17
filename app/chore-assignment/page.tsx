@@ -61,6 +61,7 @@ export default function ChoreAssignmentPage() {
                 description="Make household chores fair again. Our chore assignment wheel removes the bias and ends the arguments by randomly assigning tasks to everyone in the house."
                 ctaText="Assign Chores Now"
                 defaultEntries={CHORE_ENTRIES}
+                storageKey="choreAssignmentWheelState"
                 benefits={[
                     "Ends Family Arguments",
                     "Mathematically Fair",

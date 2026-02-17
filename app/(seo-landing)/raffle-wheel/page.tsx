@@ -75,7 +75,7 @@ export default function RaffleWheelPage() {
                             Run fair and exciting raffle drawings with our free raffle wheel. Perfect for fundraisers, charity events, school raffles, and community gatherings. Completely transparent and verifiable.
                         </p>
                     </div>
-                    <HomeWheel defaultEntries={RAFFLE_ENTRIES} />
+                    <HomeWheel defaultEntries={RAFFLE_ENTRIES} storageKey="raffleWheelState" />
                 </div>
             </section>
 

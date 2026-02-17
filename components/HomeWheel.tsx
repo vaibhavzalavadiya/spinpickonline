@@ -47,15 +47,20 @@ const DEFAULT_ENTRIES: WheelEntry[] = [
   { id: "5", label: "Eve", color: "#8b5cf6" },
 ];
 
-const HOME_WHEEL_STORAGE_KEY = "homeWheelState";
-
 interface HomeWheelProps {
   defaultEntries?: WheelEntry[];
+  storageKey?: string; // Optional unique storage key per page
+  disableStorage?: boolean; // Option to disable localStorage completely
 }
 
-export default function HomeWheel({ defaultEntries }: HomeWheelProps = {}) {
+export default function HomeWheel({ 
+  defaultEntries, 
+  storageKey = "homeWheelState",
+  disableStorage = false 
+}: HomeWheelProps = {}) {
 
-  const [entries, setEntries] = useState<WheelEntry[]>(defaultEntries || DEFAULT_ENTRIES);
+  const initialEntries = defaultEntries || DEFAULT_ENTRIES;
+  const [entries, setEntries] = useState<WheelEntry[]>(initialEntries);
   const [newEntry, setNewEntry] = useState("");
   const [result, setResult] = useState<string | null>(null);
   const [results, setResults] = useState<string[]>([]);
@@ -78,14 +83,15 @@ export default function HomeWheel({ defaultEntries }: HomeWheelProps = {}) {
     onConfirm: () => { },
   });
 
-  // Load from localStorage on client mount (after hydration)
+  // Load from localStorage on client mount (after hydration) - only if storage is enabled
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined" || disableStorage) return;
 
     try {
-      const saved = localStorage.getItem(HOME_WHEEL_STORAGE_KEY);
+      const saved = localStorage.getItem(storageKey);
       if (saved) {
         const parsed = JSON.parse(saved);
+        // Only load if we have saved entries, otherwise use defaultEntries
         if (parsed.entries && parsed.entries.length > 0) {
           setEntries(parsed.entries);
         }
@@ -94,20 +100,20 @@ export default function HomeWheel({ defaultEntries }: HomeWheelProps = {}) {
         }
       }
     } catch (e) {
-      console.error("Failed to load home wheel results:", e);
+      console.error("Failed to load wheel state:", e);
     }
-  }, []);
+  }, [storageKey, disableStorage]);
 
-  // Save to localStorage whenever entries or results change
+  // Save to localStorage whenever entries or results change - only if storage is enabled
   useEffect(() => {
-    if (typeof window === "undefined" || entries.length === 0) return;
+    if (typeof window === "undefined" || entries.length === 0 || disableStorage) return;
 
     try {
-      localStorage.setItem(HOME_WHEEL_STORAGE_KEY, JSON.stringify({ entries, results }));
+      localStorage.setItem(storageKey, JSON.stringify({ entries, results }));
     } catch (e) {
-      console.error("Failed to save home wheel state:", e);
+      console.error("Failed to save wheel state:", e);
     }
-  }, [entries, results]);
+  }, [entries, results, storageKey, disableStorage]);
 
   // Share wheel function - generates live shareable link with results
   const shareWheel = async () => {
@@ -273,7 +279,7 @@ export default function HomeWheel({ defaultEntries }: HomeWheelProps = {}) {
       title: "Reset to Default",
       message: "Are you sure you want to clear all current entries and reset the wheel to default?",
       onConfirm: () => {
-        setEntries(DEFAULT_ENTRIES);
+        setEntries(initialEntries);
         setResult(null);
         setResults([]);
         setConfirmModal((prev) => ({ ...prev, isOpen: false }));
@@ -288,7 +294,7 @@ export default function HomeWheel({ defaultEntries }: HomeWheelProps = {}) {
       title: "Reset to Default",
       message: "Are you sure you want to reset all entries to the default names? This will clear your current entries and results.",
       onConfirm: () => {
-        setEntries(DEFAULT_ENTRIES);
+        setEntries(initialEntries);
         setResult(null);
         setResults([]);
         setConfirmModal((prev) => ({ ...prev, isOpen: false }));

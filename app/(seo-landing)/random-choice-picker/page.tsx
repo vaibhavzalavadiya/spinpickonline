@@ -74,7 +74,7 @@ export default function RandomChoicePickerPage() {
                             Can't decide between options? Add your choices to our random choice picker and let the wheel make the decision for you. No more endless debates or decision fatigue!
                         </p>
                     </div>
-                    <HomeWheel defaultEntries={CHOICE_ENTRIES} />
+                    <HomeWheel defaultEntries={CHOICE_ENTRIES} storageKey="randomChoicePickerState" />
                 </div>
             </section>
 

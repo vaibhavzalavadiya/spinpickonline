@@ -75,7 +75,7 @@ export default function LuckyDrawWheelPage() {
                             Create exciting lucky draws for your events, promotions, or parties. Our lucky draw wheel ensures fair, transparent winner selection every time.
                         </p>
                     </div>
-                    <HomeWheel defaultEntries={LUCKY_DRAW_ENTRIES} />
+                    <HomeWheel defaultEntries={LUCKY_DRAW_ENTRIES} storageKey="luckyDrawWheelState" />
                 </div>
             </section>
 

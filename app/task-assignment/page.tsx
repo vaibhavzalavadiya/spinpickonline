@@ -61,6 +61,7 @@ export default function TaskAssignmentPage() {
                 description="Delegating tasks shouldn't be a headache. Our Task Assignment wheel makes it fair and fun to distribute work, chores, or responsibilities across your team or family."
                 ctaText="Assign Tasks Now"
                 defaultEntries={TASK_ENTRIES}
+                storageKey="taskAssignmentWheelState"
                 benefits={[
                     "Unbiased Delegation",
                     "Ends Arguments Quickly",

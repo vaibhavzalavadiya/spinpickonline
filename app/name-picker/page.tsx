@@ -68,6 +68,7 @@ export default function NamePickerPage() {
                 description="Need to pick a name fairly? Our Random Name Picker wheel does the heavy lifting for you. Just enter the names and spin to see who the lucky winner is!"
                 ctaText="Pick a Name Now"
                 defaultEntries={NAME_ENTRIES}
+                storageKey="namePickerWheelState"
                 benefits={[
                     "100% Fair & Random",
                     "Unlimited Names",

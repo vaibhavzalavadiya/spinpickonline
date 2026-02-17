@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 import { WheelEntry, WheelState } from "@/lib/types";
 import Wheel from "@/components/Wheel";
 import ResultModal from "@/components/ResultModal";
@@ -713,6 +714,171 @@ function WheelPageContent() {
           animation: fade-in 0.3s ease-out;
         }
       `}</style>
+
+      {/* SEO Content Sections - Unique for Wheel Creator Page */}
+      <section className="bg-white py-10 lg:py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="md:text-3xl text-xl font-bold text-gray-900 md:mb-6 mb-4">Create Your Custom Random Picker Wheel</h2>
+          <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-4 md:text-base text-sm">
+            <p>
+              Welcome to the most powerful random picker wheel creator online. Our advanced wheel builder lets you design custom spinner wheels for any purpose - from simple name pickers to complex decision makers. Unlike basic random generators, our tool gives you complete control over every aspect of your wheel, from colors and labels to advanced features like bulk entry import and shareable links.
+            </p>
+            <p>
+              Whether you're creating a wheel of names for classroom management, building a giveaway randomizer for social media contests, or designing a custom decision wheel for daily choices, our intuitive interface makes wheel creation fast and fun. Save your configurations, share with others, and spin as many times as you need - all completely free with no account required.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-gray-50 py-10 lg:py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="md:text-3xl text-xl font-bold text-gray-900 md:mb-6 mb-4">Key Features of Our Random Picker Wheel</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            <div className="bg-white md:p-6 p-4 rounded-xl shadow-md border-t-4 border-blue-500 hover:shadow-lg transition-shadow">
+              <h3 className="font-bold text-gray-900 mb-2 md:text-lg text-base">🎨 Full Customization</h3>
+              <p className="text-gray-700 md:text-base text-sm leading-relaxed">
+                Customize colors, labels, and wheel appearance. Our random color generator assigns unique colors automatically, or choose your own for a personalized spinner wheel.
+              </p>
+            </div>
+            <div className="bg-white md:p-6 p-4 rounded-xl shadow-md border-t-4 border-purple-500 hover:shadow-lg transition-shadow">
+              <h3 className="font-bold text-gray-900 mb-2 md:text-lg text-base">⚡ Instant Results</h3>
+              <p className="text-gray-700 md:text-base text-sm leading-relaxed">
+                Get random results in seconds with our fast RNG randomizer. The spinning wheel animation builds excitement while ensuring cryptographically secure fairness.
+              </p>
+            </div>
+            <div className="bg-white md:p-6 p-4 rounded-xl shadow-md border-t-4 border-green-500 hover:shadow-lg transition-shadow">
+              <h3 className="font-bold text-gray-900 mb-2 md:text-lg text-base">🔗 Shareable Links</h3>
+              <p className="text-gray-700 md:text-base text-sm leading-relaxed">
+                Generate shareable links for your custom wheel. Perfect for Instagram giveaways, YouTube contests, or sharing decision wheels with friends and colleagues.
+              </p>
+            </div>
+            <div className="bg-white md:p-6 p-4 rounded-xl shadow-md border-t-4 border-orange-500 hover:shadow-lg transition-shadow">
+              <h3 className="font-bold text-gray-900 mb-2 md:text-lg text-base">📱 Mobile Optimized</h3>
+              <p className="text-gray-700 md:text-base text-sm leading-relaxed">
+                Touch-friendly interface works perfectly on phones and tablets. Our mobile-friendly picker wheel provides smooth animations on any device.
+              </p>
+            </div>
+            <div className="bg-white md:p-6 p-4 rounded-xl shadow-md border-t-4 border-pink-500 hover:shadow-lg transition-shadow">
+              <h3 className="font-bold text-gray-900 mb-2 md:text-lg text-base">💾 Auto-Save</h3>
+              <p className="text-gray-700 md:text-base text-sm leading-relaxed">
+                Your wheel configuration saves automatically. Return anytime to find your entries and results history preserved in your browser.
+              </p>
+            </div>
+            <div className="bg-white md:p-6 p-4 rounded-xl shadow-md border-t-4 border-red-500 hover:shadow-lg transition-shadow">
+              <h3 className="font-bold text-gray-900 mb-2 md:text-lg text-base">🎯 Fair & Unbiased</h3>
+              <p className="text-gray-700 md:text-base text-sm leading-relaxed">
+                Cryptographically secure random number generator ensures every entry has equal probability. Truly fair random selection you can trust.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-10 lg:py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="md:text-3xl text-xl font-bold text-gray-900 md:mb-6 mb-4">Popular Uses for Random Picker Wheels</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 md:p-5 p-4 rounded-xl border-2 border-blue-200 hover:shadow-lg transition-all">
+              <div className="text-3xl mb-3">🎓</div>
+              <h3 className="font-semibold text-gray-900 mb-2 md:text-base text-sm">Classroom Name Picker</h3>
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">Teachers use our wheel of names for fair student selection, random questioning, and classroom job assignments.</p>
+            </div>
+            <div className="bg-gradient-to-br from-purple-50 to-purple-100 md:p-5 p-4 rounded-xl border-2 border-purple-200 hover:shadow-lg transition-all">
+              <div className="text-3xl mb-3">🎁</div>
+              <h3 className="font-semibold text-gray-900 mb-2 md:text-base text-sm">Giveaway Randomizer</h3>
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">Content creators trust our random picker for transparent Instagram, YouTube, and social media contest winner selection.</p>
+            </div>
+            <div className="bg-gradient-to-br from-green-50 to-green-100 md:p-5 p-4 rounded-xl border-2 border-green-200 hover:shadow-lg transition-all">
+              <div className="text-3xl mb-3">👥</div>
+              <h3 className="font-semibold text-gray-900 mb-2 md:text-base text-sm">Team Picker Wheel</h3>
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">Random team generator for sports, work projects, and group activities. Fair distribution every time.</p>
+            </div>
+            <div className="bg-gradient-to-br from-orange-50 to-orange-100 md:p-5 p-4 rounded-xl border-2 border-orange-200 hover:shadow-lg transition-all">
+              <div className="text-3xl mb-3">🎯</div>
+              <h3 className="font-semibold text-gray-900 mb-2 md:text-base text-sm">Decision Maker</h3>
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">Use as a yes or no wheel, lunch decision maker, or general choice randomizer for daily decisions.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-gray-50 py-10 lg:py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="md:text-3xl text-xl font-bold text-gray-900 md:mb-6 mb-4">Why Choose Our Random Picker Wheel?</h2>
+          <div className="bg-white md:p-8 p-5 rounded-2xl shadow-lg">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="flex items-start gap-3">
+                <div className="text-2xl sm:block hidden">✅</div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-1 md:text-base text-sm">100% Free Forever</h3>
+                  <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">No signup, no credit card, unlimited spins. Free random picker wheel with all features unlocked.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="text-2xl sm:block hidden">✅</div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-1 md:text-base text-sm">Cryptographic RNG</h3>
+                  <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">Enterprise-grade random number generator ensures mathematically fair results. More secure than basic randomizers.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="text-2xl sm:block hidden">✅</div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-1 md:text-base text-sm">Unlimited Entries</h3>
+                  <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">Add as many names, options, or choices as you need. No artificial limits on your spinner wheel.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="text-2xl sm:block hidden">✅</div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-1 md:text-base text-sm">Works Everywhere</h3>
+                  <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">Responsive design works on desktop, tablet, and mobile. No app download or installation required.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-10 lg:py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="md:text-3xl text-xl font-bold text-gray-900 md:mb-6 mb-4">Explore More Wheel Tools</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+            <Link href="/name-picker" className="group bg-gradient-to-br from-blue-50 to-blue-100 p-3 sm:p-4 rounded-xl border-2 border-blue-200 hover:border-blue-400 hover:shadow-lg transition-all">
+              <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 text-xs sm:text-sm mb-1 transition-colors">Name Picker</h3>
+              <p className="text-[10px] sm:text-xs text-gray-600">Random name selector</p>
+            </Link>
+            <Link href="/yes-no-wheel" className="group bg-gradient-to-br from-purple-50 to-purple-100 p-3 sm:p-4 rounded-xl border-2 border-purple-200 hover:border-purple-400 hover:shadow-lg transition-all">
+              <h3 className="font-semibold text-gray-900 group-hover:text-purple-600 text-xs sm:text-sm mb-1 transition-colors">Yes/No Wheel</h3>
+              <p className="text-[10px] sm:text-xs text-gray-600">Quick decisions</p>
+            </Link>
+            <Link href="/team-picker" className="group bg-gradient-to-br from-green-50 to-green-100 p-3 sm:p-4 rounded-xl border-2 border-green-200 hover:border-green-400 hover:shadow-lg transition-all">
+              <h3 className="font-semibold text-gray-900 group-hover:text-green-600 text-xs sm:text-sm mb-1 transition-colors">Team Picker</h3>
+              <p className="text-[10px] sm:text-xs text-gray-600">Group generator</p>
+            </Link>
+            <Link href="/classroom-activities" className="group bg-gradient-to-br from-orange-50 to-orange-100 p-3 sm:p-4 rounded-xl border-2 border-orange-200 hover:border-orange-400 hover:shadow-lg transition-all">
+              <h3 className="font-semibold text-gray-900 group-hover:text-orange-600 text-xs sm:text-sm mb-1 transition-colors">Classroom</h3>
+              <p className="text-[10px] sm:text-xs text-gray-600">Student picker</p>
+            </Link>
+            <Link href="/giveaway-winner" className="group bg-gradient-to-br from-pink-50 to-pink-100 p-3 sm:p-4 rounded-xl border-2 border-pink-200 hover:border-pink-400 hover:shadow-lg transition-all">
+              <h3 className="font-semibold text-gray-900 group-hover:text-pink-600 text-xs sm:text-sm mb-1 transition-colors">Giveaway</h3>
+              <p className="text-[10px] sm:text-xs text-gray-600">Contest winner</p>
+            </Link>
+            <Link href="/lunch-decisions" className="group bg-gradient-to-br from-red-50 to-red-100 p-3 sm:p-4 rounded-xl border-2 border-red-200 hover:border-red-400 hover:shadow-lg transition-all">
+              <h3 className="font-semibold text-gray-900 group-hover:text-red-600 text-xs sm:text-sm mb-1 transition-colors">Lunch Picker</h3>
+              <p className="text-[10px] sm:text-xs text-gray-600">Restaurant choice</p>
+            </Link>
+            <Link href="/decision-wheel" className="group bg-gradient-to-br from-indigo-50 to-indigo-100 p-3 sm:p-4 rounded-xl border-2 border-indigo-200 hover:border-indigo-400 hover:shadow-lg transition-all">
+              <h3 className="font-semibold text-gray-900 group-hover:text-indigo-600 text-xs sm:text-sm mb-1 transition-colors">Decision Wheel</h3>
+              <p className="text-[10px] sm:text-xs text-gray-600">Choice maker</p>
+            </Link>
+            <Link href="/guides/how-to-use-random-picker-wheel" className="group bg-gradient-to-br from-amber-50 to-amber-100 p-3 sm:p-4 rounded-xl border-2 border-amber-200 hover:border-amber-400 hover:shadow-lg transition-all">
+              <h3 className="font-semibold text-gray-900 group-hover:text-amber-600 text-xs sm:text-sm mb-1 transition-colors">How to Guide</h3>
+              <p className="text-[10px] sm:text-xs text-gray-600">Step-by-step</p>
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

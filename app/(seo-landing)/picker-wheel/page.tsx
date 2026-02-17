@@ -75,7 +75,7 @@ export default function PickerWheelPage() {
                             Need to pick something randomly? Our picker wheel makes selection easy and fun. Add your items, spin the wheel, and get an instant random pick. No bias, no favoritism – just fair random selection.
                         </p>
                     </div>
-                    <HomeWheel defaultEntries={PICKER_ENTRIES} />
+                    <HomeWheel defaultEntries={PICKER_ENTRIES} storageKey="pickerWheelState" />
                 </div>
             </section>
 

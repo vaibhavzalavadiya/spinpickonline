@@ -61,6 +61,7 @@ export default function PresentationPickerPage() {
                 description="Who's next? Eliminate the anxiety of picking presenters by leaving it to chance. Our presentation picker wheel ensures everyone gets a fair turn in meetings and classrooms."
                 ctaText="Pick a Presenter"
                 defaultEntries={PRESENTATION_ENTRIES}
+                storageKey="presentationPickerWheelState"
                 benefits={[
                     "Fair Turn Ordering",
                     "Reduces Selection Bias",

@@ -75,7 +75,7 @@ export default function WheelSpinnerPage() {
                             The ultimate free wheel spinner for any purpose. Add your entries, customize colors, and spin! Perfect for games, decisions, raffles, or just for fun. Works on any device, no download needed.
                         </p>
                     </div>
-                    <HomeWheel defaultEntries={SPINNER_ENTRIES} />
+                    <HomeWheel defaultEntries={SPINNER_ENTRIES} storageKey="wheelSpinnerState" />
                 </div>
             </section>
 

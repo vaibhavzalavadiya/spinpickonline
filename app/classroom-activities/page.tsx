@@ -59,6 +59,7 @@ export default function ClassroomActivitiesPage() {
                 description="Make learning interactive! Use the wheel to pick random students for questions, assign classroom jobs, or choose the next fun activity. Teachers love the engagement it brings."
                 ctaText="Spin for Activities"
                 defaultEntries={CLASSROOM_ENTRIES}
+                storageKey="classroomActivitiesWheelState"
                 benefits={[
                     "Increases Participation",
                     "Fair Student Selection",

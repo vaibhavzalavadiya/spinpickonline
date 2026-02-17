@@ -73,7 +73,7 @@ export default function RandomNumberWheelPage() {
                             Random Number Wheel – Free Number Spinner
                         </h1>
                     </div>
-                    <HomeWheel defaultEntries={NUMBER_ENTRIES} />
+                    <HomeWheel defaultEntries={NUMBER_ENTRIES} storageKey="randomNumberWheelState" />
                 </div>
             </section>
 

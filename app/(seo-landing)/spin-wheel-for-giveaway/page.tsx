@@ -80,7 +80,7 @@ export default function SpinWheelGiveawayPage() {
                             Run fair, transparent giveaways on Instagram, YouTube, TikTok, or any platform. Our spin wheel builds trust with your audience by showing the random selection process live.
                         </p>
                     </div>
-                    <HomeWheel defaultEntries={GIVEAWAY_USERNAMES} />
+                    <HomeWheel defaultEntries={GIVEAWAY_USERNAMES} storageKey="spinWheelGiveawayState" />
                 </div>
             </section>
 

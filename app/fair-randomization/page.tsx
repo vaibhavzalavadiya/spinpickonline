@@ -61,6 +61,7 @@ export default function FairRandomizationPage() {
                 description="Trust is built on fairness. Our randomization wheel uses enterprise-grade cryptographic algorithms to ensure every spin is 100% random and unbiased."
                 ctaText="Test Fairness Now"
                 defaultEntries={FAIR_ENTRIES}
+                storageKey="fairRandomizationWheelState"
                 benefits={[
                     "Cryptographic RNG",
                     "Mathematically Unbiased",

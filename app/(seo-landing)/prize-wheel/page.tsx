@@ -74,7 +74,7 @@ export default function PrizeWheelPage() {
                             Create exciting spin-to-win experiences with our free prize wheel. Add your prizes, customize colors, and let visitors spin for rewards. Perfect for promotions, trade shows, and customer engagement.
                         </p>
                     </div>
-                    <HomeWheel defaultEntries={PRIZE_ENTRIES} />
+                    <HomeWheel defaultEntries={PRIZE_ENTRIES} storageKey="prizeWheelState" />
                 </div>
             </section>
 

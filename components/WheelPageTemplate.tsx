@@ -11,6 +11,8 @@ interface WheelPageTemplateProps {
     ctaText?: string;
     showWheel?: boolean;
     defaultEntries?: WheelEntry[];
+    storageKey?: string;
+    disableStorage?: boolean;
     children?: React.ReactNode;
 }
 
@@ -23,6 +25,8 @@ export function WheelPageTemplate({
     ctaText = "Try It Now",
     showWheel = true,
     defaultEntries,
+    storageKey,
+    disableStorage,
     children,
 }: WheelPageTemplateProps) {
     return (
@@ -34,7 +38,11 @@ export function WheelPageTemplate({
                         <div className="text-center lg:mb-12 sm:mb-8 mb-5">
                             <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">{h1}</h1>
                         </div>
-                        <HomeWheel defaultEntries={defaultEntries} />
+                        <HomeWheel 
+                            defaultEntries={defaultEntries} 
+                            storageKey={storageKey}
+                            disableStorage={disableStorage}
+                        />
                     </div>
                 </section>
             )}

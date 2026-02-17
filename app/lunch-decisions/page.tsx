@@ -62,6 +62,7 @@ export default function LunchDecisionsPage() {
                 description="Can't decide where to eat? Stop the 'I don't know, you pick' cycle. Our restaurant picker wheel makes lunch decisions fair, fast, and fun for everyone."
                 ctaText="Decide Lunch Now"
                 defaultEntries={LUNCH_ENTRIES}
+                storageKey="lunchDecisionsWheelState"
                 benefits={[
                     "Ends Group Indecision",
                     "Fair Restaurant Selection",

@@ -30,6 +30,7 @@ export default function NameSpinnerPage() {
                 description="More than just a randomizer. Our wheel of names spinner ensures every name gets a fair chance with our RNG (random number generator). Visualize the selection process with our spinning wheel and build anticipation. Perfect as a random name picker, decision wheel, or picker wheel for any random selection needs!"
                 ctaText="Spin the Wheel of Names"
                 defaultEntries={NAME_SPINNER_ENTRIES}
+                storageKey="nameSpinnerWheelState"
                 benefits={[
                     "Visual Integrity - Transparent spinning wheel animation",
                     "Smooth Physics - Realistic wheel spinner motion",
