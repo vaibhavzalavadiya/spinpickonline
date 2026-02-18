@@ -150,6 +150,12 @@ export default function Footer() {
                   Contact Us
                 </Link>
               </li>
+              <li>
+                <Link href="/about" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 bg-green-600 rounded-full group-hover:w-2 transition-all"></span>
+                  About
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

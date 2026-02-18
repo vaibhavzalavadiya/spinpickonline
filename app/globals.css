@@ -67,3 +67,19 @@ input,textarea,button,a{
 .animate-slide-in-right {
   animation: slide-in-right 0.3s ease-out;
 }
+
+@keyframes dropdown-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.dropdown-animate {
+  animation: dropdown-enter 0.2s ease-out;
+}

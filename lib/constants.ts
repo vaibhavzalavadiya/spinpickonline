@@ -22,8 +22,22 @@ export const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "Name Picker", href: "/name-picker" },
   { label: "Yes/No Wheel", href: "/yes-no-wheel" },
-  { label: "Features", href: "/features", hasDropdown: true },
-  { label: "About", href: "/about" },
+  { label: "Our Tools", href: "/features", hasDropdown: true },
+  { label: "Features", href: "/features" },
+] as const;
+
+// Tools dropdown items
+export const TOOLS_DROPDOWN_ITEMS = [
+  { label: "Name Picker", href: "/name-picker", icon: "🎯", description: "Randomly pick names from your list" },
+  { label: "Yes/No Wheel", href: "/yes-no-wheel", icon: "✅", description: "Spin to get a yes or no answer" },
+  { label: "Team Picker", href: "/team-picker", icon: "👥", description: "Create random teams fairly" },
+  { label: "Random Picker Wheel", href: "/random-picker-wheel", icon: "🎡", description: "Spin the wheel for any choice" },
+  { label: "Name Spinner", href: "/name-spinner", icon: "🔄", description: "Spin and pick a random name" },
+  { label: "Giveaway Winner", href: "/giveaway-winner", icon: "🏆", description: "Pick fair giveaway winners" },
+  { label: "Decision Wheel", href: "/decision-wheel", icon: "🤔", description: "Let the wheel decide for you" },
+  { label: "Classroom Activities", href: "/classroom-activities", icon: "📚", description: "Random student picker for class" },
+  { label: "Raffle Wheel", href: "/raffle-wheel", icon: "🎟️", description: "Spin for raffle draws" },
+  { label: "Prize Wheel", href: "/prize-wheel", icon: "🎁", description: "Spin to win exciting prizes" },
 ] as const;
 
 // Use cases data for programmatic pages

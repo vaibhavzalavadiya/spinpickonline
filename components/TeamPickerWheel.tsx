@@ -23,7 +23,6 @@ const DEFAULT_ENTRIES: WheelEntry[] = [
   { id: "3", label: "Player 3", color: "#22c55e" },
   { id: "4", label: "Player 4", color: "#f59e0b" },
   { id: "5", label: "Player 5", color: "#8b5cf6" },
-  { id: "6", label: "Player 6", color: "#ec4899" },
 ];
 
 export default function TeamPickerWheel() {
