@@ -48,17 +48,20 @@ export default function PrivacyPolicyPage() {
                         <div>
                             <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 md:mb-3 mb-2">1. Introduction</h2>
                             <p className="text-gray-700 leading-relaxed md:text-base text-sm">
-                                Welcome to SpinPickOnline ("we," "our," or "us"). We are committed to protecting your personal information and your right to privacy. This policy outlines how we handle your data when you use our website.
+                                Welcome to SpinPickOnline (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;). We are committed to protecting your personal information and your right to privacy. This privacy policy outlines how we handle your data when you use our spin the wheel, random picker wheel, wheel of names, and other randomizer tools on our website. We believe transparent data practices are essential to building trust with our users.
                             </p>
                         </div>
 
                         <div>
                             <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 md:mb-3 mb-2">2. Data Collection</h2>
                             <p className="text-gray-700 leading-relaxed md:text-base text-sm mb-3">
-                                <strong>Good news: We collect very little data.</strong> SpinPickOnline is designed as a client-side tool. The lists of names or items you enter into the wheel are processed locally on your device and are NOT sent to our servers or stored by us, unless you explicitly choose to use a "Save/Share" feature that generates a unique link.
+                                <strong>Good news: We collect very little data.</strong> SpinPickOnline is designed as a client-side tool. The lists of names or items you enter into our spinner wheel, name picker, decision wheel, or any random picker tool are processed locally on your device and are NOT sent to our servers or stored by us, unless you explicitly choose to use a &quot;Save/Share&quot; feature that generates a unique link.
+                            </p>
+                            <p className="text-gray-700 leading-relaxed md:text-base text-sm mb-3">
+                                We may collect standard non-personal analytical data (like browser type, time spent on site, pages visited) via tools like Google Analytics to help us improve the user experience of our spinning wheel and randomizer features.
                             </p>
                             <p className="text-gray-700 leading-relaxed md:text-base text-sm">
-                                We may collect standard non-personal analytical data (like browser type, time spent on site) via tools like Google Analytics to help us improve the user experience.
+                                When you use our shareable wheel feature, the names and options you enter are encoded into the URL itself. This data is stored to enable the sharing functionality but is not linked to any personal identifier or user account.
                             </p>
                         </div>
 
@@ -68,30 +71,62 @@ export default function PrivacyPolicyPage() {
                                 We use the minimal information we collect to:
                             </p>
                             <ul className="list-disc ps-6 space-y-2 text-gray-700 md:text-base text-sm">
-                                <li>Operate and maintain the website.</li>
-                                <li>Analyze usage trends to improve features.</li>
-                                <li>Prevent abuse and spam.</li>
+                                <li>Operate and maintain the website, including our spin wheel, random name picker, and wheel of names tools.</li>
+                                <li>Analyze usage trends to improve features and user experience of our spinner wheel and decision-making tools.</li>
+                                <li>Prevent abuse, spam, and unauthorized access to our free randomizer services.</li>
+                                <li>Improve the performance and reliability of our random picker wheel and all randomization features.</li>
+                                <li>Understand how users interact with our tools to develop new features and enhancements.</li>
                             </ul>
                         </div>
 
                         <div>
                             <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 md:mb-3 mb-2">4. Cookies</h2>
+                            <p className="text-gray-700 leading-relaxed md:text-base text-sm mb-3">
+                                We may use cookies and local storage to store your preferences (like sound settings, theme choices, or saved wheel configurations) locally on your device specifically to enhance your experience with our spin the wheel and random picker tools. These cookies are used solely to remember your settings between visits.
+                            </p>
                             <p className="text-gray-700 leading-relaxed md:text-base text-sm">
-                                We may use cookies to store your preferences (like sound settings or theme choices) locally on your device specifically to enhance your experience. You can disable cookies in your browser settings, though some convenient features may not function properly.
+                                You can disable cookies in your browser settings, though some convenient features may not function properly. Disabling cookies will not affect the core functionality of our random number generator or spinning wheel animations.
                             </p>
                         </div>
 
                         <div>
-                            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 md:mb-3 mb-2">5. Third-Party Links</h2>
+                            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 md:mb-3 mb-2">5. Data Security</h2>
+                            <p className="text-gray-700 leading-relaxed md:text-base text-sm mb-3">
+                                We take data security seriously. Our random picker wheel uses cryptographically secure random number generators (CSPRNG) that operate entirely on your device. This means:
+                            </p>
+                            <ul className="list-disc ps-6 space-y-2 text-gray-700 md:text-base text-sm">
+                                <li>Your spin wheel entries are processed locally in your browser, never on our servers.</li>
+                                <li>The randomization algorithm uses browser-level security APIs for maximum fairness.</li>
+                                <li>No personal data is transmitted during the spinning process of our wheel of names.</li>
+                                <li>Shared wheel URLs use encoded data that cannot be traced to individual users.</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 md:mb-3 mb-2">6. Third-Party Links</h2>
                             <p className="text-gray-700 leading-relaxed md:text-base text-sm">
-                                Our website may contain links to other sites. We are not responsible for the privacy practices of those external sites. Detailed diligence is encouraged when navigating away from our platform.
+                                Our website may contain links to other sites. We are not responsible for the privacy practices of those external sites. We recommend carefully reviewing the privacy policies of any third-party websites you visit after leaving SpinPickOnline. Detailed diligence is encouraged when navigating away from our platform.
                             </p>
                         </div>
 
                         <div>
-                            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 md:mb-3 mb-2">6. Contact Us</h2>
+                            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 md:mb-3 mb-2">7. Children&apos;s Privacy</h2>
                             <p className="text-gray-700 leading-relaxed md:text-base text-sm">
-                                If you have questions about this privacy policy, please contact us at <a href="mailto:support@spinpickonline.com" className="text-blue-600 hover:text-blue-800 no-underline hover:underline font-semibold">support@spinpickonline.com</a>.
+                                SpinPickOnline is designed to be safe for all ages. Our spin the wheel, name picker, and wheel of names tools do not collect personally identifiable information from children. Teachers and parents can use our random picker wheel with students of all ages without privacy concerns, as all data is processed locally on the device.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 md:mb-3 mb-2">8. Changes to This Policy</h2>
+                            <p className="text-gray-700 leading-relaxed md:text-base text-sm">
+                                We may update this privacy policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify users of any significant changes by updating the &quot;Last updated&quot; date at the top of this page. Your continued use of our spin wheel and randomizer tools after any modifications constitutes acceptance of the updated privacy policy.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 md:mb-3 mb-2">9. Contact Us</h2>
+                            <p className="text-gray-700 leading-relaxed md:text-base text-sm">
+                                If you have questions about this privacy policy or how we handle data for our spin the wheel, random picker wheel, or wheel of names tools, please contact us at <a href="mailto:support@spinpickonline.com" className="text-blue-600 hover:text-blue-800 no-underline hover:underline font-semibold">support@spinpickonline.com</a>. We are happy to clarify any aspects of our data practices and respond to all inquiries within 48 hours.
                             </p>
                         </div>
                     </div>

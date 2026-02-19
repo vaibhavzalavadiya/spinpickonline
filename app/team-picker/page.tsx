@@ -58,8 +58,8 @@ export default function TeamPickerPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
-            <section className="bg-gradient-to-b from-white to-gray-50 py-10 lg:py-16">
-                <div className="container">
+            <section className="py-10 lg:py-16">
+                <div className="container mx-auto px-4">
                     <div className="text-center mb-8 lg:mb-12">
                         <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">Random Team Picker | Group Generator Wheel</h1>
                     </div>

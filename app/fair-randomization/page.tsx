@@ -7,9 +7,13 @@ import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
     title: "Fair Randomization Wheel | Cryptographically Secure Picker | SpinPickOnline",
-    description: "Experience truly unbiased random selection with our fair randomization wheel. Powered by cryptographic RNG algorithms for verifiable fairness.",
+    description: "Experience truly unbiased random selection with our fair randomization wheel. Powered by cryptographic RNG algorithms for verifiable fairness. Free secure spin wheel, random picker, and name selector.",
     alternates: {
         canonical: "/fair-randomization",
+    },
+    robots: {
+        index: true,
+        follow: true,
     },
 };
 
@@ -86,10 +90,10 @@ export default function FairRandomizationPage() {
                     <h2 className="md:text-3xl text-xl font-bold text-gray-900 md:mb-6 mb-4">The Science Behind the Fair Spin</h2>
                     <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed md:text-base text-sm space-y-4">
                         <p>
-                            At SpinPickOnline, we believe that a random picker should be exactly that—random. Most online spinners use simple 'Math.random()' functions which, while okay for casual use, lack the statistical rigor required for true fairness. Our system utilizes <strong>Cryptographically Secure Pseudo-Random Number Generators (CSPRNG)</strong>.
+                            At SpinPickOnline, we believe that a random picker wheel should be exactly that—truly random. Most online spin the wheel tools and spinner wheels use simple &apos;Math.random()&apos; functions which, while okay for casual use, lack the statistical rigor required for true fairness. Our system utilizes <strong>Cryptographically Secure Pseudo-Random Number Generators (CSPRNG)</strong> - the same technology used in banking, encryption, and military-grade security systems.
                         </p>
                         <p>
-                            This technology ensures that there are no discernible patterns, no 'hot streaks,' and no biases. Whether you are running a high-stakes giveaway or assigning critical project tasks, you can rest assured that the landing outcome is as fair as a flip of a coin or a roll of the dice in a controlled laboratory.
+                            This technology ensures that there are no discernible patterns, no &apos;hot streaks,&apos; and no biases in our wheel of names or random name picker results. Whether you are running a high-stakes giveaway, assigning critical project tasks with a decision wheel, selecting students with a name spinner, or hosting a transparent raffle, you can rest assured that every spin of our randomizer produces outcomes as fair as a flip of a coin in a controlled laboratory. Our fair randomization applies to every tool on SpinPickOnline, including the spinner wheel, yes or no wheel, team picker, and random group generator.
                         </p>
                     </div>
                 </div>
@@ -191,19 +195,55 @@ export default function FairRandomizationPage() {
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         <Link href="/giveaway-winner" className="group bg-gradient-to-br from-pink-50 to-pink-100 md:p-5 p-4 rounded-xl border-2 border-pink-200 hover:border-pink-400 hover:shadow-lg transition-all">
                             <h3 className="font-bold text-gray-900 mb-2 group-hover:text-pink-600">🎁 Giveaway Winner</h3>
-                            <p className="text-sm text-gray-600 mb-2">Pick contest winners with verified fairness.</p>
+                            <p className="text-sm text-gray-600 mb-2">Pick contest winners with verified fairness using our certified random picker wheel.</p>
                             <span className="text-sm font-semibold text-pink-600 inline-flex items-center gap-1">Learn more <FiArrowRight className="text-xs" /></span>
                         </Link>
                         <Link href="/raffle-wheel" className="group bg-gradient-to-br from-purple-50 to-purple-100 md:p-5 p-4 rounded-xl border-2 border-purple-200 hover:border-purple-400 hover:shadow-lg transition-all">
                             <h3 className="font-bold text-gray-900 mb-2 group-hover:text-purple-600">🎫 Raffle Wheel</h3>
-                            <p className="text-sm text-gray-600 mb-2">Fair raffle drawings anyone can trust.</p>
+                            <p className="text-sm text-gray-600 mb-2">Fair raffle drawings with our transparent spinner wheel that anyone can trust.</p>
                             <span className="text-sm font-semibold text-purple-600 inline-flex items-center gap-1">Learn more <FiArrowRight className="text-xs" /></span>
                         </Link>
                         <Link href="/team-picker" className="group bg-gradient-to-br from-blue-50 to-blue-100 md:p-5 p-4 rounded-xl border-2 border-blue-200 hover:border-blue-400 hover:shadow-lg transition-all">
                             <h3 className="font-bold text-gray-900 mb-2 group-hover:text-blue-600">👥 Team Picker</h3>
-                            <p className="text-sm text-gray-600 mb-2">Fair team generation with no bias.</p>
+                            <p className="text-sm text-gray-600 mb-2">Fair team generation with our unbiased random group generator.</p>
                             <span className="text-sm font-semibold text-blue-600 inline-flex items-center gap-1">Learn more <FiArrowRight className="text-xs" /></span>
                         </Link>
+                    </div>
+                </div>
+            </section>
+
+            {/* FAQ Section */}
+            <section className="bg-gray-50 py-12 lg:py-16">
+                <div className="container mx-auto px-4">
+                    <h2 className="md:text-3xl text-xl font-bold text-gray-900 md:mb-6 mb-4">Fair Randomization FAQs</h2>
+                    <div className="space-y-4">
+                        <div className="bg-white md:p-6 md:rounded-xl p-4 rounded-lg border-2 border-gray-200">
+                            <h3 className="sm:text-xl text-lg font-semibold text-gray-900 sm:mb-3 mb-2">What makes this picker wheel &apos;fair&apos;?</h3>
+                            <p className="text-gray-700 leading-relaxed md:text-base text-sm">
+                                Our wheel uses a cryptographically secure random number generator (RNG) built into your browser. This is the same grade of randomness used in modern security and encryption, ensuring that every spin of our random picker wheel is mathematically independent and unbiased.
+                            </p>
+                        </div>
+
+                        <div className="bg-white md:p-6 md:rounded-xl p-4 rounded-lg border-2 border-gray-200">
+                            <h3 className="sm:text-xl text-lg font-semibold text-gray-900 sm:mb-3 mb-2">Is it better than a physical spinner wheel?</h3>
+                            <p className="text-gray-700 leading-relaxed md:text-base text-sm">
+                                Yes. Physical spinners can have manufacturing defects, friction imbalances, or subtle surface gradients that bias the result. Our digital spin the wheel tool eliminates all physical interference, providing a perfectly equal probability for every segment of the wheel of names.
+                            </p>
+                        </div>
+
+                        <div className="bg-white md:p-6 md:rounded-xl p-4 rounded-lg border-2 border-gray-200">
+                            <h3 className="sm:text-xl text-lg font-semibold text-gray-900 sm:mb-3 mb-2">Are the segments truly equal?</h3>
+                            <p className="text-gray-700 leading-relaxed md:text-base text-sm">
+                                Absolutely. The wheel geometry is calculated with precision to ensure every entry takes up exactly the same percentage of the spinner wheel&apos;s surface area. Combined with our cryptographic RNG, this guarantees a fair 1/N chance for every spin of the random picker.
+                            </p>
+                        </div>
+
+                        <div className="bg-white md:p-6 md:rounded-xl p-4 rounded-lg border-2 border-gray-200">
+                            <h3 className="sm:text-xl text-lg font-semibold text-gray-900 sm:mb-3 mb-2">How can I trust the randomizer results?</h3>
+                            <p className="text-gray-700 leading-relaxed md:text-base text-sm">
+                                We provide a transparent visual spinning animation that mirrors the underlying math. What you see is a live representation of the random selection process happening in your device&apos;s memory. Our name spinner, decision wheel, and all randomizer tools use the same verified CSPRNG algorithm.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
