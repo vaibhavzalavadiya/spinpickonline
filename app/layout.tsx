@@ -36,13 +36,12 @@ export default function RootLayout({
       <head>
         <SchemaScript schema={organizationSchema} />
         <SchemaScript schema={websiteSchema} />
-        <Script
+        <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9187153323911677"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
-      </head>
+        ></script>
+      </head> 
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}
       >
