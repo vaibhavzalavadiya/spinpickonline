@@ -3,7 +3,8 @@ import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiEdit, FiSettings, FiRotateCw, FiShare2, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
-import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
+import { generateFAQSchema, generateWebApplicationSchema, generateBreadcrumbSchema } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
     title: "Random Name Picker | Pick A Random Name | SpinPickOnline",
@@ -52,6 +53,11 @@ export default function NamePickerPage() {
         }
     ]);
 
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: "Home", item: SITE_CONFIG.url },
+        { name: "Name Picker", item: `${SITE_CONFIG.url}/name-picker` },
+    ]);
+
     return (
         <>
             <script
@@ -61,6 +67,10 @@ export default function NamePickerPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
             <WheelPageTemplate
                 title="Random Name Picker"

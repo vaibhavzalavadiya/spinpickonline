@@ -12,19 +12,23 @@ import {
 } from "react-icons/io5";
 import { CallToAction } from "@/components/CallToAction";
 import SchemaScript from "@/components/SchemaScript";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
     title: "About Us | SpinPickOnline - Free Random Picker Wheel & Spin Wheel Tool",
     description: "Learn about SpinPickOnline - the free, fair, and fun random picker wheel tool trusted by teachers, content creators, and event organizers worldwide. No signup, no limits, 100% free.",
-    keywords: "about spinpickonline, random picker wheel, spin the wheel, wheel of names, free random picker, name picker wheel, decision wheel",
     alternates: {
         canonical: "/about",
+    },
+    robots: {
+        index: true,
+        follow: true,
     },
     openGraph: {
         title: "About SpinPickOnline | Free Random Picker Wheel & Spin Wheel",
         description: "Learn about SpinPickOnline - the free, fair, and fun random picker wheel tool trusted by thousands worldwide.",
         type: "website",
-        url: "https://spinpickonline.com/about",
+        url: `${SITE_CONFIG.url}/about`,
     },
 };
 
@@ -33,18 +37,18 @@ const aboutSchema = {
     "@type": "AboutPage",
     "name": "About SpinPickOnline",
     "description": "SpinPickOnline is a free online random picker wheel and spin wheel tool for fair and instant random selection.",
-    "url": "https://spinpickonline.com/about",
+    "url": `${SITE_CONFIG.url}/about`,
     "mainEntity": {
         "@type": "Organization",
-        "name": "SpinPickOnline",
-        "url": "https://spinpickonline.com",
-        "description": "Free random picker wheel tool for fair and instant random selection. Trusted by teachers, content creators, and event organizers worldwide.",
+        "name": SITE_CONFIG.name,
+        "url": SITE_CONFIG.url,
+        "description": SITE_CONFIG.description,
         "foundingDate": "2024",
         "sameAs": [],
         "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "customer service",
-            "url": "https://spinpickonline.com/contact"
+            "url": `${SITE_CONFIG.url}/contact`
         }
     }
 };

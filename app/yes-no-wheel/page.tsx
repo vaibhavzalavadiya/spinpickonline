@@ -1,5 +1,6 @@
 import { Metadata } from "next";
-import { generateMetadata, generateWebApplicationSchema, generateFAQSchema } from "@/lib/seo";
+import { generateMetadata, generateWebApplicationSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiZap, FiTarget, FiSmile, FiSmartphone, FiArrowRight, FiCheckCircle } from "react-icons/fi";
 import Link from "next/link";
@@ -32,6 +33,11 @@ export default function YesNoWheelPage() {
     }
   ]);
 
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", item: SITE_CONFIG.url },
+    { name: "Yes or No Wheel", item: `${SITE_CONFIG.url}/yes-no-wheel` },
+  ]);
+
   return (
     <WheelPageTemplate
       title="Yes or No Wheel"
@@ -58,6 +64,10 @@ export default function YesNoWheelPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       {/* Custom Yes/No Wheel Section */}

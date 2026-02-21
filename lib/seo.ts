@@ -50,22 +50,20 @@ export function generateMetadata({
       type: "website",
       url: canonicalUrl,
       siteName: SITE_CONFIG.name,
-      images: ogImage
-        ? [
-          {
-            url: ogImage,
-            width: 1200,
-            height: 630,
-            alt: `${title} - ${SITE_CONFIG.name}`,
-          },
-        ]
-        : [],
+      images: [
+        {
+          url: ogImage || `${SITE_CONFIG.url}/opengraph-image.png`,
+          width: 1200,
+          height: 630,
+          alt: `${title} - ${SITE_CONFIG.name}`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: ogImage ? [ogImage] : [],
+      images: [ogImage || `${SITE_CONFIG.url}/opengraph-image.png`],
     },
   };
 }
@@ -77,7 +75,7 @@ export function generateOrganizationSchema() {
     "@type": "Organization",
     name: SITE_CONFIG.name,
     url: SITE_CONFIG.url,
-    logo: `${SITE_CONFIG.url}/logo.png`,
+    logo: `${SITE_CONFIG.url}/images/logo.png`,
     description: SITE_CONFIG.description,
     sameAs: [
       // Add social media links when available
@@ -92,11 +90,6 @@ export function generateWebSiteSchema() {
     "@type": "WebSite",
     name: SITE_CONFIG.name,
     url: SITE_CONFIG.url,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${SITE_CONFIG.url}/search?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
 }
 
