@@ -12,15 +12,17 @@ interface WheelProps {
   result: string | null;
   onSpinRequest?: () => void;
   showButton?: boolean;
+  onSegmentTick?: () => void;
 }
 
-export default function Wheel({ entries, onResult, isSpinning, result, onSpinRequest, showButton = true }: WheelProps) {
+export default function Wheel({ entries, onResult, isSpinning, result, onSpinRequest, showButton = true, onSegmentTick }: WheelProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [rotation, setRotation] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const animationRef = useRef<number | undefined>(undefined);
   const spinTriggerRef = useRef<boolean>(isSpinning);
   const [canvasSize, setCanvasSize] = useState({ width: 500, height: 500 });
+  const prevSegmentRef = useRef<number>(-1);
 
   // Calculate which segment is selected based on rotation (arrow on top)
   useEffect(() => {
@@ -38,12 +40,19 @@ export default function Wheel({ entries, onResult, isSpinning, result, onSpinReq
 
     const index = Math.floor(normalizedRotation / anglePerSegment) % entries.length;
     setSelectedIndex(index);
-  }, [rotation, entries]);
+
+    // Fire tick when crossing segment boundary
+    if (prevSegmentRef.current !== -1 && prevSegmentRef.current !== index && isSpinning) {
+      onSegmentTick?.();
+    }
+    prevSegmentRef.current = index;
+  }, [rotation, entries, isSpinning, onSegmentTick]);
 
   // Trigger spin when isSpinning changes from false to true externally
   useEffect(() => {
     if (isSpinning && !spinTriggerRef.current && entries.length > 0) {
       spinTriggerRef.current = true;
+      prevSegmentRef.current = -1;
       // Don't use spinWheel result - instead pick result based on final rotation
       // This ensures arrow always points to the actual winner
       const anglePerSegment = (2 * Math.PI) / entries.length;

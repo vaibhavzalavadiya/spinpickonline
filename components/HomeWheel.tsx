@@ -1,16 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { WheelEntry } from "@/lib/types";
 import Wheel from "@/components/Wheel";
 import ResultModal from "@/components/ResultModal";
+import Confetti from "@/components/Confetti";
 import Toast from "@/components/Toast";
 import ConfirmationModal from "@/components/ConfirmationModal";
 import BulkAddModal from "@/components/BulkAddModal";
+import { useSoundEffects } from "@/lib/useSoundEffects";
 import {
   generateEntryId,
   generateDefaultColors,
-  validateEntries,
   generateShareUrl,
   copyToClipboard
 } from "@/lib/wheel-utils";
@@ -24,13 +25,13 @@ import {
   FiTrash2,
   FiCheckCircle,
   FiX,
-  FiExternalLink,
   FiArrowRight,
-  FiShare2
+  FiShare2,
+  FiVolume2,
+  FiVolumeX
 } from "react-icons/fi";
 import {
   IoTrophyOutline,
-  IoSparkles,
   IoRocketOutline
 } from "react-icons/io5";
 import {
@@ -49,14 +50,14 @@ const DEFAULT_ENTRIES: WheelEntry[] = [
 
 interface HomeWheelProps {
   defaultEntries?: WheelEntry[];
-  storageKey?: string; // Optional unique storage key per page
-  disableStorage?: boolean; // Option to disable localStorage completely
+  storageKey?: string;
+  disableStorage?: boolean;
 }
 
-export default function HomeWheel({ 
-  defaultEntries, 
+export default function HomeWheel({
+  defaultEntries,
   storageKey = "homeWheelState",
-  disableStorage = false 
+  disableStorage = false
 }: HomeWheelProps = {}) {
 
   const initialEntries = defaultEntries || DEFAULT_ENTRIES;
@@ -70,6 +71,8 @@ export default function HomeWheel({
   const [activeTab, setActiveTab] = useState<"entries" | "results">("entries");
   const [showModal, setShowModal] = useState(false);
   const [showBulkModal, setShowBulkModal] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [newlyAddedId, setNewlyAddedId] = useState<string | null>(null);
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" | "info" } | null>(null);
   const [confirmModal, setConfirmModal] = useState<{
     isOpen: boolean;
@@ -83,7 +86,10 @@ export default function HomeWheel({
     onConfirm: () => { },
   });
 
-  // Load from localStorage on client mount (after hydration) - only if storage is enabled
+  const { isMuted, toggleMute, playTick, playWinFanfare, playClick } = useSoundEffects();
+  const newEntryTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Load from localStorage on client mount
   useEffect(() => {
     if (typeof window === "undefined" || disableStorage) return;
 
@@ -91,7 +97,6 @@ export default function HomeWheel({
       const saved = localStorage.getItem(storageKey);
       if (saved) {
         const parsed = JSON.parse(saved);
-        // Only load if we have saved entries, otherwise use defaultEntries
         if (parsed.entries && parsed.entries.length > 0) {
           setEntries(parsed.entries);
         }
@@ -104,7 +109,7 @@ export default function HomeWheel({
     }
   }, [storageKey, disableStorage]);
 
-  // Save to localStorage whenever entries or results change - only if storage is enabled
+  // Save to localStorage
   useEffect(() => {
     if (typeof window === "undefined" || entries.length === 0 || disableStorage) return;
 
@@ -115,8 +120,15 @@ export default function HomeWheel({
     }
   }, [entries, results, storageKey, disableStorage]);
 
-  // Share wheel function - generates live shareable link with results
+  // Clean up timeout
+  useEffect(() => {
+    return () => {
+      if (newEntryTimeoutRef.current) clearTimeout(newEntryTimeoutRef.current);
+    };
+  }, []);
+
   const shareWheel = async () => {
+    playClick();
     const shareUrl = generateShareUrl(entries, undefined, results);
     if (!shareUrl) {
       setToast({ message: "Failed to generate share link", type: "error" });
@@ -131,7 +143,6 @@ export default function HomeWheel({
     }
   };
 
-
   const addEntry = () => {
     const trimmed = newEntry.trim();
     if (!trimmed) return;
@@ -141,11 +152,13 @@ export default function HomeWheel({
       return;
     }
 
+    playClick();
     const colors = generateDefaultColors(entries.length + 1);
+    const newId = generateEntryId();
     const newEntries: WheelEntry[] = [
       ...entries,
       {
-        id: generateEntryId(),
+        id: newId,
         label: trimmed,
         color: colors[entries.length % colors.length],
       },
@@ -153,13 +166,16 @@ export default function HomeWheel({
 
     setEntries(newEntries);
     setNewEntry("");
+    setNewlyAddedId(newId);
+
+    // Clear the animation after it's done
+    if (newEntryTimeoutRef.current) clearTimeout(newEntryTimeoutRef.current);
+    newEntryTimeoutRef.current = setTimeout(() => setNewlyAddedId(null), 400);
   };
 
   const handleBulkAdd = (newLabels: string[]) => {
-    // 1. Deduplicate the new list itself
     const uniqueInput = Array.from(new Set(newLabels.map(l => l.trim()))).filter(l => l.length > 0);
 
-    // 2. Filter out entries that already exist in the wheel
     const uniqueNewLabels = uniqueInput.filter(
       (label) => !entries.some((e) => e.label.toLowerCase() === label.toLowerCase())
     );
@@ -169,6 +185,7 @@ export default function HomeWheel({
       return;
     }
 
+    playClick();
     const addedEntries = uniqueNewLabels.map((label, index) => ({
       id: generateEntryId(),
       label,
@@ -180,6 +197,7 @@ export default function HomeWheel({
   };
 
   const removeEntry = (id: string) => {
+    playClick();
     setEntries(entries.filter(e => e.id !== id));
     if (result && entries.find(e => e.id === id)?.label === result) {
       setResult(null);
@@ -187,11 +205,13 @@ export default function HomeWheel({
   };
 
   const shuffleEntries = () => {
+    playClick();
     const shuffled = [...entries].sort(() => Math.random() - 0.5);
     setEntries(shuffled);
   };
 
   const sortEntries = () => {
+    playClick();
     const sorted = [...entries].sort((a, b) => a.label.localeCompare(b.label));
     setEntries(sorted);
   };
@@ -212,6 +232,7 @@ export default function HomeWheel({
     const trimmed = editValue.trim();
     if (!trimmed) return;
 
+    playClick();
     const updatedEntries = [...entries];
     updatedEntries[editingIndex] = {
       ...updatedEntries[editingIndex],
@@ -227,11 +248,21 @@ export default function HomeWheel({
     setEditValue("");
   };
 
+  // Segment tick handler (for sound during spin)
+  const handleSegmentTick = useCallback(() => {
+    playTick();
+  }, [playTick]);
+
   const handleResult = (wheelResult: string) => {
     setResult(wheelResult);
     setResults([...results, wheelResult]);
     setIsSpinning(false);
+    setShowConfetti(true);
     setShowModal(true);
+    playWinFanfare();
+
+    // Auto-clear confetti
+    setTimeout(() => setShowConfetti(false), 4000);
   };
 
   const handleSpin = () => {
@@ -240,7 +271,6 @@ export default function HomeWheel({
       return;
     }
 
-    // Check for duplicates
     const labels = entries.map(e => e.label.trim().toLowerCase());
     const uniqueLabels = new Set(labels);
     if (labels.length !== uniqueLabels.size) {
@@ -249,7 +279,9 @@ export default function HomeWheel({
     }
 
     if (isSpinning) return;
+    playClick();
     setResult(null);
+    setShowConfetti(false);
     setIsSpinning(true);
   };
 
@@ -266,7 +298,6 @@ export default function HomeWheel({
       }
       setShowModal(false);
       setResult(null);
-      // Auto-spin if entries remain
       if (entries.length > 1) {
         setTimeout(() => handleSpin(), 300);
       }
@@ -289,6 +320,7 @@ export default function HomeWheel({
   };
 
   const resetToDefault = () => {
+    playClick();
     setConfirmModal({
       isOpen: true,
       title: "Reset to Default",
@@ -305,11 +337,13 @@ export default function HomeWheel({
 
   return (
     <div className="w-full mx-auto">
+      {/* Confetti */}
+      <Confetti isActive={showConfetti} />
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr] gap-5 md:gap-10 lg:gap-16 items-start">
-        {/* Left: Wheel Section - Larger and Better Spaced */}
+        {/* Left: Wheel Section */}
         <div className="flex flex-col items-center justify-start">
           <div className="relative w-full max-w-3xl">
-            {/* Wheel Component */}
             <Wheel
               entries={entries}
               onResult={handleResult}
@@ -317,16 +351,17 @@ export default function HomeWheel({
               result={result}
               showButton={false}
               onSpinRequest={handleSpin}
+              onSegmentTick={handleSegmentTick}
             />
           </div>
         </div>
 
         {/* Right: Enhanced Control Panel */}
         <div className="bg-white rounded-2xl shadow-xl border-2 border-gray-100 overflow-hidden sticky top-4">
-          {/* Tabs with gradient and react-icons */}
-          <div className="flex border-b-2 border-gray-100 bg-linear-to-r from-blue-50 to-purple-50">
+          {/* Tabs with sound toggle */}
+          <div className="toggle-btn flex border-b-2 border-gray-100 bg-linear-to-r from-blue-50 to-purple-50">
             <button
-              onClick={() => setActiveTab("entries")}
+              onClick={() => { setActiveTab("entries"); playClick(); }}
               className={`flex-1 sm:px-6 px-4 py-4 cursor-pointer text-sm font-semibold transition-all relative ${activeTab === "entries"
                 ? "text-blue-700"
                 : "text-gray-600 hover:text-gray-900"
@@ -341,7 +376,7 @@ export default function HomeWheel({
               )}
             </button>
             <button
-              onClick={() => setActiveTab("results")}
+              onClick={() => { setActiveTab("results"); playClick(); }}
               className={`flex-1 sm:px-6 px-4 py-4 cursor-pointer text-sm font-semibold transition-all relative ${activeTab === "results"
                 ? "text-blue-700"
                 : "text-gray-600 hover:text-gray-900"
@@ -355,17 +390,31 @@ export default function HomeWheel({
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-blue-600 to-purple-600"></div>
               )}
             </button>
+
+            {/* Sound Toggle */}
+            <button
+              onClick={toggleMute}
+              className="sound-btn pe-3 py-4 ps-2 cursor-pointer text-gray-500 hover:text-gray-900 transition-colors flex items-center"
+              aria-label={isMuted ? "Unmute sounds" : "Mute sounds"}
+              title={isMuted ? "Turn on sounds" : "Mute sounds"}
+            >
+              {isMuted ? (
+                <FiVolumeX className="text-lg" />
+              ) : (
+                <FiVolume2 className="text-lg text-blue-600" />
+              )}
+            </button>
           </div>
 
           {/* Tab Content */}
           <div className="lg:p-6 p-4">
             {activeTab === "entries" ? (
               <div className="lg:space-y-5 space-y-4">
-                {/* Action Buttons - Using react-icons */}
+                {/* Action Buttons */}
                 <div className="flex flex-wrap gap-2">
                   <button
                     onClick={shuffleEntries}
-                    className="flex cursor-pointer items-center gap-2 sm:px-4 px-3 py-2.5 text-sm bg-linear-to-r from-blue-50 to-blue-100 text-blue-700 rounded-lg hover:from-blue-100 hover:to-blue-200 transition-all font-medium border border-blue-200"
+                    className="flex cursor-pointer items-center gap-2 sm:px-4 px-3 py-2.5 text-sm bg-linear-to-r from-blue-50 to-blue-100 text-blue-700 rounded-lg hover:from-blue-100 hover:to-blue-200 transition-all font-medium border border-blue-200 active:scale-95"
                     title="Shuffle entries"
                   >
                     <FiShuffle className="text-base" />
@@ -373,7 +422,7 @@ export default function HomeWheel({
                   </button>
                   <button
                     onClick={sortEntries}
-                    className="flex cursor-pointer items-center gap-2 sm:px-4 px-3 py-2.5 text-sm bg-linear-to-r from-purple-50 to-purple-100 text-purple-700 rounded-lg hover:from-purple-100 hover:to-purple-200 transition-all font-medium border border-purple-200"
+                    className="flex cursor-pointer items-center gap-2 sm:px-4 px-3 py-2.5 text-sm bg-linear-to-r from-purple-50 to-purple-100 text-purple-700 rounded-lg hover:from-purple-100 hover:to-purple-200 transition-all font-medium border border-purple-200 active:scale-95"
                     title="Sort alphabetically"
                   >
                     <FiList className="text-base" />
@@ -381,14 +430,14 @@ export default function HomeWheel({
                   </button>
                   <button
                     onClick={resetToDefault}
-                    className="flex cursor-pointer items-center gap-2 sm:px-4 px-3 py-2.5 text-sm bg-linear-to-r from-gray-50 to-gray-100 text-gray-700 rounded-lg hover:from-gray-100 hover:to-gray-200 transition-all font-medium border border-gray-200"
+                    className="flex cursor-pointer items-center gap-2 sm:px-4 px-3 py-2.5 text-sm bg-linear-to-r from-gray-50 to-gray-100 text-gray-700 rounded-lg hover:from-gray-100 hover:to-gray-200 transition-all font-medium border border-gray-200 active:scale-95"
                   >
                     <FiRotateCcw className="text-base" />
                     <span className="sm:text-sm text-xs lg:block hidden">Reset</span>
                   </button>
                 </div>
 
-                {/* Add Entry - Enhanced with react-icons */}
+                {/* Add Entry */}
                 <div className="bg-linear-to-r from-blue-50 to-purple-50 sm:p-4 p-3 rounded-xl border-2 border-blue-100">
                   <div className="flex items-center justify-between mb-2">
                     <label className="block text-sm font-semibold text-gray-700 flex items-center gap-2">
@@ -396,7 +445,7 @@ export default function HomeWheel({
                       <span>Add New Entry</span>
                     </label>
                     <button
-                      onClick={() => setShowBulkModal(true)}
+                      onClick={() => { setShowBulkModal(true); playClick(); }}
                       className="text-xs font-semibold text-blue-600 hover:text-blue-800 hover:bg-blue-50 px-2 py-1 rounded transition-colors flex items-center gap-1 cursor-pointer"
                     >
                       <FiList className="text-xs" />
@@ -414,14 +463,14 @@ export default function HomeWheel({
                     />
                     <button
                       onClick={addEntry}
-                      className="sm:px-6 px-3 py-2 sm:py-3 cursor-pointer bg-linear-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all text-sm font-semibold shadow-md hover:shadow-lg transform hover:scale-105"
+                      className="sm:px-6 px-3 py-2 sm:py-3 cursor-pointer bg-linear-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all text-sm font-semibold shadow-md hover:shadow-lg transform hover:scale-105 active:scale-95"
                     >
                       Add
                     </button>
                   </div>
                 </div>
 
-                {/* Entries List - Enhanced with react-icons */}
+                {/* Entries List */}
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <h3 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
@@ -432,11 +481,12 @@ export default function HomeWheel({
                       {entries.length} items
                     </span>
                   </div>
-                  <div className="max-h-80 overflow-y-auto space-y-2.5  pe-2 custom-scrollbar">
+                  <div className="max-h-80 overflow-y-auto space-y-2.5 pe-2 custom-scrollbar">
                     {entries.map((entry, index) => (
                       <div
                         key={entry.id}
-                        className="flex items-center justify-between last:pb-0 pb-2.5 border-b border-gray-200 last:border-b-0"
+                        className={`flex items-center justify-between last:pb-0 pb-2.5 border-b border-gray-200 last:border-b-0 ${newlyAddedId === entry.id ? 'animate-bounce-in' : ''
+                          }`}
                       >
                         {editingIndex === index ? (
                           <div className="flex items-center gap-2 flex-1">
@@ -508,7 +558,7 @@ export default function HomeWheel({
                   </div>
                 </div>
 
-                {/* Spin Button - Enhanced with react-icon */}
+                {/* Spin Button */}
                 <button
                   onClick={handleSpin}
                   disabled={entries.length === 0 || isSpinning}
@@ -531,7 +581,7 @@ export default function HomeWheel({
                 {entries.length > 0 && (
                   <button
                     onClick={shareWheel}
-                    className="w-full cursor-pointer md:px-6 px-4 lg:py-3 py-2 bg-white border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all flex items-center justify-center gap-2 text-sm"
+                    className="w-full cursor-pointer md:px-6 px-4 lg:py-3 py-2 bg-white border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all flex items-center justify-center gap-2 text-sm active:scale-[0.98]"
                   >
                     <FiShare2 className="text-lg" />
                     <span>Share Wheel</span>
@@ -589,7 +639,7 @@ export default function HomeWheel({
               </div>
             )}
 
-            {/* Link to Full Editor - Always visible at bottom */}
+            {/* Link to Full Editor */}
             <div className="lg:mt-5 mt-3 text-center">
               <Link
                 href="/wheel"
