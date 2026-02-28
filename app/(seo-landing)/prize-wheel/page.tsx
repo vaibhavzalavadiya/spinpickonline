@@ -207,6 +207,67 @@ export default function PrizeWheelPage() {
                 </div>
             </section>
 
+            {/* Setting Up Prize Tiers */}
+            <section className="py-10 lg:py-16 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+                            How to Set Up Prize Tiers on Your Wheel
+                        </h2>
+                        <p className="md:text-base text-sm text-gray-600 text-center mb-6 max-w-2xl mx-auto">
+                            Create an exciting prize wheel by adding more entries for common prizes and fewer for rare ones. This creates natural probability tiers.
+                        </p>
+                        <div className="grid grid-cols-1 sm:grid-cols-3 md:gap-6 gap-4">
+                            <div className="bg-gradient-to-br from-amber-50 to-yellow-50 md:p-6 p-4 md:rounded-xl rounded-lg border-2 border-yellow-300 text-center">
+                                <span className="text-3xl block mb-2">🥇</span>
+                                <h3 className="font-bold text-yellow-700 mb-2">Grand Prize</h3>
+                                <p className="md:text-base text-sm text-gray-600 mb-2">Add 1 entry for the top prize. This gives ~5-10% odds depending on total segments.</p>
+                                <p className="text-xs text-gray-500">Example: $100 gift card, electronics, premium items</p>
+                            </div>
+                            <div className="bg-gradient-to-br from-gray-50 to-slate-50 md:p-6 p-4 md:rounded-xl rounded-lg border-2 border-gray-300 text-center">
+                                <span className="text-3xl block mb-2">🥈</span>
+                                <h3 className="font-bold text-gray-700 mb-2">Mid-Tier Prizes</h3>
+                                <p className="md:text-base text-sm text-gray-600 mb-2">Add 3-4 entries for moderate prizes. This gives ~30-40% combined odds.</p>
+                                <p className="text-xs text-gray-500">Example: $25 gift cards, branded merchandise, discount codes</p>
+                            </div>
+                            <div className="bg-gradient-to-br from-orange-50 to-amber-50 md:p-6 p-4 md:rounded-xl rounded-lg border-2 border-orange-300 text-center">
+                                <span className="text-3xl block mb-2">🥉</span>
+                                <h3 className="font-bold text-orange-700 mb-2">Common Prizes</h3>
+                                <p className="md:text-base text-sm text-gray-600 mb-2">Add 5-6 entries for participation prizes. This ensures most people win something.</p>
+                                <p className="text-xs text-gray-500">Example: Stickers, small discounts, digital downloads, freebies</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Prize Wheel Event Ideas */}
+            <section className="py-10 lg:py-16 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+                            Prize Wheel Event Ideas
+                        </h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:gap-5 gap-3">
+                            {[
+                                { emoji: "🛍️", title: "Retail Store Promotions", desc: "Set up a prize wheel at your store entrance. Every customer gets a spin for discounts, freebies, or grand prizes" },
+                                { emoji: "🎪", title: "Trade Show Booths", desc: "Attract visitors to your booth with a spin-to-win prize wheel. Collect business cards for entries" },
+                                { emoji: "🎓", title: "School Fun Fairs", desc: "Kids love spinning wheels! Use it for game prizes, candy selection, or activity chooser at school events" },
+                                { emoji: "🏢", title: "Team Meetings", desc: "Reward staff participation with a prize wheel at the end of meetings. Spin for gift cards or extra break time" },
+                            ].map((idea, index) => (
+                                <div key={index} className="bg-white md:p-4 p-3 md:rounded-xl rounded-lg shadow-sm border border-gray-100 flex gap-3 items-start">
+                                    <span className="text-2xl flex-shrink-0">{idea.emoji}</span>
+                                    <div>
+                                        <h3 className="font-bold text-gray-900 text-sm md:text-base">{idea.title}</h3>
+                                        <p className="text-xs md:text-sm text-gray-600">{idea.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Internal Links */}
             <section className="py-10 lg:py-16 bg-gray-50">
                 <div className="container mx-auto px-4">

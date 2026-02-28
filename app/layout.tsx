@@ -41,7 +41,7 @@ export default function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9187153323911677"
           crossOrigin="anonymous"
         ></script>
-      </head> 
+      </head>
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}
       >
@@ -58,6 +58,18 @@ export default function RootLayout({
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "vjueov1f6s");`}
+        </Script>
+
+        {/* Google Analytics 4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-D4C2689CD1"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-D4C2689CD1');`}
         </Script>
       </body>
     </html>

@@ -4,25 +4,20 @@ import { USE_CASES, FEATURES } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
+  const lastModified = new Date("2026-02-28");
 
-  // Static pages
-  const staticPages = [
-    "",
-    "/wheel",
-    "/random-picker-wheel",
-    "/name-picker",
-    "/name-spinner",
-    "/yes-no-wheel",
-    "/faq",
-    "/use-cases",
-    "/features",
-    "/how-it-works",
-    "/guides",
-    "/contact",
-    "/about",
-    "/privacy-policy",
-    "/terms-of-service",
-    // SEO landing pages
+  // Core tool pages (highest priority)
+  const corePages = [
+    { path: "", priority: 1, changeFrequency: "daily" as const },
+    { path: "/wheel", priority: 0.95, changeFrequency: "daily" as const },
+    { path: "/random-picker-wheel", priority: 0.9, changeFrequency: "weekly" as const },
+    { path: "/name-picker", priority: 0.9, changeFrequency: "weekly" as const },
+    { path: "/name-spinner", priority: 0.9, changeFrequency: "weekly" as const },
+    { path: "/yes-no-wheel", priority: 0.9, changeFrequency: "weekly" as const },
+  ];
+
+  // SEO landing pages (high priority)
+  const seoLandingPages = [
     "/lucky-draw-wheel",
     "/raffle-wheel",
     "/prize-wheel",
@@ -32,43 +27,82 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/wheel-spinner",
     "/picker-wheel",
     "/decision-wheel",
-    "/task-assignment",
-    "/presentation-picker",
-    "/chore-assignment",
-    "/fair-randomization",
-    "/lunch-decisions",
-    // Guides
+  ];
+
+  // Info/resource pages (medium priority)
+  const infoPages = [
+    "/faq",
+    "/use-cases",
+    "/features",
+    "/how-it-works",
+    "/guides",
     "/guides/how-to-use-random-picker-wheel",
+    "/contact",
+    "/about",
+  ];
+
+  // Blog pages
+  const blogPages = [
+    "/blog",
+    "/blog/how-to-run-instagram-giveaway",
+    "/blog/random-name-picker-for-teachers",
+    "/blog/best-team-building-activities",
+    "/blog/fair-raffle-drawing-guide",
+    "/blog/decision-making-tips",
+  ];
+
+  // Legal pages (low priority)
+  const legalPages = [
+    "/privacy-policy",
+    "/terms-of-service",
   ];
 
   // Use case pages
   const useCasePages = USE_CASES.map((useCase) => ({
     url: `${baseUrl}/${useCase.slug}`,
-    lastModified: new Date(),
+    lastModified,
     changeFrequency: "monthly" as const,
-    priority: 0.8,
+    priority: 0.7,
   }));
 
   // Feature pages
   const featurePages = FEATURES.map((feature) => ({
     url: `${baseUrl}/${feature.slug}`,
-    lastModified: new Date(),
+    lastModified,
     changeFrequency: "monthly" as const,
-    priority: 0.8,
+    priority: 0.7,
   }));
 
   return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 1,
-    },
-    ...staticPages.map((path) => ({
+    ...corePages.map((page) => ({
+      url: `${baseUrl}${page.path}`,
+      lastModified,
+      changeFrequency: page.changeFrequency,
+      priority: page.priority,
+    })),
+    ...seoLandingPages.map((path) => ({
       url: `${baseUrl}${path}`,
-      lastModified: new Date(),
-      changeFrequency: path === "/wheel" ? ("daily" as const) : ("weekly" as const),
-      priority: path === "" ? 1 : 0.9,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    })),
+    ...infoPages.map((path) => ({
+      url: `${baseUrl}${path}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
+    ...blogPages.map((path) => ({
+      url: `${baseUrl}${path}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+    ...legalPages.map((path) => ({
+      url: `${baseUrl}${path}`,
+      lastModified,
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
     })),
     ...useCasePages,
     ...featurePages,

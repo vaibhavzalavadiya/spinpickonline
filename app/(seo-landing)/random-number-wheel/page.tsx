@@ -210,6 +210,69 @@ export default function RandomNumberWheelPage() {
                 </div>
             </section>
 
+            {/* Number Wheel Uses */}
+            <section className="py-10 lg:py-16 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+                            Random Number Generator Uses
+                        </h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:gap-5 gap-3">
+                            {[
+                                { emoji: "🎲", title: "Board Games", desc: "Replace lost or broken dice. Set up a number wheel from 1-6 and spin for each turn" },
+                                { emoji: "📚", title: "Student Numbering", desc: "Assign random numbers to students for anonymous grading, seating, or test versions" },
+                                { emoji: "🏠", title: "Chore Rotation", desc: "Number your chores and family members, then spin to assign weekly responsibilities randomly" },
+                                { emoji: "🎰", title: "Lottery Practice", desc: "Generate random lottery-style numbers for fun or to practice number picking strategies" },
+                                { emoji: "📊", title: "Sampling", desc: "Generate random numbers for survey sampling, quality control checks, or research randomization" },
+                                { emoji: "🎮", title: "Game Design", desc: "Test probability systems, generate random encounters, or create randomized game elements" },
+                            ].map((use, index) => (
+                                <div key={index} className="bg-gradient-to-br from-gray-50 to-white md:p-4 p-3 md:rounded-xl rounded-lg shadow-sm border border-gray-100">
+                                    <span className="text-2xl block mb-2">{use.emoji}</span>
+                                    <h3 className="font-bold text-gray-900 text-sm md:text-base mb-1">{use.title}</h3>
+                                    <p className="text-xs md:text-sm text-gray-600">{use.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Number Wheel vs Traditional RNG */}
+            <section className="py-10 lg:py-16 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+                            Number Wheel vs Traditional RNG
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-6 gap-4">
+                            <div className="bg-white md:p-6 p-4 md:rounded-xl rounded-lg shadow-sm border-2 border-blue-200">
+                                <h3 className="font-bold text-blue-700 mb-3 text-lg">🎡 Number Wheel (Visual)</h3>
+                                <ul className="space-y-2 md:text-base text-sm text-gray-700">
+                                    <li>✅ See the spinning animation build excitement</li>
+                                    <li>✅ Perfect for group settings and presentations</li>
+                                    <li>✅ Transparent – everyone sees the selection process</li>
+                                    <li>✅ Customizable range with individual colors</li>
+                                    <li>⚠️ Best for smaller number ranges (2-50)</li>
+                                </ul>
+                            </div>
+                            <div className="bg-white md:p-6 p-4 md:rounded-xl rounded-lg shadow-sm border-2 border-gray-200">
+                                <h3 className="font-bold text-gray-700 mb-3 text-lg">⌨️ Traditional RNG (Text)</h3>
+                                <ul className="space-y-2 md:text-base text-sm text-gray-700">
+                                    <li>✅ Instant generation, no animation wait</li>
+                                    <li>✅ Better for very large number ranges</li>
+                                    <li>✅ Can generate batch numbers at once</li>
+                                    <li>❌ No visual engagement – just a number</li>
+                                    <li>❌ Hard to prove fairness to others</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p className="text-center mt-6 md:text-base text-sm text-gray-600">
+                            Both use cryptographically secure randomization. Choose the number wheel when you want the visual experience, or combine both for different needs.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
             {/* Internal Links */}
             <section className="py-10 lg:py-16 bg-gray-50">
                 <div className="container mx-auto px-4">

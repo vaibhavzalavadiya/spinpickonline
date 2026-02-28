@@ -254,6 +254,66 @@ export default function SpinWheelGiveawayPage() {
                 </div>
             </section>
 
+            {/* Giveaway Best Practices */}
+            <section className="py-10 lg:py-16 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+                            Giveaway Best Practices for Content Creators
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-6 gap-4">
+                            <div className="bg-gradient-to-br from-rose-50 to-pink-50 md:p-6 p-4 md:rounded-xl rounded-lg border border-rose-200">
+                                <h3 className="font-bold text-gray-900 mb-3 text-lg">✅ Do&apos;s</h3>
+                                <ul className="space-y-2 md:text-base text-sm text-gray-700">
+                                    <li>• Clearly state entry rules before the giveaway starts</li>
+                                    <li>• Set a specific deadline for entries</li>
+                                    <li>• Record or live-stream the wheel spin for transparency</li>
+                                    <li>• Tag the winner publicly and follow up via DM</li>
+                                    <li>• Comply with platform-specific giveaway guidelines</li>
+                                    <li>• Thank all participants – they might enter next time</li>
+                                </ul>
+                            </div>
+                            <div className="bg-gradient-to-br from-amber-50 to-yellow-50 md:p-6 p-4 md:rounded-xl rounded-lg border border-amber-200">
+                                <h3 className="font-bold text-gray-900 mb-3 text-lg">❌ Don&apos;ts</h3>
+                                <ul className="space-y-2 md:text-base text-sm text-gray-700">
+                                    <li>• Don&apos;t pre-select winners or fake the spin</li>
+                                    <li>• Don&apos;t require purchasing as a condition of entry</li>
+                                    <li>• Don&apos;t forget to check local laws on giveaways</li>
+                                    <li>• Don&apos;t leave the giveaway open-ended without a deadline</li>
+                                    <li>• Don&apos;t ignore duplicate entries – clean your list first</li>
+                                    <li>• Don&apos;t forget to follow up on prize delivery</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Platform-Specific Tips */}
+            <section className="py-10 lg:py-16 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+                            Platform-Specific Giveaway Tips
+                        </h2>
+                        <div className="space-y-4">
+                            <div className="bg-white md:p-5 p-4 md:rounded-xl rounded-lg shadow-sm border border-pink-100">
+                                <h3 className="font-bold text-gray-900 mb-2 flex items-center gap-2"><FiInstagram className="text-pink-500" /> Instagram Giveaways</h3>
+                                <p className="md:text-base text-sm text-gray-600 leading-relaxed">Collect usernames from comments using your giveaway post. Filter for accounts that meet your criteria (following you, liked the post, tagged friends). Add all valid entries to the wheel and record a Story or Reel of the spin. Instagram&apos;s algorithm favors giveaway posts due to high engagement, making them great for growth.</p>
+                            </div>
+                            <div className="bg-white md:p-5 p-4 md:rounded-xl rounded-lg shadow-sm border border-red-100">
+                                <h3 className="font-bold text-gray-900 mb-2 flex items-center gap-2"><FiYoutube className="text-red-500" /> YouTube Giveaways</h3>
+                                <p className="md:text-base text-sm text-gray-600 leading-relaxed">Use comment sections from specific videos to gather entries. For subscriber milestones, consider using your subscriber list. Screen record the wheel spin and include it in a dedicated video or add it to your next upload. YouTube giveaway videos often get 2-3x more views than regular content.</p>
+                            </div>
+                            <div className="bg-white md:p-5 p-4 md:rounded-xl rounded-lg shadow-sm border border-gray-200">
+                                <h3 className="font-bold text-gray-900 mb-2 flex items-center gap-2"><FaTiktok className="text-gray-800" /> TikTok Giveaways</h3>
+                                <p className="md:text-base text-sm text-gray-600 leading-relaxed">TikTok giveaways benefit from duet and stitch entry methods. Collect usernames and use our wheel in a follow-up TikTok. The visual spin of the wheel makes for highly engaging short-form content. Consider doing the spin live on TikTok LIVE for maximum engagement and real-time excitement.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Internal Links */}
             <section className="py-10 lg:py-16 bg-white">
                 <div className="container mx-auto px-4">

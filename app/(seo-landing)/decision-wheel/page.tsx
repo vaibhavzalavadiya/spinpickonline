@@ -211,6 +211,100 @@ export default function DecisionWheelPage() {
                 </div>
             </section>
 
+            {/* The Psychology of Decision Making */}
+            <section className="py-10 lg:py-16 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+                            The Psychology Behind Decision Fatigue
+                        </h2>
+                        <div className="prose max-w-none">
+                            <div className="grid grid-cols-1 md:grid-cols-2 md:gap-8 gap-5">
+                                <div className="bg-gradient-to-br from-indigo-50 to-blue-50 md:p-6 p-4 md:rounded-xl rounded-lg">
+                                    <h3 className="font-bold text-gray-900 mb-3 text-lg">What is Decision Fatigue?</h3>
+                                    <p className="md:text-base text-sm text-gray-700 leading-relaxed mb-3">
+                                        Research shows the average adult makes over <strong>35,000 decisions per day</strong>. Each decision depletes mental energy, a phenomenon psychologists call &quot;decision fatigue.&quot; By the end of the day, even simple choices like what to eat feel overwhelming.
+                                    </p>
+                                    <p className="md:text-base text-sm text-gray-700 leading-relaxed">
+                                        A decision wheel removes the cognitive load of low-stakes choices, preserving your mental energy for decisions that truly matter. This is why successful leaders like Steve Jobs and Mark Zuckerberg famously wore the same outfit daily – to eliminate trivial decisions.
+                                    </p>
+                                </div>
+                                <div className="bg-gradient-to-br from-purple-50 to-violet-50 md:p-6 p-4 md:rounded-xl rounded-lg">
+                                    <h3 className="font-bold text-gray-900 mb-3 text-lg">The Paradox of Choice</h3>
+                                    <p className="md:text-base text-sm text-gray-700 leading-relaxed mb-3">
+                                        Psychologist Barry Schwartz demonstrated that <strong>more options often lead to less satisfaction</strong>. When faced with too many choices, people experience anxiety, regret, and paralysis. This is the &quot;paradox of choice.&quot;
+                                    </p>
+                                    <p className="md:text-base text-sm text-gray-700 leading-relaxed">
+                                        Using a decision wheel breaks this cycle. By delegating the choice to randomness, you eliminate the fear of making the &quot;wrong&quot; choice. And here&apos;s a bonus: research shows that people often discover their true preference when they feel disappointed by the wheel&apos;s result – revealing what they really wanted all along.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Decision Wheel vs Other Methods */}
+            <section className="py-10 lg:py-16 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+                            Decision Wheel vs Other Decision Methods
+                        </h2>
+                        <div className="overflow-x-auto">
+                            <table className="w-full bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                                <thead>
+                                    <tr className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white">
+                                        <th className="px-4 py-3 text-left text-sm font-semibold">Method</th>
+                                        <th className="px-4 py-3 text-left text-sm font-semibold">Handles 2+ Options</th>
+                                        <th className="px-4 py-3 text-left text-sm font-semibold">Visual & Fun</th>
+                                        <th className="px-4 py-3 text-left text-sm font-semibold">Group Friendly</th>
+                                        <th className="px-4 py-3 text-left text-sm font-semibold">Removes Bias</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-gray-100">
+                                    <tr className="bg-blue-50/50">
+                                        <td className="px-4 py-3 font-semibold text-sm text-blue-700">Decision Wheel</td>
+                                        <td className="px-4 py-3 text-sm">✅ Unlimited</td>
+                                        <td className="px-4 py-3 text-sm">✅ Animated</td>
+                                        <td className="px-4 py-3 text-sm">✅ Shareable</td>
+                                        <td className="px-4 py-3 text-sm">✅ Crypto RNG</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="px-4 py-3 font-semibold text-sm text-gray-700">Coin Flip</td>
+                                        <td className="px-4 py-3 text-sm">❌ Only 2</td>
+                                        <td className="px-4 py-3 text-sm">⚠️ Basic</td>
+                                        <td className="px-4 py-3 text-sm">✅ Simple</td>
+                                        <td className="px-4 py-3 text-sm">✅ Random</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="px-4 py-3 font-semibold text-sm text-gray-700">Pro/Con List</td>
+                                        <td className="px-4 py-3 text-sm">⚠️ 2 best</td>
+                                        <td className="px-4 py-3 text-sm">❌ Tedious</td>
+                                        <td className="px-4 py-3 text-sm">❌ Individual</td>
+                                        <td className="px-4 py-3 text-sm">❌ Subjective</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="px-4 py-3 font-semibold text-sm text-gray-700">Voting</td>
+                                        <td className="px-4 py-3 text-sm">✅ Multiple</td>
+                                        <td className="px-4 py-3 text-sm">❌ Slow</td>
+                                        <td className="px-4 py-3 text-sm">✅ Democratic</td>
+                                        <td className="px-4 py-3 text-sm">❌ Social pressure</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="px-4 py-3 font-semibold text-sm text-gray-700">Ask a Friend</td>
+                                        <td className="px-4 py-3 text-sm">✅ Multiple</td>
+                                        <td className="px-4 py-3 text-sm">❌ No</td>
+                                        <td className="px-4 py-3 text-sm">❌ One person</td>
+                                        <td className="px-4 py-3 text-sm">❌ Their bias</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Related Pages */}
             <section className="py-10 lg:py-16 bg-gray-50">
                 <div className="container mx-auto px-4">

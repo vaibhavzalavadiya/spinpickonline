@@ -212,6 +212,74 @@ export default function PickerWheelPage() {
                 </div>
             </section>
 
+            {/* Picker Wheel in Professional Settings */}
+            <section className="py-10 lg:py-16 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+                            Picker Wheel in Professional Settings
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-6 gap-4">
+                            <div className="bg-gradient-to-br from-emerald-50 to-teal-50 md:p-6 p-4 md:rounded-xl rounded-lg border border-emerald-200">
+                                <h3 className="font-bold text-gray-900 mb-3 text-lg">📊 Project Management</h3>
+                                <p className="md:text-base text-sm text-gray-700 leading-relaxed mb-3">
+                                    When multiple team members could handle a task equally well, use the picker wheel to assign work fairly. This eliminates favoritism perception and keeps morale high. Many Agile teams use random pickers for sprint retrospective facilitators, demo presenters, and code review assignments.
+                                </p>
+                                <p className="md:text-base text-sm text-gray-700 leading-relaxed">
+                                    <strong>Pro tip:</strong> Save your team wheel so you can quickly spin for any assignment without re-entering names every time.
+                                </p>
+                            </div>
+                            <div className="bg-gradient-to-br from-blue-50 to-sky-50 md:p-6 p-4 md:rounded-xl rounded-lg border border-blue-200">
+                                <h3 className="font-bold text-gray-900 mb-3 text-lg">🎓 Education & Training</h3>
+                                <p className="md:text-base text-sm text-gray-700 leading-relaxed mb-3">
+                                    Teachers and trainers use picker wheels to maintain engagement during sessions. Random student selection encourages everyone to stay prepared and pay attention. Studies show that random calling patterns increase student participation by up to 40% compared to voluntary hand-raising.
+                                </p>
+                                <p className="md:text-base text-sm text-gray-700 leading-relaxed">
+                                    <strong>Pro tip:</strong> Use the picker wheel on a projector or shared screen so students can see the transparent selection process.
+                                </p>
+                            </div>
+                            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 md:p-6 p-4 md:rounded-xl rounded-lg border border-purple-200">
+                                <h3 className="font-bold text-gray-900 mb-3 text-lg">🏢 HR & Team Building</h3>
+                                <p className="md:text-base text-sm text-gray-700 leading-relaxed">
+                                    HR departments use random pickers for Secret Santa pairings, office lottery draws, seating arrangements at events, and selecting employees for special opportunities like training programs or conference attendance. The randomness ensures every employee gets equal opportunity.
+                                </p>
+                            </div>
+                            <div className="bg-gradient-to-br from-orange-50 to-amber-50 md:p-6 p-4 md:rounded-xl rounded-lg border border-orange-200">
+                                <h3 className="font-bold text-gray-900 mb-3 text-lg">🎪 Events & Conferences</h3>
+                                <p className="md:text-base text-sm text-gray-700 leading-relaxed">
+                                    Event organizers use picker wheels for door prizes, booth visitor giveaways, speaker order selection, and audience interaction segments. The visual spinning wheel adds entertainment value and keeps audiences engaged during transitions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Complete Guide */}
+            <section className="py-10 lg:py-16 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+                            Tips for Getting the Most From Your Picker Wheel
+                        </h2>
+                        <div className="space-y-4">
+                            {[
+                                { title: "Keep Lists Manageable", desc: "While our picker supports unlimited entries, wheels with 5-20 items provide the best visual experience. For larger lists (100+ names), consider grouping into smaller pools first." },
+                                { title: "Use Meaningful Colors", desc: "Assign colors that relate to your entries. For example, team colors for sports picks, or category colors for mixed-type selections. This makes the wheel more intuitive at a glance." },
+                                { title: "Remove After Picking", desc: "If you're selecting multiple winners without repeats, remove each selected entry after spinning. This ensures no one gets picked twice and gives remaining entries equal odds." },
+                                { title: "Share for Transparency", desc: "When picking for contests or assignments, share your screen or send the wheel link. Seeing the random spin builds trust in the selection process." },
+                                { title: "Save Your Frequent Wheels", desc: "Use the shareable link feature to bookmark wheels you use regularly – like your class roster or team list. This saves setup time for repeated uses." },
+                            ].map((tip, index) => (
+                                <div key={index} className="bg-white md:p-5 p-4 md:rounded-xl rounded-lg shadow-sm border border-gray-100">
+                                    <h3 className="font-bold text-gray-900 mb-2">{tip.title}</h3>
+                                    <p className="md:text-base text-sm text-gray-600 leading-relaxed">{tip.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Internal Links */}
             <section className="py-10 lg:py-16 bg-gray-50">
                 <div className="container mx-auto px-4">

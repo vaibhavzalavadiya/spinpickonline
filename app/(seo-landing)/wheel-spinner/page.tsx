@@ -212,6 +212,64 @@ export default function WheelSpinnerPage() {
                 </div>
             </section>
 
+            {/* Creative Ideas */}
+            <section className="py-10 lg:py-16 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+                            Creative Wheel Spinner Ideas
+                        </h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:gap-5 gap-3">
+                            {[
+                                { emoji: "🎮", title: "Gaming Challenges", desc: "Spin for random game challenges, handicaps, or character selections to make gaming sessions unpredictable and fun" },
+                                { emoji: "🎵", title: "Music Playlist", desc: "Add genres or artists and spin to decide what to listen to next. Great for road trips and parties" },
+                                { emoji: "🏋️", title: "Workout Randomizer", desc: "Add exercises like pushups, squats, planks, and burpees. Spin to create a random workout routine" },
+                                { emoji: "📖", title: "Story Prompts", desc: "Add story elements and spin to create random writing prompts for creative writing exercises" },
+                                { emoji: "🌮", title: "Cooking Challenge", desc: "Add ingredients and spin 3-5 times to create a mystery basket cooking challenge" },
+                                { emoji: "🎬", title: "Movie Night", desc: "End the 'what should we watch' debate forever. Add your watchlist and let the wheel choose" },
+                            ].map((idea, index) => (
+                                <div key={index} className="bg-gradient-to-br from-gray-50 to-white md:p-4 p-3 md:rounded-xl rounded-lg shadow-sm border border-gray-100">
+                                    <span className="text-2xl block mb-2">{idea.emoji}</span>
+                                    <h3 className="font-bold text-gray-900 text-sm md:text-base mb-1">{idea.title}</h3>
+                                    <p className="text-xs md:text-sm text-gray-600">{idea.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Wheel Spinner for Education */}
+            <section className="py-10 lg:py-16 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+                            Wheel Spinner in the Classroom
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-6 gap-4">
+                            <div className="bg-white md:p-6 p-4 md:rounded-xl rounded-lg shadow-sm border border-gray-100">
+                                <h3 className="font-bold text-gray-900 mb-3 text-lg">For Teachers</h3>
+                                <p className="md:text-base text-sm text-gray-700 leading-relaxed mb-3">
+                                    Wheel spinners are a proven engagement tool in K-12 and higher education. Random selection keeps students attentive because <strong>anyone might be called on next</strong>. This reduces the tendency for the same handful of students to dominate class discussions.
+                                </p>
+                                <p className="md:text-base text-sm text-gray-700 leading-relaxed">
+                                    Use it for: question answering, reading aloud order, group assignments, topic selection, reward distribution, and even managing who presents first.
+                                </p>
+                            </div>
+                            <div className="bg-white md:p-6 p-4 md:rounded-xl rounded-lg shadow-sm border border-gray-100">
+                                <h3 className="font-bold text-gray-900 mb-3 text-lg">For Students</h3>
+                                <p className="md:text-base text-sm text-gray-700 leading-relaxed mb-3">
+                                    Students love the visual element of the spinning wheel. It turns mundane activities like choosing a study topic into an exciting moment. The randomness also removes social pressure – students don&apos;t feel &quot;picked on&quot; because the selection was clearly random.
+                                </p>
+                                <p className="md:text-base text-sm text-gray-700 leading-relaxed">
+                                    Popular student uses: study subject randomizer, flashcard categories, break activity chooser, and project topic selector.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Internal Links */}
             <section className="py-10 lg:py-16 bg-gray-50">
                 <div className="container mx-auto px-4">

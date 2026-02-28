@@ -77,9 +77,6 @@ export function generateOrganizationSchema() {
     url: SITE_CONFIG.url,
     logo: `${SITE_CONFIG.url}/images/logo.png`,
     description: SITE_CONFIG.description,
-    sameAs: [
-      // Add social media links when available
-    ],
   };
 }
 
@@ -105,11 +102,6 @@ export function generateWebApplicationSchema() {
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      ratingCount: "1250",
     },
   };
 }

@@ -127,6 +127,12 @@ export default function Footer() {
             <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Resources</h4>
             <ul className="space-y-3">
               <li>
+                <Link href="/blog" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 bg-green-600 rounded-full group-hover:w-2 transition-all"></span>
+                  Blog
+                </Link>
+              </li>
+              <li>
                 <Link href="/guides" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 bg-green-600 rounded-full group-hover:w-2 transition-all"></span>
                   Guides

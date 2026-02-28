@@ -211,6 +211,67 @@ export default function RandomChoicePickerPage() {
                 </div>
             </section>
 
+            {/* When Random Choice is Best */}
+            <section className="py-10 lg:py-16 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+                            When Random Choice is the Best Choice
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-6 gap-4">
+                            <div className="bg-gradient-to-br from-green-50 to-emerald-50 md:p-6 p-4 md:rounded-xl rounded-lg border border-green-200">
+                                <h3 className="font-bold text-green-800 mb-3 text-lg">Equal Options</h3>
+                                <p className="md:text-base text-sm text-gray-700 leading-relaxed">
+                                    When all your options are roughly equal in value, quality, or appeal, overthinking the choice wastes time and energy. Random selection lets you move forward immediately. Think restaurant choices, movie picks, or which task to start with when everything has the same deadline.
+                                </p>
+                            </div>
+                            <div className="bg-gradient-to-br from-blue-50 to-sky-50 md:p-6 p-4 md:rounded-xl rounded-lg border border-blue-200">
+                                <h3 className="font-bold text-blue-800 mb-3 text-lg">Group Deadlocks</h3>
+                                <p className="md:text-base text-sm text-gray-700 leading-relaxed">
+                                    When a group can&apos;t agree and discussion keeps going in circles, a random choice picker breaks the deadlock without anyone feeling overruled. The wheel becomes the neutral arbitrator, and everyone accepts the result because it was fair.
+                                </p>
+                            </div>
+                            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 md:p-6 p-4 md:rounded-xl rounded-lg border border-purple-200">
+                                <h3 className="font-bold text-purple-800 mb-3 text-lg">Variety Seeking</h3>
+                                <p className="md:text-base text-sm text-gray-700 leading-relaxed">
+                                    Humans are creatures of habit. We tend to choose the same things over and over. A random picker forces you out of your comfort zone – you might discover your new favorite restaurant, book, or activity through random selection.
+                                </p>
+                            </div>
+                            <div className="bg-gradient-to-br from-orange-50 to-amber-50 md:p-6 p-4 md:rounded-xl rounded-lg border border-orange-200">
+                                <h3 className="font-bold text-orange-800 mb-3 text-lg">Fairness Required</h3>
+                                <p className="md:text-base text-sm text-gray-700 leading-relaxed">
+                                    When assigning tasks, choosing turns, or selecting winners, perceived fairness matters as much as actual fairness. The visual spinning wheel shows everyone the transparent selection process, making the outcome unquestionable.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Choice Picker Tips */}
+            <section className="py-10 lg:py-16 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+                            Get Better Results with Your Choice Picker
+                        </h2>
+                        <div className="space-y-4">
+                            {[
+                                { title: "Add Only Viable Options", desc: "Don't pad the wheel with options you know you'll reject. If you wouldn't follow through on the result, leave it off the wheel. This ensures every spin produces an actionable outcome." },
+                                { title: "Use the 'Gut Check' Method", desc: "Spin the wheel, then check your immediate emotional reaction. Disappointed? That tells you what you really wanted. Excited? Go with it. The wheel becomes a tool for self-discovery, not just randomization." },
+                                { title: "Set a 'Best of 3' Rule", desc: "For more important choices, spin 3 times and go with whichever option appears most often. This reduces the feeling of leaving things entirely to chance while still breaking analysis paralysis." },
+                                { title: "Time-Box Your Decision", desc: "Give yourself 2 minutes to add options, then spin immediately. Don't overthink what goes on the wheel – the whole point is to stop overthinking!" },
+                            ].map((tip, index) => (
+                                <div key={index} className="bg-white md:p-5 p-4 md:rounded-xl rounded-lg shadow-sm border border-gray-100">
+                                    <h3 className="font-bold text-gray-900 mb-2">{tip.title}</h3>
+                                    <p className="md:text-base text-sm text-gray-600 leading-relaxed">{tip.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Internal Links */}
             <section className="py-10 lg:py-16 bg-gray-50">
                 <div className="container mx-auto px-4">

@@ -208,6 +208,64 @@ export default function RaffleWheelPage() {
                 </div>
             </section>
 
+            {/* Running a Successful Raffle */}
+            <section className="py-10 lg:py-16 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+                            How to Run a Successful Raffle
+                        </h2>
+                        <div className="space-y-4">
+                            {[
+                                { step: "1", title: "Set Clear Rules", desc: "Define entry requirements, eligible participants, prize details, and the drawing date. Written rules protect both you and participants and build credibility for your raffle." },
+                                { step: "2", title: "Collect Entries Systematically", desc: "Use a spreadsheet, form, or ticket numbering system. Double-check for duplicate entries. Having a clean list ensures the raffle is truly fair and no one gets an unfair advantage." },
+                                { step: "3", title: "Make It Public", desc: "Draw winners in front of witnesses or on camera. Our raffle wheel provides the visual transparency that builds trust. Share the recording on social media for proof of fairness." },
+                                { step: "4", title: "Follow Up Promptly", desc: "Contact winners immediately and distribute prizes within a set timeframe. Prompt follow-up maintains trust and encourages participation in future raffles." },
+                            ].map((item) => (
+                                <div key={item.step} className="flex gap-4 items-start bg-gray-50 md:p-5 p-4 md:rounded-xl rounded-lg">
+                                    <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-500 text-white rounded-full flex items-center justify-center font-bold">
+                                        {item.step}
+                                    </div>
+                                    <div>
+                                        <h3 className="font-bold text-gray-900">{item.title}</h3>
+                                        <p className="md:text-base text-sm text-gray-600">{item.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Raffle vs Lucky Draw vs Giveaway */}
+            <section className="py-10 lg:py-16 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+                            Raffle vs Lucky Draw vs Giveaway: What&apos;s the Difference?
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-3 md:gap-6 gap-4">
+                            <div className="bg-white md:p-6 p-4 md:rounded-xl rounded-lg shadow-sm border-2 border-indigo-200">
+                                <h3 className="font-bold text-indigo-700 mb-3 text-lg">🎟️ Raffle</h3>
+                                <p className="md:text-base text-sm text-gray-700 leading-relaxed mb-2">A raffle typically involves purchasing tickets for a chance to win. Often used for fundraising at schools, churches, and charities.</p>
+                                <p className="text-xs text-gray-500"><strong>Best for:</strong> Fundraisers, charity events, community organizations</p>
+                            </div>
+                            <div className="bg-white md:p-6 p-4 md:rounded-xl rounded-lg shadow-sm border-2 border-yellow-200">
+                                <h3 className="font-bold text-yellow-700 mb-3 text-lg">🎰 Lucky Draw</h3>
+                                <p className="md:text-base text-sm text-gray-700 leading-relaxed mb-2">A lucky draw is free to enter and winners are selected at random. Common at corporate events, trade shows, and promotions.</p>
+                                <p className="text-xs text-gray-500"><strong>Best for:</strong> Corporate events, product launches, trade shows</p>
+                            </div>
+                            <div className="bg-white md:p-6 p-4 md:rounded-xl rounded-lg shadow-sm border-2 border-pink-200">
+                                <h3 className="font-bold text-pink-700 mb-3 text-lg">🎁 Giveaway</h3>
+                                <p className="md:text-base text-sm text-gray-700 leading-relaxed mb-2">A giveaway requires a specific action (follow, like, share) for entry. Popular with social media influencers and brands for audience growth.</p>
+                                <p className="text-xs text-gray-500"><strong>Best for:</strong> Social media growth, brand awareness, community building</p>
+                            </div>
+                        </div>
+                        <p className="text-center mt-6 md:text-base text-sm text-gray-600">Our raffle wheel works perfectly for all three formats. Simply add your entries and spin!</p>
+                    </div>
+                </div>
+            </section>
+
             {/* Internal Links */}
             <section className="py-10 lg:py-16 bg-gray-50">
                 <div className="container mx-auto px-4">

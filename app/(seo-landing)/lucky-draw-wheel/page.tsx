@@ -212,6 +212,70 @@ export default function LuckyDrawWheelPage() {
                 </div>
             </section>
 
+            {/* Planning Your Lucky Draw */}
+            <section className="py-10 lg:py-16 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+                            Planning Your Lucky Draw Event
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-6 gap-4">
+                            <div className="bg-gradient-to-br from-yellow-50 to-amber-50 md:p-6 p-4 md:rounded-xl rounded-lg border border-yellow-200">
+                                <h3 className="font-bold text-gray-900 mb-3 text-lg">📋 Before the Event</h3>
+                                <ul className="space-y-2 md:text-base text-sm text-gray-700">
+                                    <li className="flex items-start gap-2"><span className="text-yellow-500 mt-0.5">•</span> Define clear entry rules and eligibility criteria</li>
+                                    <li className="flex items-start gap-2"><span className="text-yellow-500 mt-0.5">•</span> Decide on prizes and announce them in advance</li>
+                                    <li className="flex items-start gap-2"><span className="text-yellow-500 mt-0.5">•</span> Set up your lucky draw wheel with all participant names</li>
+                                    <li className="flex items-start gap-2"><span className="text-yellow-500 mt-0.5">•</span> Test the wheel on the device you&apos;ll use at the event</li>
+                                    <li className="flex items-start gap-2"><span className="text-yellow-500 mt-0.5">•</span> Prepare a backup plan (save the wheel link)</li>
+                                </ul>
+                            </div>
+                            <div className="bg-gradient-to-br from-green-50 to-emerald-50 md:p-6 p-4 md:rounded-xl rounded-lg border border-green-200">
+                                <h3 className="font-bold text-gray-900 mb-3 text-lg">🎤 During the Event</h3>
+                                <ul className="space-y-2 md:text-base text-sm text-gray-700">
+                                    <li className="flex items-start gap-2"><span className="text-green-500 mt-0.5">•</span> Display the wheel on a large screen for everyone to see</li>
+                                    <li className="flex items-start gap-2"><span className="text-green-500 mt-0.5">•</span> Build anticipation – explain the process before spinning</li>
+                                    <li className="flex items-start gap-2"><span className="text-green-500 mt-0.5">•</span> Let someone from the audience press the spin button</li>
+                                    <li className="flex items-start gap-2"><span className="text-green-500 mt-0.5">•</span> Remove winners between rounds if drawing multiple prizes</li>
+                                    <li className="flex items-start gap-2"><span className="text-green-500 mt-0.5">•</span> Record the spin for social media content</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Lucky Draw Ideas */}
+            <section className="py-10 lg:py-16 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+                            Creative Lucky Draw Ideas
+                        </h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:gap-5 gap-3">
+                            {[
+                                { emoji: "🎄", title: "Holiday Office Party", desc: "Add all employee names for a year-end bonus lucky draw or Secret Santa assignment" },
+                                { emoji: "🎓", title: "School Fundraiser", desc: "Sell raffle tickets and use the wheel to pick winners for donated prizes at school events" },
+                                { emoji: "🏪", title: "Store Grand Opening", desc: "Collect customer info and run an exciting lucky draw to drive foot traffic and buzz" },
+                                { emoji: "📱", title: "App Launch Event", desc: "Reward early adopters with prizes through a live lucky draw during your launch stream" },
+                                { emoji: "💒", title: "Wedding Reception", desc: "Add table numbers or guest names for fun door prizes throughout the evening" },
+                                { emoji: "🏆", title: "Sports League Awards", desc: "Draw for bonus prizes after the main awards ceremony to keep everyone engaged" },
+                                { emoji: "📺", title: "Live Stream Milestone", desc: "Celebrate follower milestones by spinning a lucky draw for your most engaged viewers" },
+                                { emoji: "🏢", title: "Employee Appreciation", desc: "Monthly or quarterly lucky draws for gift cards, extra PTO, or other perks" },
+                            ].map((idea, index) => (
+                                <div key={index} className="bg-white md:p-4 p-3 md:rounded-xl rounded-lg shadow-sm border border-gray-100 flex gap-3 items-start">
+                                    <span className="text-2xl flex-shrink-0">{idea.emoji}</span>
+                                    <div>
+                                        <h3 className="font-bold text-gray-900 text-sm md:text-base">{idea.title}</h3>
+                                        <p className="text-xs md:text-sm text-gray-600">{idea.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Internal Links Section */}
             <section className="py-10 lg:py-16 bg-gray-50">
                 <div className="container mx-auto px-4">
