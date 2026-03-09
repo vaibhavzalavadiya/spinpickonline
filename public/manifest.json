@@ -1,0 +1,23 @@
+{
+    "name": "SpinPickOnline – Free Random Picker Wheel",
+    "short_name": "SpinPickOnline",
+    "description": "Free random picker wheel tool for fair and instant random selection. No signup required.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#3b82f6",
+    "orientation": "any",
+    "categories": [
+        "utilities",
+        "entertainment",
+        "education"
+    ],
+    "icons": [
+        {
+            "src": "/images/logo.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}

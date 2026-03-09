@@ -77,6 +77,12 @@ export function generateOrganizationSchema() {
     url: SITE_CONFIG.url,
     logo: `${SITE_CONFIG.url}/images/logo.png`,
     description: SITE_CONFIG.description,
+    sameAs: [],
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      url: `${SITE_CONFIG.url}/contact`,
+    },
   };
 }
 
@@ -87,6 +93,11 @@ export function generateWebSiteSchema() {
     "@type": "WebSite",
     name: SITE_CONFIG.name,
     url: SITE_CONFIG.url,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${SITE_CONFIG.url}/wheel?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
   };
 }
 
@@ -96,13 +107,18 @@ export function generateWebApplicationSchema() {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     name: "Random Picker Wheel",
+    url: SITE_CONFIG.url,
+    description: SITE_CONFIG.description,
     applicationCategory: "UtilityApplication",
     operatingSystem: "Web",
+    browserRequirements: "Requires JavaScript. Requires HTML5.",
     offers: {
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
     },
+    featureList:
+      "Random name picker, Spin the wheel, Decision wheel, Team picker, Giveaway winner selector, Custom wheel creator, Yes/No wheel, Shareable wheels",
   };
 }
 

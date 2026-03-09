@@ -1,0 +1,46 @@
+# SpinPickOnline
+
+> Free random picker wheel tool for fair and instant random selection. Spin the wheel online for free. Create random name pickers, yes-or-no wheels, giveaway winners, and more. No signup required. Fast, fun, and mobile-friendly.
+
+## Core Tools
+- [Spin the Wheel – Homepage](https://spinpickonline.com): Main page with interactive spinner wheel for random selection
+- [Create Custom Wheel](https://spinpickonline.com/wheel): Build your own custom random picker wheel with unlimited entries
+- [Random Picker Wheel](https://spinpickonline.com/random-picker-wheel): Universal random selection tool for any list
+- [Name Picker](https://spinpickonline.com/name-picker): Random name selector for groups, classrooms, and teams
+- [Yes/No Wheel](https://spinpickonline.com/yes-no-wheel): Quick binary decision maker wheel
+- [Name Spinner](https://spinpickonline.com/name-spinner): Visual name spinning wheel for fun selection
+
+## SEO Landing Pages
+- [Lucky Draw Wheel](https://spinpickonline.com/lucky-draw-wheel): Free lucky draw wheel for events and promotions
+- [Raffle Wheel](https://spinpickonline.com/raffle-wheel): Spin for raffle draws and prize selection
+- [Prize Wheel](https://spinpickonline.com/prize-wheel): Spin to win exciting prizes at events
+- [Giveaway Wheel](https://spinpickonline.com/spin-wheel-for-giveaway): Fair giveaway winner selection tool
+- [Decision Wheel](https://spinpickonline.com/decision-wheel): Let the wheel decide for you
+- [Picker Wheel](https://spinpickonline.com/picker-wheel): Universal picker for any choice
+- [Wheel Spinner](https://spinpickonline.com/wheel-spinner): Custom wheel spinner tool
+- [Random Number Wheel](https://spinpickonline.com/random-number-wheel): Generate random numbers with a wheel
+- [Random Choice Picker](https://spinpickonline.com/random-choice-picker): Pick random choices from your list
+
+## Use Cases
+- [Team Picker](https://spinpickonline.com/team-picker): Fair random team selection for sports and work
+- [Classroom Activities](https://spinpickonline.com/classroom-activities): Random student picker for teachers
+- [Giveaway Winner](https://spinpickonline.com/giveaway-winner): Transparent giveaway winner selection
+- [Lunch Decisions](https://spinpickonline.com/lunch-decisions): Quick lunch decision maker
+- [Task Assignment](https://spinpickonline.com/task-assignment): Fair random task distribution
+- [Chore Assignment](https://spinpickonline.com/chore-assignment): Fair household chore distribution
+- [Presentation Picker](https://spinpickonline.com/presentation-picker): Random presenter selection
+
+## Guides & Blog
+- [How to Use Random Picker Wheel](https://spinpickonline.com/guides/how-to-use-random-picker-wheel): Step-by-step guide
+- [How to Run Instagram Giveaway](https://spinpickonline.com/blog/how-to-run-instagram-giveaway): Fair giveaway guide
+- [Random Name Picker for Teachers](https://spinpickonline.com/blog/random-name-picker-for-teachers): Classroom guide
+- [Best Team Building Activities](https://spinpickonline.com/blog/best-team-building-activities): Team activity ideas
+- [Fair Raffle Drawing Guide](https://spinpickonline.com/blog/fair-raffle-drawing-guide): Raffle best practices
+- [Decision Making Tips](https://spinpickonline.com/blog/decision-making-tips): Better decisions with randomization
+
+## Optional
+- [FAQ](https://spinpickonline.com/faq): Frequently asked questions about the random picker wheel
+- [About](https://spinpickonline.com/about): About SpinPickOnline
+- [Features](https://spinpickonline.com/features): All features of the random picker wheel
+- [How It Works](https://spinpickonline.com/how-it-works): Technical explanation of the wheel
+- [Contact](https://spinpickonline.com/contact): Get in touch with us

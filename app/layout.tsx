@@ -36,6 +36,8 @@ export default function RootLayout({
       <head>
         <SchemaScript schema={organizationSchema} />
         <SchemaScript schema={websiteSchema} />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#3b82f6" />
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9187153323911677"

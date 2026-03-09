@@ -4,12 +4,12 @@ import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 
 export const metadata: Metadata = {
-    title: "How to Run a Fair Instagram Giveaway in 2025 | SpinPickOnline",
+    title: "How to Run a Fair Instagram Giveaway in 2026 | SpinPickOnline",
     description: "Step-by-step guide to running transparent, engaging Instagram giveaways using a spin wheel. Learn how to collect entries, go live, and announce winners fairly.",
     alternates: { canonical: "/blog/how-to-run-instagram-giveaway" },
     robots: { index: true, follow: true },
     openGraph: {
-        title: "How to Run a Fair Instagram Giveaway in 2025",
+        title: "How to Run a Fair Instagram Giveaway in 2026",
         description: "Complete guide to fair Instagram giveaways with a spin wheel.",
         type: "article",
         url: "https://spinpickonline.com/blog/how-to-run-instagram-giveaway",
@@ -27,7 +27,7 @@ export default function InstagramGiveawayPost() {
                     <div className="mb-8">
                         <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-pink-500 to-rose-500 text-white">Giveaways</span>
                         <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
-                            How to Run a Fair Instagram Giveaway in 2025
+                            How to Run a Fair Instagram Giveaway in 2026
                         </h1>
                         <p className="text-gray-500 text-sm">Published February 15, 2026 · 6 min read</p>
                     </div>
