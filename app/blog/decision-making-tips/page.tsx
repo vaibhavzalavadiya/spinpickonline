@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
+import SchemaScript from "@/components/SchemaScript";
 
 export const metadata: Metadata = {
     title: "When You Can't Decide: A Guide to Better Decision Making | SpinPickOnline",
@@ -17,8 +18,20 @@ export const metadata: Metadata = {
 };
 
 export default function DecisionMakingPost() {
+    const articleSchema = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "When You Can't Decide: A Guide to Better Decision Making",
+        "description": "Science-backed tips for overcoming decision fatigue, analysis paralysis, and the paradox of choice.",
+        "datePublished": "2026-02-05",
+        "dateModified": "2026-02-05",
+        "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
+        "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/blog/decision-making-tips" },
+    };
     return (
         <div className="min-h-screen bg-white">
+            <SchemaScript schema={articleSchema} />
             <article className="container mx-auto px-4 py-8 lg:py-12">
                 <div className="max-w-3xl mx-auto">
                     <Link href="/blog" className="text-sm text-blue-600 hover:text-blue-700 inline-flex items-center gap-1 mb-6">
@@ -29,12 +42,15 @@ export default function DecisionMakingPost() {
                         <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
                             When You Can&apos;t Decide: A Guide to Better Decision Making
                         </h1>
-                        <p className="text-gray-500 text-sm">Published February 5, 2026 · 7 min read</p>
+                        <p className="text-gray-500 text-sm">Published February 5, 2026 · 10 min read · By SpinPickOnline Team</p>
                     </div>
 
                     <div className="prose prose-gray max-w-none space-y-6">
                         <p className="md:text-lg text-base text-gray-700 leading-relaxed">
-                            We make over 35,000 decisions every day. Most are trivial – what to wear, what to eat, which route to take. But even small decisions drain mental energy. By the end of the day, we&apos;re often too exhausted to make good choices about things that actually matter.
+                            We make over 35,000 decisions every day. Most are trivial — what to wear, what to eat, which route to take. But even small decisions drain mental energy. By the end of the day, we&apos;re often too exhausted to make good choices about things that actually matter.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            Understanding why this happens — and having concrete strategies to combat it — can significantly improve your quality of life, reduce stress, and free up cognitive energy for the decisions that genuinely deserve your full attention. This guide covers the science of decision fatigue, proven frameworks for better choices, and when tools like a <Link href="/decision-wheel" className="text-blue-600 hover:text-blue-700 font-semibold">decision wheel</Link> can legitimately help you decide faster and feel better about your choices.
                         </p>
 
                         <h2 className="text-xl md:text-2xl font-bold text-gray-900 md:mt-8 mt-5">Understanding Decision Fatigue</h2>
@@ -124,6 +140,17 @@ export default function DecisionMakingPost() {
 
                         <p className="text-gray-700 leading-relaxed">
                             The bottom line: <strong>save your decision-making energy for what matters</strong>. For everything else, let tools like <Link href="/decision-wheel" className="text-blue-600 hover:text-blue-700 font-semibold">decision wheels</Link> and <Link href="/random-choice-picker" className="text-blue-600 hover:text-blue-700 font-semibold">random pickers</Link> do the work for you.
+                        </p>
+
+                        <h2 className="text-xl md:text-2xl font-bold text-gray-900 md:mt-8 mt-5">The Surprising Science of Embracing Randomness</h2>
+                        <p className="text-gray-700 leading-relaxed">
+                            Counterintuitively, researchers have found that people who use random selection for low-stakes decisions often report higher satisfaction with their outcomes. A study published in the journal <em>Psychological Science</em> found that when people flipped a coin to decide between options they were genuinely ambivalent about, they were more satisfied with the outcome than when they deliberated extensively.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            The reason is psychological: when you decide by deliberation, you remain responsible for the outcome and will second-guess yourself if it doesn&apos;t work out perfectly. When you use a random tool, you release that responsibility. You simply experience the result rather than defending your choice. This is called &quot;choice closure&quot; — and random selection achieves it faster and more completely than extended deliberation for low-stakes decisions.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            So next time you&apos;re staring at a restaurant menu for ten minutes, add your top options to a <Link href="/decision-wheel" className="text-blue-600 hover:text-blue-700 font-semibold">decision wheel</Link> and spin. You might be surprised how freeing it feels — and how much you enjoy the meal you didn&apos;t agonize over choosing.
                         </p>
                     </div>
 

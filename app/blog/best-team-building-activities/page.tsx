@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
+import SchemaScript from "@/components/SchemaScript";
 
 export const metadata: Metadata = {
     title: "10 Fun Team Building Activities Using a Spin Wheel | SpinPickOnline",
@@ -17,8 +18,20 @@ export const metadata: Metadata = {
 };
 
 export default function TeamBuildingPost() {
+    const articleSchema = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "10 Fun Team Building Activities Using a Spin Wheel",
+        "description": "Creative team building ideas using a spin wheel to add randomness and excitement.",
+        "datePublished": "2026-02-10",
+        "dateModified": "2026-02-10",
+        "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
+        "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/blog/best-team-building-activities" },
+    };
     return (
         <div className="min-h-screen bg-white">
+            <SchemaScript schema={articleSchema} />
             <article className="container mx-auto px-4 py-8 lg:py-12">
                 <div className="max-w-3xl mx-auto">
                     <Link href="/blog" className="text-sm text-blue-600 hover:text-blue-700 inline-flex items-center gap-1 mb-6">
@@ -29,12 +42,15 @@ export default function TeamBuildingPost() {
                         <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
                             10 Fun Team Building Activities Using a Spin Wheel
                         </h1>
-                        <p className="text-gray-500 text-sm">Published February 10, 2026 · 5 min read</p>
+                        <p className="text-gray-500 text-sm">Published February 10, 2026 · 9 min read · By SpinPickOnline Team</p>
                     </div>
 
                     <div className="prose prose-gray max-w-none space-y-6">
                         <p className="md:text-lg text-base text-gray-700 leading-relaxed">
-                            Team building doesn&apos;t have to be forced or awkward. Adding a <Link href="/wheel-spinner" className="text-blue-600 hover:text-blue-700 font-semibold">spin wheel</Link> to your activities introduces an element of randomness that breaks down barriers and makes everything more fun.
+                            Team building doesn&apos;t have to be forced or awkward. Adding a <Link href="/wheel-spinner" className="text-blue-600 hover:text-blue-700 font-semibold">spin wheel</Link> to your activities introduces an element of randomness that breaks down barriers, prevents clique formation, and makes everything genuinely more fun — for remote teams and in-person offices alike.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            The secret power of a spin wheel in team building is that it removes politics and social hierarchy from the equation. No one feels targeted, excluded, or singled out — the wheel is impartial. This creates psychological safety and makes even introverted team members more willing to participate. Here are 10 proven activities that use randomness to bring teams closer together.
                         </p>
 
                         <div className="space-y-6 mt-8">
@@ -103,8 +119,25 @@ export default function TeamBuildingPost() {
 
                         <h2 className="text-xl md:text-2xl font-bold text-gray-900 md:mt-8 mt-5">Why Randomness Makes Team Building Better</h2>
                         <p className="text-gray-700 leading-relaxed">
-                            When activities are structured predictably, people default to their comfort zones – sitting with friends, pairing with familiar colleagues, avoiding activities they&apos;re unsure about. A <Link href="/random-choice-picker" className="text-blue-600 hover:text-blue-700 font-semibold">random choice picker</Link> breaks these patterns and creates unexpected, memorable interactions.
+                            When activities are structured predictably, people default to their comfort zones — sitting with friends, pairing with familiar colleagues, avoiding activities they&apos;re unsure about. A <Link href="/random-choice-picker" className="text-blue-600 hover:text-blue-700 font-semibold">random choice picker</Link> breaks these patterns and creates unexpected, memorable interactions that wouldn&apos;t happen otherwise.
                         </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            Research in organizational psychology consistently shows that cross-functional and cross-hierarchical relationships — the kind you&apos;d never form through structured networking — are the ones that most improve team performance, innovation, and job satisfaction. A spin wheel accelerates the formation of these &quot;weak ties&quot; that turn out to be surprisingly strong for team culture.
+                        </p>
+
+                        <h2 className="text-xl md:text-2xl font-bold text-gray-900 md:mt-8 mt-5">Adapting for Remote and Hybrid Teams</h2>
+                        <p className="text-gray-700 leading-relaxed">
+                            All of these activities work for remote teams — just use video conferencing (Zoom, Google Meet, Teams) and share your screen while spinning the wheel. Remote team building often feels more forced than in-person because spontaneous interactions don&apos;t happen naturally. A spin wheel adds the spontaneity that remote work strips away.
+                        </p>
+                        <div className="bg-green-50 p-5 rounded-xl border border-green-200">
+                            <h3 className="font-bold text-green-800 mb-2">🖥️ Remote Team Tips</h3>
+                            <ul className="text-sm text-gray-700 space-y-1.5">
+                                <li>• Share your screen and spin the wheel during your video call so everyone sees it happen live</li>
+                                <li>• Use a virtual whiteboard alongside the wheel to capture ideas generated by activities</li>
+                                <li>• Record the session so team members in different timezones can watch</li>
+                                <li>• Slack or Teams channels work great for &quot;Random Buddy Pairs&quot; and &quot;Show &amp; Tell&quot; follow-ups</li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div className="mt-12 p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border border-green-200">

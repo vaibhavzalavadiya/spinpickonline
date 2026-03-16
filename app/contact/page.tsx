@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { FiMail, FiSend, FiArrowLeft } from "react-icons/fi";
+import { FiMail, FiArrowLeft } from "react-icons/fi";
 import { IoMailOutline } from "react-icons/io5";
+import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
     title: "Contact Us | Spin Wheel Support | SpinPickOnline",
@@ -43,52 +44,7 @@ export default function ContactPage() {
 
                 {/* Contact Form Card */}
                 <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 p-4 sm:p-6 lg:p-8">
-                    <form className="space-y-4">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-1.5">Name</label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    className="w-full px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:border-blue-400 transition-all"
-                                    placeholder="John Doe"
-                                />
-                            </div>
-
-                            <div>
-                                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-1.5">Email</label>
-                                <div className="relative">
-                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                        <FiMail className="text-gray-400 text-sm" />
-                                    </div>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        className="w-full pl-9 pr-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:border-blue-400 transition-all"
-                                        placeholder="you@example.com"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-1.5">Message</label>
-                            <textarea
-                                id="message"
-                                rows={3}
-                                className="w-full px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:border-blue-400 transition-all resize-none"
-                                placeholder="How can we help you?"
-                            ></textarea>
-                        </div>
-
-                        <button
-                            type="button"
-                            className="w-full cursor-pointer bg-linear-to-r from-blue-600 to-purple-600 text-white font-bold py-2.5 sm:py-3 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all shadow-md hover:shadow-lg active:scale-95 flex items-center justify-center gap-2 text-sm"
-                        >
-                            <FiSend className="w-4 h-4" />
-                            Send Message
-                        </button>
-                    </form>
+                    <ContactForm />
 
                     {/* Direct Email Section */}
                     <div className="mt-6 text-center pt-5 border-t border-gray-200">

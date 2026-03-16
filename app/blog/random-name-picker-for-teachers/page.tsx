@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
+import SchemaScript from "@/components/SchemaScript";
 
 export const metadata: Metadata = {
     title: "How Teachers Use Random Name Pickers in the Classroom | SpinPickOnline",
@@ -16,9 +17,22 @@ export const metadata: Metadata = {
     },
 };
 
+const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How Teachers Use Random Name Pickers in the Classroom",
+    "description": "Discover how random name pickers boost classroom engagement, reduce bias, and keep students attentive.",
+    "datePublished": "2026-02-12",
+    "dateModified": "2026-02-12",
+    "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
+    "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/blog/random-name-picker-for-teachers" },
+};
+
 export default function TeacherNamePickerPost() {
     return (
         <div className="min-h-screen bg-white">
+            <SchemaScript schema={articleSchema} />
             <article className="container mx-auto px-4 py-8 lg:py-12">
                 <div className="max-w-3xl mx-auto">
                     <Link href="/blog" className="text-sm text-blue-600 hover:text-blue-700 inline-flex items-center gap-1 mb-6">
@@ -29,12 +43,15 @@ export default function TeacherNamePickerPost() {
                         <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
                             How Teachers Use Random Name Pickers in the Classroom
                         </h1>
-                        <p className="text-gray-500 text-sm">Published February 12, 2026 · 5 min read</p>
+                        <p className="text-gray-500 text-sm">Published February 12, 2026 · 10 min read · By SpinPickOnline Team</p>
                     </div>
 
                     <div className="prose prose-gray max-w-none space-y-6">
                         <p className="md:text-lg text-base text-gray-700 leading-relaxed">
-                            Every teacher knows the challenge: you ask a question and the same three hands shoot up. The rest of the class mentally checks out. A random <Link href="/name-picker" className="text-blue-600 hover:text-blue-700 font-semibold">name picker</Link> wheel changes this dynamic completely.
+                            Every teacher knows the challenge: you ask a question and the same three hands shoot up. The rest of the class mentally checks out. A random <Link href="/name-picker" className="text-blue-600 hover:text-blue-700 font-semibold">name picker</Link> wheel changes this dynamic completely — and the results can be dramatic.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            In this guide, we&apos;ll look at the research behind random student selection, how to use a digital name picker effectively across different grade levels, and practical classroom strategies that transform participation. Whether you teach kindergarten or university, the principles here will help you run a more inclusive, engaging classroom with minimal effort.
                         </p>
 
                         <h2 className="text-xl md:text-2xl font-bold text-gray-900 md:mt-8 mt-5">The Problem with Hand-Raising</h2>
@@ -42,42 +59,45 @@ export default function TeacherNamePickerPost() {
                             Traditional hand-raising creates an uneven classroom dynamic. Confident, extroverted students dominate discussions while quieter students fade into the background. Research from the Harvard Graduate School of Education shows that <strong>in a typical class, only 20% of students account for 80% of all responses</strong>.
                         </p>
                         <p className="text-gray-700 leading-relaxed">
-                            This isn&apos;t just an engagement problem – it&apos;s an assessment problem. If you never hear from most students, you can&apos;t gauge their understanding.
+                            This isn&apos;t just an engagement problem — it&apos;s an assessment problem. If you never hear from most students, you can&apos;t accurately gauge class understanding. You end up teaching to a vocal minority while the majority may be falling behind without your knowledge. By the time you realize the gap, it&apos;s weeks into the semester.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            There&apos;s also a subtle equity issue: students from certain cultural backgrounds are less likely to raise their hands, not because they don&apos;t know the answer, but because self-promotion isn&apos;t culturally reinforced. Random selection levels this playing field and gives every student an equal voice regardless of personality type or cultural background.
                         </p>
 
                         <h2 className="text-xl md:text-2xl font-bold text-gray-900 md:mt-8 mt-5">How Random Calling Changes the Classroom</h2>
                         <p className="text-gray-700 leading-relaxed">
-                            When students know they might be called on at any time, the entire dynamic shifts:
+                            When students know they might be called on at any time, the entire dynamic shifts. The expectation of participation becomes universal rather than optional. Students who previously coasted through class now stay engaged because they can&apos;t predict when their name will appear on the wheel.
                         </p>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
                             <div className="bg-blue-50 p-4 rounded-xl border border-blue-200">
                                 <h3 className="font-bold text-blue-800 mb-2">📈 Increased Preparation</h3>
-                                <p className="text-sm text-gray-700">Students come to class more prepared when they can&apos;t predict who&apos;ll be called. Research shows a 40% increase in homework completion rates when random calling is used.</p>
+                                <p className="text-sm text-gray-700">Students come to class more prepared when they can&apos;t predict who&apos;ll be called. Studies show up to a 40% increase in homework completion rates when random calling becomes part of classroom routine.</p>
                             </div>
                             <div className="bg-green-50 p-4 rounded-xl border border-green-200">
                                 <h3 className="font-bold text-green-800 mb-2">🤝 Reduced Anxiety</h3>
-                                <p className="text-sm text-gray-700">Paradoxically, random selection reduces anxiety because students know the selection is fair. There&apos;s no feeling of being &quot;picked on&quot; – it&apos;s just the wheel.</p>
+                                <p className="text-sm text-gray-700">Paradoxically, random selection reduces anxiety because students know the selection is fair. There&apos;s no feeling of being &quot;picked on&quot; — it&apos;s just the wheel. The responsibility is removed from the teacher.</p>
                             </div>
                             <div className="bg-purple-50 p-4 rounded-xl border border-purple-200">
                                 <h3 className="font-bold text-purple-800 mb-2">⚖️ Equal Participation</h3>
-                                <p className="text-sm text-gray-700">Every student gets roughly equal airtime. Shy students get comfortable speaking up. Dominant students learn to listen and let others contribute.</p>
+                                <p className="text-sm text-gray-700">Every student gets roughly equal airtime. Shy students get comfortable speaking up. Dominant students learn to listen and let others contribute. The classroom becomes a genuinely democratic space.</p>
                             </div>
                             <div className="bg-amber-50 p-4 rounded-xl border border-amber-200">
                                 <h3 className="font-bold text-amber-800 mb-2">🎯 Better Assessment</h3>
-                                <p className="text-sm text-gray-700">You hear from every student, giving you a true picture of class understanding. This helps you identify who needs extra help early.</p>
+                                <p className="text-sm text-gray-700">You hear from every student, giving you a true picture of class understanding. This helps you identify who needs extra help early and adjust your teaching accordingly, rather than at exam time.</p>
                             </div>
                         </div>
 
                         <h2 className="text-xl md:text-2xl font-bold text-gray-900 md:mt-8 mt-5">7 Ways to Use a Name Picker in Class</h2>
                         <div className="space-y-3">
                             {[
-                                { num: "1", title: "Question & Answer", desc: "Spin the wheel to select who answers next. Students stay engaged because anyone could be called." },
-                                { num: "2", title: "Reading Aloud", desc: "Use the wheel to determine who reads the next paragraph. Spin between sections to keep attention." },
-                                { num: "3", title: "Group Formation", desc: "Spin multiple times to form random groups for projects. This mixes social circles and builds new connections." },
-                                { num: "4", title: "Presentation Order", desc: "Let the wheel decide who presents first. Students can't argue with random selection." },
-                                { num: "5", title: "Daily Helper", desc: "Spin for classroom jobs like line leader, materials distributor, or board eraser." },
-                                { num: "6", title: "Review Games", desc: "Use the wheel in quiz-show format. Spin for who answers, then spin again for the question topic." },
-                                { num: "7", title: "Reward Distribution", desc: "When giving out stickers or small prizes, use the wheel for a fun, fair selection process." },
+                                { num: "1", title: "Question & Answer", desc: "Spin the wheel to select who answers next. Students stay engaged because anyone could be called at any moment. This works especially well for review sessions." },
+                                { num: "2", title: "Reading Aloud", desc: "Use the wheel to determine who reads the next paragraph or passage. Spin between sections to keep attention high throughout the reading." },
+                                { num: "3", title: "Group Formation", desc: "Spin multiple times to form random groups for projects and activities. This mixes social circles, builds new connections, and eliminates clique dynamics." },
+                                { num: "4", title: "Presentation Order", desc: "Let the wheel decide who presents first, second, and third. Students can't argue with random selection, eliminating negotiation and delays." },
+                                { num: "5", title: "Daily Helper or Job Assignment", desc: "Spin for classroom jobs like line leader, materials distributor, or board eraser. Students love the fairness and the excitement of the wheel spin." },
+                                { num: "6", title: "Review Games", desc: "Use the wheel in quiz-show format. Spin for who answers, then spin again for the question topic. Add a timer for extra excitement." },
+                                { num: "7", title: "Reward Distribution", desc: "When giving out stickers, homework passes, or small prizes, use the wheel for a fun, transparent selection process that everyone accepts as fair." },
                             ].map((item) => (
                                 <div key={item.num} className="flex gap-3 bg-gray-50 p-4 rounded-lg">
                                     <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
@@ -91,18 +111,48 @@ export default function TeacherNamePickerPost() {
                             ))}
                         </div>
 
-                        <h2 className="text-xl md:text-2xl font-bold text-gray-900 md:mt-8 mt-5">Tips for Using Name Pickers Effectively</h2>
+                        <h2 className="text-xl md:text-2xl font-bold text-gray-900 md:mt-8 mt-5">Best Practices: Making Random Selection Work for Your Class</h2>
+                        <p className="text-gray-700 leading-relaxed">
+                            Random selection only works when the classroom culture supports it. If students feel that being called on is a punishment, the tool becomes counterproductive. Here are proven strategies to create a positive environment where random participation thrives:
+                        </p>
                         <ul className="space-y-2 text-gray-700 list-disc pl-6">
-                            <li><strong>Give think time:</strong> After spinning, give the selected student 5-10 seconds to think before they respond. This reduces anxiety and improves response quality.</li>
-                            <li><strong>Allow &quot;phone a friend&quot;:</strong> If a student is struggling, let them ask a classmate for help. This keeps the atmosphere supportive.</li>
-                            <li><strong>Celebrate participation:</strong> Thank students for answering regardless of correctness. The goal is engagement, not getting the right answer.</li>
-                            <li><strong>Be consistent:</strong> Use the wheel daily so it becomes normal routine, not a surprise.</li>
-                            <li><strong>Project the wheel:</strong> Show it on the classroom projector so students can see the transparent selection.</li>
+                            <li><strong>Give think time first:</strong> After spinning, give the selected student 10–15 seconds to think before they respond. This reduces anxiety significantly and improves response quality. Say &quot;I&apos;ll give everyone 10 seconds to think, then we&apos;ll hear from [name].&quot;</li>
+                            <li><strong>Allow &quot;phone a friend&quot;:</strong> If a student is genuinely stuck, let them ask a classmate for help. This keeps the atmosphere collaborative rather than adversarial.</li>
+                            <li><strong>Celebrate participation, not just correct answers:</strong> Thank students for engaging, regardless of whether their answer was right. The goal is participation, not performance pressure.</li>
+                            <li><strong>Be consistent daily:</strong> Use the wheel every class so it becomes normal routine rather than a surprise event. Surprise creates anxiety; routine creates confidence.</li>
+                            <li><strong>Project the wheel on screen:</strong> Show it on the classroom projector or interactive whiteboard so students can see the transparent selection process. When students see their name on the wheel, they know they have an equal chance.</li>
+                            <li><strong>Remove names after selection (optional):</strong> You can set the wheel to remove a name after it&apos;s selected, ensuring every student is called before anyone is called twice. This is great for formal participation tracking.</li>
                         </ul>
+
+                        <h2 className="text-xl md:text-2xl font-bold text-gray-900 md:mt-8 mt-5">Adapting for Different Grade Levels</h2>
+                        <p className="text-gray-700 leading-relaxed">
+                            The same tool works differently across grade levels. Here&apos;s how to adapt your approach:
+                        </p>
+                        <div className="space-y-4 my-4">
+                            <div className="border-l-4 border-blue-400 pl-4">
+                                <h3 className="font-bold text-gray-900">Elementary School (K–5)</h3>
+                                <p className="text-sm text-gray-600">Young students respond to the visual excitement of the spinning wheel. Make it a classroom event — spin dramatically, build suspense, celebrate the selected student with light applause. For very young students, use simple names and large text.</p>
+                            </div>
+                            <div className="border-l-4 border-green-400 pl-4">
+                                <h3 className="font-bold text-gray-900">Middle School (6–8)</h3>
+                                <p className="text-sm text-gray-600">Tweens respond well to fairness arguments. Emphasize that the wheel is truly random and unbiased. Let students themselves spin occasionally to give them agency. Use for group formation to break up entrenched social cliques.</p>
+                            </div>
+                            <div className="border-l-4 border-purple-400 pl-4">
+                                <h3 className="font-bold text-gray-900">High School (9–12)</h3>
+                                <p className="text-sm text-gray-600">Older students appreciate transparency. Explain the cryptographic randomness — that the algorithm is truly fair, not controlled by the teacher. Use for Socratic seminars and discussion-based classes to ensure broad participation.</p>
+                            </div>
+                            <div className="border-l-4 border-orange-400 pl-4">
+                                <h3 className="font-bold text-gray-900">University/Higher Education</h3>
+                                <p className="text-sm text-gray-600">For lecture halls, the wheel is invaluable for cold-calling without appearing punitive. For seminars and tutorials, it ensures discussion groups work across all participants rather than a vocal few dominating.</p>
+                            </div>
+                        </div>
 
                         <h2 className="text-xl md:text-2xl font-bold text-gray-900 md:mt-8 mt-5">Setting Up Your Classroom Wheel</h2>
                         <p className="text-gray-700 leading-relaxed">
-                            Setting up a <Link href="/picker-wheel" className="text-blue-600 hover:text-blue-700 font-semibold">picker wheel</Link> for your classroom takes just a few minutes. Add each student&apos;s name, customize the colors to match your class theme, and bookmark the URL for quick daily access. Our wheel works on any device – laptop, tablet, or interactive whiteboard.
+                            Setting up a <Link href="/picker-wheel" className="text-blue-600 hover:text-blue-700 font-semibold">picker wheel</Link> for your classroom takes under 5 minutes. Add each student&apos;s name, customize the colors to match your class theme, and bookmark the URL for quick daily access. Our wheel works seamlessly on any device — laptop, tablet, Chromebook, or interactive whiteboard. No app download, no login, no cost.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            At the start of each semester, create a new wheel with your class roster. You can save the configuration locally in your browser so it&apos;s ready every day. The entire setup for a class of 30 students takes about 3 minutes — and that&apos;s time well spent for the engagement benefits throughout the year.
                         </p>
                     </div>
 
@@ -112,8 +162,8 @@ export default function TeacherNamePickerPost() {
                             <Link href="/name-picker" className="px-4 py-2 bg-white rounded-full text-sm font-medium text-gray-700 hover:text-blue-600 border border-gray-200 hover:border-blue-300 transition-all inline-flex items-center gap-1">
                                 Name Picker <FiArrowRight className="text-xs" />
                             </Link>
-                            <Link href="/picker-wheel" className="px-4 py-2 bg-white rounded-full text-sm font-medium text-gray-700 hover:text-blue-600 border border-gray-200 hover:border-blue-300 transition-all inline-flex items-center gap-1">
-                                Picker Wheel <FiArrowRight className="text-xs" />
+                            <Link href="/classroom-activities" className="px-4 py-2 bg-white rounded-full text-sm font-medium text-gray-700 hover:text-blue-600 border border-gray-200 hover:border-blue-300 transition-all inline-flex items-center gap-1">
+                                Classroom Tools <FiArrowRight className="text-xs" />
                             </Link>
                             <Link href="/random-picker-wheel" className="px-4 py-2 bg-white rounded-full text-sm font-medium text-gray-700 hover:text-blue-600 border border-gray-200 hover:border-blue-300 transition-all inline-flex items-center gap-1">
                                 Random Picker <FiArrowRight className="text-xs" />

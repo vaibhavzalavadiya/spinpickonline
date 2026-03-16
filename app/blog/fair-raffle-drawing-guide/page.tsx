@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
+import SchemaScript from "@/components/SchemaScript";
 
 export const metadata: Metadata = {
     title: "How to Run a Fair Raffle Drawing Online | SpinPickOnline",
@@ -17,8 +18,20 @@ export const metadata: Metadata = {
 };
 
 export default function RaffleGuidePost() {
+    const articleSchema = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "How to Run a Fair Raffle Drawing Online",
+        "description": "Complete guide to running fair, transparent raffle drawings online.",
+        "datePublished": "2026-02-08",
+        "dateModified": "2026-02-08",
+        "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
+        "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/blog/fair-raffle-drawing-guide" },
+    };
     return (
         <div className="min-h-screen bg-white">
+            <SchemaScript schema={articleSchema} />
             <article className="container mx-auto px-4 py-8 lg:py-12">
                 <div className="max-w-3xl mx-auto">
                     <Link href="/blog" className="text-sm text-blue-600 hover:text-blue-700 inline-flex items-center gap-1 mb-6">
@@ -29,12 +42,15 @@ export default function RaffleGuidePost() {
                         <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
                             How to Run a Fair Raffle Drawing Online
                         </h1>
-                        <p className="text-gray-500 text-sm">Published February 8, 2026 · 6 min read</p>
+                        <p className="text-gray-500 text-sm">Published February 8, 2026 · 10 min read · By SpinPickOnline Team</p>
                     </div>
 
                     <div className="prose prose-gray max-w-none space-y-6">
                         <p className="md:text-lg text-base text-gray-700 leading-relaxed">
-                            Raffles are one of the most effective fundraising tools for schools, charities, and community organizations. Moving your raffle online expands your reach, reduces overhead, and makes the drawing process more transparent with tools like a <Link href="/raffle-wheel" className="text-blue-600 hover:text-blue-700 font-semibold">raffle wheel</Link>.
+                            Raffles are one of the most effective fundraising tools for schools, charities, and community organizations. Moving your raffle online expands your reach dramatically, reduces overhead, and — when done right — makes the drawing process more transparent and trustworthy than any paper-ticket raffle could ever be.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            The key word is &quot;fair.&quot; Participants who don&apos;t trust the raffle process won&apos;t buy tickets again. Organizers who cut corners risk legal liability, reputation damage, and community backlash. This complete guide covers everything you need to know: the legal framework, entry collection, verification, the drawing itself using a <Link href="/raffle-wheel" className="text-blue-600 hover:text-blue-700 font-semibold">raffle wheel</Link>, and post-draw follow-through.
                         </p>
 
                         <h2 className="text-xl md:text-2xl font-bold text-gray-900 md:mt-8 mt-5">Is Your Raffle Legal?</h2>
@@ -95,16 +111,39 @@ export default function RaffleGuidePost() {
                         <h2 className="text-xl md:text-2xl font-bold text-gray-900 md:mt-8 mt-5">Online Raffle Best Practices</h2>
                         <div className="space-y-3">
                             {[
-                                "Set a clear, specific drawing date and stick to it",
-                                "Publish complete rules before selling tickets",
-                                "Use a separate bank account for raffle proceeds",
-                                "Keep detailed records of all entries and transactions",
-                                "Announce winners through multiple channels",
-                                "Report income and distribute tax forms as required",
+                                "Set a clear, specific drawing date and stick to it — never delay without notifying entrants",
+                                "Publish complete rules publicly before selling or distributing tickets",
+                                "Use a separate bank account for raffle proceeds to maintain clear accounting",
+                                "Keep detailed records of all entries, payments, and ticket assignments",
+                                "Announce winners through multiple channels (website, social media, email)",
+                                "Report income and distribute tax forms to winners as required by your jurisdiction",
+                                "Document the entire drawing process with video evidence for dispute resolution",
                             ].map((practice, index) => (
                                 <div key={index} className="flex items-start gap-3 bg-gray-50 p-3 rounded-lg">
                                     <span className="text-green-500 font-bold">✓</span>
                                     <p className="text-sm text-gray-700">{practice}</p>
+                                </div>
+                            ))}
+                        </div>
+
+                        <h2 className="text-xl md:text-2xl font-bold text-gray-900 md:mt-8 mt-5">Common Raffle Mistakes That Destroy Trust</h2>
+                        <p className="text-gray-700 leading-relaxed">
+                            Even well-intentioned organizers make mistakes that undermine participant trust. Here are the most common raffle pitfalls and how to avoid them:
+                        </p>
+                        <div className="space-y-3">
+                            {[
+                                { mistake: "Drawing without video proof", fix: "Always record or livestream the entire drawing process — no exceptions" },
+                                { mistake: "Contacting the winner before announcing publicly", fix: "Announce publicly first, then contact the winner — prevents suspicion of a predetermined result" },
+                                { mistake: "No backup winner plan", fix: "State in your rules that if the winner doesn't respond within 48 hours, you'll draw a new winner" },
+                                { mistake: "Accepting entries after the stated deadline", fix: "Close entries at exactly the stated time — even one exception opens you to accusations of favoritism" },
+                                { mistake: "Deleting the results post later", fix: "Keep all raffle-related posts live indefinitely so participants can verify results" },
+                            ].map((item, index) => (
+                                <div key={index} className="flex gap-3 bg-gray-50 p-4 rounded-lg">
+                                    <span className="text-red-500 font-bold text-sm flex-shrink-0">❌</span>
+                                    <div>
+                                        <p className="text-sm text-gray-800"><strong>{item.mistake}</strong></p>
+                                        <p className="text-sm text-green-700">✅ {item.fix}</p>
+                                    </div>
                                 </div>
                             ))}
                         </div>
