@@ -9,6 +9,15 @@ const nextConfig: NextConfig = {
   // Performance optimizations
   compress: true,
   poweredByHeader: false,
+  // 301 redirect: non-www → www (fixes "Duplicate, Google chose different canonical" in GSC)
+  redirects: async () => [
+    {
+      source: "/:path*",
+      has: [{ type: "host", value: "spinpickonline.com" }],
+      destination: "https://www.spinpickonline.com/:path*",
+      permanent: true,
+    },
+  ],
   // Security headers for trust signals
   headers: async () => [
     {

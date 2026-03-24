@@ -1,8 +1,8 @@
 // Site-wide constants
 export const SITE_CONFIG = {
   name: "SpinPickOnline",
-  domain: process.env.NEXT_PUBLIC_DOMAIN || "spinpickonline.com",
-  url: process.env.NEXT_PUBLIC_URL || "https://spinpickonline.com",
+  domain: process.env.NEXT_PUBLIC_DOMAIN || "www.spinpickonline.com",
+  url: process.env.NEXT_PUBLIC_URL || "https://www.spinpickonline.com",
   description: "Free random picker wheel tool for fair and instant random selection",
   brand: "SpinPickOnline",
 } as const;
