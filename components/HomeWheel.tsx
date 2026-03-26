@@ -8,12 +8,12 @@ import Confetti from "@/components/Confetti";
 import Toast from "@/components/Toast";
 import ConfirmationModal from "@/components/ConfirmationModal";
 import BulkAddModal from "@/components/BulkAddModal";
+import ShareModal from "@/components/ShareModal";
 import { useSoundEffects } from "@/lib/useSoundEffects";
 import {
   generateEntryId,
   generateDefaultColors,
-  generateShareUrl,
-  copyToClipboard
+  generateShareUrl
 } from "@/lib/wheel-utils";
 import Link from "next/link";
 import {
@@ -26,6 +26,8 @@ import {
   FiCheckCircle,
   FiX,
   FiArrowRight,
+  FiArrowUp,
+  FiArrowDown,
   FiShare2,
   FiVolume2,
   FiVolumeX
@@ -71,8 +73,11 @@ export default function HomeWheel({
   const [activeTab, setActiveTab] = useState<"entries" | "results">("entries");
   const [showModal, setShowModal] = useState(false);
   const [showBulkModal, setShowBulkModal] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [shareUrl, setShareUrl] = useState("");
   const [showConfetti, setShowConfetti] = useState(false);
   const [newlyAddedId, setNewlyAddedId] = useState<string | null>(null);
+  const [sortDirection, setSortDirection] = useState<"asc" | "desc" | null>(null);
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" | "info" } | null>(null);
   const [confirmModal, setConfirmModal] = useState<{
     isOpen: boolean;
@@ -127,20 +132,15 @@ export default function HomeWheel({
     };
   }, []);
 
-  const shareWheel = async () => {
+  const shareWheel = () => {
     playClick();
-    const shareUrl = generateShareUrl(entries, undefined, results);
-    if (!shareUrl) {
+    const url = generateShareUrl(entries, undefined, results);
+    if (!url) {
       setToast({ message: "Failed to generate share link", type: "error" });
       return;
     }
-
-    const success = await copyToClipboard(shareUrl);
-    if (success) {
-      setToast({ message: "Share link copied to clipboard!", type: "success" });
-    } else {
-      setToast({ message: "Failed to copy link", type: "error" });
-    }
+    setShareUrl(url);
+    setShowShareModal(true);
   };
 
   const addEntry = () => {
@@ -212,8 +212,14 @@ export default function HomeWheel({
 
   const sortEntries = () => {
     playClick();
-    const sorted = [...entries].sort((a, b) => a.label.localeCompare(b.label));
+    const nextDir = sortDirection === "asc" ? "desc" : "asc";
+    const sorted = [...entries].sort((a, b) =>
+      nextDir === "asc"
+        ? a.label.localeCompare(b.label)
+        : b.label.localeCompare(a.label)
+    );
     setEntries(sorted);
+    setSortDirection(nextDir);
   };
 
   const startEdit = (index: number) => {
@@ -422,11 +428,19 @@ export default function HomeWheel({
                   </button>
                   <button
                     onClick={sortEntries}
-                    className="flex cursor-pointer items-center gap-2 sm:px-4 px-3 py-2.5 text-sm bg-linear-to-r from-purple-50 to-purple-100 text-purple-700 rounded-lg hover:from-purple-100 hover:to-purple-200 transition-all font-medium border border-purple-200 active:scale-95"
-                    title="Sort alphabetically"
+                    className={`flex cursor-pointer items-center gap-2 sm:px-4 px-3 py-2.5 text-sm bg-linear-to-r from-purple-50 to-purple-100 text-purple-700 rounded-lg hover:from-purple-100 hover:to-purple-200 transition-all font-medium border active:scale-95 ${
+                      sortDirection ? "border-purple-400 ring-2 ring-purple-200" : "border-purple-200"
+                    }`}
+                    title={sortDirection === "asc" ? "Sort Z→A" : "Sort A→Z"}
                   >
-                    <FiList className="text-base" />
-                    <span className="sm:text-sm text-xs">Sort A-Z</span>
+                    {sortDirection === "asc" ? (
+                      <FiArrowDown className="text-base" />
+                    ) : (
+                      <FiArrowUp className="text-base" />
+                    )}
+                    <span className="sm:text-sm text-xs">
+                      {sortDirection === "asc" ? "Sort Z→A" : "Sort A→Z"}
+                    </span>
                   </button>
                   <button
                     onClick={resetToDefault}
@@ -581,7 +595,7 @@ export default function HomeWheel({
                 {entries.length > 0 && (
                   <button
                     onClick={shareWheel}
-                    className="w-full cursor-pointer md:px-6 px-4 lg:py-3 py-2 bg-white border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all flex items-center justify-center gap-2 text-sm active:scale-[0.98]"
+                    className="w-full cursor-pointer md:px-6 px-4 lg:py-3 py-2 bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-200 text-blue-700 font-semibold rounded-xl hover:from-blue-100 hover:to-purple-100 hover:border-blue-300 transition-all flex items-center justify-center gap-2 text-sm active:scale-[0.98]"
                   >
                     <FiShare2 className="text-lg" />
                     <span>Share Wheel</span>
@@ -688,6 +702,12 @@ export default function HomeWheel({
         isOpen={showBulkModal}
         onClose={() => setShowBulkModal(false)}
         onAdd={handleBulkAdd}
+      />
+
+      <ShareModal
+        isOpen={showShareModal}
+        onClose={() => setShowShareModal(false)}
+        shareUrl={shareUrl}
       />
     </div>
   );

@@ -1,4 +1,5 @@
 import { WheelEntry, WheelState } from "./types";
+import { SITE_CONFIG } from "./constants";
 
 // Generate cryptographically secure random number
 export function getSecureRandom(): number {
@@ -162,7 +163,7 @@ export function generateShareUrl(entries: WheelEntry[], wheelName?: string, resu
 
   const baseUrl = typeof window !== "undefined"
     ? `${window.location.origin}/wheel`
-    : "https://spinpickonline.com/wheel";
+    : `${SITE_CONFIG.url}/wheel`;
 
   return `${baseUrl}?share=${encoded}`;
 }

@@ -16,9 +16,9 @@ import {
   loadWheelFromStorage,
   validateEntries,
   decodeWheelFromShare,
-  generateShareUrl,
-  copyToClipboard
+  generateShareUrl
 } from "@/lib/wheel-utils";
+import ShareModal from "@/components/ShareModal";
 import {
   FiPlus,
   FiTrash2,
@@ -28,6 +28,8 @@ import {
   FiShuffle,
   FiList,
   FiCheckCircle,
+  FiArrowUp,
+  FiArrowDown,
   FiX
 } from "react-icons/fi";
 import {
@@ -75,6 +77,9 @@ function WheelPageContent() {
   const searchParams = useSearchParams();
   const [isSharedWheel, setIsSharedWheel] = useState(false);
   const [sharedResult, setSharedResult] = useState<string | null>(null);
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [shareUrl, setShareUrl] = useState("");
+  const [sortDirection, setSortDirection] = useState<"asc" | "desc" | null>(null);
 
   // Load from localStorage or shared URL on mount
   useEffect(() => {
@@ -229,8 +234,14 @@ function WheelPageContent() {
   };
 
   const sortEntries = () => {
-    const sorted = [...entries].sort((a, b) => a.label.localeCompare(b.label));
+    const nextDir = sortDirection === "asc" ? "desc" : "asc";
+    const sorted = [...entries].sort((a, b) =>
+      nextDir === "asc"
+        ? a.label.localeCompare(b.label)
+        : b.label.localeCompare(a.label)
+    );
     setEntries(sorted);
+    setSortDirection(nextDir);
   };
 
   const resetToDefault = () => {
@@ -294,19 +305,14 @@ function WheelPageContent() {
     });
   };
 
-  const shareWheel = async () => {
-    const shareUrl = generateShareUrl(entries, wheelName, results);
-    if (!shareUrl) {
+  const shareWheel = () => {
+    const url = generateShareUrl(entries, wheelName, results);
+    if (!url) {
       setToast({ message: "Failed to generate share link", type: "error" });
       return;
     }
-
-    const success = await copyToClipboard(shareUrl);
-    if (success) {
-      setToast({ message: "Share link copied to clipboard!", type: "success" });
-    } else {
-      setToast({ message: "Failed to copy link", type: "error" });
-    }
+    setShareUrl(url);
+    setShowShareModal(true);
   };
 
   return (
@@ -413,11 +419,19 @@ function WheelPageContent() {
                     </button>
                     <button
                       onClick={sortEntries}
-                      className="flex items-center gap-2 sm:px-4 px-3 py-2.5 text-sm bg-linear-to-r from-purple-50 to-purple-100 text-purple-700 rounded-lg hover:from-purple-100 hover:to-purple-200 transition-all font-medium border border-purple-200 cursor-pointer"
-                      title="Sort alphabetically"
+                      className={`flex items-center gap-2 sm:px-4 px-3 py-2.5 text-sm bg-linear-to-r from-purple-50 to-purple-100 text-purple-700 rounded-lg hover:from-purple-100 hover:to-purple-200 transition-all font-medium border cursor-pointer active:scale-95 ${
+                        sortDirection ? "border-purple-400 ring-2 ring-purple-200" : "border-purple-200"
+                      }`}
+                      title={sortDirection === "asc" ? "Sort Z→A" : "Sort A→Z"}
                     >
-                      <FiList className="text-base" />
-                      <span className="sm:text-sm text-xs">Sort</span>
+                      {sortDirection === "asc" ? (
+                        <FiArrowDown className="text-base" />
+                      ) : (
+                        <FiArrowUp className="text-base" />
+                      )}
+                      <span className="sm:text-sm text-xs">
+                        {sortDirection === "asc" ? "Sort Z→A" : "Sort A→Z"}
+                      </span>
                     </button>
                     <button
                       onClick={resetToDefault}
@@ -575,7 +589,7 @@ function WheelPageContent() {
                     <div className="space-y-3">
                       <button
                         onClick={shareWheel}
-                        className="w-full md:px-6 px-4  lg:py-3 py-2 bg-linear-to-r from-green-50 to-emerald-50 border-2 border-green-200 text-green-700 font-semibold rounded-xl hover:from-green-100 hover:to-emerald-100 hover:border-green-300 transition-all flex items-center justify-center gap-2 text-sm cursor-pointer"
+                        className="w-full flex items-center justify-center gap-2 md:px-6 px-4 lg:py-3 py-2 bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 text-green-700 font-semibold rounded-xl hover:from-green-100 hover:to-emerald-100 hover:border-green-300 transition-all text-sm cursor-pointer active:scale-[0.98]"
                       >
                         <FiShare2 className="text-lg" />
                         <span>Share Wheel Link</span>
@@ -683,6 +697,13 @@ function WheelPageContent() {
         isOpen={showBulkModal}
         onClose={() => setShowBulkModal(false)}
         onAdd={handleBulkAdd}
+      />
+
+      <ShareModal
+        isOpen={showShareModal}
+        onClose={() => setShowShareModal(false)}
+        shareUrl={shareUrl}
+        wheelName={wheelName}
       />
 
       <style jsx>{`
