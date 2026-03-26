@@ -104,7 +104,7 @@ export default function ShareModal({ isOpen, onClose, shareUrl, wheelName }: Sha
             </div>
             <button
               onClick={onClose}
-              className="absolute top-2 right-3 p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors cursor-pointer"
+              className="absolute top-2 end-3 p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors cursor-pointer"
               aria-label="Close"
             >
               <FiX className="text-lg" />
