@@ -4,6 +4,9 @@ import { generateMetadata as genMeta } from "@/lib/seo";
 import { FEATURES, USE_CASES } from "@/lib/constants";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import HomeWheel from "@/components/HomeWheel";
+import { generateDefaultColors } from "@/lib/wheel-utils";
+import { WheelEntry } from "@/lib/types";
 
 export async function generateStaticParams() {
   const featureParams = FEATURES.map((feature) => ({
@@ -51,11 +54,25 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
       { name: feature.featureName, href: `/${feature.slug}` },
     ];
 
+    const colors = generateDefaultColors(feature.defaultEntries.length);
+    const formattedEntries: WheelEntry[] = feature.defaultEntries.map((label, index) => ({
+      id: `default-${index}`,
+      label,
+      color: colors[index],
+    }));
+
     return (
       <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
         <Breadcrumbs items={breadcrumbItems} />
 
-        <h1 className="text-4xl font-bold text-gray-900 mb-6">{feature.h1}</h1>
+        <h1 className="text-4xl font-bold text-gray-900 mb-8">{feature.h1}</h1>
+
+        <div className="mb-12">
+          <HomeWheel 
+            defaultEntries={formattedEntries} 
+            storageKey={`wheelState-${feature.slug}`} 
+          />
+        </div>
 
         <div className="prose prose-lg max-w-none">
           <p className="text-lg text-gray-700 mb-6">{feature.featureDescription}</p>
@@ -73,15 +90,6 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
               <li key={index}>{step}</li>
             ))}
           </ol>
-
-          <div className="mt-8 text-center">
-            <Link
-              href="/wheel"
-              className="inline-block px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Try {feature.featureName} Now
-            </Link>
-          </div>
         </div>
       </div>
     );
@@ -93,11 +101,25 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
       { name: useCase.useCase, href: `/${useCase.slug}` },
     ];
 
+    const colors = generateDefaultColors(useCase.defaultEntries.length);
+    const formattedEntries: WheelEntry[] = useCase.defaultEntries.map((label, index) => ({
+      id: `default-${index}`,
+      label,
+      color: colors[index],
+    }));
+
     return (
       <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
         <Breadcrumbs items={breadcrumbItems} />
 
-        <h1 className="text-4xl font-bold text-gray-900 mb-6">{useCase.h1}</h1>
+        <h1 className="text-4xl font-bold text-gray-900 mb-8">{useCase.h1}</h1>
+
+        <div className="mb-12">
+          <HomeWheel 
+            defaultEntries={formattedEntries} 
+            storageKey={`wheelState-${useCase.slug}`} 
+          />
+        </div>
 
         <div className="prose prose-lg max-w-none">
           <p className="text-lg text-gray-700 mb-6">{useCase.context}</p>
@@ -115,15 +137,6 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
               <li key={index}>{step}</li>
             ))}
           </ol>
-
-          <div className="mt-8 text-center">
-            <Link
-              href="/wheel"
-              className="inline-block px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Try {useCase.useCase} Now
-            </Link>
-          </div>
         </div>
       </div>
     );

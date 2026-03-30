@@ -64,6 +64,7 @@ export const USE_CASES = [
     ],
     relatedUseCases: ["classroom-activities", "task-assignment"],
     relatedFeatures: ["customization", "shareable-wheels"],
+    defaultEntries: ["Team Alpha", "Team Beta", "Team Delta", "Team Gamma", "Team Omega", "Team Sigma"],
   },
   {
     slug: "lunch-decisions",
@@ -87,6 +88,7 @@ export const USE_CASES = [
     ],
     relatedUseCases: ["task-assignment"],
     relatedFeatures: ["mobile-friendly", "customization"],
+    defaultEntries: ["Pizza 🍕", "Burgers 🍔", "Sushi 🍣", "Tacos 🌮", "Salad 🥗", "Pasta 🍝", "Sandwiches 🥪"],
   },
   {
     slug: "classroom-activities",
@@ -110,6 +112,7 @@ export const USE_CASES = [
     ],
     relatedUseCases: ["team-picker", "presentation-picker"],
     relatedFeatures: ["customization", "shareable-wheels"],
+    defaultEntries: ["Student 1", "Student 2", "Student 3", "Student 4", "Student 5", "Student 6", "Student 7"],
   },
   {
     slug: "giveaway-winner",
@@ -133,6 +136,7 @@ export const USE_CASES = [
     ],
     relatedUseCases: ["team-picker"],
     relatedFeatures: ["shareable-wheels", "fair-randomization"],
+    defaultEntries: ["@AlexSmith", "@SarahJones", "@MikeBrown", "@EmilyDavis", "@JohnWilson"],
   },
   {
     slug: "task-assignment",
@@ -156,6 +160,7 @@ export const USE_CASES = [
     ],
     relatedUseCases: ["lunch-decisions", "chore-assignment"],
     relatedFeatures: ["customization", "shareable-wheels"],
+    defaultEntries: ["Write Report", "Review PRs", "Update Documentation", "Client Meeting", "Email Follow-ups"],
   },
   {
     slug: "presentation-picker",
@@ -179,6 +184,7 @@ export const USE_CASES = [
     ],
     relatedUseCases: ["classroom-activities", "team-picker"],
     relatedFeatures: ["customization", "shareable-wheels"],
+    defaultEntries: ["Marketing Presentation", "Sales Quarterly", "Dev Ops Update", "Design Review", "Product Roadmap"],
   },
   {
     slug: "chore-assignment",
@@ -202,6 +208,7 @@ export const USE_CASES = [
     ],
     relatedUseCases: ["task-assignment"],
     relatedFeatures: ["customization", "mobile-friendly"],
+    defaultEntries: ["Do the dishes 🍽️", "Take out trash 🗑️", "Vacuum floors 🧹", "Clean bathroom 🧽", "Laundry 👕", "Dusting 🪟"],
   },
 ] as const;
 
@@ -233,6 +240,7 @@ export const FEATURES = [
       "No design skills required",
       "Instant visual feedback",
     ],
+    defaultEntries: ["Cyan", "Magenta", "Yellow", "Black", "White"],
   },
   {
     slug: "mobile-friendly",
@@ -260,6 +268,7 @@ export const FEATURES = [
       "No app download required",
       "Works on any device",
     ],
+    defaultEntries: ["Option A", "Option B", "Option C", "Option D"],
   },
   {
     slug: "shareable-wheels",
@@ -287,6 +296,7 @@ export const FEATURES = [
       "Live results for all viewers",
       "No account needed to share",
     ],
+    defaultEntries: ["Prize 1", "Prize 2", "Prize 3", "Try Again 🔄"],
   },
   {
     slug: "fair-randomization",
@@ -314,6 +324,7 @@ export const FEATURES = [
       "Verifiable fairness",
       "Professional-grade randomization",
     ],
+    defaultEntries: ["Blue Team 🔵", "Red Team 🔴", "Green Team 🟢", "Yellow Team 🟡"],
   },
 ] as const;
 
