@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
-import { FiX } from "react-icons/fi";
+import { useEffect, useState } from "react";
+import { FiX, FiCopy, FiShare2 } from "react-icons/fi";
 import { IoSparkles, IoTrophyOutline } from "react-icons/io5";
 import { MdOutlineCasino } from "react-icons/md";
 
@@ -20,6 +20,28 @@ export default function ResultModal({
   onRemove,
   isOpen,
 }: ResultModalProps) {
+  const [copied, setCopied] = useState(false);
+
+  const copyResult = async () => {
+    try {
+      await navigator.clipboard.writeText(result);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {}
+  };
+
+  const shareResult = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "SpinPickOnline Result",
+          text: `🎉 The winner is: ${result}! Picked with SpinPickOnline.com`,
+        });
+      } catch {}
+    } else {
+      copyResult();
+    }
+  };
   // Close on Escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -113,6 +135,24 @@ export default function ResultModal({
 
             {/* Action Buttons */}
             <div className="space-y-2.5">
+              {/* Copy & Share row */}
+              <div className="grid grid-cols-2 gap-2">
+                <button
+                  onClick={copyResult}
+                  className="w-full cursor-pointer px-3 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-xl transition-all flex items-center justify-center gap-2 text-sm active:scale-95"
+                >
+                  <FiCopy className="text-base" />
+                  <span>{copied ? "Copied!" : "Copy"}</span>
+                </button>
+                <button
+                  onClick={shareResult}
+                  className="w-full cursor-pointer px-3 py-2.5 bg-green-50 hover:bg-green-100 text-green-700 border border-green-200 font-semibold rounded-xl transition-all flex items-center justify-center gap-2 text-sm active:scale-95"
+                >
+                  <FiShare2 className="text-base" />
+                  <span>Share</span>
+                </button>
+              </div>
+
               <button
                 onClick={onContinue}
                 className="w-full cursor-pointer md:text-sm text-xs md:px-5 px-4 py-2.5 bg-linear-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 text-sm"

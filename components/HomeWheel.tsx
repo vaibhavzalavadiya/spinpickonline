@@ -420,34 +420,33 @@ export default function HomeWheel({
                 <div className="flex flex-wrap gap-2">
                   <button
                     onClick={shuffleEntries}
-                    className="flex cursor-pointer items-center gap-2 sm:px-4 px-3 py-2.5 text-sm bg-linear-to-r from-blue-50 to-blue-100 text-blue-700 rounded-lg hover:from-blue-100 hover:to-blue-200 transition-all font-medium border border-blue-200 active:scale-95"
+                    className="flex cursor-pointer items-center gap-1.5 sm:px-4 px-3 py-2.5 text-sm bg-linear-to-r from-blue-50 to-blue-100 text-blue-700 rounded-lg hover:from-blue-100 hover:to-blue-200 transition-all font-medium border border-blue-200 active:scale-95"
                     title="Shuffle entries"
                   >
-                    <FiShuffle className="text-base" />
-                    <span className="sm:text-sm text-xs">Shuffle</span>
+                    <FiShuffle className="text-base flex-shrink-0" />
+                    <span className="text-xs sm:text-sm">Shuffle</span>
                   </button>
                   <button
                     onClick={sortEntries}
-                    className={`flex cursor-pointer items-center gap-2 sm:px-4 px-3 py-2.5 text-sm bg-linear-to-r from-purple-50 to-purple-100 text-purple-700 rounded-lg hover:from-purple-100 hover:to-purple-200 transition-all font-medium border active:scale-95 ${
-                      sortDirection ? "border-purple-400 ring-2 ring-purple-200" : "border-purple-200"
-                    }`}
+                    className={`flex cursor-pointer items-center gap-1.5 sm:px-4 px-3 py-2.5 text-sm bg-linear-to-r from-purple-50 to-purple-100 text-purple-700 rounded-lg hover:from-purple-100 hover:to-purple-200 transition-all font-medium border active:scale-95 ${sortDirection ? "border-purple-400 ring-2 ring-purple-200" : "border-purple-200"}`}
                     title={sortDirection === "asc" ? "Sort Z→A" : "Sort A→Z"}
                   >
                     {sortDirection === "asc" ? (
-                      <FiArrowDown className="text-base" />
+                      <FiArrowDown className="text-base flex-shrink-0" />
                     ) : (
-                      <FiArrowUp className="text-base" />
+                      <FiArrowUp className="text-base flex-shrink-0" />
                     )}
-                    <span className="sm:text-sm text-xs">
-                      {sortDirection === "asc" ? "Sort Z→A" : "Sort A→Z"}
+                    <span className="text-xs sm:text-sm xs:inline sm:inline">
+                      {sortDirection === "asc" ? "Z→A" : "A→Z"}
                     </span>
                   </button>
                   <button
                     onClick={resetToDefault}
-                    className="flex cursor-pointer items-center gap-2 sm:px-4 px-3 py-2.5 text-sm bg-linear-to-r from-gray-50 to-gray-100 text-gray-700 rounded-lg hover:from-gray-100 hover:to-gray-200 transition-all font-medium border border-gray-200 active:scale-95"
+                    className="flex cursor-pointer items-center gap-1.5 sm:px-4 px-3 py-2.5 text-sm bg-linear-to-r from-gray-50 to-gray-100 text-gray-700 rounded-lg hover:from-gray-100 hover:to-gray-200 transition-all font-medium border border-gray-200 active:scale-95"
+                    title="Reset to default"
                   >
-                    <FiRotateCcw className="text-base" />
-                    <span className="sm:text-sm text-xs lg:block hidden">Reset</span>
+                    <FiRotateCcw className="text-base flex-shrink-0" />
+                    <span className="text-xs sm:text-sm hidden sm:inline">Reset</span>
                   </button>
                 </div>
 

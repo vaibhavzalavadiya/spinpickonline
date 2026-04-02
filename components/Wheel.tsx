@@ -312,8 +312,8 @@ export default function Wheel({ entries, onResult, isSpinning, result, onSpinReq
 
   return (
     <div className="flex flex-col items-center w-full">
-      {/* Wheel Container - Reduced Desktop Size */}
-      <div className="relative w-full max-w-[450px] aspect-square">
+      {/* Wheel Container — capped smaller on mobile so controls are always visible */}
+      <div className="relative w-full max-w-[340px] sm:max-w-[400px] md:max-w-[450px] aspect-square">
         <canvas
           ref={canvasRef}
           className="w-full h-full"
