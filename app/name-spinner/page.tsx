@@ -7,8 +7,8 @@ import { IoColorPaletteOutline, IoBriefcaseOutline, IoSchoolOutline, IoGameContr
 import { MdOutlineCasino, MdCheckCircle } from 'react-icons/md';
 
 export const metadata: Metadata = {
-    title: "Name Spinner Wheel | Wheel of Names - Free Random Name Picker | SpinPickOnline",
-    description: "Free name spinner wheel and wheel of names for fair random selection. Pick random names for meetings, classrooms, giveaways, and team activities. Cryptographic RNG ensures truly fair name picking.",
+    title: "Name Spinner – Free Wheel of Names | Random Name Picker Online",
+    description: "Spin a free wheel of names to pick randomly. Perfect for classrooms, meetings, giveaways, and team activities. Unlimited names, fair results, no signup needed.",
     alternates: {
         canonical: "/name-spinner",
     },

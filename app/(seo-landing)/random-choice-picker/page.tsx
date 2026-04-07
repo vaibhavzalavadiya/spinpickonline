@@ -7,8 +7,8 @@ import { IoOptionsOutline, IoShuffleOutline, IoSparklesOutline, IoFlashOutline }
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-    title: "Random Choice Picker | Free Choice Wheel | SpinPickOnline",
-    description: "Free random choice picker wheel. Can't decide? Let the wheel choose for you! Perfect for quick decisions, food choices, and picking from options.",
+    title: "Random Choice Picker – Free Spin Wheel for Any Decision",
+    description: "Can't decide? Use the free random choice picker wheel to settle any decision instantly. No signup needed. Fair, fun, and works on all devices.",
     alternates: {
         canonical: "/random-choice-picker",
     },
@@ -17,8 +17,8 @@ export const metadata: Metadata = {
         follow: true,
     },
     openGraph: {
-        title: "Random Choice Picker | Free Choice Wheel | SpinPickOnline",
-        description: "Free random choice picker wheel. Let the wheel decide for you!",
+        title: "Random Choice Picker – Free Spin Wheel for Any Decision",
+        description: "Can't decide? Use the free random choice picker wheel to settle any decision instantly. No signup needed. Fair, fun, and works on all devices.",
         type: "website",
         url: "https://spinpickonline.com/random-choice-picker",
     },

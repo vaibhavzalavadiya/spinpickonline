@@ -5,8 +5,8 @@ import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 import { FiSmartphone, FiZap, FiWifi, FiMonitor } from "react-icons/fi";
 
 export const metadata: Metadata = {
-    title: "Mobile Friendly Spin Wheel | Works on Phone & Tablet | SpinPickOnline",
-    description: "Spin the wheel anywhere on any device. Our mobile-friendly random picker wheel works perfectly on iPhone, Android, iPad, and desktop. Touch-optimized spinner wheel - no app download needed. Free mobile name picker.",
+    title: "Mobile Spin Wheel – Works on iPhone, Android & Tablet | Free & Fast",
+    description: "Spin the wheel on any device. Our mobile-friendly random picker works perfectly on iPhone, Android, iPad, and desktop. No app needed. Touch-optimized, free, instant.",
     alternates: {
         canonical: "/mobile-friendly",
     },

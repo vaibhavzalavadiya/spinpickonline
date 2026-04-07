@@ -5,8 +5,8 @@ import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 import TeamPickerWheel from "@/components/TeamPickerWheel";
 
 export const metadata: Metadata = {
-    title: "Team Picker Wheel | Random Group Generator | SpinPickOnline",
-    description: "Divide groups into random teams instantly with our team picker wheel. Fair random team generator for sports, classrooms, and events. Free name picker tool - no signup needed.",
+    title: "Random Team Picker – Free Team Generator Wheel | Split Groups Fast",
+    description: "Divide people into random teams instantly. Free team picker wheel for sports, classrooms, offices and events. Fair, fast, no signup. Works on any device.",
     alternates: {
         canonical: "/team-picker",
     },

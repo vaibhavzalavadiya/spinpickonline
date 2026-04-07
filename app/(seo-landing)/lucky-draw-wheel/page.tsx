@@ -7,8 +7,8 @@ import { IoGiftOutline, IoTrophyOutline, IoSparklesOutline, IoShieldCheckmarkOut
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-    title: "Lucky Draw Wheel | Free Online Spinner | SpinPickOnline",
-    description: "Free lucky draw wheel for instant winner selection. Perfect for events, parties, and promotions. Cryptographically fair, mobile-friendly, no signup required.",
+    title: "Lucky Draw Wheel – Free Online Winner Picker | Pick Winners Instantly",
+    description: "Run a free lucky draw in seconds. Pick random winners for corporate events, parties, and promotions. Fair, mobile-friendly, no signup required. Spin now.",
     alternates: {
         canonical: "/lucky-draw-wheel",
     },
@@ -17,8 +17,8 @@ export const metadata: Metadata = {
         follow: true,
     },
     openGraph: {
-        title: "Lucky Draw Wheel | Free Online Spinner | SpinPickOnline",
-        description: "Free lucky draw wheel for instant winner selection. Perfect for events, parties, and promotions.",
+        title: "Lucky Draw Wheel – Free Online Winner Picker | Pick Winners Instantly",
+        description: "Run a free lucky draw in seconds. Pick random winners for corporate events, parties, and promotions.",
         type: "website",
         url: "https://spinpickonline.com/lucky-draw-wheel",
     },

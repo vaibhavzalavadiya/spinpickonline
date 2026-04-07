@@ -5,8 +5,8 @@ import { CallToAction } from "@/components/CallToAction";
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-    title: "Giveaway Winner Picker | Viral Contest Tool | SpinPickOnline",
-    description: "Pick a random winner for your Instagram, TikTok, or YouTube giveaway. Visual, trustworthy, and exciting proof of fairness.",
+    title: "Giveaway Winner Picker – Free Random Contest Wheel | Fair & Instant",
+    description: "Pick a fair giveaway winner instantly. Free random picker for Instagram, YouTube, TikTok contests. Transparent results your audience can trust. No signup required.",
     alternates: {
         canonical: "/giveaway-winner",
     },

@@ -27,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/wheel-spinner",
     "/picker-wheel",
     "/decision-wheel",
+    "/wheel-of-names",
   ];
 
   // Info/resource pages (medium priority)

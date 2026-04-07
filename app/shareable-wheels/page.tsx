@@ -6,8 +6,8 @@ import Link from "next/link";
 import { FiLink, FiShare2, FiSave, FiUsers, FiArrowRight } from "react-icons/fi";
 
 export const metadata: Metadata = {
-    title: "Shareable Spin Wheel | Save & Share Custom Wheels | SpinPickOnline",
-    description: "Create a custom spin wheel and share it with friends, students, or teammates instantly. Save your wheel of names, random picker wheel, and spinner configurations. Free shareable wheel tool - no signup required.",
+    title: "Shareable Spin Wheel – Free Create & Share Custom Wheels | SpinPickOnline",
+    description: "Create a custom spin wheel and share it instantly via link. Free shareable wheel for teachers, teams, and giveaways. No signup needed. Share with anyone.",
     alternates: {
         canonical: "/shareable-wheels",
     },

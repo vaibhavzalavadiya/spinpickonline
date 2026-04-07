@@ -7,8 +7,8 @@ import Link from "next/link";
 import YesNoWheel from "@/components/YesNoWheel";
 
 export const metadata: Metadata = generateMetadata({
-  title: "Yes or No Wheel | Free Decision Maker | SpinPickOnline",
-  description: "Free yes or no wheel for quick decisions. Spin the wheel to get instant yes/no answers. Fair, fast, and fun decision maker. No signup required.",
+  title: "Yes or No Wheel – Free Decision Spinner | Instant Answer",
+  description: "Can't decide? Spin the yes or no wheel for an instant answer. Free, fair, and fun decision maker. No signup. Works on mobile and desktop instantly.",
   canonical: "/yes-no-wheel",
 });
 

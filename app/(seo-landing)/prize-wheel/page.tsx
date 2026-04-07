@@ -7,8 +7,8 @@ import { IoRibbonOutline, IoSparklesOutline, IoStarOutline, IoTrophyOutline } fr
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-    title: "Prize Wheel | Free Spin to Win Wheel | SpinPickOnline",
-    description: "Free prize wheel spinner for instant rewards. Perfect for trade shows, retail promotions, and gaming. Spin to win with our customizable prize wheel.",
+    title: "Prize Wheel – Free Custom Prize Spinner | Spin to Win Online",
+    description: "Create a free prize wheel for trade shows, retail promos, and events. Custom prizes, instant results, no signup. Spin to win with your own prize wheel now.",
     alternates: {
         canonical: "/prize-wheel",
     },
@@ -17,8 +17,8 @@ export const metadata: Metadata = {
         follow: true,
     },
     openGraph: {
-        title: "Prize Wheel | Free Spin to Win Wheel | SpinPickOnline",
-        description: "Free prize wheel spinner for instant rewards. Perfect for trade shows and promotions.",
+        title: "Prize Wheel – Free Custom Prize Spinner | Spin to Win Online",
+        description: "Create a free prize wheel for trade shows and retail promos. Custom prizes, instant results.",
         type: "website",
         url: "https://spinpickonline.com/prize-wheel",
     },

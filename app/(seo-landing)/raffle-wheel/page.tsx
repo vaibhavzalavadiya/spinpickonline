@@ -7,8 +7,8 @@ import { IoTicketOutline, IoShieldCheckmarkOutline, IoSparklesOutline, IoPeopleO
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-    title: "Raffle Wheel | Free Online Raffle Spinner | SpinPickOnline",
-    description: "Free raffle wheel spinner for fair ticket drawings. Perfect for fundraisers, charity events, and raffles. No signup, cryptographically secure randomization.",
+    title: "Raffle Wheel – Free Online Raffle Spinner | Draw Winners Fast",
+    description: "Run fair raffle drawings instantly. Free raffle wheel for fundraisers, school events, and community raffles. Pick a random winner with one spin. No signup needed.",
     alternates: {
         canonical: "/raffle-wheel",
     },
@@ -17,8 +17,8 @@ export const metadata: Metadata = {
         follow: true,
     },
     openGraph: {
-        title: "Raffle Wheel | Free Online Raffle Spinner | SpinPickOnline",
-        description: "Free raffle wheel spinner for fair ticket drawings. Perfect for fundraisers and charity events.",
+        title: "Raffle Wheel – Free Online Raffle Spinner | Draw Winners Fast",
+        description: "Run fair raffle drawings instantly. Free raffle wheel for fundraisers and charity events.",
         type: "website",
         url: "https://spinpickonline.com/raffle-wheel",
     },

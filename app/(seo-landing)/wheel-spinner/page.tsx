@@ -7,8 +7,8 @@ import { IoColorPaletteOutline, IoSparklesOutline, IoPhonePortraitOutline, IoSha
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-    title: "Wheel Spinner | Free Online Spinning Wheel | SpinPickOnline",
-    description: "Free wheel spinner online. Create custom spinning wheels for any purpose. Add entries, customize colors, and spin! No download, no signup required.",
+    title: "Wheel Spinner – Free Online Spinning Wheel | Build Your Own Wheel",
+    description: "Create and spin your own free wheel online in seconds. Add any entries, customize colors, and spin instantly. No download, no signup. Works on all devices.",
     alternates: {
         canonical: "/wheel-spinner",
     },
@@ -17,8 +17,8 @@ export const metadata: Metadata = {
         follow: true,
     },
     openGraph: {
-        title: "Wheel Spinner | Free Online Spinning Wheel | SpinPickOnline",
-        description: "Free wheel spinner online. Create custom spinning wheels instantly.",
+        title: "Wheel Spinner – Free Online Spinning Wheel | Build Your Own Wheel",
+        description: "Create and spin your own free wheel online in seconds. No download, no signup required.",
         type: "website",
         url: "https://spinpickonline.com/wheel-spinner",
     },

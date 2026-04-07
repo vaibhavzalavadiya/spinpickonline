@@ -7,8 +7,8 @@ import { IoCalculatorOutline, IoShieldCheckmarkOutline, IoSparklesOutline, IoDic
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-    title: "Random Number Wheel | Free Number Spinner | SpinPickOnline",
-    description: "Free random number wheel spinner. Generate random numbers instantly with our spinning wheel. Perfect for games, lotteries, and  number selection.",
+    title: "Random Number Wheel – Free Number Spinner | Generate Numbers Instantly",
+    description: "Spin a free random number wheel and get instant results. Perfect for games, classrooms, lotteries, and number selection. Customize your range. No signup needed.",
     alternates: {
         canonical: "/random-number-wheel",
     },
@@ -17,8 +17,8 @@ export const metadata: Metadata = {
         follow: true,
     },
     openGraph: {
-        title: "Random Number Wheel | Free Number Spinner | SpinPickOnline",
-        description: "Free random number wheel spinner. Generate random numbers with our spinning wheel.",
+        title: "Random Number Wheel – Free Number Spinner | Generate Numbers Instantly",
+        description: "Spin a free random number wheel and get instant results. Perfect for games and classrooms.",
         type: "website",
         url: "https://spinpickonline.com/random-number-wheel",
     },

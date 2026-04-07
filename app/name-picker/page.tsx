@@ -7,8 +7,8 @@ import { generateFAQSchema, generateWebApplicationSchema, generateBreadcrumbSche
 import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
-    title: "Random Name Picker | Pick A Random Name | SpinPickOnline",
-    description: "The fair and fun way to pick a random name from a list. Perfect for raffles, teachers, and contests. No signup required.",
+    title: "Random Name Picker – Free Name Wheel Spinner | SpinPickOnline",
+    description: "Pick a random name from your list instantly. Free name picker wheel for teachers, raffles, and contests. Add unlimited names, spin, get winner. No signup needed.",
     alternates: {
         canonical: "/name-picker",
     },

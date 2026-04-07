@@ -7,8 +7,8 @@ import { IoHandLeftOutline, IoListOutline, IoShieldCheckmarkOutline, IoSparklesO
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-    title: "Picker Wheel | Free Random Selection Wheel | SpinPickOnline",
-    description: "Free picker wheel for random selection. Pick names, items, or options instantly. Perfect for teachers, teams, and anyone needing fair random picks.",
+    title: "Picker Wheel – Free Random Picker | Pick Anything Instantly",
+    description: "Pick randomly from names, items, or options in one spin. Free picker wheel for teachers, teams, and events. Fair, fast, no signup. Works on all devices.",
     alternates: {
         canonical: "/picker-wheel",
     },
@@ -17,8 +17,8 @@ export const metadata: Metadata = {
         follow: true,
     },
     openGraph: {
-        title: "Picker Wheel | Free Random Selection Wheel | SpinPickOnline",
-        description: "Free picker wheel for random selection. Pick names, items, or options instantly.",
+        title: "Picker Wheel – Free Random Picker | Pick Anything Instantly",
+        description: "Pick randomly from names, items, or options in one spin. Free picker wheel, no signup.",
         type: "website",
         url: "https://spinpickonline.com/picker-wheel",
     },

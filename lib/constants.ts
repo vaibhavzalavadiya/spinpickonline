@@ -29,6 +29,7 @@ export const NAV_ITEMS = [
 // Tools dropdown items
 export const TOOLS_DROPDOWN_ITEMS = [
   { label: "Name Picker", href: "/name-picker", icon: "🎯", description: "Randomly pick names from your list" },
+  { label: "Wheel of Names", href: "/wheel-of-names", icon: "🎱", description: "Free name wheel, unlimited names" },
   { label: "Yes/No Wheel", href: "/yes-no-wheel", icon: "✅", description: "Spin to get a yes or no answer" },
   { label: "Team Picker", href: "/team-picker", icon: "👥", description: "Create random teams fairly" },
   { label: "Random Picker Wheel", href: "/random-picker-wheel", icon: "🎡", description: "Spin the wheel for any choice" },

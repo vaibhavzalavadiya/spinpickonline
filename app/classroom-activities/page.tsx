@@ -5,8 +5,8 @@ import { CallToAction } from "@/components/CallToAction";
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-    title: "Classroom Activities Wheel | Teachers Tool | SpinPickOnline",
-    description: "Engage your students with the Classroom Activities Wheel. Randomize questions, student selection, and rewards.",
+    title: "Classroom Spin Wheel – Free Teacher Random Picker | Student Selector",
+    description: "Free spin wheel for teachers. Pick random students, assign tasks, run classroom activities fairly. Used by thousands of teachers worldwide. No signup required.",
     alternates: {
         canonical: "/classroom-activities",
     },

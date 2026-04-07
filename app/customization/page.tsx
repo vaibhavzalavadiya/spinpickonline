@@ -5,8 +5,8 @@ import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 import { FiDroplet, FiType, FiSave, FiStar } from "react-icons/fi";
 
 export const metadata: Metadata = {
-    title: "Custom Spin Wheel | Personalize Colors & Design | SpinPickOnline",
-    description: "Create a fully customizable spin the wheel with personalized colors, text, emojis, and themes. Perfect for branded events, classroom activities, games, and decision making. Free custom wheel builder - no signup needed.",
+    title: "Customize Your Spin Wheel – Free Colors, Labels & Entries | SpinPickOnline",
+    description: "Fully customize your spin wheel with custom colors, labels, emojis, and entries. Free wheel builder for branded events, classrooms, and games. No signup needed.",
     alternates: {
         canonical: "/customization",
     },

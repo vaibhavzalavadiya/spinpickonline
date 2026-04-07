@@ -3,13 +3,23 @@ import { generateMetadata } from "@/lib/seo";
 import { Metadata } from "next";
 import { generateWebApplicationSchema } from "@/lib/seo";
 import SchemaScript from "@/components/SchemaScript";
+import HomeWheel from "@/components/HomeWheel";
 import { FiLock, FiTarget, FiDollarSign, FiSmartphone, FiShare2, FiDroplet } from "react-icons/fi";
 
 export const metadata: Metadata = generateMetadata({
-  title: "Random Picker Wheel | Free & Fast | SpinPickOnline",
-  description: "Random Picker Wheel - Free online tool to randomly pick from a list. Customizable, shareable, and 100% fair. Create your wheel in seconds, no account needed.",
+  title: "Random Picker Wheel – Free Online Spinner | Instant Results",
+  description: "Pick randomly from any list in one click. Free random picker wheel with no signup required. Perfect for giveaways, classrooms, and decisions. 100% fair RNG.",
   canonical: "/random-picker-wheel",
 });
+
+const DEFAULT_ENTRIES = [
+  { id: "1", label: "Option 1", color: "#3b82f6" },
+  { id: "2", label: "Option 2", color: "#ef4444" },
+  { id: "3", label: "Option 3", color: "#10b981" },
+  { id: "4", label: "Option 4", color: "#f59e0b" },
+  { id: "5", label: "Option 5", color: "#8b5cf6" },
+  { id: "6", label: "Option 6", color: "#ec4899" },
+];
 
 export default function RandomPickerWheelPage() {
   const webAppSchema = generateWebApplicationSchema();
@@ -18,24 +28,22 @@ export default function RandomPickerWheelPage() {
     <>
       <SchemaScript schema={webAppSchema} />
 
-      <div className="bg-gradient-to-b from-gray-50 to-white py-10 lg:py-16">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          {/* Hero Section */}
-          <div className="text-center lg:mb-12 mb-6">
-            <div className="inline-block bg-linear-to-r from-blue-100 to-purple-100 px-4 py-2 rounded-full mb-4">
-              <span className="text-blue-700 font-semibold text-sm">🎲 Free Random Picker Tool</span>
-            </div>
-            <h1 className="text-xl sm:text-4xl lg:text-5xl font-bold text-gray-900 md:mb-6 mb-3">Random Picker Wheel</h1>
-            <p className="md:text-base text-sm text-gray-600 max-w-5xl mx-auto md:mb-8 mb-5">
-              The ultimate spin the wheel tool for fair random selection. Use our wheel of names, spinner wheel, and decision wheel for instant, unbiased results. Perfect for teams, classrooms, giveaways, and daily decisions.
+      {/* Hero + Live Wheel */}
+      <section className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-gradient-to-b from-blue-50/50 to-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center lg:mb-12 sm:mb-8 mb-5">
+            <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">Random Picker Wheel</h1>
+            <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">
+              Spin the wheel to pick randomly from any list. Free, instant, no signup. Perfect for giveaways, classrooms, and decisions.
             </p>
-            <Link
-              href="/wheel"
-              className="inline-block sm:px-8 px-4 sm:py-4 py-2.5 sm:text-base text-sm bg-linear-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl"
-            >
-              Create Your Random Picker Wheel Now
-            </Link>
           </div>
+          <HomeWheel defaultEntries={DEFAULT_ENTRIES} storageKey="randomPickerWheelState" />
+        </div>
+      </section>
+
+      {/* Content Sections */}
+      <div className="bg-gradient-to-b from-white to-gray-50">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
 
           <h2 className="md:text-2xl text-xl font-bold text-gray-900 md:mb-4 md:mt-5 mb-3 mt-4">What is a Random Picker Wheel?</h2>
           <p className="text-gray-700 mb-4 md:text-base text-sm">
@@ -73,19 +81,19 @@ export default function RandomPickerWheelPage() {
           <h2 className="md:text-2xl text-lg font-bold text-gray-900 md:mb-4 md:mt-5 mb-3 mt-4">Random Picker Wheel Use Cases</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4 md:mb-6 mb-5">
             <Link href="/team-picker" className="block p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg border-2 border-blue-200 hover:border-blue-400 hover:shadow-md transition-all group">
-              <h3 className="mb-2 text-base sm:text-lg font-semibold text-gray-900 group-hover:text-blue-600">Team Selection & Random Group Generator</h3>
+              <h3 className="mb-2 text-base sm:text-lg font-semibold text-gray-900 group-hover:text-blue-600">Team Selection &amp; Random Group Generator</h3>
               <p className="text-sm text-gray-600">Fair team distribution for sports and work using our random team picker and wheel of names</p>
             </Link>
             <Link href="/lunch-decisions" className="block p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg border-2 border-purple-200 hover:border-purple-400 hover:shadow-md transition-all group">
-              <h3 className="mb-2 text-base sm:text-lg font-semibold text-gray-900 group-hover:text-purple-600">Lunch Decisions & Yes or No Wheel</h3>
+              <h3 className="mb-2 text-base sm:text-lg font-semibold text-gray-900 group-hover:text-purple-600">Lunch Decisions &amp; Yes or No Wheel</h3>
               <p className="text-sm text-gray-600">Quick and fair meal choices with our decision wheel and spinner wheel randomizer</p>
             </Link>
             <Link href="/classroom-activities" className="block p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-lg border-2 border-green-200 hover:border-green-400 hover:shadow-md transition-all group">
-              <h3 className="mb-2 text-base sm:text-lg font-semibold text-gray-900 group-hover:text-green-600">Classroom Activities & Name Picker</h3>
+              <h3 className="mb-2 text-base sm:text-lg font-semibold text-gray-900 group-hover:text-green-600">Classroom Activities &amp; Name Picker</h3>
               <p className="text-sm text-gray-600">Fair student selection and participation using our random name picker and name wheel</p>
             </Link>
             <Link href="/giveaway-winner" className="block p-4 bg-gradient-to-br from-pink-50 to-pink-100 rounded-lg border-2 border-pink-200 hover:border-pink-400 hover:shadow-md transition-all group">
-              <h3 className="mb-2 text-base sm:text-lg font-semibold text-gray-900 group-hover:text-pink-600">Giveaway Winners & Contest Randomizer</h3>
+              <h3 className="mb-2 text-base sm:text-lg font-semibold text-gray-900 group-hover:text-pink-600">Giveaway Winners &amp; Contest Randomizer</h3>
               <p className="text-sm text-gray-600">Transparent contest winner selection with our RNG randomizer and picker wheel</p>
             </Link>
             <Link href="/spin-wheel-for-giveaway" className="block p-4 bg-gradient-to-br from-rose-50 to-rose-100 rounded-lg border-2 border-rose-200 hover:border-rose-400 hover:shadow-md transition-all group">
@@ -158,21 +166,13 @@ export default function RandomPickerWheelPage() {
             </div>
           </div>
 
-          <div className="mt-8 text-center">
-            <Link
-              href="/wheel"
-              className="inline-block sm:px-8 px-4 sm:py-3 py-2.5 sm:text-base text-sm bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Create Your Random Picker Wheel - Free Spinner Tool
-            </Link>
-          </div>
-
           {/* Explore More Tools */}
           <div className="mt-12 pt-8 border-t border-gray-200">
             <h2 className="md:text-2xl text-lg font-bold text-gray-900 mb-4 text-center">Explore More Wheel Tools</h2>
             <div className="flex flex-wrap justify-center gap-3">
               {[
                 { href: "/name-picker", label: "Name Picker" },
+                { href: "/wheel-of-names", label: "Wheel of Names" },
                 { href: "/yes-no-wheel", label: "Yes/No Wheel" },
                 { href: "/decision-wheel", label: "Decision Wheel" },
                 { href: "/picker-wheel", label: "Picker Wheel" },
@@ -193,10 +193,9 @@ export default function RandomPickerWheelPage() {
               ))}
             </div>
           </div>
+
         </div>
       </div>
     </>
   );
 }
-
-

@@ -8,8 +8,8 @@ import { FaTiktok } from "react-icons/fa";
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-    title: "Spin Wheel for Giveaway | Free Winner Picker | SpinPickOnline",
-    description: "Free spin wheel for giveaways. Perfect for Instagram, YouTube, TikTok contests. Transparent winner selection, cryptographically fair, no signup required.",
+    title: "Spin Wheel for Giveaway – Free Winner Picker for Instagram & YouTube",
+    description: "Run fair giveaways on Instagram, YouTube, and TikTok with a free spin wheel. Pick winners live on stream. Cryptographically random, transparent, no signup.",
     alternates: {
         canonical: "/spin-wheel-for-giveaway",
     },
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
         follow: true,
     },
     openGraph: {
-        title: "Spin Wheel for Giveaway | Free Winner Picker | SpinPickOnline",
-        description: "Free spin wheel for social media giveaways. Transparent and fair winner selection.",
+        title: "Spin Wheel for Giveaway – Free Winner Picker for Instagram & YouTube",
+        description: "Run fair giveaways on Instagram, YouTube, and TikTok with a free spin wheel. Pick winners live on stream. Cryptographically random, transparent, no signup.",
         type: "website",
         url: "https://spinpickonline.com/spin-wheel-for-giveaway",
     },

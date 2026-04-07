@@ -96,7 +96,7 @@ export default function Header() {
                           </div>
 
                           {/* Tools Grid */}
-                          <div className="grid grid-cols-2 gap-0.5 p-2">
+                          <div className="grid grid-cols-2 p-2">
                             {TOOLS_DROPDOWN_ITEMS.map((tool) => (
                               <Link
                                 key={tool.href}

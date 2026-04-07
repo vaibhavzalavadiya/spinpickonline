@@ -7,8 +7,8 @@ import { IoCompassOutline, IoFlashOutline, IoHeartOutline, IoRestaurantOutline }
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-    title: "Decision Wheel | Free Decision Maker Spinner | SpinPickOnline",
-    description: "Free decision wheel to help you decide. Can't make up your mind? Let the wheel decide for you! Perfect for restaurants, activities, and life choices.",
+    title: "Decision Wheel – Free Random Decision Maker Spinner | Decide Now",
+    description: "Stop overthinking. Spin the decision wheel and get an instant answer. Free decision maker for lunch, choices, and life decisions. No signup, works instantly.",
     alternates: {
         canonical: "/decision-wheel",
     },
@@ -17,8 +17,8 @@ export const metadata: Metadata = {
         follow: true,
     },
     openGraph: {
-        title: "Decision Wheel | Free Decision Maker Spinner | SpinPickOnline",
-        description: "Free decision wheel. Can't decide? Let the wheel make the choice!",
+        title: "Decision Wheel – Free Random Decision Maker Spinner | Decide Now",
+        description: "Stop overthinking. Spin the decision wheel and get an instant answer. Free decision maker.",
         type: "website",
         url: "https://spinpickonline.com/decision-wheel",
     },
