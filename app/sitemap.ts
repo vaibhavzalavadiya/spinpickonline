@@ -28,6 +28,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/picker-wheel",
     "/decision-wheel",
     "/wheel-of-names",
+    // International language pages
+    "/ruleta-aleatoria",   // Spanish  – "ruleta aleatoria" ~50k/mo
+    "/roda-da-sorte",      // Portuguese – "roda da sorte" ~40k/mo
+    "/roue-aleatoire",     // French   – "roue aléatoire" ~20k/mo
+    "/zufallsrad",         // German   – "Glücksrad" ~25k/mo
+    "/roda-putar",         // Indonesian – "roda putar" ~35k/mo
   ];
 
   // Info/resource pages (medium priority)
