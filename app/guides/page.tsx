@@ -79,8 +79,26 @@ export default function GuidesPage() {
                         </span>
                     </Link>
 
-                    {/* Guides */}
+                    {/* Guides grid */}
                     <div className="space-y-4">
+                        {/* New Individual Guide Articles */}
+                        <div className="grid sm:grid-cols-2 gap-4 mb-6">
+                            {[
+                                { href: "/guides/how-to-run-a-raffle", icon: "🎟️", title: "How to Run a Raffle", desc: "Complete step-by-step guide: entry collection, legal requirements, winner selection, and prize delivery.", color: "border-purple-200 hover:border-purple-400" },
+                                { href: "/guides/spin-wheel-tips", icon: "💡", title: "10 Spin Wheel Tips", desc: "Expert tips for bulk entry, remove-after-selection, fullscreen mode, sharing, and weighted entries.", color: "border-blue-200 hover:border-blue-400" },
+                                { href: "/guides/fair-random-selection", icon: "⚖️", title: "Fair Random Selection", desc: "What makes selection truly random, 4 requirements for dispute-proof draws, and how to prove fairness.", color: "border-green-200 hover:border-green-400" },
+                                { href: "/guides/giveaway-rules-template", icon: "📋", title: "Giveaway Rules Template", desc: "Free copy-paste giveaway rules template with clause-by-clause explanation for any platform.", color: "border-pink-200 hover:border-pink-400" },
+                                { href: "/guides/classroom-engagement-strategies", icon: "🏫", title: "15 Classroom Engagement Strategies", desc: "Evidence-based strategies from cold calling to think-pair-share that increase participation in any grade.", color: "border-orange-200 hover:border-orange-400" },
+                                { href: "/guides/how-to-use-random-picker-wheel", icon: "🎡", title: "Complete Wheel Guide", desc: "Step-by-step tutorial for creating and using random picker wheels for any use case.", color: "border-indigo-200 hover:border-indigo-400" },
+                            ].map((guide) => (
+                                <a key={guide.href} href={guide.href} className={`group bg-white rounded-xl p-4 shadow-sm border-2 ${guide.color} hover:shadow-md transition-all`}>
+                                    <div className="text-2xl mb-2">{guide.icon}</div>
+                                    <h2 className="font-bold text-gray-900 mb-1 text-sm group-hover:text-blue-600 transition-colors">{guide.title}</h2>
+                                    <p className="text-xs text-gray-600 leading-relaxed">{guide.desc}</p>
+                                </a>
+                            ))}
+                        </div>
+
                         <div className="bg-white rounded-xl p-4 md:p-6 shadow-sm border border-gray-200">
                             <div className="flex items-start gap-3 mb-3">
                                 <div className="bg-blue-100 p-2 rounded-lg">

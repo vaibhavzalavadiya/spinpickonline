@@ -44,6 +44,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/how-it-works",
     "/guides",
     "/guides/how-to-use-random-picker-wheel",
+    "/guides/how-to-run-a-raffle",
+    "/guides/spin-wheel-tips",
+    "/guides/fair-random-selection",
+    "/guides/giveaway-rules-template",
+    "/guides/classroom-engagement-strategies",
     "/contact",
     "/about",
   ];
@@ -51,6 +56,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Blog pages
   const blogPages = [
     "/blog",
+    "/blog/spin-wheel-for-giveaways",
+    "/blog/random-team-generator",
+    "/blog/wheel-of-fortune-classroom",
+    "/blog/picking-names-for-prizes",
+    "/blog/virtual-team-building-ideas",
+    "/blog/overcoming-choice-paralysis",
+    "/blog/office-party-game-ideas",
+    "/blog/chore-wheel-for-families",
+    "/blog/spin-wheel-for-teachers",
+    "/blog/random-number-generator-uses",
     "/blog/how-to-run-instagram-giveaway",
     "/blog/random-name-picker-for-teachers",
     "/blog/best-team-building-activities",
