@@ -92,6 +92,7 @@ export function generateWebSiteSchema() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: SITE_CONFIG.name,
+    alternateName: "SpinPick Online",
     url: SITE_CONFIG.url,
     potentialAction: {
       "@type": "SearchAction",
