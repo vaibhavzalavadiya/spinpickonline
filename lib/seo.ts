@@ -77,7 +77,9 @@ export function generateOrganizationSchema() {
     url: SITE_CONFIG.url,
     logo: `${SITE_CONFIG.url}/images/logo.png`,
     description: SITE_CONFIG.description,
-    sameAs: [],
+    sameAs: [
+      "https://www.spinpickonline.com",
+    ],
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",

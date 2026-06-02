@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { generateMetadata as genMeta, generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo";
 import SchemaScript from "@/components/SchemaScript";
 import Script from "next/script";
+import ReferralBanner from "@/components/ReferralBanner";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -68,6 +69,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
+        <ReferralBanner />
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />

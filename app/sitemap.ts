@@ -4,7 +4,9 @@ import { USE_CASES, FEATURES } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
-  const lastModified = new Date();
+
+  // Use real date — update this when you make content changes
+  const lastModified = new Date("2026-06-02");
 
   // Core tool pages (highest priority)
   const corePages = [

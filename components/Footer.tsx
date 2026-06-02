@@ -1,18 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { SITE_CONFIG } from "@/lib/constants";
-import {
-  FiMail,
-  FiGithub,
-  FiTwitter,
-  FiLinkedin,
-  FiHeart
-} from "react-icons/fi";
 
-import { MdOutlineCasino } from "react-icons/md";
+const CURRENT_YEAR = new Date().getFullYear();
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-gradient-to-b from-gray-50 to-gray-100 border-t border-gray-200">
@@ -35,29 +27,6 @@ export default function Footer() {
             <p className="text-sm text-gray-600 leading-relaxed">
               {SITE_CONFIG.description}
             </p>
-            {/* <div className="mt-4 flex space-x-3">
-              <a
-                href="#"
-                className="p-2 bg-white rounded-lg shadow-sm hover:shadow-md hover:bg-blue-50 transition-all"
-                aria-label="Twitter"
-              >
-                <FiTwitter className="text-lg text-gray-700 hover:text-blue-600" />
-              </a>
-              <a
-                href="#"
-                className="p-2 bg-white rounded-lg shadow-sm hover:shadow-md hover:bg-blue-50 transition-all"
-                aria-label="GitHub"
-              >
-                <FiGithub className="text-lg text-gray-700 hover:text-blue-600" />
-              </a>
-              <a
-                href="#"
-                className="p-2 bg-white rounded-lg shadow-sm hover:shadow-md hover:bg-blue-50 transition-all"
-                aria-label="LinkedIn"
-              >
-                <FiLinkedin className="text-lg text-gray-700 hover:text-blue-600" />
-              </a>
-            </div> */}
           </div>
 
           {/* Use Cases */}
@@ -169,7 +138,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-300 lg:pt-8 pt-5 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-600">
-            © {currentYear} {SITE_CONFIG.name}. Built for fair and instant decisions.
+            © {CURRENT_YEAR} {SITE_CONFIG.name}. Built for fair and instant decisions.
           </p>
 
           <div className="flex flex-wrap justify-center gap-6">
