@@ -6,7 +6,6 @@ import Footer from "@/components/Footer";
 import { generateMetadata as genMeta, generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo";
 import SchemaScript from "@/components/SchemaScript";
 import Script from "next/script";
-import ReferralBanner from "@/components/ReferralBanner";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -35,26 +34,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Google Tag Manager */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-N9XW98MX');`,
-          }}
-        />
-        {/* End Google Tag Manager */}
         <SchemaScript schema={organizationSchema} />
         <SchemaScript schema={websiteSchema} />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#3b82f6" />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9187153323911677"
-          crossOrigin="anonymous"
-        ></script>
       </head>
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}
@@ -69,21 +52,44 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
-        <ReferralBanner />
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
 
+        {/* Google Tag Manager */}
+        <Script
+          id="gtm-script"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N9XW98MX');`,
+          }}
+        />
+        {/* End Google Tag Manager */}
+
+        {/* Google AdSense */}
+        <Script
+          id="adsbygoogle-init"
+          strategy="afterInteractive"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9187153323911677"
+          crossOrigin="anonymous"
+        />
+        {/* End Google AdSense */}
+
         <Script
           id="microsoft-clarity"
           strategy="afterInteractive"
-        >
-          {`(function(c,l,a,r,i,t,y){
+          dangerouslySetInnerHTML={{
+            __html: `(function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "vjueov1f6s");`}
-        </Script>
+        })(window, document, "clarity", "script", "vjueov1f6s");`,
+          }}
+        />
       </body>
     </html>
   );
