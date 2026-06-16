@@ -2,20 +2,16 @@ import { Metadata } from "next";
 import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiLock, FiTarget, FiShield, FiArrowRight, FiZap, FiCheck } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 import Link from "next/link";
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Fair Randomization Wheel | Cryptographically Secure Picker | SpinPickOnline",
     description: "Experience truly unbiased random selection with our fair randomization wheel. Powered by cryptographic RNG algorithms for verifiable fairness. Free secure spin wheel, random picker, and name selector.",
-    alternates: {
-        canonical: "/fair-randomization",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-};
+    canonical: "/fair-randomization",
+});
 
 
 // Default randomization entries

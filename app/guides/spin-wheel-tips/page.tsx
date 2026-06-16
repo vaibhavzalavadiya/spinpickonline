@@ -3,19 +3,15 @@ import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import SchemaScript from "@/components/SchemaScript";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "10 Tips to Get the Most Out of Your Spin Wheel | SpinPickOnline",
     description: "Expert tips for getting the best results from your spin wheel. Covers customization, sharing, advanced features, and use-case specific strategies.",
-    alternates: { canonical: "/guides/spin-wheel-tips" },
-    robots: { index: true, follow: true },
-    openGraph: {
-        title: "10 Tips to Get the Most Out of Your Spin Wheel",
-        description: "Expert tips and advanced strategies for spin wheel users.",
-        type: "article",
-        url: "https://spinpickonline.com/guides/spin-wheel-tips",
-    },
-};
+    canonical: "/guides/spin-wheel-tips",
+    ogType: "article",
+});
 
 const articleSchema = {
     "@context": "https://schema.org",
@@ -24,9 +20,9 @@ const articleSchema = {
     "description": "Expert tips for getting the best results from your spin wheel.",
     "datePublished": "2026-03-20",
     "dateModified": "2026-03-20",
-    "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/guides/spin-wheel-tips" },
+    "author": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "publisher": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_CONFIG.url}/guides/spin-wheel-tips` },
 };
 
 const tips = [

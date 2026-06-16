@@ -3,20 +3,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { FiArrowLeft, FiArrowRight, FiClock, FiUser } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
+import { generateMetadata as genMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "How to Use Random Picker Wheel | Complete Guide | SpinPickOnline",
     description: "Learn how to use a random picker wheel step by step. Complete guide with screenshots, tips for teachers, giveaways, and decision making. Free, fair, and easy!",
-    alternates: {
-        canonical: "/guides/how-to-use-random-picker-wheel",
-    },
-    openGraph: {
-        title: "How to Use Random Picker Wheel | Complete Guide",
-        description: "Step-by-step guide to using a random picker wheel for names, giveaways, classrooms, and decisions.",
-        type: "article",
-        url: "https://spinpickonline.com/guides/how-to-use-random-picker-wheel",
-    },
-};
+    canonical: "/guides/how-to-use-random-picker-wheel",
+    ogType: "article",
+});
 
 export default function HowToUsePickerWheelGuide() {
     return (

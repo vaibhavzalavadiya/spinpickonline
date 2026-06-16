@@ -1,16 +1,20 @@
 import { Metadata } from "next";
-import { generateMetadata } from "@/lib/seo";
+import { generateMetadata as genMeta } from "@/lib/seo";
 
-export const metadata: Metadata = generateMetadata({
-    title: "Random Picker Wheel Creator | SpinPickOnline",
-    description: "Create custom random picker wheels online for free! Customize colors, labels, and settings. Fair, fast, mobile-friendly. No signup.",
+export const metadata: Metadata = {
+  ...genMeta({
+    title: "Random Picker Wheel Creator – Free Online Tool | SpinPickOnline",
+    description: "Create your free random picker wheel instantly. Add entries, customize colors, spin and share results. No signup required. Perfect for names, decisions, and giveaways.",
     canonical: "/wheel",
-});
+  }),
+  authors: [{ name: "SpinPickOnline Team", url: "https://www.spinpickonline.com" }],
+};
 
 export default function WheelLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    return <>{children}</>;
+  return <>{children}</>;
 }
+

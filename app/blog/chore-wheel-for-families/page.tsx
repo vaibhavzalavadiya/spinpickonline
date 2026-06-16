@@ -3,19 +3,15 @@ import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import SchemaScript from "@/components/SchemaScript";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "How to Set Up a Chore Wheel for Your Family That Actually Works | SpinPickOnline",
     description: "End chore arguments with a fair family chore wheel. Learn how to set up a rotating chore system, pick age-appropriate tasks, and keep kids engaged for months.",
-    alternates: { canonical: "/blog/chore-wheel-for-families" },
-    robots: { index: true, follow: true },
-    openGraph: {
-        title: "How to Set Up a Chore Wheel for Your Family That Actually Works",
-        description: "Build a fair, effective family chore rotation system using a spin wheel.",
-        type: "article",
-        url: "https://spinpickonline.com/blog/chore-wheel-for-families",
-    },
-};
+    canonical: "/blog/chore-wheel-for-families",
+    ogType: "article",
+});
 
 const articleSchema = {
     "@context": "https://schema.org",
@@ -24,9 +20,9 @@ const articleSchema = {
     "description": "End chore arguments with a fair family chore wheel. Learn how to set up a rotating chore system.",
     "datePublished": "2026-03-25",
     "dateModified": "2026-03-25",
-    "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/blog/chore-wheel-for-families" },
+    "author": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "publisher": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_CONFIG.url}/blog/chore-wheel-for-families` },
 };
 
 export default function ChoreWheelFamiliesPost() {

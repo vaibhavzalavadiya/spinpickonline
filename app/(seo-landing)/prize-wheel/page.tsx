@@ -4,25 +4,14 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight, FiGift } from "react-icons/fi";
 import { IoRibbonOutline, IoSparklesOutline, IoStarOutline, IoTrophyOutline } from "react-icons/io5";
-import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
+import { generateFAQSchema, generateWebApplicationSchema, generateMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateMetadata({
     title: "Prize Wheel – Free Custom Prize Spinner | Spin to Win Online",
     description: "Create a free prize wheel for trade shows, retail promos, and events. Custom prizes, instant results, no signup. Spin to win with your own prize wheel now.",
-    alternates: {
-        canonical: "/prize-wheel",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-    openGraph: {
-        title: "Prize Wheel – Free Custom Prize Spinner | Spin to Win Online",
-        description: "Create a free prize wheel for trade shows and retail promos. Custom prizes, instant results.",
-        type: "website",
-        url: "https://spinpickonline.com/prize-wheel",
-    },
-};
+    canonical: "/prize-wheel",
+});
+
 
 // Default prize entries
 const PRIZE_ENTRIES = [

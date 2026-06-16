@@ -2,16 +2,16 @@ import { Metadata } from "next";
 import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiEdit, FiRotateCw, FiCheckCircle, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 import Link from "next/link";
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Task Assignment Wheel | Delegate Random Tasks | SpinPickOnline",
     description: "Use our task assignment wheel to randomly assign tasks and responsibilities fairly. Perfect for teams, families, and classrooms. No signup required.",
-    alternates: {
-        canonical: "/task-assignment",
-    },
-};
+    canonical: "/task-assignment",
+});
 
 
 // Default task entries

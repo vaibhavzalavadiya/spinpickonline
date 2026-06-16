@@ -3,19 +3,15 @@ import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import SchemaScript from "@/components/SchemaScript";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "How Teachers Use Random Name Pickers in the Classroom | SpinPickOnline",
     description: "Discover how random name pickers boost classroom engagement, reduce bias, and keep students attentive. Practical tips for K-12 and higher education teachers.",
-    alternates: { canonical: "/blog/random-name-picker-for-teachers" },
-    robots: { index: true, follow: true },
-    openGraph: {
-        title: "How Teachers Use Random Name Pickers in the Classroom",
-        description: "Random name pickers for better classroom engagement and fairness.",
-        type: "article",
-        url: "https://spinpickonline.com/blog/random-name-picker-for-teachers",
-    },
-};
+    canonical: "/blog/random-name-picker-for-teachers",
+    ogType: "article",
+});
 
 const articleSchema = {
     "@context": "https://schema.org",
@@ -24,9 +20,9 @@ const articleSchema = {
     "description": "Discover how random name pickers boost classroom engagement, reduce bias, and keep students attentive.",
     "datePublished": "2026-02-12",
     "dateModified": "2026-02-12",
-    "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/blog/random-name-picker-for-teachers" },
+    "author": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "publisher": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_CONFIG.url}/blog/random-name-picker-for-teachers` },
 };
 
 export default function TeacherNamePickerPost() {

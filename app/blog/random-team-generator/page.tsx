@@ -3,19 +3,15 @@ import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import SchemaScript from "@/components/SchemaScript";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "How to Create Random Teams Fairly: A Complete Guide | SpinPickOnline",
     description: "Learn how to build random, unbiased teams for sports, school projects, work, and events. Methods, tips, and tools for fair group formation every time.",
-    alternates: { canonical: "/blog/random-team-generator" },
-    robots: { index: true, follow: true },
-    openGraph: {
-        title: "How to Create Random Teams Fairly: A Complete Guide",
-        description: "Complete methods for building fair, unbiased random teams in any setting.",
-        type: "article",
-        url: "https://spinpickonline.com/blog/random-team-generator",
-    },
-};
+    canonical: "/blog/random-team-generator",
+    ogType: "article",
+});
 
 const articleSchema = {
     "@context": "https://schema.org",
@@ -24,9 +20,9 @@ const articleSchema = {
     "description": "Learn how to build random, unbiased teams for sports, school projects, work, and events.",
     "datePublished": "2026-03-05",
     "dateModified": "2026-03-05",
-    "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/blog/random-team-generator" },
+    "author": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "publisher": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_CONFIG.url}/blog/random-team-generator` },
 };
 
 export default function RandomTeamGeneratorPost() {

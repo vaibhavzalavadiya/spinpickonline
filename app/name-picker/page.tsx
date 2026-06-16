@@ -3,16 +3,15 @@ import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiEdit, FiSettings, FiRotateCw, FiShare2, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
-import { generateFAQSchema, generateWebApplicationSchema, generateBreadcrumbSchema } from "@/lib/seo";
+import { generateFAQSchema, generateWebApplicationSchema, generateBreadcrumbSchema, generateMetadata } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateMetadata({
     title: "Random Name Picker – Free Name Wheel Spinner | SpinPickOnline",
     description: "Pick a random name from your list instantly. Free name picker wheel for teachers, raffles, and contests. Add unlimited names, spin, get winner. No signup needed.",
-    alternates: {
-        canonical: "/name-picker",
-    },
-};
+    canonical: "/name-picker",
+});
+
 
 // Default name entries
 const NAME_ENTRIES = [

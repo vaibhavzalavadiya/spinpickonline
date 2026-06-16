@@ -4,25 +4,14 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight, FiTarget } from "react-icons/fi";
 import { IoHandLeftOutline, IoListOutline, IoShieldCheckmarkOutline, IoSparklesOutline } from "react-icons/io5";
-import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
+import { generateFAQSchema, generateWebApplicationSchema, generateMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateMetadata({
     title: "Picker Wheel – Free Random Picker | Pick Anything Instantly",
     description: "Pick randomly from names, items, or options in one spin. Free picker wheel for teachers, teams, and events. Fair, fast, no signup. Works on all devices.",
-    alternates: {
-        canonical: "/picker-wheel",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-    openGraph: {
-        title: "Picker Wheel – Free Random Picker | Pick Anything Instantly",
-        description: "Pick randomly from names, items, or options in one spin. Free picker wheel, no signup.",
-        type: "website",
-        url: "https://spinpickonline.com/picker-wheel",
-    },
-};
+    canonical: "/picker-wheel",
+});
+
 
 // Default picker entries
 const PICKER_ENTRIES = [

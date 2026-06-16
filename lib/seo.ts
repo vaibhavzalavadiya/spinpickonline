@@ -14,12 +14,14 @@ export function generateMetadata({
   canonical,
   robots = "index, follow",
   ogImage,
+  ogType = "website",
 }: {
   title: string;
   description: string;
   canonical: string;
   robots?: "index, follow" | "noindex, follow" | "noindex, nofollow";
   ogImage?: string;
+  ogType?: "website" | "article";
 }): Metadata {
   // Validate title length (30-60 chars)
   // if (title.length < 30 || title.length > 60) {
@@ -47,9 +49,10 @@ export function generateMetadata({
     openGraph: {
       title,
       description,
-      type: "website",
+      type: ogType,
       url: canonicalUrl,
       siteName: SITE_CONFIG.name,
+      locale: "en_US",
       images: [
         {
           url: ogImage || `${SITE_CONFIG.url}/opengraph-image.png`,
@@ -61,6 +64,8 @@ export function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
+      site: "@spinpickonline",
+      creator: "@spinpickonline",
       title,
       description,
       images: [ogImage || `${SITE_CONFIG.url}/opengraph-image.png`],
@@ -78,7 +83,9 @@ export function generateOrganizationSchema() {
     logo: `${SITE_CONFIG.url}/images/logo.png`,
     description: SITE_CONFIG.description,
     sameAs: [
-      "https://www.spinpickonline.com",
+      "https://twitter.com/spinpickonline",
+      "https://www.facebook.com/spinpickonline",
+      "https://www.youtube.com/@spinpickonline",
     ],
     contactPoint: {
       "@type": "ContactPoint",
@@ -96,22 +103,22 @@ export function generateWebSiteSchema() {
     name: SITE_CONFIG.name,
     alternateName: "SpinPick Online",
     url: SITE_CONFIG.url,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${SITE_CONFIG.url}/wheel?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
 }
 
-// Generate WebApplication schema
-export function generateWebApplicationSchema() {
+// Generate WebApplication schema (page-specific)
+export function generateWebApplicationSchema(opts?: {
+  name?: string;
+  url?: string;
+  description?: string;
+  featureList?: string;
+}) {
   return {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    name: "Random Picker Wheel",
-    url: SITE_CONFIG.url,
-    description: SITE_CONFIG.description,
+    name: opts?.name ?? "Random Picker Wheel",
+    url: opts?.url ?? SITE_CONFIG.url,
+    description: opts?.description ?? SITE_CONFIG.description,
     applicationCategory: "UtilityApplication",
     operatingSystem: "Web",
     browserRequirements: "Requires JavaScript. Requires HTML5.",
@@ -121,7 +128,7 @@ export function generateWebApplicationSchema() {
       priceCurrency: "USD",
     },
     featureList:
-      "Random name picker, Spin the wheel, Decision wheel, Team picker, Giveaway winner selector, Custom wheel creator, Yes/No wheel, Shareable wheels",
+      opts?.featureList ?? "Random name picker, Spin the wheel, Decision wheel, Team picker, Giveaway winner selector, Custom wheel creator, Yes/No wheel, Shareable wheels",
   };
 }
 

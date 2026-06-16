@@ -12,25 +12,14 @@ import {
 } from "react-icons/io5";
 import { CallToAction } from "@/components/CallToAction";
 import SchemaScript from "@/components/SchemaScript";
+import { generateMetadata as genMeta } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "About Us | SpinPickOnline - Free Random Picker Wheel & Spin Wheel Tool",
     description: "Learn about SpinPickOnline - the free, fair, and fun random picker wheel tool trusted by teachers, content creators, and event organizers worldwide. No signup, no limits, 100% free.",
-    alternates: {
-        canonical: "/about",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-    openGraph: {
-        title: "About SpinPickOnline | Free Random Picker Wheel & Spin Wheel",
-        description: "Learn about SpinPickOnline - the free, fair, and fun random picker wheel tool trusted by thousands worldwide.",
-        type: "website",
-        url: `${SITE_CONFIG.url}/about`,
-    },
-};
+    canonical: "/about",
+});
 
 const aboutSchema = {
     "@context": "https://schema.org",
@@ -44,7 +33,7 @@ const aboutSchema = {
         "url": SITE_CONFIG.url,
         "description": SITE_CONFIG.description,
         "foundingDate": "2024",
-        "sameAs": [],
+
         "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "customer service",

@@ -3,19 +3,15 @@ import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import SchemaScript from "@/components/SchemaScript";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "How to Use a Spin Wheel for Giveaways and Contests | SpinPickOnline",
     description: "Learn how to run fair, exciting giveaways using a spin wheel. Covers setup, live streaming, winner verification, and best practices for social media creators.",
-    alternates: { canonical: "/blog/spin-wheel-for-giveaways" },
-    robots: { index: true, follow: true },
-    openGraph: {
-        title: "How to Use a Spin Wheel for Giveaways and Contests",
-        description: "Complete guide to using a spin wheel for fair, transparent giveaways on any platform.",
-        type: "article",
-        url: "https://spinpickonline.com/blog/spin-wheel-for-giveaways",
-    },
-};
+    canonical: "/blog/spin-wheel-for-giveaways",
+    ogType: "article",
+});
 
 const articleSchema = {
     "@context": "https://schema.org",
@@ -24,9 +20,9 @@ const articleSchema = {
     "description": "Learn how to run fair, exciting giveaways and contests using a spin wheel.",
     "datePublished": "2026-03-01",
     "dateModified": "2026-03-01",
-    "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/blog/spin-wheel-for-giveaways" },
+    "author": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "publisher": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_CONFIG.url}/blog/spin-wheel-for-giveaways` },
 };
 
 export default function SpinWheelGiveawaysPost() {

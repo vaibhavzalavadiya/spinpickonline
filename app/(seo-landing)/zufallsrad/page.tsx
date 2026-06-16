@@ -1,30 +1,17 @@
 import { Metadata } from "next";
 import HomeWheel from "@/components/HomeWheel";
 import { CallToAction } from "@/components/CallToAction";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 import Link from "next/link";
 import { IoSparklesOutline, IoShieldCheckmarkOutline, IoPhonePortraitOutline, IoShareSocialOutline } from "react-icons/io5";
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Glücksrad Drehen – Zufallsgenerator Kostenlos | SpinPickOnline",
     description: "Drehen Sie das Glücksrad kostenlos online. Zufallsgenerator für Namen, Verlosung online, Entscheidungsrad. Ohne Anmeldung, für Schule, Events und Gruppen.",
-    alternates: {
-        canonical: "https://www.spinpickonline.com/zufallsrad",
-        languages: {
-            "en": "https://www.spinpickonline.com/random-picker-wheel",
-            "de": "https://www.spinpickonline.com/zufallsrad",
-            "x-default": "https://www.spinpickonline.com/random-picker-wheel",
-        },
-    },
-    robots: { index: true, follow: true },
-    openGraph: {
-        title: "Glücksrad Drehen – Zufallsgenerator Kostenlos Online",
-        description: "Glücksrad kostenlos drehen. Zufallsgenerator für Verlosung, Schule und Entscheidungen. Ohne Anmeldung.",
-        type: "website",
-        url: "https://www.spinpickonline.com/zufallsrad",
-        locale: "de_DE",
-    },
-};
+    canonical: "/zufallsrad",
+});
 
 const GLUECKSRAD_ENTRIES = [
     { id: "1", label: "Option 1", color: "#3b82f6" },

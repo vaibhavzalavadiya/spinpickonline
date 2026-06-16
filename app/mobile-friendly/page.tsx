@@ -1,20 +1,16 @@
 import { Metadata } from "next";
 import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { CallToAction } from "@/components/CallToAction";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 import { FiSmartphone, FiZap, FiWifi, FiMonitor } from "react-icons/fi";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Mobile Spin Wheel – Works on iPhone, Android & Tablet | Free & Fast",
     description: "Spin the wheel on any device. Our mobile-friendly random picker works perfectly on iPhone, Android, iPad, and desktop. No app needed. Touch-optimized, free, instant.",
-    alternates: {
-        canonical: "/mobile-friendly",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-};
+    canonical: "/mobile-friendly",
+});
 
 export default function MobileFriendlyPage() {
     const webAppSchema = generateWebApplicationSchema();

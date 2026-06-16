@@ -3,19 +3,15 @@ import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import SchemaScript from "@/components/SchemaScript";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "The Right Way to Pick Names for Prizes Without Arguments | SpinPickOnline",
     description: "Best practices for picking prize winners fairly and transparently. Covers raffle methods, verification steps, dispute prevention, and live selection tools.",
-    alternates: { canonical: "/blog/picking-names-for-prizes" },
-    robots: { index: true, follow: true },
-    openGraph: {
-        title: "The Right Way to Pick Names for Prizes Without Arguments",
-        description: "How to pick prize winners fairly so no one can dispute the result.",
-        type: "article",
-        url: "https://spinpickonline.com/blog/picking-names-for-prizes",
-    },
-};
+    canonical: "/blog/picking-names-for-prizes",
+    ogType: "article",
+});
 
 const articleSchema = {
     "@context": "https://schema.org",
@@ -24,9 +20,9 @@ const articleSchema = {
     "description": "Best practices for picking prize winners fairly and transparently.",
     "datePublished": "2026-03-12",
     "dateModified": "2026-03-12",
-    "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/blog/picking-names-for-prizes" },
+    "author": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "publisher": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_CONFIG.url}/blog/picking-names-for-prizes` },
 };
 
 export default function PickingNamesForPrizesPost() {

@@ -3,19 +3,15 @@ import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import SchemaScript from "@/components/SchemaScript";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "How to Ensure Fair Random Selection Every Time | SpinPickOnline",
     description: "Learn what makes a selection truly random and fair. Covers cryptographic randomness, equal entry weighting, bias elimination, and how to prove fairness to participants.",
-    alternates: { canonical: "/guides/fair-random-selection" },
-    robots: { index: true, follow: true },
-    openGraph: {
-        title: "How to Ensure Fair Random Selection Every Time",
-        description: "A guide to ensuring truly fair, bias-free random selection in any context.",
-        type: "article",
-        url: "https://spinpickonline.com/guides/fair-random-selection",
-    },
-};
+    canonical: "/guides/fair-random-selection",
+    ogType: "article",
+});
 
 const articleSchema = {
     "@context": "https://schema.org",
@@ -24,9 +20,9 @@ const articleSchema = {
     "description": "Learn what makes a selection truly random and fair. Covers cryptographic randomness and bias elimination.",
     "datePublished": "2026-04-01",
     "dateModified": "2026-04-01",
-    "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/guides/fair-random-selection" },
+    "author": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "publisher": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_CONFIG.url}/guides/fair-random-selection` },
 };
 
 export default function FairRandomSelectionPage() {

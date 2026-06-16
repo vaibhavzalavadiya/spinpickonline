@@ -3,19 +3,15 @@ import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import SchemaScript from "@/components/SchemaScript";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "10 Fun Team Building Activities Using a Spin Wheel | SpinPickOnline",
     description: "Creative team building ideas using a spin wheel to add randomness and excitement. Perfect for office parties, team retreats, and remote teams.",
-    alternates: { canonical: "/blog/best-team-building-activities" },
-    robots: { index: true, follow: true },
-    openGraph: {
-        title: "10 Fun Team Building Activities Using a Spin Wheel",
-        description: "Team building activities made fun with a spin wheel.",
-        type: "article",
-        url: "https://spinpickonline.com/blog/best-team-building-activities",
-    },
-};
+    canonical: "/blog/best-team-building-activities",
+    ogType: "article",
+});
 
 export default function TeamBuildingPost() {
     const articleSchema = {
@@ -25,9 +21,9 @@ export default function TeamBuildingPost() {
         "description": "Creative team building ideas using a spin wheel to add randomness and excitement.",
         "datePublished": "2026-02-10",
         "dateModified": "2026-02-10",
-        "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-        "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/blog/best-team-building-activities" },
+        "author": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+        "publisher": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_CONFIG.url}/blog/best-team-building-activities` },
     };
     return (
         <div className="min-h-screen bg-white">

@@ -1,30 +1,17 @@
 import { Metadata } from "next";
 import HomeWheel from "@/components/HomeWheel";
 import { CallToAction } from "@/components/CallToAction";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 import Link from "next/link";
 import { IoSparklesOutline, IoShieldCheckmarkOutline, IoPhonePortraitOutline, IoShareSocialOutline } from "react-icons/io5";
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Roda Putar Online Gratis – Pengocok Nama | SpinPickOnline",
     description: "Putar roda keberuntungan gratis secara online. Pengacak nama, undian online, spin wheel untuk kelas, event dan keputusan grup. Tanpa daftar, bisa di HP.",
-    alternates: {
-        canonical: "https://www.spinpickonline.com/roda-putar",
-        languages: {
-            "en": "https://www.spinpickonline.com/random-picker-wheel",
-            "id": "https://www.spinpickonline.com/roda-putar",
-            "x-default": "https://www.spinpickonline.com/random-picker-wheel",
-        },
-    },
-    robots: { index: true, follow: true },
-    openGraph: {
-        title: "Roda Putar Online Gratis – Spin Wheel & Pengocok Nama",
-        description: "Putar roda keberuntungan gratis. Tanpa daftar, bisa di HP. Untuk undian, kelas dan keputusan grup.",
-        type: "website",
-        url: "https://www.spinpickonline.com/roda-putar",
-        locale: "id_ID",
-    },
-};
+    canonical: "/roda-putar",
+});
 
 const RODA_PUTAR_ENTRIES = [
     { id: "1", label: "Pilihan 1", color: "#ef4444" },

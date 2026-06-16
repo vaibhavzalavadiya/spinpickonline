@@ -4,25 +4,14 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight, FiList } from "react-icons/fi";
 import { IoOptionsOutline, IoShuffleOutline, IoSparklesOutline, IoFlashOutline } from "react-icons/io5";
-import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
+import { generateFAQSchema, generateWebApplicationSchema, generateMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateMetadata({
     title: "Random Choice Picker – Free Spin Wheel for Any Decision",
     description: "Can't decide? Use the free random choice picker wheel to settle any decision instantly. No signup needed. Fair, fun, and works on all devices.",
-    alternates: {
-        canonical: "/random-choice-picker",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-    openGraph: {
-        title: "Random Choice Picker – Free Spin Wheel for Any Decision",
-        description: "Can't decide? Use the free random choice picker wheel to settle any decision instantly. No signup needed. Fair, fun, and works on all devices.",
-        type: "website",
-        url: "https://spinpickonline.com/random-choice-picker",
-    },
-};
+    canonical: "/random-choice-picker",
+});
+
 
 // Default choice entries
 const CHOICE_ENTRIES = [

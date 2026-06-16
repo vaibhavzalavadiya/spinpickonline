@@ -1,22 +1,18 @@
 import { Metadata } from "next";
 import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { CallToAction } from "@/components/CallToAction";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 import { FiTarget, FiLock, FiSmartphone } from 'react-icons/fi';
 import { IoColorPaletteOutline, IoBriefcaseOutline, IoSchoolOutline, IoGameControllerOutline, IoGiftOutline, IoFootballOutline } from 'react-icons/io5';
 import { MdOutlineCasino, MdCheckCircle } from 'react-icons/md';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Name Spinner – Free Wheel of Names | Random Name Picker Online",
     description: "Spin a free wheel of names to pick randomly. Perfect for classrooms, meetings, giveaways, and team activities. Unlimited names, fair results, no signup needed.",
-    alternates: {
-        canonical: "/name-spinner",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-};
+    canonical: "/name-spinner",
+});
 
 // Default name spinner entries
 const NAME_SPINNER_ENTRIES = [

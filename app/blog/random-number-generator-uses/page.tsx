@@ -3,19 +3,15 @@ import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import SchemaScript from "@/components/SchemaScript";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "10 Creative Ways to Use a Random Number Generator | SpinPickOnline",
     description: "Explore 10 practical and creative uses for random number generators in education, games, statistics, business, and everyday life.",
-    alternates: { canonical: "/blog/random-number-generator-uses" },
-    robots: { index: true, follow: true },
-    openGraph: {
-        title: "10 Creative Ways to Use a Random Number Generator",
-        description: "10 practical uses for random number generators across education, games, statistics, and daily decisions.",
-        type: "article",
-        url: "https://spinpickonline.com/blog/random-number-generator-uses",
-    },
-};
+    canonical: "/blog/random-number-generator-uses",
+    ogType: "article",
+});
 
 const articleSchema = {
     "@context": "https://schema.org",
@@ -24,9 +20,9 @@ const articleSchema = {
     "description": "Explore 10 practical and creative uses for random number generators in education, games, statistics, business, and everyday life.",
     "datePublished": "2026-04-05",
     "dateModified": "2026-04-05",
-    "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/blog/random-number-generator-uses" },
+    "author": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "publisher": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_CONFIG.url}/blog/random-number-generator-uses` },
 };
 
 const uses = [

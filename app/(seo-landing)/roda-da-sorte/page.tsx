@@ -1,30 +1,17 @@
 import { Metadata } from "next";
 import HomeWheel from "@/components/HomeWheel";
 import { CallToAction } from "@/components/CallToAction";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 import Link from "next/link";
 import { IoSparklesOutline, IoShieldCheckmarkOutline, IoPhonePortraitOutline, IoShareSocialOutline } from "react-icons/io5";
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Roda da Sorte Grátis – Girar a Roda Online | SpinPickOnline",
     description: "Gire a roda da sorte grátis e escolha ao acaso entre suas opções. Sem cadastro, funciona no celular. Ideal para sorteio online, aulas e decisões em grupo.",
-    alternates: {
-        canonical: "https://www.spinpickonline.com/roda-da-sorte",
-        languages: {
-            "en": "https://www.spinpickonline.com/random-picker-wheel",
-            "pt": "https://www.spinpickonline.com/roda-da-sorte",
-            "x-default": "https://www.spinpickonline.com/random-picker-wheel",
-        },
-    },
-    robots: { index: true, follow: true },
-    openGraph: {
-        title: "Roda da Sorte Grátis – Girar a Roda Online",
-        description: "Gire a roda da sorte grátis. Sem cadastro, funciona no celular. Ideal para sorteio online, aulas e decisões.",
-        type: "website",
-        url: "https://www.spinpickonline.com/roda-da-sorte",
-        locale: "pt_BR",
-    },
-};
+    canonical: "/roda-da-sorte",
+});
 
 const RODA_ENTRIES = [
     { id: "1", label: "Opção 1", color: "#22c55e" },

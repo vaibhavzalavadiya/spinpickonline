@@ -2,16 +2,16 @@ import { Metadata } from "next";
 import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiEdit, FiRotateCw, FiShare2, FiSettings, FiArrowRight, FiCoffee } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 import Link from "next/link";
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Lunch Decisions Wheel | Random Restaurant Picker | SpinPickOnline",
     description: "End lunch arguments with our restaurant picker wheel. A fun way to choose where to eat with friends or coworkers. Randomly select your next meal instantly.",
-    alternates: {
-        canonical: "/lunch-decisions",
-    },
-};
+    canonical: "/lunch-decisions",
+});
 
 
 // Default lunch entries

@@ -2,24 +2,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { FiArrowRight, FiCalendar } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Blog | Spin Wheel Tips, Guides & Ideas | SpinPickOnline",
     description: "Tips, guides, and creative ideas for using spin wheels. Learn how to run giveaways, pick names fairly, build teams, and make better decisions.",
-    alternates: {
-        canonical: "/blog",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-    openGraph: {
-        title: "Blog | Spin Wheel Tips, Guides & Ideas | SpinPickOnline",
-        description: "Tips, guides, and ideas for spin wheels, giveaways, team building, and decision making.",
-        type: "website",
-        url: "https://spinpickonline.com/blog",
-    },
-};
+    canonical: "/blog",
+});
 
 const BLOG_POSTS = [
     {

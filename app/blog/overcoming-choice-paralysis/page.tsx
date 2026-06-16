@@ -3,19 +3,15 @@ import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import SchemaScript from "@/components/SchemaScript";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Choice Paralysis: Why We Can't Decide and How to Fix It | SpinPickOnline",
     description: "Explore the psychology behind decision paralysis and learn science-backed strategies to make better decisions faster. When and why to use a random decision tool.",
-    alternates: { canonical: "/blog/overcoming-choice-paralysis" },
-    robots: { index: true, follow: true },
-    openGraph: {
-        title: "Choice Paralysis: Why We Can't Decide and How to Fix It",
-        description: "The psychology of decision paralysis and proven strategies to overcome it.",
-        type: "article",
-        url: "https://spinpickonline.com/blog/overcoming-choice-paralysis",
-    },
-};
+    canonical: "/blog/overcoming-choice-paralysis",
+    ogType: "article",
+});
 
 const articleSchema = {
     "@context": "https://schema.org",
@@ -24,9 +20,9 @@ const articleSchema = {
     "description": "Explore the psychology behind decision paralysis and learn science-backed strategies to make better decisions faster.",
     "datePublished": "2026-03-18",
     "dateModified": "2026-03-18",
-    "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/blog/overcoming-choice-paralysis" },
+    "author": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "publisher": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_CONFIG.url}/blog/overcoming-choice-paralysis` },
 };
 
 export default function OvercomingChoiceParalysisPost() {

@@ -4,25 +4,14 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight, FiRotateCw } from "react-icons/fi";
 import { IoColorPaletteOutline, IoSparklesOutline, IoPhonePortraitOutline, IoShareSocialOutline } from "react-icons/io5";
-import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
+import { generateFAQSchema, generateWebApplicationSchema, generateMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateMetadata({
     title: "Wheel Spinner – Free Online Spinning Wheel | Build Your Own Wheel",
     description: "Create and spin your own free wheel online in seconds. Add any entries, customize colors, and spin instantly. No download, no signup. Works on all devices.",
-    alternates: {
-        canonical: "/wheel-spinner",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-    openGraph: {
-        title: "Wheel Spinner – Free Online Spinning Wheel | Build Your Own Wheel",
-        description: "Create and spin your own free wheel online in seconds. No download, no signup required.",
-        type: "website",
-        url: "https://spinpickonline.com/wheel-spinner",
-    },
-};
+    canonical: "/wheel-spinner",
+});
+
 
 // Default spinner entries
 const SPINNER_ENTRIES = [

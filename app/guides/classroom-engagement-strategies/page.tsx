@@ -3,19 +3,15 @@ import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import SchemaScript from "@/components/SchemaScript";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "15 Proven Classroom Engagement Strategies | SpinPickOnline",
     description: "Evidence-based classroom engagement strategies that work for K-12 and higher education. Improve participation, reduce apathy, and build a more inclusive classroom.",
-    alternates: { canonical: "/guides/classroom-engagement-strategies" },
-    robots: { index: true, follow: true },
-    openGraph: {
-        title: "15 Proven Classroom Engagement Strategies",
-        description: "15 evidence-based strategies to boost student engagement and participation in any classroom.",
-        type: "article",
-        url: "https://spinpickonline.com/guides/classroom-engagement-strategies",
-    },
-};
+    canonical: "/guides/classroom-engagement-strategies",
+    ogType: "article",
+});
 
 const articleSchema = {
     "@context": "https://schema.org",
@@ -24,9 +20,9 @@ const articleSchema = {
     "description": "Evidence-based classroom engagement strategies that work for K-12 and higher education.",
     "datePublished": "2026-04-10",
     "dateModified": "2026-04-10",
-    "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/guides/classroom-engagement-strategies" },
+    "author": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "publisher": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_CONFIG.url}/guides/classroom-engagement-strategies` },
 };
 
 const strategies = [

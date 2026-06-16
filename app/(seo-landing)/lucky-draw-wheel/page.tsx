@@ -4,25 +4,14 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight } from "react-icons/fi";
 import { IoGiftOutline, IoTrophyOutline, IoSparklesOutline, IoShieldCheckmarkOutline } from "react-icons/io5";
-import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
+import { generateFAQSchema, generateWebApplicationSchema, generateMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateMetadata({
     title: "Lucky Draw Wheel – Free Online Winner Picker | Pick Winners Instantly",
     description: "Run a free lucky draw in seconds. Pick random winners for corporate events, parties, and promotions. Fair, mobile-friendly, no signup required. Spin now.",
-    alternates: {
-        canonical: "/lucky-draw-wheel",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-    openGraph: {
-        title: "Lucky Draw Wheel – Free Online Winner Picker | Pick Winners Instantly",
-        description: "Run a free lucky draw in seconds. Pick random winners for corporate events, parties, and promotions.",
-        type: "website",
-        url: "https://spinpickonline.com/lucky-draw-wheel",
-    },
-};
+    canonical: "/lucky-draw-wheel",
+});
+
 
 // Default lucky draw entries
 const LUCKY_DRAW_ENTRIES = [

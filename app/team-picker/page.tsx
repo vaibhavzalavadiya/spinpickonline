@@ -1,20 +1,16 @@
 import { Metadata } from "next";
 import { FiUsers, FiHash, FiRotateCw, FiShare2 } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 import TeamPickerWheel from "@/components/TeamPickerWheel";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Random Team Picker – Free Team Generator Wheel | Split Groups Fast",
     description: "Divide people into random teams instantly. Free team picker wheel for sports, classrooms, offices and events. Fair, fast, no signup. Works on any device.",
-    alternates: {
-        canonical: "/team-picker",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-};
+    canonical: "/team-picker",
+});
 
 // Default team entries
 const TEAM_ENTRIES = [

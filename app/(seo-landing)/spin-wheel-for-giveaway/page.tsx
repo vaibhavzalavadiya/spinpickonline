@@ -5,25 +5,14 @@ import Link from "next/link";
 import { FiCheck, FiArrowRight, FiInstagram, FiYoutube } from "react-icons/fi";
 import { IoGiftOutline, IoShieldCheckmarkOutline, IoVideocamOutline, IoPeopleOutline } from "react-icons/io5";
 import { FaTiktok } from "react-icons/fa";
-import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
+import { generateFAQSchema, generateWebApplicationSchema, generateMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateMetadata({
     title: "Spin Wheel for Giveaway – Free Winner Picker for Instagram & YouTube",
     description: "Run fair giveaways on Instagram, YouTube, and TikTok with a free spin wheel. Pick winners live on stream. Cryptographically random, transparent, no signup.",
-    alternates: {
-        canonical: "/spin-wheel-for-giveaway",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-    openGraph: {
-        title: "Spin Wheel for Giveaway – Free Winner Picker for Instagram & YouTube",
-        description: "Run fair giveaways on Instagram, YouTube, and TikTok with a free spin wheel. Pick winners live on stream. Cryptographically random, transparent, no signup.",
-        type: "website",
-        url: "https://spinpickonline.com/spin-wheel-for-giveaway",
-    },
-};
+    canonical: "/spin-wheel-for-giveaway",
+});
+
 
 // Default giveaway entries (social media usernames)
 const GIVEAWAY_USERNAMES = [

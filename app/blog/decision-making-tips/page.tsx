@@ -3,19 +3,15 @@ import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import SchemaScript from "@/components/SchemaScript";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "When You Can't Decide: A Guide to Better Decision Making | SpinPickOnline",
     description: "Science-backed tips for overcoming decision fatigue, analysis paralysis, and the paradox of choice. Learn when random tools like decision wheels can help.",
-    alternates: { canonical: "/blog/decision-making-tips" },
-    robots: { index: true, follow: true },
-    openGraph: {
-        title: "When You Can't Decide: A Guide to Better Decision Making",
-        description: "Overcome decision fatigue with science-backed tips and tools.",
-        type: "article",
-        url: "https://spinpickonline.com/blog/decision-making-tips",
-    },
-};
+    canonical: "/blog/decision-making-tips",
+    ogType: "article",
+});
 
 export default function DecisionMakingPost() {
     const articleSchema = {
@@ -25,9 +21,9 @@ export default function DecisionMakingPost() {
         "description": "Science-backed tips for overcoming decision fatigue, analysis paralysis, and the paradox of choice.",
         "datePublished": "2026-02-05",
         "dateModified": "2026-02-05",
-        "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-        "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/blog/decision-making-tips" },
+        "author": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+        "publisher": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_CONFIG.url}/blog/decision-making-tips` },
     };
     return (
         <div className="min-h-screen bg-white">

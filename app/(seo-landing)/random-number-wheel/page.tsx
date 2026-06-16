@@ -4,25 +4,14 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight, FiHash } from "react-icons/fi";
 import { IoCalculatorOutline, IoShieldCheckmarkOutline, IoSparklesOutline, IoDiceOutline } from "react-icons/io5";
-import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
+import { generateFAQSchema, generateWebApplicationSchema, generateMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateMetadata({
     title: "Random Number Wheel – Free Number Spinner | Generate Numbers Instantly",
     description: "Spin a free random number wheel and get instant results. Perfect for games, classrooms, lotteries, and number selection. Customize your range. No signup needed.",
-    alternates: {
-        canonical: "/random-number-wheel",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-    openGraph: {
-        title: "Random Number Wheel – Free Number Spinner | Generate Numbers Instantly",
-        description: "Spin a free random number wheel and get instant results. Perfect for games and classrooms.",
-        type: "website",
-        url: "https://spinpickonline.com/random-number-wheel",
-    },
-};
+    canonical: "/random-number-wheel",
+});
+
 
 // Default number entries (1-10)
 const NUMBER_ENTRIES = [

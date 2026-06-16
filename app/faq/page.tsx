@@ -4,18 +4,14 @@ import { generateFAQSchema } from "@/lib/seo";
 import Link from "next/link";
 import { FiArrowLeft, FiHelpCircle } from "react-icons/fi";
 import { IoSparklesOutline } from "react-icons/io5";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
-  title: "FAQ - Spin Wheel Questions | Free Random Picker | SpinPickOnline",
-  description: "Get answers about our spin the wheel tool, random picker wheel, wheel of names, and spinner features. Learn about randomization, customization, and more. 100% free.",
-  alternates: {
+export const metadata: Metadata = genMeta({
+    title: "FAQ - Spin Wheel Questions | Free Random Picker | SpinPickOnline",
+    description: "Get answers about our spin the wheel tool, random picker wheel, wheel of names, and spinner features. Learn about randomization, customization, and more. 100% free.",
     canonical: "/faq",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+});
 
 export default function FAQPage() {
   // Generate FAQ schema for all FAQs on the page (main + additional SEO FAQs)

@@ -3,19 +3,15 @@ import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import SchemaScript from "@/components/SchemaScript";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "How to Run a Raffle: The Complete Step-by-Step Guide | SpinPickOnline",
     description: "Everything you need to run a successful raffle online or in person. Covers entry collection, legal requirements, winner selection, and best practices.",
-    alternates: { canonical: "/guides/how-to-run-a-raffle" },
-    robots: { index: true, follow: true },
-    openGraph: {
-        title: "How to Run a Raffle: The Complete Step-by-Step Guide",
-        description: "Complete guide to running a raffle from entry collection to winner announcement.",
-        type: "article",
-        url: "https://spinpickonline.com/guides/how-to-run-a-raffle",
-    },
-};
+    canonical: "/guides/how-to-run-a-raffle",
+    ogType: "article",
+});
 
 const articleSchema = {
     "@context": "https://schema.org",
@@ -24,9 +20,9 @@ const articleSchema = {
     "description": "Everything you need to run a successful raffle online or in person.",
     "datePublished": "2026-03-10",
     "dateModified": "2026-03-10",
-    "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/guides/how-to-run-a-raffle" },
+    "author": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "publisher": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_CONFIG.url}/guides/how-to-run-a-raffle` },
 };
 
 export default function HowToRunARafflePage() {

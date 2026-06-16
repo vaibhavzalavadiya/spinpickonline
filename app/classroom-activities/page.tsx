@@ -2,15 +2,15 @@ import { Metadata } from "next";
 import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiUserPlus, FiSettings, FiRotateCw, FiSave } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Classroom Spin Wheel – Free Teacher Random Picker | Student Selector",
     description: "Free spin wheel for teachers. Pick random students, assign tasks, run classroom activities fairly. Used by thousands of teachers worldwide. No signup required.",
-    alternates: {
-        canonical: "/classroom-activities",
-    },
-};
+    canonical: "/classroom-activities",
+});
 
 // Default classroom entries
 const CLASSROOM_ENTRIES = [

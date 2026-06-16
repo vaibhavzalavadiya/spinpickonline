@@ -3,19 +3,15 @@ import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import SchemaScript from "@/components/SchemaScript";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Free Giveaway Rules Template + How to Write Your Own | SpinPickOnline",
     description: "Download a free giveaway rules template and learn how to write clear, legally compliant contest rules for Instagram, TikTok, YouTube, and any platform.",
-    alternates: { canonical: "/guides/giveaway-rules-template" },
-    robots: { index: true, follow: true },
-    openGraph: {
-        title: "Free Giveaway Rules Template + How to Write Your Own",
-        description: "Free template and complete guide to writing legally compliant giveaway rules.",
-        type: "article",
-        url: "https://spinpickonline.com/guides/giveaway-rules-template",
-    },
-};
+    canonical: "/guides/giveaway-rules-template",
+    ogType: "article",
+});
 
 const articleSchema = {
     "@context": "https://schema.org",
@@ -24,9 +20,9 @@ const articleSchema = {
     "description": "Download a free giveaway rules template and learn how to write clear, legally compliant contest rules.",
     "datePublished": "2026-04-15",
     "dateModified": "2026-04-15",
-    "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/guides/giveaway-rules-template" },
+    "author": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "publisher": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_CONFIG.url}/guides/giveaway-rules-template` },
 };
 
 export default function GiveawayRulesTemplatePage() {

@@ -4,25 +4,14 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight } from "react-icons/fi";
 import { IoTicketOutline, IoShieldCheckmarkOutline, IoSparklesOutline, IoPeopleOutline } from "react-icons/io5";
-import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
+import { generateFAQSchema, generateWebApplicationSchema, generateMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateMetadata({
     title: "Raffle Wheel – Free Online Raffle Spinner | Draw Winners Fast",
     description: "Run fair raffle drawings instantly. Free raffle wheel for fundraisers, school events, and community raffles. Pick a random winner with one spin. No signup needed.",
-    alternates: {
-        canonical: "/raffle-wheel",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-    openGraph: {
-        title: "Raffle Wheel – Free Online Raffle Spinner | Draw Winners Fast",
-        description: "Run fair raffle drawings instantly. Free raffle wheel for fundraisers and charity events.",
-        type: "website",
-        url: "https://spinpickonline.com/raffle-wheel",
-    },
-};
+    canonical: "/raffle-wheel",
+});
+
 
 // Default raffle entries
 const RAFFLE_ENTRIES = [

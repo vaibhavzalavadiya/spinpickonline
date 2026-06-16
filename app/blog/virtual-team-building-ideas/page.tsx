@@ -3,19 +3,15 @@ import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import SchemaScript from "@/components/SchemaScript";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "25 Virtual Team Building Ideas for Remote Teams | SpinPickOnline",
     description: "Struggling to connect your remote team? Discover 25 virtual team building activities that boost morale, improve communication, and make remote work fun.",
-    alternates: { canonical: "/blog/virtual-team-building-ideas" },
-    robots: { index: true, follow: true },
-    openGraph: {
-        title: "25 Virtual Team Building Ideas for Remote Teams",
-        description: "25 effective virtual team building activities that actually work for remote and hybrid teams.",
-        type: "article",
-        url: "https://spinpickonline.com/blog/virtual-team-building-ideas",
-    },
-};
+    canonical: "/blog/virtual-team-building-ideas",
+    ogType: "article",
+});
 
 const articleSchema = {
     "@context": "https://schema.org",
@@ -24,9 +20,9 @@ const articleSchema = {
     "description": "Discover 25 virtual team building activities that boost morale and improve communication for remote teams.",
     "datePublished": "2026-03-15",
     "dateModified": "2026-03-15",
-    "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/blog/virtual-team-building-ideas" },
+    "author": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "publisher": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_CONFIG.url}/blog/virtual-team-building-ideas` },
 };
 
 const activities = [

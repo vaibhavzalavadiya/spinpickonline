@@ -1,20 +1,16 @@
 import { Metadata } from "next";
 import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { CallToAction } from "@/components/CallToAction";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 import { FiDroplet, FiType, FiSave, FiStar } from "react-icons/fi";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Customize Your Spin Wheel – Free Colors, Labels & Entries | SpinPickOnline",
     description: "Fully customize your spin wheel with custom colors, labels, emojis, and entries. Free wheel builder for branded events, classrooms, and games. No signup needed.",
-    alternates: {
-        canonical: "/customization",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-};
+    canonical: "/customization",
+});
 
 export default function CustomizationPage() {
     const webAppSchema = generateWebApplicationSchema();

@@ -2,18 +2,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { FiArrowLeft } from "react-icons/fi";
 import { IoShieldCheckmarkOutline } from "react-icons/io5";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Privacy Policy | Spin Wheel Data Protection | SpinPickOnline",
     description: "Read our privacy policy for SpinPickOnline's spin the wheel, random picker, and wheel of names tools. Client-side security, no data storage. Your randomizer data stays private and secure.",
-    alternates: {
-        canonical: "/privacy-policy",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-};
+    canonical: "/privacy-policy",
+});
 
 export default function PrivacyPolicyPage() {
     return (

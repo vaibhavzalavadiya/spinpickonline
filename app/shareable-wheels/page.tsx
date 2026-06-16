@@ -1,21 +1,17 @@
 import { Metadata } from "next";
 import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { CallToAction } from "@/components/CallToAction";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 import Link from "next/link";
 import { FiLink, FiShare2, FiSave, FiUsers, FiArrowRight } from "react-icons/fi";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Shareable Spin Wheel – Free Create & Share Custom Wheels | SpinPickOnline",
     description: "Create a custom spin wheel and share it instantly via link. Free shareable wheel for teachers, teams, and giveaways. No signup needed. Share with anyone.",
-    alternates: {
-        canonical: "/shareable-wheels",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-};
+    canonical: "/shareable-wheels",
+});
 
 export default function ShareableWheelsPage() {
     const webAppSchema = generateWebApplicationSchema();

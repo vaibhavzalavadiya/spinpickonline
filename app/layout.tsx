@@ -17,11 +17,14 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = genMeta({
-  title: "Spin the Wheel – Free Random Picker Wheel | No Signup",
-  description: "Spin the wheel instantly. Add names, spin, pick a random winner in seconds. Free forever, no signup, works on mobile. Used by teachers, creators & event hosts.",
-  canonical: "/",
-});
+export const metadata: Metadata = {
+  ...genMeta({
+    title: "Random Picker Wheel – Free Online Spin the Wheel Tool",
+    description: "Spin the wheel instantly. Add names, spin, pick a random winner in seconds. Free forever, no signup, works on mobile. Used by teachers, creators & event hosts.",
+    canonical: "/",
+  }),
+  authors: [{ name: "SpinPickOnline Team", url: "https://www.spinpickonline.com" }],
+};
 
 export default function RootLayout({
   children,
@@ -34,8 +37,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <SchemaScript schema={organizationSchema} />
-        <SchemaScript schema={websiteSchema} />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#3b82f6" />
       </head>
@@ -52,6 +53,10 @@ export default function RootLayout({
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
+
+        {/* Global structured data — in body so Next.js manages <head> cleanly */}
+        <SchemaScript schema={organizationSchema} />
+        <SchemaScript schema={websiteSchema} />
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
@@ -59,7 +64,7 @@ export default function RootLayout({
         {/* Google Tag Manager */}
         <Script
           id="gtm-script"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

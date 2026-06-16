@@ -3,19 +3,15 @@ import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import SchemaScript from "@/components/SchemaScript";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "15 Office Party Game Ideas Using a Spin Wheel | SpinPickOnline",
     description: "Make your next office party unforgettable with these 15 fun spin wheel game ideas. Perfect for team events, holiday parties, and company celebrations.",
-    alternates: { canonical: "/blog/office-party-game-ideas" },
-    robots: { index: true, follow: true },
-    openGraph: {
-        title: "15 Office Party Game Ideas Using a Spin Wheel",
-        description: "15 fun office party spin wheel games for team events and company celebrations.",
-        type: "article",
-        url: "https://spinpickonline.com/blog/office-party-game-ideas",
-    },
-};
+    canonical: "/blog/office-party-game-ideas",
+    ogType: "article",
+});
 
 const articleSchema = {
     "@context": "https://schema.org",
@@ -24,9 +20,9 @@ const articleSchema = {
     "description": "Make your next office party unforgettable with these 15 fun spin wheel game ideas.",
     "datePublished": "2026-03-22",
     "dateModified": "2026-03-22",
-    "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/blog/office-party-game-ideas" },
+    "author": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "publisher": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_CONFIG.url}/blog/office-party-game-ideas` },
 };
 
 const games = [

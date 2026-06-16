@@ -2,16 +2,16 @@ import { Metadata } from "next";
 import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiEdit, FiRotateCw, FiSettings, FiArrowRight, FiHome, FiUsers, FiSave } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 import Link from "next/link";
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Chore Assignment Wheel | Randomly Assign House Chores | SpinPickOnline",
     description: "End chore arguments with our random chore assignment wheel. A fair and fun way to distribute household tasks to family members or roommates.",
-    alternates: {
-        canonical: "/chore-assignment",
-    },
-};
+    canonical: "/chore-assignment",
+});
 
 
 // Default chore entries

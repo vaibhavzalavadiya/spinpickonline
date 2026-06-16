@@ -2,14 +2,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { FiArrowLeft, FiCpu } from "react-icons/fi";
 import { IoShieldCheckmarkOutline, IoSpeedometerOutline, IoLockClosedOutline, IoEyeOffOutline } from "react-icons/io5";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
-  title: "How It Works | Random Wheel Technology | SpinPickOnline",
-  description: "Learn how our spin the wheel, random picker wheel, and wheel of names use cryptographic RNG for fair, unbiased results. Transparent randomizer technology explained.",
-  alternates: {
+export const metadata: Metadata = genMeta({
+    title: "How It Works | Random Wheel Technology | SpinPickOnline",
+    description: "Learn how our spin the wheel, random picker wheel, and wheel of names use cryptographic RNG for fair, unbiased results. Transparent randomizer technology explained.",
     canonical: "/how-it-works",
-  },
-};
+});
 
 export default function HowItWorksPage() {
   return (

@@ -3,18 +3,14 @@ import Link from "next/link";
 import { FiMail, FiArrowLeft } from "react-icons/fi";
 import { IoMailOutline } from "react-icons/io5";
 import ContactForm from "@/components/ContactForm";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Contact Us | Spin Wheel Support | SpinPickOnline",
     description: "Contact SpinPickOnline for support with our spin the wheel tool, random picker wheel, or wheel of names spinner. Get help with features, feedback, or custom requests. Free support.",
-    alternates: {
-        canonical: "/contact",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-};
+    canonical: "/contact",
+});
 
 export default function ContactPage() {
     return (

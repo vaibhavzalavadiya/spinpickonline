@@ -4,25 +4,13 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight, FiHelpCircle } from "react-icons/fi";
 import { IoCompassOutline, IoFlashOutline, IoHeartOutline, IoRestaurantOutline } from "react-icons/io5";
-import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
+import { generateFAQSchema, generateWebApplicationSchema, generateMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateMetadata({
     title: "Decision Wheel – Free Random Decision Maker Spinner | Decide Now",
     description: "Stop overthinking. Spin the decision wheel and get an instant answer. Free decision maker for lunch, choices, and life decisions. No signup, works instantly.",
-    alternates: {
-        canonical: "/decision-wheel",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-    openGraph: {
-        title: "Decision Wheel – Free Random Decision Maker Spinner | Decide Now",
-        description: "Stop overthinking. Spin the decision wheel and get an instant answer. Free decision maker.",
-        type: "website",
-        url: "https://spinpickonline.com/decision-wheel",
-    },
-};
+    canonical: "/decision-wheel",
+});
 
 // Default decision entries (food choices)
 const DECISION_ENTRIES = [

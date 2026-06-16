@@ -2,18 +2,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { FiArrowLeft } from "react-icons/fi";
 import { IoDocumentTextOutline } from "react-icons/io5";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Terms of Service | Spin Wheel Usage Policy | SpinPickOnline",
     description: "Read the Terms of Service for using SpinPickOnline's spin the wheel, random picker, wheel spinner, and name picker tools. Free use for personal and commercial giveaways. Fair randomizer usage guidelines.",
-    alternates: {
-        canonical: "/terms-of-service",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-};
+    canonical: "/terms-of-service",
+});
 
 export default function TermsOfServicePage() {
     return (

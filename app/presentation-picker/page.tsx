@@ -2,16 +2,16 @@ import { Metadata } from "next";
 import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiEdit, FiRotateCw, FiShare2, FiSettings, FiArrowRight, FiMic } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 import Link from "next/link";
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Presentation Picker Wheel | Choose Presenters Fairly | SpinPickOnline",
     description: "Randomly pick presenters for meetings and classes with our fair presentation picker wheel. Transparent selection, instant results, and fun animations.",
-    alternates: {
-        canonical: "/presentation-picker",
-    },
-};
+    canonical: "/presentation-picker",
+});
 
 
 // Default presentation entries

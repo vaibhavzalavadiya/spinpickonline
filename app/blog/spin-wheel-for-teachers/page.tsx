@@ -3,19 +3,15 @@ import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import SchemaScript from "@/components/SchemaScript";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "The Ultimate Spin Wheel Guide for Teachers in 2026 | SpinPickOnline",
     description: "Everything teachers need to know about using spin wheels in the classroom. Setup guide, grade-level tips, best practices, and creative lesson ideas.",
-    alternates: { canonical: "/blog/spin-wheel-for-teachers" },
-    robots: { index: true, follow: true },
-    openGraph: {
-        title: "The Ultimate Spin Wheel Guide for Teachers in 2026",
-        description: "Complete classroom spin wheel guide with grade-level tips and creative lesson ideas.",
-        type: "article",
-        url: "https://spinpickonline.com/blog/spin-wheel-for-teachers",
-    },
-};
+    canonical: "/blog/spin-wheel-for-teachers",
+    ogType: "article",
+});
 
 const articleSchema = {
     "@context": "https://schema.org",
@@ -24,9 +20,9 @@ const articleSchema = {
     "description": "Everything teachers need to know about using spin wheels in the classroom.",
     "datePublished": "2026-04-01",
     "dateModified": "2026-04-01",
-    "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/blog/spin-wheel-for-teachers" },
+    "author": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "publisher": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_CONFIG.url}/blog/spin-wheel-for-teachers` },
 };
 
 export default function SpinWheelForTeachersPost() {

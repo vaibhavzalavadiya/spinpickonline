@@ -2,15 +2,15 @@ import { Metadata } from "next";
 import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiUserPlus, FiSettings, FiVideo, FiShare2 } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Giveaway Winner Picker – Free Random Contest Wheel | Fair & Instant",
     description: "Pick a fair giveaway winner instantly. Free random picker for Instagram, YouTube, TikTok contests. Transparent results your audience can trust. No signup required.",
-    alternates: {
-        canonical: "/giveaway-winner",
-    },
-};
+    canonical: "/giveaway-winner",
+});
 
 // Default giveaway entries
 const GIVEAWAY_ENTRIES = [

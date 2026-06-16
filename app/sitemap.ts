@@ -5,8 +5,8 @@ import { USE_CASES, FEATURES } from "@/lib/constants";
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
 
-  // Use real date — update this when you make content changes
-  const lastModified = new Date("2026-06-02");
+  // Always reflect actual last-modified date so Google re-crawls correctly
+  const lastModified = new Date();
 
   // Core tool pages (highest priority)
   const corePages = [

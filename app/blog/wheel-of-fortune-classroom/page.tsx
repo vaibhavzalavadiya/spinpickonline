@@ -3,19 +3,15 @@ import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import SchemaScript from "@/components/SchemaScript";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = genMeta({
     title: "Wheel of Fortune Games for the Classroom: 15 Ideas | SpinPickOnline",
     description: "Discover 15 creative Wheel of Fortune-style classroom games that boost engagement, reinforce learning, and make lessons exciting for students of all ages.",
-    alternates: { canonical: "/blog/wheel-of-fortune-classroom" },
-    robots: { index: true, follow: true },
-    openGraph: {
-        title: "Wheel of Fortune Games for the Classroom: 15 Ideas",
-        description: "15 spin-wheel classroom games that make learning fun and boost student engagement.",
-        type: "article",
-        url: "https://spinpickonline.com/blog/wheel-of-fortune-classroom",
-    },
-};
+    canonical: "/blog/wheel-of-fortune-classroom",
+    ogType: "article",
+});
 
 const articleSchema = {
     "@context": "https://schema.org",
@@ -24,9 +20,9 @@ const articleSchema = {
     "description": "Discover 15 creative Wheel of Fortune-style classroom games that boost engagement and reinforce learning.",
     "datePublished": "2026-03-08",
     "dateModified": "2026-03-08",
-    "author": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "publisher": { "@type": "Organization", "name": "SpinPickOnline", "url": "https://spinpickonline.com" },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spinpickonline.com/blog/wheel-of-fortune-classroom" },
+    "author": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "publisher": { "@type": "Organization", "name": SITE_CONFIG.name, "url": SITE_CONFIG.url },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_CONFIG.url}/blog/wheel-of-fortune-classroom` },
 };
 
 const games = [

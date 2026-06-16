@@ -4,25 +4,13 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight, FiUsers, FiGift, FiZap, FiShare2 } from "react-icons/fi";
 import { IoPersonOutline, IoSchoolOutline, IoTrophyOutline, IoGameControllerOutline, IoShieldCheckmarkOutline, IoInfiniteOutline } from "react-icons/io5";
-import { generateFAQSchema, generateWebApplicationSchema, generateHowToSchema } from "@/lib/seo";
+import { generateFAQSchema, generateWebApplicationSchema, generateHowToSchema, generateMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateMetadata({
     title: "Wheel of Names – Free Random Name Spinner Wheel | Pick Instantly",
     description: "Spin the wheel of names and pick a random name instantly. Free name wheel for teachers, giveaways, and team selection. No signup, unlimited names.",
-    alternates: {
-        canonical: "/wheel-of-names",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-    openGraph: {
-        title: "Wheel of Names – Free Random Name Spinner Wheel | Pick Instantly",
-        description: "Spin the wheel of names and pick a random name instantly. Free name wheel for teachers, giveaways, and team selection. No signup, unlimited names.",
-        type: "website",
-        url: "https://spinpickonline.com/wheel-of-names",
-    },
-};
+    canonical: "/wheel-of-names",
+});
 
 // Default name wheel entries
 const NAME_ENTRIES = [
