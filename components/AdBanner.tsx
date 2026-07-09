@@ -1,6 +1,6 @@
 "use client";
 
-import Script from "next/script";
+import { useEffect, useRef } from "react";
 import { getAdSlot } from "@/lib/ads";
 
 interface AdBannerProps {
@@ -16,30 +16,56 @@ interface AdBannerProps {
 /**
  * <AdBanner slot="banner-320x50" />
  *
- * Renders an ad banner by slot id.
- * All ad configurations live in lib/ads.ts — edit that file to add/remove banners.
- * Returns null silently if the slot id is not found.
+ * Injects ad scripts directly into the DOM via useEffect so that
+ * atOptions is always defined BEFORE invoke.js executes — fixing
+ * the timing issue that causes ads not to show in production.
  *
- * NOTE: Ads will NOT appear on localhost — ad networks block local domains by design.
- * A dev placeholder is shown instead so you can verify layout/positioning.
+ * Dev: shows a dashed placeholder instead (ad networks block localhost).
  */
 export default function AdBanner({ slot, className = "" }: AdBannerProps) {
   const ad = getAdSlot(slot);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!ad || !containerRef.current) return;
+
+    const container = containerRef.current;
+
+    // Avoid injecting twice (e.g. React StrictMode double-invoke)
+    if (container.querySelector("script")) return;
+
+    // Step 1: define atOptions inline (synchronous)
+    const optionsScript = document.createElement("script");
+    optionsScript.type = "text/javascript";
+    optionsScript.text = `
+      atOptions = {
+        'key'    : '${ad.key}',
+        'format' : '${ad.format}',
+        'height' : ${ad.height},
+        'width'  : ${ad.width},
+        'params' : ${JSON.stringify(ad.params ?? {})}
+      };
+    `;
+    container.appendChild(optionsScript);
+
+    // Step 2: load invoke.js AFTER atOptions is defined
+    const invokeScript = document.createElement("script");
+    invokeScript.type = "text/javascript";
+    invokeScript.src = ad.src;
+    invokeScript.async = true;
+    container.appendChild(invokeScript);
+
+    // Cleanup on unmount
+    return () => {
+      if (container.contains(optionsScript)) container.removeChild(optionsScript);
+      if (container.contains(invokeScript)) container.removeChild(invokeScript);
+    };
+  }, [ad]);
 
   // Unknown slot → render nothing
   if (!ad) return null;
 
   const isDev = process.env.NODE_ENV === "development";
-
-  const optionsScript = `
-    atOptions = {
-      'key'    : '${ad.key}',
-      'format' : '${ad.format}',
-      'height' : ${ad.height},
-      'width'  : ${ad.width},
-      'params' : ${JSON.stringify(ad.params ?? {})}
-    };
-  `;
 
   return (
     <div
@@ -56,19 +82,8 @@ export default function AdBanner({ slot, className = "" }: AdBannerProps) {
           📢 Ad · {ad.label} · {ad.width}×{ad.height}
         </div>
       ) : (
-        /* ── PRODUCTION: real ad scripts ── */
-        <>
-          <Script
-            id={`ad-options-${slot}`}
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{ __html: optionsScript }}
-          />
-          <Script
-            id={`ad-invoke-${slot}`}
-            strategy="afterInteractive"
-            src={ad.src}
-          />
-        </>
+        /* ── PRODUCTION: script container, filled by useEffect ── */
+        <div ref={containerRef} />
       )}
     </div>
   );
