@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { getAdSlot } from "@/lib/ads";
 
 interface AdBannerProps {
@@ -16,56 +15,44 @@ interface AdBannerProps {
 /**
  * <AdBanner slot="banner-320x50" />
  *
- * Injects ad scripts directly into the DOM via useEffect so that
- * atOptions is always defined BEFORE invoke.js executes — fixing
- * the timing issue that causes ads not to show in production.
+ * Uses an srcdoc iframe so the ad script runs in its own fresh document.
+ * This ensures document.write() (used by most ad networks) works correctly.
  *
- * Dev: shows a dashed placeholder instead (ad networks block localhost).
+ * Previous approach (dynamic <script> injection) failed because browsers
+ * block document.write() in async-loaded scripts.
+ *
+ * Dev: shows a dashed placeholder (ad networks block localhost).
  */
 export default function AdBanner({ slot, className = "" }: AdBannerProps) {
   const ad = getAdSlot(slot);
-  const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!ad || !containerRef.current) return;
-
-    const container = containerRef.current;
-
-    // Avoid injecting twice (e.g. React StrictMode double-invoke)
-    if (container.querySelector("script")) return;
-
-    // Step 1: define atOptions inline (synchronous)
-    const optionsScript = document.createElement("script");
-    optionsScript.type = "text/javascript";
-    optionsScript.text = `
-      atOptions = {
-        'key'    : '${ad.key}',
-        'format' : '${ad.format}',
-        'height' : ${ad.height},
-        'width'  : ${ad.width},
-        'params' : ${JSON.stringify(ad.params ?? {})}
-      };
-    `;
-    container.appendChild(optionsScript);
-
-    // Step 2: load invoke.js AFTER atOptions is defined
-    const invokeScript = document.createElement("script");
-    invokeScript.type = "text/javascript";
-    invokeScript.src = ad.src;
-    invokeScript.async = true;
-    container.appendChild(invokeScript);
-
-    // Cleanup on unmount
-    return () => {
-      if (container.contains(optionsScript)) container.removeChild(optionsScript);
-      if (container.contains(invokeScript)) container.removeChild(invokeScript);
-    };
-  }, [ad]);
-
-  // Unknown slot → render nothing
   if (!ad) return null;
 
   const isDev = process.env.NODE_ENV === "development";
+
+  // The full HTML document the iframe will render — mirrors the ad network's
+  // exact <script> + <script src> snippet as if pasted in a plain HTML file.
+  const iframeDoc = `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { overflow: hidden; background: transparent; }
+</style>
+</head>
+<body>
+<script type="text/javascript">
+  atOptions = {
+    'key'    : '${ad.key}',
+    'format' : '${ad.format}',
+    'height' : ${ad.height},
+    'width'  : ${ad.width},
+    'params' : ${JSON.stringify(ad.params ?? {})}
+  };
+</script>
+<script type="text/javascript" src="${ad.src}"></script>
+</body>
+</html>`;
 
   return (
     <div
@@ -82,8 +69,20 @@ export default function AdBanner({ slot, className = "" }: AdBannerProps) {
           📢 Ad · {ad.label} · {ad.width}×{ad.height}
         </div>
       ) : (
-        /* ── PRODUCTION: script container, filled by useEffect ── */
-        <div ref={containerRef} />
+        /* ── PRODUCTION: srcdoc iframe gives a fresh document context ── */
+        <iframe
+          srcDoc={iframeDoc}
+          width={ad.width}
+          height={ad.height}
+          scrolling="no"
+          frameBorder="0"
+          title="Advertisement"
+          style={{
+            border: "none",
+            overflow: "hidden",
+            display: "block",
+          }}
+        />
       )}
     </div>
   );

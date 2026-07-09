@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { getAdSlot } from "@/lib/ads";
 
 interface SideAdProps {
@@ -9,48 +8,34 @@ interface SideAdProps {
 }
 
 /**
- * A single fixed side-panel ad panel.
- * Injects atOptions then invoke.js via useEffect to guarantee load order.
+ * A single fixed side-panel ad using srcdoc iframe.
+ * document.write() works correctly inside an iframe's own document context.
  */
 function SideAd({ slot, side }: SideAdProps) {
   const ad = getAdSlot(slot);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!ad || !containerRef.current) return;
-    const container = containerRef.current;
-    if (container.querySelector("script")) return;
-
-    // 1. Set atOptions inline (sync)
-    const optScript = document.createElement("script");
-    optScript.type = "text/javascript";
-    optScript.text = `
-      atOptions = {
-        'key'    : '${ad.key}',
-        'format' : '${ad.format}',
-        'height' : ${ad.height},
-        'width'  : ${ad.width},
-        'params' : ${JSON.stringify(ad.params ?? {})}
-      };
-    `;
-    container.appendChild(optScript);
-
-    // 2. Load invoke.js after atOptions exists
-    const invokeScript = document.createElement("script");
-    invokeScript.type = "text/javascript";
-    invokeScript.src = ad.src;
-    invokeScript.async = true;
-    container.appendChild(invokeScript);
-
-    return () => {
-      if (container.contains(optScript)) container.removeChild(optScript);
-      if (container.contains(invokeScript)) container.removeChild(invokeScript);
-    };
-  }, [ad]);
 
   if (!ad) return null;
 
   const isDev = process.env.NODE_ENV === "development";
+
+  const iframeDoc = `<!DOCTYPE html>
+<html>
+<head>
+<style>* { margin:0; padding:0; box-sizing:border-box; } body { overflow:hidden; background:transparent; }</style>
+</head>
+<body>
+<script type="text/javascript">
+  atOptions = {
+    'key'    : '${ad.key}',
+    'format' : '${ad.format}',
+    'height' : ${ad.height},
+    'width'  : ${ad.width},
+    'params' : ${JSON.stringify(ad.params ?? {})}
+  };
+</script>
+<script type="text/javascript" src="${ad.src}"></script>
+</body>
+</html>`;
 
   return (
     <div
@@ -72,11 +57,20 @@ function SideAd({ slot, side }: SideAdProps) {
           📢 Side Ad<br />{side.toUpperCase()}<br />{ad.width}×{ad.height}
         </div>
       ) : (
-        <div ref={containerRef} />
+        <iframe
+          srcDoc={iframeDoc}
+          width={ad.width}
+          height={ad.height}
+          scrolling="no"
+          frameBorder="0"
+          title={`Advertisement - ${side}`}
+          style={{ border: "none", overflow: "hidden", display: "block" }}
+        />
       )}
     </div>
   );
 }
+
 
 /**
  * <SideAds slot="skyscraper-160x600" />
