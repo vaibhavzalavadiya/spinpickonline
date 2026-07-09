@@ -9,6 +9,7 @@ import Toast from "@/components/Toast";
 import ConfirmationModal from "@/components/ConfirmationModal";
 import BulkAddModal from "@/components/BulkAddModal";
 import ShareModal from "@/components/ShareModal";
+import AdBanner from "@/components/AdBanner";
 import { useSoundEffects } from "@/lib/useSoundEffects";
 import {
   generateEntryId,
@@ -360,6 +361,9 @@ export default function HomeWheel({
               onSegmentTick={handleSegmentTick}
             />
           </div>
+
+          {/* Ad Banner – below wheel, desktop only */}
+          <AdBanner slot="banner-320x50" className="hidden md:flex mt-8" />
         </div>
 
         {/* Right: Enhanced Control Panel */}
