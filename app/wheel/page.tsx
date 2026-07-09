@@ -9,6 +9,7 @@ import ResultModal from "@/components/ResultModal";
 import Toast from "@/components/Toast";
 import ConfirmationModal from "@/components/ConfirmationModal";
 import BulkAddModal from "@/components/BulkAddModal";
+import AdBanner from "@/components/AdBanner";
 import {
   generateEntryId,
   generateDefaultColors,
@@ -341,6 +342,8 @@ function WheelPageContent() {
                     onSpinRequest={handleSpin}
                   />
                 </div>
+              {/* Ad Banner – below wheel, desktop only */}
+              <AdBanner slot="banner-320x50" className="hidden md:flex mt-8" />
               </>
             ) : (
               <div className="w-full max-w-[600px] aspect-square flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-2xl bg-linear-to-br from-gray-50 to-blue-50">
@@ -583,6 +586,9 @@ function WheelPageContent() {
                       </>
                     )}
                   </button>
+
+                  {/* Ad Banner – mobile only (below md/768px) */}
+                  <AdBanner slot="banner-320x50" className="md:hidden flex" />
 
                   {/* Advanced Actions */}
                   {entries.length > 0 && (
