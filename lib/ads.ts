@@ -49,6 +49,19 @@ const adSlots: AdSlot[] = [
     params: {},
   },
 
+  // ── Slot 2: 160×600 Wide Skyscraper (side panels) ─────────
+  {
+    id: "skyscraper-160x600",
+    label: "160×600 Wide Skyscraper (highperformanceformat)",
+    key: "fc19cdc52a843e30b3db635c3a974b51",
+    format: "iframe",
+    width: 160,
+    height: 600,
+    src: "https://www.highperformanceformat.com/fc19cdc52a843e30b3db635c3a974b51/invoke.js",
+    params: {},
+  },
+
+
   // ── Add more slots below ───────────────────────────────────
   // {
   //   id: "banner-728x90",

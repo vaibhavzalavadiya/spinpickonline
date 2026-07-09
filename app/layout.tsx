@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import { generateMetadata as genMeta, generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo";
 import SchemaScript from "@/components/SchemaScript";
 import Script from "next/script";
+import SideAds from "@/components/SideAds";
+import AdBanner from "@/components/AdBanner";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -58,8 +60,17 @@ export default function RootLayout({
         <SchemaScript schema={organizationSchema} />
         <SchemaScript schema={websiteSchema} />
         <Header />
+
+        {/* Mobile top banner – below header, above page title, hidden on md+ */}
+        <div className="md:hidden w-full flex justify-center bg-gray-50 py-1">
+          <AdBanner slot="banner-320x50" />
+        </div>
+
         <main className="min-h-screen">{children}</main>
         <Footer />
+
+        {/* Side skyscraper ads – fixed left & right, visible only ≥ 1400px */}
+        <SideAds slot="skyscraper-160x600" />
 
         {/* Google Tag Manager */}
         <Script

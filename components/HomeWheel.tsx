@@ -594,6 +594,9 @@ export default function HomeWheel({
                   )}
                 </button>
 
+                {/* Ad Banner – mobile only (below md/768px) */}
+                <AdBanner slot="banner-320x50" className="md:hidden flex" />
+
                 {/* Share Button */}
                 {entries.length > 0 && (
                   <button
