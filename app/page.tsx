@@ -31,6 +31,12 @@ export default function Home() {
       {/* How It Works - Enhanced with Keywords */}
       <section className="pb-10 lg:pb-16 bg-white">
         <div className="container mx-auto px-4">
+
+          {/* Ad banner above section title – lazy-loads via IntersectionObserver */}
+          <div className="flex justify-center mb-6">
+            <AdBanner slot="banner-320x50" />
+          </div>
+
           <div className="text-center mb-6 sm:mb-12 lg:mb-14">
             <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">How Our Random Picker Wheel Works</h2>
             <p className="lg:text-base text-sm text-gray-600 max-w-5xl mx-auto leading-relaxed">

@@ -1,37 +1,54 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import { getAdSlot } from "@/lib/ads";
 
 interface AdBannerProps {
-  /**
-   * The slot id defined in lib/ads.ts
-   * e.g. "banner-320x50"
-   */
   slot: string;
-  /** Extra Tailwind / CSS classes for the wrapper div */
   className?: string;
 }
 
 /**
  * <AdBanner slot="banner-320x50" />
  *
- * Uses an srcdoc iframe so the ad script runs in its own fresh document.
- * This ensures document.write() (used by most ad networks) works correctly.
+ * Lazy-loads the ad iframe only when it scrolls into view (IntersectionObserver).
+ * This keeps the ad scripts from competing with LCP-critical resources on page load.
  *
- * Previous approach (dynamic <script> injection) failed because browsers
- * block document.write() in async-loaded scripts.
+ * - A blank placeholder div reserves the exact ad height until visible → CLS = 0
+ * - rootMargin: "150px" pre-loads the ad 150px before it enters the viewport
+ *   so the user rarely sees a loading gap.
  *
  * Dev: shows a dashed placeholder (ad networks block localhost).
  */
 export default function AdBanner({ slot, className = "" }: AdBannerProps) {
   const ad = getAdSlot(slot);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (!ad || !wrapperRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect(); // only need to trigger once
+        }
+      },
+      {
+        rootMargin: "150px", // start loading 150px before the ad enters view
+        threshold: 0.01,
+      }
+    );
+
+    observer.observe(wrapperRef.current);
+    return () => observer.disconnect();
+  }, [ad]);
 
   if (!ad) return null;
 
   const isDev = process.env.NODE_ENV === "development";
 
-  // The full HTML document the iframe will render — mirrors the ad network's
-  // exact <script> + <script src> snippet as if pasted in a plain HTML file.
   const iframeDoc = `<!DOCTYPE html>
 <html>
 <head>
@@ -56,20 +73,21 @@ export default function AdBanner({ slot, className = "" }: AdBannerProps) {
 
   return (
     <div
+      ref={wrapperRef}
       className={`ad-banner-wrapper flex justify-center items-center ${className}`}
       style={{ minHeight: ad.height }}
       aria-label="Advertisement"
     >
       {isDev ? (
-        /* ── DEV PLACEHOLDER (localhost only) ── */
+        /* ── DEV PLACEHOLDER ── */
         <div
           style={{ width: ad.width, height: ad.height }}
           className="flex items-center justify-center rounded border-2 border-dashed border-blue-400 bg-blue-50 text-blue-500 text-xs font-mono select-none"
         >
           📢 Ad · {ad.label} · {ad.width}×{ad.height}
         </div>
-      ) : (
-        /* ── PRODUCTION: srcdoc iframe gives a fresh document context ── */
+      ) : isVisible ? (
+        /* ── PRODUCTION: iframe loads only when scrolled into view ── */
         <iframe
           srcDoc={iframeDoc}
           width={ad.width}
@@ -77,12 +95,11 @@ export default function AdBanner({ slot, className = "" }: AdBannerProps) {
           scrolling="no"
           frameBorder="0"
           title="Advertisement"
-          style={{
-            border: "none",
-            overflow: "hidden",
-            display: "block",
-          }}
+          style={{ border: "none", overflow: "hidden", display: "block" }}
         />
+      ) : (
+        /* ── PLACEHOLDER: reserves space, zero layout shift ── */
+        <div style={{ width: ad.width, height: ad.height }} />
       )}
     </div>
   );
