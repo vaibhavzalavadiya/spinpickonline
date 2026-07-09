@@ -745,6 +745,10 @@ function WheelPageContent() {
       {/* SEO Content Sections - Unique for Wheel Creator Page */}
       <section className="bg-white py-10 lg:py-16">
         <div className="container mx-auto px-4">
+          {/* Ad Banner – above section title */}
+          <div className="flex justify-center mb-6">
+            <AdBanner slot="banner-320x50" />
+          </div>
           <h2 className="md:text-3xl text-xl font-bold text-gray-900 md:mb-6 mb-4">Create Your Custom Random Picker Wheel</h2>
           <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-4 md:text-base text-sm">
             <p>
