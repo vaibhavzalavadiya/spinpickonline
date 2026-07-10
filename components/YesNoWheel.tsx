@@ -5,6 +5,7 @@ import Wheel from "@/components/Wheel";
 import ResultModal from "@/components/ResultModal";
 import Confetti from "@/components/Confetti";
 import Toast from "@/components/Toast";
+import AdBanner from "@/components/AdBanner";
 import { useSoundEffects } from "@/lib/useSoundEffects";
 import { WheelEntry } from "@/lib/types";
 import { FiSettings, FiRotateCcw, FiShare2, FiVolume2, FiVolumeX } from "react-icons/fi";
@@ -113,6 +114,8 @@ export default function YesNoWheel() {
                             onSegmentTick={handleSegmentTick}
                         />
                     </div>
+                    {/* Ad Banner - below wheel, desktop only */}
+                    <AdBanner slot="banner-320x50" className="hidden md:flex mt-8" />
                 </div>
 
                 {/* Right: Controls Section */}
@@ -182,6 +185,8 @@ export default function YesNoWheel() {
                         )}
                     </button>
 
+                    {/* Ad Banner - mobile only (below md/768px) */}
+                    <AdBanner slot="banner-320x50" className="md:hidden flex" />
 
                     {/* Settings Panel */}
                     <div className="bg-white rounded-2xl border-2 border-gray-100 overflow-hidden">

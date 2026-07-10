@@ -5,6 +5,7 @@ import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiZap, FiTarget, FiSmile, FiSmartphone, FiArrowRight, FiCheckCircle } from "react-icons/fi";
 import Link from "next/link";
 import YesNoWheel from "@/components/YesNoWheel";
+import AdBanner from "@/components/AdBanner";
 
 export const metadata: Metadata = generateMetadata({
   title: "Yes or No Wheel – Free Decision Spinner | Instant Answer",
@@ -83,6 +84,10 @@ export default function YesNoWheelPage() {
       {/* What is Section */}
       <section className="pb-10 lg:pb-16 bg-white">
         <div className="container mx-auto px-4">
+          {/* Ad banner above section title */}
+          <div className="flex justify-center mb-6">
+            <AdBanner slot="banner-320x50" />
+          </div>
           <h2 className="text-xl md:text-3xl font-bold text-gray-900 mb-4">What is a Yes or No Wheel?</h2>
           <p className="text-gray-700 mb-4 leading-relaxed md:text-base text-sm">
             A yes or no wheel (also known as yes no spinner, decision wheel, or choice maker) is a simple random picker tool that randomly selects between "Yes" and "No" answers. Our free spinner wheel provides a fair 50/50 chance for each option, making it perfect for quick decisions when you're stuck between two choices.

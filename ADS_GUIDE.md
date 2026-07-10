@@ -16,6 +16,7 @@
 | `app/page.tsx` | Homepage-specific ad placements (2 ads) |
 | `components/HomeWheel.tsx` | Wheel ad placements used on feature/use-case pages |
 | `app/wheel/page.tsx` | /wheel page + shared wheel (/wheel?share=...) - 3 ads |
+| `components/YesNoWheel.tsx` | Yes/No Wheel component - 2 ads |
 | `next.config.ts` | X-Frame-Options changed for iframe ads |
 
 ---
@@ -26,7 +27,7 @@ All ad slots are registered in one place:
 
 | Slot ID | Size | Network | Used in |
 |---|---|---|---|
-| `banner-320x50` | 320x50 | highperformanceformat.com | `page.tsx`, `HomeWheel.tsx`, `app/wheel/page.tsx` |
+| `banner-320x50` | 320x50 | highperformanceformat.com | `page.tsx`, `HomeWheel.tsx`, `app/wheel/page.tsx`, `YesNoWheel.tsx` |
 | `skyscraper-160x600` | 160x600 | highperformanceformat.com | `layout.tsx` (via SideAds) |
 
 **To add a new slot** - edit `lib/ads.ts` only. No component changes needed.
@@ -138,15 +139,43 @@ All ad slots are registered in one place:
 
 ---
 
-### 8. Side Skyscraper Ads - left + right panels
+### 8. Yes/No Wheel - below the wheel canvas (desktop)
+- **File**: `components/YesNoWheel.tsx` ~line 116
+- **Visible on**: Desktop only (`hidden md:flex`)
+- **Slot**: `banner-320x50`
+- **Note**: Used on the `/yes-no-wheel` page
+- **Code**:
+
+```tsx
+{/* Ad Banner - below wheel, desktop only */}
+<AdBanner slot="banner-320x50" className="hidden md:flex mt-8" />
+```
+
+---
+
+### 9. Yes/No Wheel - below Spin button (mobile)
+- **File**: `components/YesNoWheel.tsx` ~line 184
+- **Visible on**: Mobile only (`md:hidden`)
+- **Slot**: `banner-320x50`
+- **Note**: Used on the `/yes-no-wheel` page
+- **Code**:
+
+```tsx
+{/* Ad Banner - mobile only (below md/768px) */}
+<AdBanner slot="banner-320x50" className="md:hidden flex" />
+```
+
+---
+
+### 10. Side Skyscraper Ads - left + right panels
 - **File**: `app/layout.tsx` ~line 65
-- **Visible on**: Screens >= 1400px only (CSS media query in `SideAds.tsx`)
+- **Visible on**: Screens >= 1500px only (CSS media query in `SideAds.tsx`)
 - **Slot**: `skyscraper-160x600`
 - **Note**: Global - appears on every page of the site
 - **Code**:
 
 ```tsx
-{/* Side skyscraper ads - fixed left and right, visible only >= 1400px */}
+{/* Side skyscraper ads - fixed left and right, visible only >= 1500px */}
 <SideAds slot="skyscraper-160x600" />
 ```
 
@@ -163,7 +192,9 @@ All ad slots are registered in one place:
 | 5 | `/wheel` + `/wheel?share=...` | Above "Create Your Custom..." section | All |
 | 6 | `/wheel` + `/wheel?share=...` | Below wheel canvas | Desktop only |
 | 7 | `/wheel` + `/wheel?share=...` | Below Spin button | Mobile only |
-| 8 | All pages | Fixed left + right skyscrapers | >= 1400px only |
+| 8 | `/yes-no-wheel` | Below wheel canvas | Desktop only |
+| 9 | `/yes-no-wheel` | Below Spin button | Mobile only |
+| 10 | All pages | Fixed left + right skyscrapers | >= 1500px only |
 
 > **Total banner ads visible per session:**
 > - Mobile on `/wheel`: 2 visible (placements 7 + 5)
@@ -189,7 +220,7 @@ All ad slots are registered in one place:
 - Fixed-position panels - IntersectionObserver does not apply (always in viewport)
 - Uses `requestIdleCallback` to load after browser finishes painting main content
 - Fallback: `setTimeout(1500ms)` for Safari (no `requestIdleCallback` support)
-- Only rendered via CSS at >= 1400px screen width
+- Only rendered via CSS at >= 1500px screen width
 
 ---
 
@@ -218,6 +249,11 @@ Delete the `AdBanner` import and both placement divs:
 Delete the `AdBanner` import and both placements:
 - Placement 1: desktop below wheel canvas (~line 365)
 - Placement 2: mobile below spin button (~line 597)
+
+### Step 3b - Remove from components/YesNoWheel.tsx
+Delete the `AdBanner` import and both placements:
+- Placement 1: desktop below wheel canvas (~line 116)
+- Placement 2: mobile below spin button (~line 184)
 
 ### Step 4 - Remove from app/wheel/page.tsx
 Delete the `AdBanner` import and all 3 placements:
