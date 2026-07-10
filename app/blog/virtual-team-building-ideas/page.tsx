@@ -75,7 +75,7 @@ export default function VirtualTeamBuildingPost() {
                     </Link>
                     <div className="mb-8">
                         <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-indigo-500 to-blue-500 text-white">Team Building</span>
-                        <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
+                        <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
                             25 Virtual Team Building Ideas for Remote Teams
                         </h1>
                         <p className="text-gray-500 text-sm">Published March 15, 2026 · Updated June 2026 · 16 min read · By SpinPickOnline Team</p>

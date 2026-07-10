@@ -36,7 +36,7 @@ export function WheelPageTemplate({
                 <section id="try-wheel" className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-white">
                     <div className="container mx-auto px-4">
                         <div className="text-center lg:mb-12 sm:mb-8 mb-5">
-                            <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">{h1}</h1>
+                            <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">{h1}</h1>
                         </div>
                         <HomeWheel 
                             defaultEntries={defaultEntries} 

@@ -64,7 +64,7 @@ export default function ZufallsradPage() {
                             <IoSparklesOutline className="text-lg" />
                             <span>Glücksrad Kostenlos · Ohne Anmeldung</span>
                         </div>
-                        <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                             Glücksrad Drehen – Zufallsgenerator Online
                         </h1>
                         <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">

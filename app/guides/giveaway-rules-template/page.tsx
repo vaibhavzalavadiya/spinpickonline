@@ -36,7 +36,7 @@ export default function GiveawayRulesTemplatePage() {
                     </Link>
                     <div className="mb-8">
                         <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-pink-500 to-rose-500 text-white">Giveaways</span>
-                        <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
+                        <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
                             Free Giveaway Rules Template + How to Write Your Own
                         </h1>
                         <p className="text-gray-500 text-sm">Updated April 15, 2026 · 10 min read</p>

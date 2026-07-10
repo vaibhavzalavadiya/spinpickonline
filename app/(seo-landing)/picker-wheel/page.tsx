@@ -57,7 +57,7 @@ export default function PickerWheelPage() {
                             <FiTarget className="text-lg" />
                             <span>Random Picker</span>
                         </div>
-                        <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                             Picker Wheel – Free Random Selection Tool
                         </h1>
                         <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">

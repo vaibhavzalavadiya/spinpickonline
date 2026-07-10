@@ -54,7 +54,7 @@ export default function ClassroomEngagementStrategiesPage() {
                     </Link>
                     <div className="mb-8">
                         <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white">Education</span>
-                        <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
+                        <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
                             15 Proven Classroom Engagement Strategies
                         </h1>
                         <p className="text-gray-500 text-sm">Updated April 10, 2026 · 14 min read</p>

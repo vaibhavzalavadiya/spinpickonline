@@ -35,7 +35,7 @@ export default function RaffleGuidePost() {
                     </Link>
                     <div className="mb-8">
                         <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-purple-500 to-violet-500 text-white">Raffles</span>
-                        <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
+                        <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
                             How to Run a Fair Raffle Drawing Online
                         </h1>
                         <p className="text-gray-500 text-sm">Published February 8, 2026 · 10 min read · By SpinPickOnline Team</p>

@@ -55,7 +55,7 @@ export default function OfficePartyGamesPost() {
                     </Link>
                     <div className="mb-8">
                         <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-rose-500 to-pink-500 text-white">Team Building</span>
-                        <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
+                        <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
                             15 Office Party Game Ideas Using a Spin Wheel
                         </h1>
                         <p className="text-gray-500 text-sm">Published March 22, 2026 · Updated June 2026 · 12 min read · By SpinPickOnline Team</p>

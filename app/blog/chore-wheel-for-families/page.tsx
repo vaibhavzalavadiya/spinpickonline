@@ -36,7 +36,7 @@ export default function ChoreWheelFamiliesPost() {
                     </Link>
                     <div className="mb-8">
                         <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-lime-500 to-green-500 text-white">Families</span>
-                        <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
+                        <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
                             How to Set Up a Chore Wheel for Your Family (That Actually Works)
                         </h1>
                         <p className="text-gray-500 text-sm">Published March 25, 2026 · 10 min read · By SpinPickOnline Team</p>

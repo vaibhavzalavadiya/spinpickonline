@@ -32,7 +32,7 @@ export default function RandomPickerWheelPage() {
       <section className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-gradient-to-b from-blue-50/50 to-white">
         <div className="container mx-auto px-4">
           <div className="text-center lg:mb-12 sm:mb-8 mb-5">
-            <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">Random Picker Wheel</h1>
+            <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">Random Picker Wheel</h1>
             <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">
               Spin the wheel to pick randomly from any list. Free, instant, no signup. Perfect for giveaways, classrooms, and decisions.
             </p>

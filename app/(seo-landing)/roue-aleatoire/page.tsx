@@ -64,7 +64,7 @@ export default function RoueAleatoirePage() {
                             <IoSparklesOutline className="text-lg" />
                             <span>Roue Aléatoire Gratuite · Sans Inscription</span>
                         </div>
-                        <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                             Roue Aléatoire – Faites Tourner et Choisissez au Hasard
                         </h1>
                         <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">

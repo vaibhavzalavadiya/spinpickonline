@@ -141,7 +141,7 @@ export default function BlogPage() {
             <section className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-gradient-to-b from-indigo-50/50 to-white">
                 <div className="container mx-auto px-4">
                     <div className="text-center">
-                        <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                             SpinPickOnline Blog
                         </h1>
                         <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">

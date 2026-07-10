@@ -99,7 +99,7 @@ export default function RandomNumberGeneratorUsesPost() {
                     </Link>
                     <div className="mb-8">
                         <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white">Technology</span>
-                        <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
+                        <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
                             10 Creative Ways to Use a Random Number Generator
                         </h1>
                         <p className="text-gray-500 text-sm">Published April 5, 2026 · 11 min read · By SpinPickOnline Team</p>

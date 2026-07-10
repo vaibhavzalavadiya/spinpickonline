@@ -36,7 +36,7 @@ export default function RandomTeamGeneratorPost() {
                     </Link>
                     <div className="mb-8">
                         <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-teal-500 to-green-500 text-white">Team Building</span>
-                        <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
+                        <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
                             How to Create Random Teams Fairly: A Complete Guide
                         </h1>
                         <p className="text-gray-500 text-sm">Published March 5, 2026 · 9 min read · By SpinPickOnline Team</p>

@@ -36,7 +36,7 @@ export default function FairRandomSelectionPage() {
                     </Link>
                     <div className="mb-8">
                         <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-green-500 to-teal-500 text-white">Fairness Guide</span>
-                        <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
+                        <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
                             How to Ensure Fair Random Selection Every Time
                         </h1>
                         <p className="text-gray-500 text-sm">Updated April 1, 2026 · 9 min read</p>

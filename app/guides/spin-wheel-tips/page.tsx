@@ -89,7 +89,7 @@ export default function SpinWheelTipsPage() {
                     </Link>
                     <div className="mb-8">
                         <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white">Tips & Tricks</span>
-                        <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
+                        <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
                             10 Tips to Get the Most Out of Your Spin Wheel
                         </h1>
                         <p className="text-gray-500 text-sm">Updated March 20, 2026 · 8 min read</p>

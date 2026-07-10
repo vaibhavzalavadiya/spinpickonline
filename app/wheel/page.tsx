@@ -320,7 +320,7 @@ function WheelPageContent() {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <div className="container px-4 mx-auto lg:py-12 py-8">
         <div className="text-center lg:mb-12 sm:mb-8 mb-5">
-          <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Create Your Random Picker Wheel
           </h1>
         </div>

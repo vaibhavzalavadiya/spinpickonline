@@ -35,7 +35,7 @@ export default function TeamBuildingPost() {
                     </Link>
                     <div className="mb-8">
                         <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-green-500 to-emerald-500 text-white">Team Building</span>
-                        <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
+                        <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
                             10 Fun Team Building Activities Using a Spin Wheel
                         </h1>
                         <p className="text-gray-500 text-sm">Published February 10, 2026 · 9 min read · By SpinPickOnline Team</p>

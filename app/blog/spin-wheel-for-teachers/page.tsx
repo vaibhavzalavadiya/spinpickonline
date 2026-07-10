@@ -36,7 +36,7 @@ export default function SpinWheelForTeachersPost() {
                     </Link>
                     <div className="mb-8">
                         <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-sky-500 to-blue-500 text-white">Education</span>
-                        <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
+                        <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
                             The Ultimate Spin Wheel Guide for Teachers in 2026
                         </h1>
                         <p className="text-gray-500 text-sm">Published April 1, 2026 · 12 min read · By SpinPickOnline Team</p>
