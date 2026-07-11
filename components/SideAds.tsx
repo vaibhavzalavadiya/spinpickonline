@@ -103,16 +103,16 @@ function SideAd({ slot, side }: SideAdProps) {
  * <SideAds slot="skyscraper-160x600" />
  *
  * Renders two fixed side-panel ads (left + right) outside the main container.
- * Only visible on screens ≥ 1500px wide via CSS media query.
+ * Only visible on screens ≥ 1550px wide via CSS media query.
  * Place once in layout.tsx to apply globally.
  */
 export default function SideAds({ slot }: { slot: string }) {
   return (
     <>
-      {/* Outer wrapper hides both panels below 1500px */}
+      {/* Outer wrapper hides both panels below 1550px */}
       <style>{`
         .side-ads-wrapper { display: none; }
-        @media (min-width: 1500px) { .side-ads-wrapper { display: block; } }
+        @media (min-width: 1550px) { .side-ads-wrapper { display: block; } }
       `}</style>
       <div className="side-ads-wrapper">
         <SideAd slot={slot} side="left" />

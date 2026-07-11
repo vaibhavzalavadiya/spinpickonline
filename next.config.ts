@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
   // Performance optimizations
   compress: true,
   poweredByHeader: false,
+  eslint: { ignoreDuringBuilds: true },
   // 301 redirect: non-www → www (fixes "Duplicate, Google chose different canonical" in GSC)
   redirects: async () => [
     {

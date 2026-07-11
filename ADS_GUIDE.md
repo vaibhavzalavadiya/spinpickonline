@@ -169,13 +169,13 @@ All ad slots are registered in one place:
 
 ### 10. Side Skyscraper Ads - left + right panels
 - **File**: `app/layout.tsx` ~line 65
-- **Visible on**: Screens >= 1500px only (CSS media query in `SideAds.tsx`)
+- **Visible on**: Screens >= 1550px only (CSS media query in `SideAds.tsx`)
 - **Slot**: `skyscraper-160x600`
 - **Note**: Global - appears on every page of the site
 - **Code**:
 
 ```tsx
-{/* Side skyscraper ads - fixed left and right, visible only >= 1500px */}
+{/* Side skyscraper ads - fixed left and right, visible only >= 1550px */}
 <SideAds slot="skyscraper-160x600" />
 ```
 
@@ -194,7 +194,7 @@ All ad slots are registered in one place:
 | 7 | `/wheel` + `/wheel?share=...` | Below Spin button | Mobile only |
 | 8 | `/yes-no-wheel` | Below wheel canvas | Desktop only |
 | 9 | `/yes-no-wheel` | Below Spin button | Mobile only |
-| 10 | All pages | Fixed left + right skyscrapers | >= 1500px only |
+| 10 | All pages | Fixed left + right skyscrapers | >= 1550px only |
 
 > **Total banner ads visible per session:**
 > - Mobile on `/wheel`: 2 visible (placements 7 + 5)
@@ -220,7 +220,7 @@ All ad slots are registered in one place:
 - Fixed-position panels - IntersectionObserver does not apply (always in viewport)
 - Uses `requestIdleCallback` to load after browser finishes painting main content
 - Fallback: `setTimeout(1500ms)` for Safari (no `requestIdleCallback` support)
-- Only rendered via CSS at >= 1500px screen width
+- Only rendered via CSS at >= 1550px screen width
 
 ---
 

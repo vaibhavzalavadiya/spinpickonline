@@ -39,6 +39,7 @@ export const TOOLS_DROPDOWN_ITEMS = [
   { label: "Classroom Activities", href: "/classroom-activities", icon: "📚", description: "Random student picker for class" },
   { label: "Raffle Wheel", href: "/raffle-wheel", icon: "🎟️", description: "Spin for raffle draws" },
   { label: "Prize Wheel", href: "/prize-wheel", icon: "🎁", description: "Spin to win exciting prizes" },
+  { label: "Flip a Coin", href: "/flip-a-coin", icon: "🪙", description: "Free online coin toss" },
 ] as const;
 
 // Use cases data for programmatic pages

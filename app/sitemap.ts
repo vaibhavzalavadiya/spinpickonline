@@ -30,6 +30,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/picker-wheel",
     "/decision-wheel",
     "/wheel-of-names",
+    // New SEO pages
+    "/flip-a-coin",
+    "/food-picker-wheel",
+    "/random-letter-generator",
+    "/team-name-generator",
+    "/randomizer-wheel",
+    "/random-group-generator",
+    "/instagram-giveaway-picker",
     // International language pages
     "/ruleta-aleatoria",   // Spanish  – "ruleta aleatoria" ~50k/mo
     "/roda-da-sorte",      // Portuguese – "roda da sorte" ~40k/mo
