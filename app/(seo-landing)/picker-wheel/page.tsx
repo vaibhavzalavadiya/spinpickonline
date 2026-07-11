@@ -4,7 +4,8 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight, FiTarget } from "react-icons/fi";
 import { IoHandLeftOutline, IoListOutline, IoShieldCheckmarkOutline, IoSparklesOutline } from "react-icons/io5";
-import { generateFAQSchema, generateWebApplicationSchema, generateMetadata } from "@/lib/seo";
+import { generateFAQSchema, generateWebApplicationSchema, generateMetadata, generateBreadcrumbSchema, generateHowToSchema } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = generateMetadata({
     title: "Picker Wheel – Free Random Picker | Pick Anything Instantly",
@@ -39,6 +40,20 @@ export default function PickerWheelPage() {
         }
     ]);
 
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: "Home", item: SITE_CONFIG.url },
+        { name: "Picker Wheel", item: `${SITE_CONFIG.url}/picker-wheel` },
+    ]);
+    const howToSchema = generateHowToSchema({
+        name: "How to Use the Picker Wheel",
+        description: "Pick randomly from any list using our free picker wheel in 3 steps.",
+        steps: [
+            { name: "Add Your Items", text: "Type or paste the options you want to pick from into the entry panel.", position: 1 },
+            { name: "Spin the Wheel", text: "Click the Spin button and the wheel will randomly select one item.", position: 2 },
+            { name: "Get Your Result", text: "The selected item is highlighted. Spin again or share the result.", position: 3 },
+        ],
+    });
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
             <script
@@ -48,6 +63,14 @@ export default function PickerWheelPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
             />
             {/* Hero Section with Wheel */}
             <section className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-gradient-to-b from-emerald-50/50 to-white">

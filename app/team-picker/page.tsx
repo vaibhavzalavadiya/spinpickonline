@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { FiUsers, FiHash, FiRotateCw, FiShare2 } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
-import { generateMetadata as genMeta } from "@/lib/seo";
+import { generateMetadata as genMeta, generateBreadcrumbSchema, generateHowToSchema } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 import TeamPickerWheel from "@/components/TeamPickerWheel";
@@ -44,6 +44,20 @@ export default function TeamPickerPage() {
         }
     ]);
 
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: "Home", item: SITE_CONFIG.url },
+        { name: "Team Picker", item: `${SITE_CONFIG.url}/team-picker` },
+    ]);
+    const howToSchema = generateHowToSchema({
+        name: "How to Use the Random Team Picker",
+        description: "Divide people into random teams fairly using our free team picker wheel.",
+        steps: [
+            { name: "Enter Player Names", text: "Add all participant names into the entry panel.", position: 1 },
+            { name: "Set Team Count", text: "Choose how many teams you want to split the group into.", position: 2 },
+            { name: "Generate Teams", text: "Click to randomly assign players to teams. Share results with the group.", position: 3 },
+        ],
+    });
+
     return (
         <>
             <script
@@ -53,6 +67,14 @@ export default function TeamPickerPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
             />
             <section className="py-10 lg:py-16">
                 <div className="container mx-auto px-4">

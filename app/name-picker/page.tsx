@@ -3,7 +3,7 @@ import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiEdit, FiSettings, FiRotateCw, FiShare2, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
-import { generateFAQSchema, generateWebApplicationSchema, generateBreadcrumbSchema, generateMetadata } from "@/lib/seo";
+import { generateFAQSchema, generateWebApplicationSchema, generateBreadcrumbSchema, generateHowToSchema, generateMetadata } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = generateMetadata({
@@ -56,6 +56,15 @@ export default function NamePickerPage() {
         { name: "Home", item: SITE_CONFIG.url },
         { name: "Name Picker", item: `${SITE_CONFIG.url}/name-picker` },
     ]);
+    const howToSchema = generateHowToSchema({
+        name: "How to Use the Random Name Picker",
+        description: "Pick a random name from your list instantly using our free name wheel spinner.",
+        steps: [
+            { name: "Enter Names", text: "Type or paste your list of names into the entry panel.", position: 1 },
+            { name: "Spin the Wheel", text: "Click the Spin button to randomly select a name.", position: 2 },
+            { name: "Get Your Winner", text: "The selected name is highlighted. You can remove it or spin again.", position: 3 },
+        ],
+    });
 
     return (
         <>
@@ -70,6 +79,10 @@ export default function NamePickerPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
             />
             <WheelPageTemplate
                 title="Random Name Picker"

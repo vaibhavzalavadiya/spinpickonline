@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import HomeWheel from "@/components/HomeWheel";
 import { CallToAction } from "@/components/CallToAction";
-import { generateMetadata as genMeta } from "@/lib/seo";
+import { generateMetadata as genMeta, HOMEPAGE_HREFLANG } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
 import Link from "next/link";
 import { IoSparklesOutline, IoShieldCheckmarkOutline, IoPhonePortraitOutline, IoShareSocialOutline } from "react-icons/io5";
@@ -11,6 +11,7 @@ export const metadata: Metadata = genMeta({
     title: "Roda Putar Online Gratis – Pengocok Nama | SpinPickOnline",
     description: "Putar roda keberuntungan gratis secara online. Pengacak nama, undian online, spin wheel untuk kelas, event dan keputusan grup. Tanpa daftar, bisa di HP.",
     canonical: "/roda-putar",
+    languages: HOMEPAGE_HREFLANG,
 });
 
 const RODA_PUTAR_ENTRIES = [

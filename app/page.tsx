@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { CallToAction } from "@/components/CallToAction";
-import { generateWebApplicationSchema } from "@/lib/seo";
+import { generateWebApplicationSchema, generateBreadcrumbSchema, generateHowToSchema } from "@/lib/seo";
 import SchemaScript from "@/components/SchemaScript";
-import { FAQS } from "@/lib/constants";
+import { FAQS, SITE_CONFIG } from "@/lib/constants";
 import { generateFAQSchema } from "@/lib/seo";
 import HomeWheel from "@/components/HomeWheel";
 import AdBanner from "@/components/AdBanner";
@@ -13,11 +13,25 @@ import { HiOutlineUserGroup } from 'react-icons/hi';
 export default function Home() {
   const webAppSchema = generateWebApplicationSchema();
   const faqSchema = generateFAQSchema(FAQS.slice(0, 7)); // Homepage FAQ section
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", item: SITE_CONFIG.url },
+  ]);
+  const howToSchema = generateHowToSchema({
+    name: "How to Use the Random Picker Wheel",
+    description: "Use our free random picker wheel to make fair, instant selections in 3 simple steps.",
+    steps: [
+      { name: "Add Your Entries", text: "Type or paste names, items, or options into the entry panel. Add as many as you need.", position: 1 },
+      { name: "Customize the Wheel", text: "Optionally change colors, labels, or wheel size to match your needs.", position: 2 },
+      { name: "Spin and Get Results", text: "Click the Spin button and the wheel will randomly select a winner. Share or spin again.", position: 3 },
+    ],
+  });
 
   return (
     <>
       <SchemaScript schema={webAppSchema} />
       <SchemaScript schema={faqSchema} />
+      <SchemaScript schema={breadcrumbSchema} />
+      <SchemaScript schema={howToSchema} />
       {/* Interactive Wheel Section - Enhanced */}
       <section id="try-wheel" className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-4">

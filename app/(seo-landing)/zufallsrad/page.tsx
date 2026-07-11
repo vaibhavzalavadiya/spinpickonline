@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import HomeWheel from "@/components/HomeWheel";
 import { CallToAction } from "@/components/CallToAction";
-import { generateMetadata as genMeta } from "@/lib/seo";
+import { generateMetadata as genMeta, HOMEPAGE_HREFLANG } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
 import Link from "next/link";
 import { IoSparklesOutline, IoShieldCheckmarkOutline, IoPhonePortraitOutline, IoShareSocialOutline } from "react-icons/io5";
@@ -11,6 +11,7 @@ export const metadata: Metadata = genMeta({
     title: "Glücksrad Drehen – Zufallsgenerator Kostenlos | SpinPickOnline",
     description: "Drehen Sie das Glücksrad kostenlos online. Zufallsgenerator für Namen, Verlosung online, Entscheidungsrad. Ohne Anmeldung, für Schule, Events und Gruppen.",
     canonical: "/zufallsrad",
+    languages: HOMEPAGE_HREFLANG,
 });
 
 const GLUECKSRAD_ENTRIES = [

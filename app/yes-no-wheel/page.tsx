@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { generateMetadata, generateWebApplicationSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo";
+import { generateMetadata, generateWebApplicationSchema, generateFAQSchema, generateBreadcrumbSchema, generateHowToSchema } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
 import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiZap, FiTarget, FiSmile, FiSmartphone, FiArrowRight, FiCheckCircle } from "react-icons/fi";
@@ -39,6 +39,16 @@ export default function YesNoWheelPage() {
     { name: "Yes or No Wheel", item: `${SITE_CONFIG.url}/yes-no-wheel` },
   ]);
 
+  const howToSchema = generateHowToSchema({
+    name: "How to Use the Yes or No Wheel",
+    description: "Get an instant yes or no answer using our free decision spinner.",
+    steps: [
+      { name: "Open the Yes/No Wheel", text: "Visit the yes or no wheel page — no signup needed.", position: 1 },
+      { name: "Customize Options", text: "The wheel defaults to Yes and No. Add Maybe or other options if desired.", position: 2 },
+      { name: "Spin for Your Answer", text: "Click Spin and the wheel randomly selects Yes or No for you.", position: 3 },
+    ],
+  });
+
   return (
     <WheelPageTemplate
       title="Yes or No Wheel"
@@ -69,6 +79,10 @@ export default function YesNoWheelPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
 
       {/* Custom Yes/No Wheel Section */}

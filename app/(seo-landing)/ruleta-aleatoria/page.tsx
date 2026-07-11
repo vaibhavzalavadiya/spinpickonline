@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import HomeWheel from "@/components/HomeWheel";
 import { CallToAction } from "@/components/CallToAction";
-import { generateMetadata as genMeta } from "@/lib/seo";
+import { generateMetadata as genMeta, HOMEPAGE_HREFLANG } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
 import Link from "next/link";
 import { IoSparklesOutline, IoShieldCheckmarkOutline, IoPhonePortraitOutline, IoShareSocialOutline } from "react-icons/io5";
@@ -11,6 +11,7 @@ export const metadata: Metadata = genMeta({
     title: "Ruleta Aleatoria Gratis – Gira la Ruleta Online | SpinPickOnline",
     description: "Gira la ruleta aleatoria gratis y elige al azar entre tus opciones. Sin registro, funciona en móvil. Perfecta para sorteos onilne, clases y decisiones en grupo.",
     canonical: "/ruleta-aleatoria",
+    languages: HOMEPAGE_HREFLANG,
 });
 
 const RULETA_ENTRIES = [

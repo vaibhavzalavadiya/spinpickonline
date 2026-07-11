@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import HomeWheel from "@/components/HomeWheel";
 import { CallToAction } from "@/components/CallToAction";
-import { generateMetadata as genMeta } from "@/lib/seo";
+import { generateMetadata as genMeta, HOMEPAGE_HREFLANG } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
 import Link from "next/link";
 import { IoSparklesOutline, IoShieldCheckmarkOutline, IoPhonePortraitOutline, IoShareSocialOutline } from "react-icons/io5";
@@ -11,6 +11,7 @@ export const metadata: Metadata = genMeta({
     title: "Roue Aléatoire Gratuite – Générateur Aléatoire | SpinPickOnline",
     description: "Faites tourner la roue aléatoire gratuitement. Tirage au sort en ligne, générateur aléatoire de noms, sans inscription. Parfait pour les cours, concours et décisions de groupe.",
     canonical: "/roue-aleatoire",
+    languages: HOMEPAGE_HREFLANG,
 });
 
 const ROUE_ENTRIES = [

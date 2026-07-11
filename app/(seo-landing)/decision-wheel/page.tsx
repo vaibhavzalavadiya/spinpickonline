@@ -4,7 +4,8 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight, FiHelpCircle } from "react-icons/fi";
 import { IoCompassOutline, IoFlashOutline, IoHeartOutline, IoRestaurantOutline } from "react-icons/io5";
-import { generateFAQSchema, generateWebApplicationSchema, generateMetadata } from "@/lib/seo";
+import { generateFAQSchema, generateWebApplicationSchema, generateMetadata, generateBreadcrumbSchema, generateHowToSchema } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = generateMetadata({
     title: "Decision Wheel – Free Random Decision Maker Spinner | Decide Now",
@@ -42,6 +43,20 @@ export default function DecisionWheelPage() {
         }
     ]);
 
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: "Home", item: SITE_CONFIG.url },
+        { name: "Decision Wheel", item: `${SITE_CONFIG.url}/decision-wheel` },
+    ]);
+    const howToSchema = generateHowToSchema({
+        name: "How to Use the Decision Wheel",
+        description: "Make instant decisions using our free decision wheel spinner.",
+        steps: [
+            { name: "Add Your Options", text: "Enter the choices you're deciding between into the wheel.", position: 1 },
+            { name: "Spin the Decision Wheel", text: "Click Spin and let the wheel randomly choose for you.", position: 2 },
+            { name: "Accept the Result", text: "The wheel stops on your decision. Spin again or share with friends.", position: 3 },
+        ],
+    });
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
             <script
@@ -51,6 +66,14 @@ export default function DecisionWheelPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
             />
             {/* Hero Section with Wheel */}
             <section className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-gradient-to-b from-blue-50/50 to-white">

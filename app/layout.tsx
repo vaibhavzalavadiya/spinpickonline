@@ -3,7 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { generateMetadata as genMeta, generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo";
+import { generateMetadata as genMeta, generateOrganizationSchema, generateWebSiteSchema, HOMEPAGE_HREFLANG } from "@/lib/seo";
 import SchemaScript from "@/components/SchemaScript";
 import Script from "next/script";
 import SideAds from "@/components/SideAds";
@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     title: "Random Picker Wheel – Free Online Spin the Wheel Tool",
     description: "Spin the wheel instantly. Add names, spin, pick a random winner in seconds. Free forever, no signup, works on mobile. Used by teachers, creators & event hosts.",
     canonical: "/",
+    languages: HOMEPAGE_HREFLANG,
   }),
   authors: [{ name: "SpinPickOnline Team", url: "https://www.spinpickonline.com" }],
 };
@@ -80,13 +81,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
         {/* End Google Tag Manager */}
 
-        {/* Google AdSense */}
-        <Script
+        {/* Google AdSense – lazyOnload to protect LCP */}
+        {/* <Script
           id="adsbygoogle-init"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9187153323911677"
           crossOrigin="anonymous"
-        />
+        /> */}
         {/* End Google AdSense */}
 
         <Script

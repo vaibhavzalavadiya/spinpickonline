@@ -1,6 +1,18 @@
 import { Metadata } from "next";
 import { SITE_CONFIG } from "./constants";
 
+// Hreflang mapping for homepage language variants
+// Each international page is a language variant of the homepage
+export const HOMEPAGE_HREFLANG: Record<string, string> = {
+  en: `${SITE_CONFIG.url}`,
+  es: `${SITE_CONFIG.url}/ruleta-aleatoria`,
+  pt: `${SITE_CONFIG.url}/roda-da-sorte`,
+  fr: `${SITE_CONFIG.url}/roue-aleatoire`,
+  de: `${SITE_CONFIG.url}/zufallsrad`,
+  id: `${SITE_CONFIG.url}/roda-putar`,
+  "x-default": `${SITE_CONFIG.url}`,
+};
+
 // Generate canonical URL
 export function getCanonicalUrl(path: string): string {
   const cleanPath = path.startsWith("/") ? path : `/${path}`;
@@ -15,6 +27,7 @@ export function generateMetadata({
   robots = "index, follow",
   ogImage,
   ogType = "website",
+  languages,
 }: {
   title: string;
   description: string;
@@ -22,6 +35,7 @@ export function generateMetadata({
   robots?: "index, follow" | "noindex, follow" | "noindex, nofollow";
   ogImage?: string;
   ogType?: "website" | "article";
+  languages?: Record<string, string>;
 }): Metadata {
   // Validate title length (30-60 chars)
   // if (title.length < 30 || title.length > 60) {
@@ -45,6 +59,7 @@ export function generateMetadata({
     },
     alternates: {
       canonical: canonicalUrl,
+      ...(languages ? { languages } : {}),
     },
     openGraph: {
       title,
