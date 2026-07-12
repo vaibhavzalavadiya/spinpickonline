@@ -96,7 +96,7 @@ export default function Header() {
                           </div>
 
                           {/* Tools Grid */}
-                          <div className="grid grid-cols-2 p-2">
+                          <div className="grid grid-cols-2 p-2 max-h-[60vh] overflow-y-auto custom-scrollbar">
                             {TOOLS_DROPDOWN_ITEMS.map((tool) => (
                               <Link
                                 key={tool.href}
@@ -215,14 +215,14 @@ export default function Header() {
         </div>
 
         {/* Mobile Links */}
-        <div className="flex flex-col gap-1 p-4 overflow-y-auto max-h-[calc(100vh-80px)] custom-scrollbar">
+        <div className="flex flex-col gap-4 p-4 overflow-y-auto max-h-[calc(100vh-80px)] custom-scrollbar">
           {NAV_ITEMS.map((item) =>
             'hasDropdown' in item && item.hasDropdown ? (
               <div key={item.href + item.label}>
                 {/* Our Tools accordion trigger */}
                 <button
                   onClick={() => setMobileToolsOpen((v) => !v)}
-                  className="w-full flex items-center justify-between rounded-lg px-3 py-2.5 text-base font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition cursor-pointer"
+                  className="w-full flex items-center justify-between text-base font-semibold text-gray-700 transition cursor-pointer"
                   aria-expanded={mobileToolsOpen}
                 >
                   <span>{item.label}</span>
@@ -233,7 +233,7 @@ export default function Header() {
 
                 {/* Mobile Tools List (accordion) */}
                 <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileToolsOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileToolsOpen ? "max-h-[50vh] overflow-y-auto custom-scrollbar opacity-100" : "max-h-0 opacity-0"
                     }`}
                 >
                   <div className="ml-2 mt-1 mb-2 border-l-2 border-blue-100 pl-2 space-y-0.5">
@@ -259,7 +259,7 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-base font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
+                className="text-base font-semibold text-gray-700 transition"
               >
                 {item.label}
               </Link>

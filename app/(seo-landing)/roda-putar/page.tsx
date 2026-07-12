@@ -77,7 +77,7 @@ export default function RodaPutarPage() {
             </section>
 
             {/* Keunggulan */}
-            <section className="py-10 lg:py-16 bg-white">
+            <section className="py-8 lg:py-16 bg-white">
                 <div className="container mx-auto px-4">
                     <div className="text-center md:mb-10 mb-6">
                         <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3">
@@ -133,7 +133,7 @@ export default function RodaPutarPage() {
             </section>
 
             {/* Kegunaan populer */}
-            <section className="py-10 lg:py-16 bg-white">
+            <section className="py-8 lg:py-16 bg-white">
                 <div className="container mx-auto px-4">
                     <div className="text-center md:mb-10 mb-6">
                         <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3">
@@ -213,7 +213,7 @@ export default function RodaPutarPage() {
             </section>
 
             {/* FAQ */}
-            <section className="py-10 lg:py-16 bg-white">
+            <section className="py-8 lg:py-16 bg-white">
                 <div className="container mx-auto px-4">
                     <div className="max-w-3xl mx-auto">
                         <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">

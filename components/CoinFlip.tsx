@@ -23,6 +23,11 @@ export default function CoinFlip() {
   });
 
   const [rotation, setRotation] = useState(0);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const flipCoin = useCallback(() => {
     if (isFlipping) return;
@@ -55,7 +60,7 @@ export default function CoinFlip() {
       }));
       setIsFlipping(false);
     }, 1200);
-  }, [isFlipping]);
+  }, [isFlipping, rotation]);
 
   const resetStats = useCallback(() => {
     setStats({ heads: 0, tails: 0, total: 0, history: [] });
@@ -78,9 +83,35 @@ export default function CoinFlip() {
   const tailsPercent = stats.total > 0 ? ((stats.tails / stats.total) * 100).toFixed(1) : "0.0";
 
   return (
-    <div className="w-full max-w-lg mx-auto">
+    <div className="w-full max-w-2xl mx-auto">
       {/* Coin Container */}
-      <div className="flex flex-col items-center gap-6 sm:gap-8">
+      {!mounted ? (
+        /* Loading placeholder — prevents flash of unstyled coin text */
+        <div className="flex flex-col items-center gap-4 sm:gap-5 py-8">
+          <div className="w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] rounded-full bg-gradient-to-br from-amber-100 to-orange-100 animate-pulse" />
+          <div className="w-40 h-10 rounded-lg bg-gray-100 animate-pulse" />
+        </div>
+      ) : (
+      <div className="flex flex-col items-center gap-4 sm:gap-5">
+
+        {/* Result Text — shown ABOVE the coin so user sees it instantly */}
+        <div className="text-center">
+          {result && !isFlipping && (
+            <p
+              className={`text-lg sm:text-2xl font-bold tracking-wide animate-fade-in ${result === "heads" ? "text-amber-600" : "text-blue-600"
+                }`}
+            >
+              {result === "heads" ? "🪙 HEADS!" : "🪙 TAILS!"}
+            </p>
+          )}
+          {isFlipping && (
+            <p className="text-base sm:text-lg text-gray-400 animate-pulse">Flipping...</p>
+          )}
+          {!result && !isFlipping && (
+            <p className="text-sm sm:text-base text-gray-400">Tap the coin or press the button</p>
+          )}
+        </div>
+
         {/* The Coin */}
         <div
           className="coin-container cursor-pointer select-none"
@@ -113,43 +144,26 @@ export default function CoinFlip() {
           </div>
         </div>
 
-        {/* Result Text */}
-        <div className="text-center min-h-[2.5rem]">
-          {result && !isFlipping && (
-            <p
-              className={`text-2xl sm:text-3xl font-bold tracking-wide animate-fade-in ${result === "heads" ? "text-amber-600" : "text-blue-600"
-                }`}
-            >
-              {result === "heads" ? "🪙 HEADS!" : "🪙 TAILS!"}
-            </p>
-          )}
-          {isFlipping && (
-            <p className="text-lg text-gray-400 animate-pulse">Flipping...</p>
-          )}
-          {!result && !isFlipping && (
-            <p className="text-base text-gray-400">Tap the coin or press the button</p>
-          )}
-        </div>
-
         {/* Flip Button */}
         <button
           onClick={flipCoin}
           disabled={isFlipping}
-          className="w-full max-w-[280px] py-3.5 px-8 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-lg rounded-2xl shadow-lg shadow-amber-500/25 hover:shadow-xl hover:shadow-amber-500/30 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95"
+          className="w-full max-w-[250px] sm:max-w-[280px] py-2.5 sm:py-3 px-5 sm:px-8 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-sm sm:text-base rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95"
         >
           {isFlipping ? "Flipping..." : "FLIP COIN"}
         </button>
 
-        <p className="text-xs text-gray-400 -mt-3 sm:block hidden">
+        <p className="text-xs text-gray-400 sm:block hidden">
           or press <kbd className="px-1.5 py-0.5 bg-gray-100 rounded text-gray-500 font-mono text-xs border border-gray-200">Space</kbd>
         </p>
       </div>
+      )}
 
       {/* Stats Section */}
       {stats.total > 0 && (
-        <div className="mt-8 sm:mt-10 space-y-4">
+        <div className="mt-5 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           {/* Heads vs Tails Bar */}
-          <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+          <div className="bg-white rounded-lg border border-gray-200 p-3 sm:p-4">
             <div className="flex justify-between items-center mb-3">
               <h3 className="text-sm font-semibold text-gray-700">Session Stats</h3>
               <button
@@ -161,7 +175,7 @@ export default function CoinFlip() {
             </div>
 
             {/* Visual Bar */}
-            <div className="w-full h-8 bg-gray-100 rounded-full overflow-hidden flex mb-3">
+            <div className="w-full h-6 sm:h-8 bg-gray-100 rounded-full overflow-hidden flex mb-2 sm:mb-3">
               <div
                 className="h-full bg-gradient-to-r from-amber-400 to-amber-500 flex items-center justify-center transition-all duration-500"
                 style={{ width: `${headsPercent}%` }}
@@ -185,30 +199,30 @@ export default function CoinFlip() {
             </div>
 
             {/* Counters */}
-            <div className="grid grid-cols-3 gap-3 text-center">
-              <div className="bg-amber-50 rounded-lg py-2 px-3">
-                <p className="text-xl font-bold text-amber-600">{stats.heads}</p>
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 text-center">
+              <div className="bg-amber-50 rounded-lg py-1.5 sm:py-2 px-2 sm:px-3">
+                <p className="text-lg sm:text-xl font-bold text-amber-600">{stats.heads}</p>
                 <p className="text-xs text-amber-700 font-medium">Heads</p>
               </div>
-              <div className="bg-gray-50 rounded-lg py-2 px-3">
-                <p className="text-xl font-bold text-gray-700">{stats.total}</p>
+              <div className="bg-gray-50 rounded-lg py-1.5 sm:py-2 px-2 sm:px-3">
+                <p className="text-lg sm:text-xl font-bold text-gray-700">{stats.total}</p>
                 <p className="text-xs text-gray-500 font-medium">Total</p>
               </div>
-              <div className="bg-blue-50 rounded-lg py-2 px-3">
-                <p className="text-xl font-bold text-blue-600">{stats.tails}</p>
+              <div className="bg-blue-50 rounded-lg py-1.5 sm:py-2 px-2 sm:px-3">
+                <p className="text-lg sm:text-xl font-bold text-blue-600">{stats.tails}</p>
                 <p className="text-xs text-blue-700 font-medium">Tails</p>
               </div>
             </div>
           </div>
 
           {/* Flip History */}
-          <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
-            <h3 className="text-sm font-semibold text-gray-700 mb-3">Flip History</h3>
-            <div className="flex flex-wrap gap-1.5">
+          <div className="bg-white rounded-lg border border-gray-200 p-3 sm:p-4">
+            <h3 className="text-sm font-semibold text-gray-700 mb-2 sm:mb-3">Flip History</h3>
+            <div className="flex flex-wrap gap-1 sm:gap-1.5">
               {stats.history.map((flip, i) => (
                 <span
                   key={i}
-                  className={`w-7 h-7 flex items-center justify-center rounded-full text-xs font-bold ${flip === "heads"
+                  className={`w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center rounded-full text-[10px] sm:text-xs font-bold ${flip === "heads"
                     ? "bg-amber-100 text-amber-700"
                     : "bg-blue-100 text-blue-700"
                     }`}
@@ -224,8 +238,8 @@ export default function CoinFlip() {
       <style jsx>{`
         .coin-container {
           perspective: 800px;
-          width: 160px;
-          height: 160px;
+          width: 150px;
+          height: 150px;
         }
         @media (min-width: 640px) {
           .coin-container {
@@ -245,10 +259,19 @@ export default function CoinFlip() {
         }
         @keyframes coinBounce {
           0% { top: 0; }
-          30% { top: -80px; }
-          60% { top: -20px; }
+          30% { top: -50px; }
+          60% { top: -15px; }
           80% { top: -5px; }
           100% { top: 0; }
+        }
+        @media (min-width: 640px) {
+          @keyframes coinBounce {
+            0% { top: 0; }
+            30% { top: -80px; }
+            60% { top: -20px; }
+            80% { top: -5px; }
+            100% { top: 0; }
+          }
         }
         .coin-face {
           position: absolute;
@@ -283,7 +306,7 @@ export default function CoinFlip() {
           gap: 2px;
         }
         .coin-text {
-          font-size: 2.5rem;
+          font-size: 2rem;
           font-weight: 900;
           color: white;
           line-height: 1;
@@ -291,7 +314,7 @@ export default function CoinFlip() {
         }
         @media (min-width: 640px) {
           .coin-text {
-            font-size: 3.5rem;
+            font-size: 3rem;
           }
         }
         .coin-label {

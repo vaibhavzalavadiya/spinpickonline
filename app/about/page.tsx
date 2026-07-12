@@ -157,7 +157,7 @@ export default function AboutPage() {
             </section>
 
             {/* Our Journey Timeline */}
-            <section className="py-10 lg:py-16 bg-white rounded-2xl md:rounded-3xl shadow-sm border border-gray-100">
+            <section className="py-8 lg:py-16 bg-white rounded-2xl md:rounded-3xl shadow-sm border border-gray-100">
                 <div className="container px-4 mx-auto">
                     <div className="text-center md:mb-10 mb-6">
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-100 text-green-700 rounded-full text-xs font-semibold mb-4">
@@ -358,7 +358,7 @@ export default function AboutPage() {
             </section>
 
             {/* What We Offer (Tools) */}
-            <section className="py-10 lg:py-16 bg-white rounded-2xl md:rounded-3xl mx-2 md:mx-4 my-6 shadow-sm border border-gray-100">
+            <section className="py-8 lg:py-16 bg-white rounded-2xl md:rounded-3xl mx-2 md:mx-4 my-6 shadow-sm border border-gray-100">
                 <div className="container mx-auto px-4">
                     <div className="max-w-5xl mx-auto">
                         <div className="text-center md:mb-8 mb-6">

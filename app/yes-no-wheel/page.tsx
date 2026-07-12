@@ -150,7 +150,7 @@ export default function YesNoWheelPage() {
       </section>
 
       {/* When to Use Section */}
-      <section className="py-10 lg:py-16 bg-white">
+      <section className="py-8 lg:py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="sm:text-2xl md:text-3xl text-xl font-bold text-gray-900 mb-6">When to Use a Yes No Wheel</h2>
           <div className="grid md:grid-cols-2 md:gap-6 gap-4">
@@ -208,7 +208,7 @@ export default function YesNoWheelPage() {
       </section>
 
       {/* Why Choose Section */}
-      <section className="py-10 lg:py-16 bg-white">
+      <section className="py-8 lg:py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="sm:text-2xl md:text-3xl text-xl font-bold text-gray-900 mb-6">Why Use Our Yes or No Wheel?</h2>
           <div className="grid md:grid-cols-2 gap-4">
@@ -300,7 +300,7 @@ export default function YesNoWheelPage() {
       </section>
 
       {/* Why Use Our Yes No Wheel Section */}
-      <section className="py-10 lg:py-16 bg-white">
+      <section className="py-8 lg:py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="sm:text-2xl md:text-3xl text-xl font-bold text-gray-900 mb-6">Why Use Our Yes or No Wheel?</h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -355,7 +355,7 @@ export default function YesNoWheelPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-10 lg:py-16 bg-white">
+      <section className="py-8 lg:py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="sm:text-2xl md:text-3xl text-xl font-bold text-gray-900 mb-6">Yes or No Wheel FAQ</h2>
           <div className="space-y-4">

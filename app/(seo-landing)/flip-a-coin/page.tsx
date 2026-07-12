@@ -3,6 +3,7 @@ import { generateMetadata, generateWebApplicationSchema, generateFAQSchema, gene
 import { SITE_CONFIG } from "@/lib/constants";
 import CoinFlip from "@/components/CoinFlip";
 import { CallToAction } from "@/components/CallToAction";
+import AdBanner from "@/components/AdBanner";
 import Link from "next/link";
 import { FiCheck, FiArrowRight, FiList } from "react-icons/fi";
 import { IoShuffleOutline, IoSparklesOutline, IoFlashOutline } from "react-icons/io5";
@@ -71,22 +72,27 @@ export default function FlipACoinPage() {
       />
 
       {/* Hero Section */}
-      <section className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-gradient-to-b from-amber-50/50 to-white">
+      <section className="pb-6 sm:pb-10 lg:pb-16 lg:pt-10 pt-6 sm:pt-8 bg-gradient-to-b from-amber-50/50 to-white">
         <div className="container mx-auto px-4">
-          <div className="text-center lg:mb-12 sm:mb-8 mb-5">
+          <div className="text-center lg:mb-12 sm:mb-8 mb-4">
             <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Flip a Coin – Free Online Coin Toss
             </h1>
           </div>
 
-          <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-xl shadow-amber-900/5 border border-gray-100 p-4 sm:p-10">
+          <div className="max-w-3xl mx-auto bg-white rounded-lg shadow border border-gray-100 p-3 sm:p-8">
             <CoinFlip />
           </div>
         </div>
       </section>
 
+      {/* Ad Banner */}
+      <div className="container mx-auto px-4">
+        <AdBanner slot="banner-320x50" className="flex justify-center" />
+      </div>
+
       {/* Benefits */}
-      <section className="py-10 lg:py-16 bg-white">
+      <section className="py-8 lg:py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center md:mb-8 mb-6">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3">
@@ -218,7 +224,7 @@ export default function FlipACoinPage() {
       </section>
 
       {/* Internal Links */}
-      <section className="py-10 lg:py-16 bg-white">
+      <section className="py-8 lg:py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-6">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">

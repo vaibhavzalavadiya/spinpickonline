@@ -69,7 +69,7 @@ export default function WheelSpinnerPage() {
             </section>
 
             {/* Features */}
-            <section className="py-10 lg:py-16 bg-white">
+            <section className="py-8 lg:py-16 bg-white">
                 <div className="container mx-auto px-4">
                     <div className="text-center md:mb-8 mb-6">
                         <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3">
@@ -149,7 +149,7 @@ export default function WheelSpinnerPage() {
             </section>
 
             {/* Use Cases */}
-            <section className="py-10 lg:py-16 bg-white">
+            <section className="py-8 lg:py-16 bg-white">
                 <div className="container mx-auto px-4">
                     <div className="text-center md:mb-8 mb-6">
                         <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3">
@@ -202,7 +202,7 @@ export default function WheelSpinnerPage() {
             </section>
 
             {/* Creative Ideas */}
-            <section className="py-10 lg:py-16 bg-white">
+            <section className="py-8 lg:py-16 bg-white">
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto">
                         <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
