@@ -302,7 +302,7 @@ export default function YesNoWheelPage() {
       {/* Why Use Our Yes No Wheel Section */}
       <section className="py-8 lg:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="sm:text-2xl md:text-3xl text-xl font-bold text-gray-900 mb-6">Why Use Our Yes or No Wheel?</h2>
+          <h2 className="sm:text-2xl md:text-3xl text-xl font-bold text-gray-900 mb-6">What Makes Our Yes No Spinner Different?</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
               <h3 className="font-bold text-gray-900 mb-2">⚖️ Guaranteed Fairness</h3>

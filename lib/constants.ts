@@ -23,7 +23,7 @@ export const NAV_ITEMS = [
   { label: "Name Picker", href: "/name-picker" },
   { label: "Yes/No Wheel", href: "/yes-no-wheel" },
   { label: "Our Tools", href: "/features", hasDropdown: true },
-  { label: "Features", href: "/features" },
+  { label: "Flip a Coin", href: "/flip-a-coin" },
 ] as const;
 
 // Tools dropdown items

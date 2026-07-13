@@ -3,13 +3,15 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { WheelEntry } from "@/lib/types";
 import Wheel from "@/components/Wheel";
-import ResultModal from "@/components/ResultModal";
-import Confetti from "@/components/Confetti";
 import Toast from "@/components/Toast";
-import ConfirmationModal from "@/components/ConfirmationModal";
-import BulkAddModal from "@/components/BulkAddModal";
-import ShareModal from "@/components/ShareModal";
 import AdBanner from "@/components/AdBanner";
+import dynamic from "next/dynamic";
+
+const ResultModal = dynamic(() => import("@/components/ResultModal"), { ssr: false });
+const Confetti = dynamic(() => import("@/components/Confetti"), { ssr: false });
+const ConfirmationModal = dynamic(() => import("@/components/ConfirmationModal"), { ssr: false });
+const BulkAddModal = dynamic(() => import("@/components/BulkAddModal"), { ssr: false });
+const ShareModal = dynamic(() => import("@/components/ShareModal"), { ssr: false });
 import { useSoundEffects } from "@/lib/useSoundEffects";
 import {
   generateEntryId,

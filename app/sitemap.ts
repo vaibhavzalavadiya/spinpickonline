@@ -1,12 +1,14 @@
 import { MetadataRoute } from "next";
 import { SITE_CONFIG } from "@/lib/constants";
-import { USE_CASES, FEATURES } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
 
-  // Always reflect actual last-modified date so Google re-crawls correctly
-  const lastModified = new Date();
+  // Use a fixed date that reflects the actual last deployment/content update.
+  // UPDATE this date whenever you make meaningful content changes and deploy.
+  // Using new Date() was wrong — it told Google every page changed on every crawl,
+  // causing Google to distrust our lastmod values entirely.
+  const lastContentUpdate = new Date("2026-07-13T00:00:00Z");
 
   // Core tool pages (highest priority)
   const corePages = [
@@ -18,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/yes-no-wheel", priority: 0.9, changeFrequency: "weekly" as const },
   ];
 
-  // SEO landing pages (high priority)
+  // SEO landing pages (high priority — each has unique 1000+ word content)
   const seoLandingPages = [
     "/lucky-draw-wheel",
     "/raffle-wheel",
@@ -30,7 +32,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/picker-wheel",
     "/decision-wheel",
     "/wheel-of-names",
-    // New SEO pages
     "/flip-a-coin",
     "/food-picker-wheel",
     "/random-letter-generator",
@@ -38,12 +39,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/randomizer-wheel",
     "/random-group-generator",
     "/instagram-giveaway-picker",
+    // Dedicated tool pages
+    "/team-picker",
+    "/classroom-activities",
+    "/giveaway-winner",
     // International language pages
-    "/ruleta-aleatoria",   // Spanish  – "ruleta aleatoria" ~50k/mo
-    "/roda-da-sorte",      // Portuguese – "roda da sorte" ~40k/mo
-    "/roue-aleatoire",     // French   – "roue aléatoire" ~20k/mo
-    "/zufallsrad",         // German   – "Glücksrad" ~25k/mo
-    "/roda-putar",         // Indonesian – "roda putar" ~35k/mo
+    "/ruleta-aleatoria",
+    "/roda-da-sorte",
+    "/roue-aleatoire",
+    "/zufallsrad",
+    "/roda-putar",
   ];
 
   // Info/resource pages (medium priority)
@@ -89,55 +94,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/terms-of-service",
   ];
 
-  // Use case pages
-  const useCasePages = USE_CASES.map((useCase) => ({
-    url: `${baseUrl}/${useCase.slug}`,
-    lastModified,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
-
-  // Feature pages
-  const featurePages = FEATURES.map((feature) => ({
-    url: `${baseUrl}/${feature.slug}`,
-    lastModified,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
+  // NOTE: Thin template pages (lunch-decisions, chore-assignment, task-assignment,
+  // presentation-picker, customization, mobile-friendly, shareable-wheels,
+  // fair-randomization) are intentionally excluded from the sitemap.
+  // They still exist as routes via [slug] but we don't ask Google to index them
+  // because they use generic template content and dilute crawl quality signals.
 
   return [
     ...corePages.map((page) => ({
       url: `${baseUrl}${page.path}`,
-      lastModified,
+      lastModified: lastContentUpdate,
       changeFrequency: page.changeFrequency,
       priority: page.priority,
     })),
     ...seoLandingPages.map((path) => ({
       url: `${baseUrl}${path}`,
-      lastModified,
+      lastModified: lastContentUpdate,
       changeFrequency: "weekly" as const,
       priority: 0.8,
     })),
     ...infoPages.map((path) => ({
       url: `${baseUrl}${path}`,
-      lastModified,
+      lastModified: lastContentUpdate,
       changeFrequency: "monthly" as const,
       priority: 0.6,
     })),
     ...blogPages.map((path) => ({
       url: `${baseUrl}${path}`,
-      lastModified,
+      lastModified: lastContentUpdate,
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
     ...legalPages.map((path) => ({
       url: `${baseUrl}${path}`,
-      lastModified,
+      lastModified: lastContentUpdate,
       changeFrequency: "yearly" as const,
       priority: 0.3,
     })),
-    ...useCasePages,
-    ...featurePages,
   ];
 }
 

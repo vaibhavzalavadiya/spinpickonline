@@ -2,8 +2,10 @@
 
 import { useState, useMemo, useCallback } from "react";
 import Wheel from "@/components/Wheel";
-import ResultModal from "@/components/ResultModal";
-import Confetti from "@/components/Confetti";
+import dynamic from "next/dynamic";
+
+const ResultModal = dynamic(() => import("@/components/ResultModal"), { ssr: false });
+const Confetti = dynamic(() => import("@/components/Confetti"), { ssr: false });
 import Toast from "@/components/Toast";
 import AdBanner from "@/components/AdBanner";
 import { useSoundEffects } from "@/lib/useSoundEffects";
