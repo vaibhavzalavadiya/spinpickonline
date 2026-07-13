@@ -3,12 +3,14 @@ import HomeWheel from "@/components/HomeWheel";
 import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight, FiList } from "react-icons/fi";
-import { IoOptionsOutline, IoShuffleOutline, IoSparklesOutline, IoFlashOutline } from "react-icons/io5";
-import { generateFAQSchema, generateWebApplicationSchema, generateMetadata } from "@/lib/seo";
+import { IoSchoolOutline, IoShuffleOutline, IoSparklesOutline, IoFlashOutline } from "react-icons/io5";
+import { FiShield, FiUsers } from "react-icons/fi";
+import { generateFAQSchema, generateWebApplicationSchema, generateMetadata, generateBreadcrumbSchema } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = generateMetadata({
-    title: "Random Group Generator – Free Team Maker & Sorter",
-    description: "Easily split lists of names into random groups or teams. Our free random group generator is perfect for teachers, team building, and party games.",
+    title: "Random Group Generator – Classroom Group Maker for Teachers",
+    description: "Free random group generator for teachers and educators. Create fair student groups, study pairs, and project teams for classrooms instantly. No signup, works on any device.",
     canonical: "/random-group-generator",
 });
 
@@ -22,18 +24,38 @@ const GROUP_ENTRIES = [
 
 export default function RandomGroupGeneratorPage() {
     const webAppSchema = generateWebApplicationSchema();
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: "Home", item: SITE_CONFIG.url },
+        { name: "Random Group Generator", item: `${SITE_CONFIG.url}/random-group-generator` },
+    ]);
     const faqSchema = generateFAQSchema([
         {
-            question: "What is a random group generator?",
-            answer: "A random group generator is a tool that takes a list of names and randomly assigns them into different groups. It's often used by teachers to create project groups, or by managers for team-building exercises."
+            question: "How do teachers create random groups in the classroom?",
+            answer: "Put your group names (e.g., Group A, Group B, Group C) on the wheel. Call out each student's name and spin the wheel to assign them to a random group. The visual spin ensures students trust the process and accept their assignment without complaint."
         },
         {
-            question: "How do I use this tool to assign groups?",
-            answer: "You can use this wheel as a fun, visual way to assign groups one-by-one. Put your Group names on the wheel (e.g., Team 1, Team 2, Team 3). As you call out each person's name, spin the wheel to randomly assign them to a group!"
+            question: "What is the fairest way to split students into groups?",
+            answer: "Using a cryptographically random group generator is the fairest method. Unlike manual assignment, where teacher bias (even unconscious) can influence groupings, our algorithm gives every student an exactly equal chance of being placed in any group."
         },
         {
-            question: "Can I use this for the classroom?",
-            answer: "Yes, teachers love our random group generator because it completely eliminates bias or favoritism. Students accept the groups because they can see the fair spin of the wheel."
+            question: "Can I use this for pair work and study partners?",
+            answer: "Yes! Set up a wheel with just two options (Pair A, Pair B) and spin for each student. Or use the wheel with all student names and spin twice to form each pair. It works perfectly for lab partners, debate partners, and conversation practice partners."
+        },
+        {
+            question: "How many groups should I create for a class of 30 students?",
+            answer: "For most collaborative projects, groups of 4–5 students work best. For a class of 30, create 6 groups of 5 or 7–8 groups of 3–4. Smaller groups (3–4) ensure everyone participates. Larger groups (5–6) provide more diverse perspectives but risk some students disengaging."
+        },
+        {
+            question: "Does this tool store my students' names?",
+            answer: "No. All data stays in your browser's local storage on your own device. Student names are never transmitted to our servers. This makes our tool safe for FERPA and GDPR compliance in educational settings."
+        },
+        {
+            question: "How is this different from the Team Picker tool?",
+            answer: "Our Team Picker (at /team-picker) is designed for splitting a roster into two or more sports-style teams with captains and drafting. This Random Group Generator is designed for classroom educators who need to create multiple balanced study groups, project teams, or activity pairs for academic purposes."
+        },
+        {
+            question: "Can I save my class roster for future use?",
+            answer: "Yes. The wheel automatically saves your entries in your browser's local storage. When you return to this page tomorrow, your student groups will still be there. To clear the saved data, use the reset button or clear your browser's local storage."
         }
     ]);
 
@@ -47,19 +69,23 @@ export default function RandomGroupGeneratorPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
             {/* Hero Section with Wheel */}
             <section className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-gradient-to-b from-indigo-50/50 to-white">
                 <div className="container mx-auto px-4">
                     <div className="text-center lg:mb-12 sm:mb-8 mb-5">
                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold mb-4">
-                            <IoOptionsOutline className="text-lg" />
-                            <span>Team & Group Maker</span>
+                            <IoSchoolOutline className="text-lg" />
+                            <span>Classroom Group Maker</span>
                         </div>
                         <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                            Random Group Generator
+                            Random Group Generator for Classrooms
                         </h1>
                         <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">
-                            The fairest way to create random teams. Use this visual spinner to assign people into groups for classrooms, sports, or work events.
+                            The easiest way for teachers to create fair, unbiased student groups. Spin the wheel to assign students to project teams, study pairs, and activity groups — no favoritism, no complaints.
                         </p>
                     </div>
                     <HomeWheel defaultEntries={GROUP_ENTRIES} storageKey="randomGroupGeneratorState" />
@@ -71,10 +97,10 @@ export default function RandomGroupGeneratorPage() {
                 <div className="container mx-auto px-4">
                     <div className="text-center md:mb-8 mb-6">
                         <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-                            Why Use a Random Group Generator?
+                            Why Teachers Love This Group Generator
                         </h2>
                         <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">
-                            The fairest way to build balanced teams
+                            Built specifically for educators who need fair, visual, and instant group assignments
                         </p>
                     </div>
 
@@ -83,32 +109,32 @@ export default function RandomGroupGeneratorPage() {
                             <div className="bg-indigo-100 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
                                 <IoShuffleOutline className="text-xl text-indigo-600" />
                             </div>
-                            <h3 className="font-bold text-gray-900 mb-2">Zero Bias</h3>
-                            <p className="md:text-base text-sm text-gray-600">Cryptographic randomization eliminates favoritism and perceived unfairness.</p>
+                            <h3 className="font-bold text-gray-900 mb-2">Eliminates Bias</h3>
+                            <p className="md:text-base text-sm text-gray-600">Cryptographic randomization removes all teacher bias — conscious or unconscious — from group formation.</p>
                         </div>
 
                         <div className="bg-gradient-to-br from-green-50 to-emerald-50 md:p-5 p-4 md:rounded-xl rounded-lg border-2 border-green-200 hover:shadow-lg transition-shadow">
                             <div className="bg-green-100 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
-                                <IoFlashOutline className="text-xl text-green-600" />
+                                <IoSparklesOutline className="text-xl text-green-600" />
                             </div>
-                            <h3 className="font-bold text-gray-900 mb-2">Instant Sorting</h3>
-                            <p className="md:text-base text-sm text-gray-600">Paste a list, spin, assign. No pen and paper needed.</p>
+                            <h3 className="font-bold text-gray-900 mb-2">Students Trust It</h3>
+                            <p className="md:text-base text-sm text-gray-600">The visual spin makes the process transparent. Students accept their groups because they see the fair selection.</p>
                         </div>
 
                         <div className="bg-gradient-to-br from-amber-50 to-yellow-50 md:p-5 p-4 md:rounded-xl rounded-lg border-2 border-amber-200 hover:shadow-lg transition-shadow">
                             <div className="bg-amber-100 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
-                                <IoSparklesOutline className="text-xl text-amber-600" />
+                                <IoFlashOutline className="text-xl text-amber-600" />
                             </div>
-                            <h3 className="font-bold text-gray-900 mb-2">Visual &amp; Fun</h3>
-                            <p className="md:text-base text-sm text-gray-600">Students and coworkers accept results because they see the fair spin.</p>
+                            <h3 className="font-bold text-gray-900 mb-2">Saves Class Time</h3>
+                            <p className="md:text-base text-sm text-gray-600">Stop wasting 10 minutes manually sorting students. Assign groups in under 60 seconds with the wheel.</p>
                         </div>
 
                         <div className="bg-gradient-to-br from-purple-50 to-violet-50 md:p-5 p-4 md:rounded-xl rounded-lg border-2 border-purple-200 hover:shadow-lg transition-shadow">
                             <div className="bg-purple-100 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
-                                <FiList className="text-xl text-purple-600" />
+                                <FiShield className="text-xl text-purple-600" />
                             </div>
-                            <h3 className="font-bold text-gray-900 mb-2">100% Private</h3>
-                            <p className="md:text-base text-sm text-gray-600">All data stays in your browser. Student names are never sent to any server.</p>
+                            <h3 className="font-bold text-gray-900 mb-2">FERPA Safe</h3>
+                            <p className="md:text-base text-sm text-gray-600">All student names stay in your browser. Nothing is ever sent to our servers. Safe for school use.</p>
                         </div>
                     </div>
                 </div>
@@ -119,76 +145,104 @@ export default function RandomGroupGeneratorPage() {
                 <div className="container mx-auto px-4 max-w-4xl">
                     <div className="bg-white p-4 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100">
                         <h2 className="text-xl sm:text-3xl font-bold text-gray-900 lg:mb-6 mb-4">
-                            The Ultimate Random Group Generator Guide
+                            The Teacher&apos;s Guide to Random Student Group Assignment
                         </h2>
 
                         <div className="lg:space-y-6 space-y-4 text-gray-600 text-sm sm:text-base leading-relaxed">
                             <p>
-                                Whether you are a teacher organizing a classroom project, a manager setting up cross-functional corporate teams, or a coach dividing players for a scrimmage, dividing a large list of people into smaller teams is always a headache. Doing it manually often leads to accusations of bias, favoritism, or unfair skill distribution. That is why we built our <strong>random group generator</strong>—to take the stress out of team creation and ensure a 100% fair, unbiased sorting process.
+                                Every teacher knows the scenario: you announce a group project, and immediately hands shoot up. &quot;Can I be with Sarah?&quot; &quot;I don&apos;t want to work with that group.&quot; &quot;That&apos;s not fair!&quot; Manual group assignment is a minefield of social dynamics, perceived favoritism, and wasted instructional time. That&apos;s exactly why we built this <strong>random group generator</strong> — to give educators a fast, transparent, and completely unbiased way to form student groups.
                             </p>
                             <p>
-                                Our free <strong>team generator</strong> uses cryptographically secure randomization to instantly divide any list of names into smaller, perfectly balanced groups. No more picking captains, no more awkward &quot;last person picked&quot; scenarios, and no more spending 20 minutes with a pen and paper trying to balance the numbers.
+                                Unlike corporate <Link href="/team-picker" className="text-blue-600 hover:underline">team picker tools</Link> designed for splitting sports rosters or office teams, this tool is built with the <strong>classroom</strong> in mind. It handles the unique challenges educators face: varying class sizes, odd numbers of students, the need for visual transparency, and strict student data privacy requirements.
                             </p>
 
-                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">How to Use the Team Maker</h3>
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">How to Create Random Student Groups</h3>
                             <p>
-                                Using our <strong>random team generator</strong> is incredibly straightforward. While we use a visual spinning wheel to build excitement, the underlying logic is designed to handle massive lists of names effortlessly.
+                                Using this <strong>classroom group maker</strong> takes less than a minute. Here is the step-by-step process that thousands of teachers follow every day:
                             </p>
                             <ol className="list-decimal pl-6 space-y-2">
-                                <li><strong>Compile Your List:</strong> Get your roster of students, players, or coworkers. You can easily copy this list directly from Excel, Google Sheets, or a Word document.</li>
-                                <li><strong>Paste the Names:</strong> Paste your entire list into the input box next to the wheel. Our system will automatically separate each line into a unique entry on the wheel.</li>
-                                <li><strong>Determine Group Sizes:</strong> Decide how many teams you need, or how many people should be on each team.</li>
-                                <li><strong>Spin and Assign:</strong> Click the wheel to pick the first person for Team 1. Once they are selected, use the &quot;Remove&quot; button to take them off the wheel. Spin again for the next person. Repeat this process until all teams are filled!</li>
+                                <li><strong>Set Up Group Names:</strong> In the wheel input, type the names of your groups — one per line. For example: &quot;Table 1&quot;, &quot;Table 2&quot;, &quot;Table 3&quot;, &quot;Table 4&quot;. Or get creative: &quot;Team Einstein&quot;, &quot;Team Curie&quot;, &quot;Team Newton&quot;.</li>
+                                <li><strong>Call a Student&apos;s Name:</strong> Go through your class roster (alphabetically, randomly, or from your seating chart).</li>
+                                <li><strong>Spin the Wheel:</strong> For each student, click to spin the wheel. Whichever group the wheel lands on, that student is assigned to that group.</li>
+                                <li><strong>Record the Assignment:</strong> Write down which group each student belongs to on the board or in your planning app.</li>
+                                <li><strong>Repeat:</strong> Continue until every student is assigned.</li>
                             </ol>
                             <p>
-                                If you only need to pick one single winner from a list rather than sorting everyone into groups, you can use our generalized <Link href="/name-picker" className="text-blue-600 hover:underline">Name Picker Wheel</Link> or our <Link href="/random-picker-wheel" className="text-blue-600 hover:underline">Random Picker Wheel</Link> instead.
+                                The visual spin is what makes this tool so effective in the classroom. Students <em>see</em> the randomization happen live. There is no hidden algorithm, no teacher manipulation — just a spinning wheel that lands where math determines it should. This transparency is the key to student buy-in.
                             </p>
 
-                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">Why Random Teams are Better</h3>
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">Best Practices for Group Sizes in Education</h3>
                             <p>
-                                In educational and corporate settings, there is a strong temptation to manually curate teams. Teachers often group high-performing students with struggling students, while managers might group people who already get along. However, research shows that <em>randomized</em> teams often yield better results.
-                            </p>
-                            <p>
-                                Random team generation forces people out of their comfort zones. It breaks up existing cliques and forces individuals to collaborate with peers they might not normally interact with. This cross-pollination of ideas is crucial for innovation in the workplace and social development in the classroom. Furthermore, when teams are chosen randomly by a computer algorithm, it completely eliminates the perception of bias. Nobody can complain that the teacher or boss &quot;stacked the deck.&quot;
-                            </p>
-                            <p>
-                                If you need a fun way to name these newly formed random teams, have them spin our <Link href="/team-name-generator" className="text-blue-600 hover:underline">Team Name Generator</Link>!
-                            </p>
-
-                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">Perfect for Sports and Gaming</h3>
-                            <p>
-                                Beyond the classroom and the office, the random team maker is a staple for recreational sports and online gaming.
+                                Educational research consistently shows that group size significantly impacts collaboration quality. Here are evidence-based guidelines for different classroom activities:
                             </p>
                             <ul className="list-disc pl-6 space-y-2">
-                                <li><strong>Pickup Sports:</strong> If you have 10 people showing up for pickup basketball, don&apos;t waste time shooting free throws for teams. Just paste the 10 names, spin, and instantly create two teams of 5. (If you need to decide who gets the ball first, use our <Link href="/flip-a-coin" className="text-blue-600 hover:underline">Flip a Coin</Link> tool).</li>
-                                <li><strong>Esports and Gaming:</strong> Running a custom lobby in games like Valorant, League of Legends, or Counter-Strike? Use the wheel to scramble the teams and ensure the lobbies stay fresh and balanced over multiple matches.</li>
-                                <li><strong>Board Game Nights:</strong> Hosting a party games night? Use the random group generator to randomly assign partners for games like Codenames or Spades. It prevents couples from always playing together and mixes up the social dynamics of the party.</li>
+                                <li><strong>Pairs (2 students):</strong> Ideal for think-pair-share exercises, reading buddies, peer editing, lab partners, and conversation practice in language classes. Every student must participate — there is nowhere to hide.</li>
+                                <li><strong>Small groups (3–4 students):</strong> Best for problem-solving activities, science experiments, short-term projects, and in-class discussions. Small enough that everyone contributes, large enough for diverse perspectives.</li>
+                                <li><strong>Medium groups (5–6 students):</strong> Suitable for longer-term projects, presentations, and complex research assignments. Provides role differentiation (researcher, writer, presenter, editor) but requires clear task delegation to prevent free-riding.</li>
+                                <li><strong>Large groups (7+ students):</strong> Best reserved for debate teams, simulation exercises, or performance groups. Risk of disengagement increases significantly beyond 6 members.</li>
+                            </ul>
+                            <p>
+                                For most classroom activities, <strong>groups of 3–4 students</strong> hit the sweet spot between participation and diversity. For a class of 28, that means 7 groups of 4. For a class of 30, you can do 6 groups of 5 or 10 groups of 3.
+                            </p>
+
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">Handling Odd Numbers and Remainders</h3>
+                            <p>
+                                Real classrooms rarely divide perfectly. If you have 29 students and want groups of 4, you will get 7 groups of 4 plus 1 remaining student. Here are strategies teachers use:
+                            </p>
+                            <ul className="list-disc pl-6 space-y-2">
+                                <li><strong>Add the remainder to the first group(s):</strong> The first 1–3 groups get an extra member, creating groups of 5 while the rest stay at 4.</li>
+                                <li><strong>Create one smaller group:</strong> Let the last group have fewer members but give them a slightly reduced workload to compensate.</li>
+                                <li><strong>Use a wildcard spin:</strong> If you cannot decide where to place the remaining student, let the wheel decide! You can also use our <Link href="/flip-a-coin" className="text-blue-600 hover:underline">coin flip tool</Link> for a quick 50/50 decision between two groups.</li>
                             </ul>
 
-                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">How to Handle &quot;Odd Numbers&quot;</h3>
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">Why Random Groups Improve Learning Outcomes</h3>
                             <p>
-                                One of the most common issues when creating teams is dealing with uneven numbers. For example, if you have 23 students and need to make groups of 4, you will end up with five groups of 4, and one group of 3.
+                                Research in educational psychology has repeatedly shown that <strong>randomized grouping</strong> leads to better learning outcomes compared to student-chosen or teacher-curated groups. Here is why:
                             </p>
+                            <ul className="list-disc pl-6 space-y-2">
+                                <li><strong>Breaks social cliques:</strong> Students who always work with their friends rarely challenge each other intellectually. Random groups force students to collaborate with peers they might not normally interact with, building social skills and exposing them to different problem-solving approaches.</li>
+                                <li><strong>Eliminates the &quot;last picked&quot; problem:</strong> Captain-style drafting systems (common in sports) are emotionally damaging for students who are consistently chosen last. Random assignment eliminates this entirely.</li>
+                                <li><strong>Reduces perceived favoritism:</strong> When a teacher manually assigns groups, students may suspect bias — even if none exists. Random assignment is visibly fair and eliminates complaints of favoritism.</li>
+                                <li><strong>Encourages adaptability:</strong> In the real world, people rarely get to choose their coworkers. Learning to collaborate with randomly assigned partners builds the adaptability and interpersonal skills that employers value.</li>
+                            </ul>
+
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">Classroom Scenarios and Activity Ideas</h3>
                             <p>
-                                Our wheel makes handling these remainders easy. Just continue spinning and assigning until the wheel is empty. The last group will naturally be the smaller group. If you prefer to have the remainder distributed (e.g., three groups of 4, and one group of 5), you can easily adjust your drafting strategy as the wheel spins.
+                                Here are specific ways teachers across different subjects use our random group generator:
                             </p>
+                            <ul className="list-disc pl-6 space-y-2">
+                                <li><strong>Science labs:</strong> Randomly assign lab partners every week so students learn to work with different people and develop universal lab communication skills.</li>
+                                <li><strong>Literature circles:</strong> Create reading groups of 4–5 students. Each group reads a different book and presents a discussion summary to the class.</li>
+                                <li><strong>Math problem-solving:</strong> Form groups of 3 to tackle challenging problems collaboratively. Rotate groups weekly to maintain freshness.</li>
+                                <li><strong>History debates:</strong> Split the class into two large groups for structured debates on historical events or ethical dilemmas.</li>
+                                <li><strong>Art projects:</strong> Create groups of 3–4 for collaborative art pieces, murals, or multimedia presentations.</li>
+                                <li><strong>PE and sports:</strong> Form teams for in-class sports activities. For dedicated sports team splitting, check our <Link href="/team-picker" className="text-blue-600 hover:underline">Team Picker</Link> tool which supports captain-style drafting.</li>
+                            </ul>
+
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">Student Data Privacy and Compliance</h3>
                             <p>
-                                If you ever find yourself needing a simple &quot;Yes&quot; or &quot;No&quot; to decide if a specific player should be moved to balance a team, you can quickly consult our <Link href="/yes-no-wheel" className="text-blue-600 hover:underline">Yes/No Wheel</Link>.
+                                Student data privacy is non-negotiable in education. Our random group generator is designed with privacy as a core principle:
+                            </p>
+                            <ul className="list-disc pl-6 space-y-2">
+                                <li><strong>Zero server transmission:</strong> Student names you type into the wheel are never sent to our servers. All processing happens locally in your browser.</li>
+                                <li><strong>Local storage only:</strong> Saved wheel data is stored in your browser&apos;s <code>localStorage</code> on your device. It persists between sessions but never leaves your machine.</li>
+                                <li><strong>No accounts required:</strong> There is no signup, no login, and no data collection. You can start using the tool immediately.</li>
+                                <li><strong>FERPA and GDPR compatible:</strong> Because no student data is transmitted or stored on our servers, our tool is compatible with both US (FERPA) and EU (GDPR) student data privacy regulations.</li>
+                            </ul>
+                            <p>
+                                For an even more private session, use your browser&apos;s incognito or private browsing mode. In this mode, no data is saved after you close the tab.
                             </p>
 
-                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">The Science of True Randomness</h3>
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">Related Tools for Educators</h3>
                             <p>
-                                You might wonder: is this <strong>team maker</strong> actually random? The answer is a definitive yes.
+                                Our platform offers several tools built for the classroom:
                             </p>
-                            <p>
-                                Many older, poorly coded websites use basic math functions (like Math.random()) which are not cryptographically secure and can display predictable patterns over time. Our application utilizes the browser&apos;s native Web Crypto API. This provides true cryptographic randomness based on system-level entropy. It means every single name on your list has the exact same mathematical probability of being selected on any given spin.
-                            </p>
-                            <p>
-                                Because there is no server processing, all the randomization happens locally on your device. This also means your list of names is 100% private. We do not store your rosters, student names, or employee data on our servers. You can use our tool with complete peace of mind regarding data privacy and GDPR compliance.
-                            </p>
-                            <p>
-                                Stop stressing over team assignments. Let the math do the work, and get back to managing your game, class, or project!
-                            </p>
+                            <ul className="list-disc pl-6 space-y-2">
+                                <li><strong>Pick a random student:</strong> Use the <Link href="/name-picker" className="text-blue-600 hover:underline">Name Picker Wheel</Link> to call on students randomly during class — eliminates the same 3 students always raising their hands.</li>
+                                <li><strong>Generate team names:</strong> Let newly formed groups spin the <Link href="/team-name-generator" className="text-blue-600 hover:underline">Team Name Generator</Link> to pick a fun team identity.</li>
+                                <li><strong>Random letter for activities:</strong> Use the <Link href="/random-letter-generator" className="text-blue-600 hover:underline">Random Letter Generator</Link> for spelling games, alphabet activities, or choosing starting letters for brainstorming exercises.</li>
+                                <li><strong>Quick yes/no decisions:</strong> Use the <Link href="/yes-no-wheel" className="text-blue-600 hover:underline">Yes/No Wheel</Link> for quick classroom votes or decisions.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -199,17 +253,17 @@ export default function RandomGroupGeneratorPage() {
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-6">
                         <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
-                            More Team Tools
+                            More Classroom Tools
                         </h2>
                     </div>
                     <div className="flex flex-wrap justify-center gap-3">
                         {[
-                            { href: "/team-name-generator", label: "Team Names" },
                             { href: "/name-picker", label: "Name Picker" },
-                            { href: "/random-picker-wheel", label: "Random Picker" },
+                            { href: "/team-name-generator", label: "Team Names" },
+                            { href: "/team-picker", label: "Team Picker" },
+                            { href: "/random-letter-generator", label: "Random Letter" },
+                            { href: "/yes-no-wheel", label: "Yes/No Wheel" },
                             { href: "/flip-a-coin", label: "Flip a Coin" },
-                            { href: "/randomizer-wheel", label: "Randomizer Wheel" },
-                            { href: "/instagram-giveaway-picker", label: "Giveaway Picker" },
                         ].map((link) => (
                             <Link
                                 key={link.href}

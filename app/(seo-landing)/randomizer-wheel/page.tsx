@@ -4,11 +4,13 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight, FiList } from "react-icons/fi";
 import { IoOptionsOutline, IoShuffleOutline, IoSparklesOutline, IoFlashOutline } from "react-icons/io5";
-import { generateFAQSchema, generateWebApplicationSchema, generateMetadata } from "@/lib/seo";
+import { FiShield, FiTarget } from "react-icons/fi";
+import { generateFAQSchema, generateWebApplicationSchema, generateMetadata, generateBreadcrumbSchema } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = generateMetadata({
-    title: "Randomizer Wheel – Free Online Spinner Wheel",
-    description: "Use our free randomizer wheel to spin and make random selections instantly. Add names, words, or numbers. 100% fair and easy to use on any device.",
+    title: "Randomizer Wheel – Free Random Selector & Generator Tool",
+    description: "Free randomizer wheel to randomly select from any list. Perfect random selector for games, giveaways, content creation, and decisions. No signup, works on any device.",
     canonical: "/randomizer-wheel",
 });
 
@@ -23,18 +25,38 @@ const RANDOMIZER_ENTRIES = [
 
 export default function RandomizerWheelPage() {
     const webAppSchema = generateWebApplicationSchema();
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: "Home", item: SITE_CONFIG.url },
+        { name: "Randomizer Wheel", item: `${SITE_CONFIG.url}/randomizer-wheel` },
+    ]);
     const faqSchema = generateFAQSchema([
         {
-            question: "How do I use the randomizer wheel?",
-            answer: "Simply type your options (names, numbers, choices) into the text box next to the wheel. The randomizer wheel updates instantly. Once you've added all your items, click the wheel to spin and receive a random result."
+            question: "What is a randomizer and how does it work?",
+            answer: "A randomizer is a tool that selects one or more items from a list using an unpredictable algorithm. Our randomizer wheel uses the Web Crypto API—the same cryptographic engine used in online banking—to guarantee that every selection is mathematically unbiased and impossible to predict."
         },
         {
-            question: "Is this randomizer truly random?",
-            answer: "Yes. Our randomizer wheel uses an advanced cryptographic random number generation formula to ensure that every spin is mathematically fair and unbiased."
+            question: "How is a randomizer different from a picker wheel?",
+            answer: "While both tools spin a wheel, a picker wheel is designed to pick names from a roster. A randomizer is a general-purpose selection tool optimized for any type of input: words, numbers, actions, challenges, or custom options. Think of it as a blank-canvas generator for any situation."
         },
         {
-            question: "How many items can I add to the randomizer?",
-            answer: "You can add up to 1000 items to the wheel. It is designed to handle very large lists smoothly without lagging your browser."
+            question: "Can I use this randomizer for board games and D&D?",
+            answer: "Absolutely! Tabletop gamers use our randomizer to decide turn order, generate random encounters, pick random challenges, or select loot drops. It replaces physical dice when you need more than 6 or 20 options."
+        },
+        {
+            question: "Is the randomizer fair enough for contests and giveaways?",
+            answer: "Yes. Our randomizer uses cryptographically secure randomness (CSPRNG), meaning results cannot be manipulated or predicted. It meets the fairness requirements for social media giveaways, classroom raffles, and informal contests."
+        },
+        {
+            question: "How many options can I add to the randomizer?",
+            answer: "You can add up to 1,000 options. The wheel is optimized to render large lists smoothly without browser lag or performance issues."
+        },
+        {
+            question: "Does the randomizer save my data?",
+            answer: "Your options are stored in your browser's localStorage on your own device. Nothing is ever sent to our servers. Clear your browser data to remove all saved randomizer wheels."
+        },
+        {
+            question: "What is the difference between a randomizer and a random number generator?",
+            answer: "A random number generator outputs a number within a range (e.g., 1–100). A randomizer selects from a custom list of text options you define. Use our randomizer when you need to select from specific labeled choices rather than numeric ranges."
         }
     ]);
 
@@ -48,19 +70,23 @@ export default function RandomizerWheelPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
             {/* Hero Section with Wheel */}
             <section className="pb-10 lg:pb-16 lg:pt-10 pt-8 bg-gradient-to-b from-teal-50/50 to-white">
                 <div className="container mx-auto px-4">
                     <div className="text-center lg:mb-12 sm:mb-8 mb-5">
                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-100 text-teal-700 rounded-full text-sm font-semibold mb-4">
                             <IoOptionsOutline className="text-lg" />
-                            <span>Ultimate Randomizer</span>
+                            <span>Random Selector Tool</span>
                         </div>
                         <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                            Randomizer Wheel
+                            Randomizer Wheel – Random Selector & Generator
                         </h1>
                         <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">
-                            The fastest way to randomize anything. Input your choices, spin the wheel, and let fate decide. 100% free, fair, and unlimited usage.
+                            The ultimate random selection tool. Type any options — words, actions, challenges, or ideas — spin the wheel, and let the randomizer choose for you. 100% free, cryptographically fair, and unlimited.
                         </p>
                     </div>
                     <HomeWheel defaultEntries={RANDOMIZER_ENTRIES} storageKey="randomizerWheelState" />
@@ -72,44 +98,44 @@ export default function RandomizerWheelPage() {
                 <div className="container mx-auto px-4">
                     <div className="text-center md:mb-8 mb-6">
                         <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-                            Why Use a Randomizer Wheel?
+                            Why Use Our Random Selector?
                         </h2>
                         <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">
-                            The ultimate blank-canvas decision tool
+                            A blank-canvas randomizer for any situation — games, decisions, content, and more
                         </p>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 md:gap-6 gap-4">
                         <div className="bg-gradient-to-br from-teal-50 to-cyan-50 md:p-5 p-4 md:rounded-xl rounded-lg border-2 border-teal-200 hover:shadow-lg transition-shadow">
                             <div className="bg-teal-100 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
-                                <IoFlashOutline className="text-xl text-teal-600" />
+                                <FiTarget className="text-xl text-teal-600" />
                             </div>
-                            <h3 className="font-bold text-gray-900 mb-2">Instant Results</h3>
-                            <p className="md:text-base text-sm text-gray-600">End decision paralysis in seconds. Type, spin, done.</p>
+                            <h3 className="font-bold text-gray-900 mb-2">General Purpose</h3>
+                            <p className="md:text-base text-sm text-gray-600">Not limited to names — randomize words, actions, challenges, topics, or any custom list.</p>
                         </div>
 
                         <div className="bg-gradient-to-br from-blue-50 to-sky-50 md:p-5 p-4 md:rounded-xl rounded-lg border-2 border-blue-200 hover:shadow-lg transition-shadow">
                             <div className="bg-blue-100 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
-                                <IoShuffleOutline className="text-xl text-blue-600" />
+                                <FiShield className="text-xl text-blue-600" />
                             </div>
-                            <h3 className="font-bold text-gray-900 mb-2">100% Fair</h3>
-                            <p className="md:text-base text-sm text-gray-600">Cryptographic randomization ensures every option has perfectly equal odds.</p>
+                            <h3 className="font-bold text-gray-900 mb-2">Cryptographic Fairness</h3>
+                            <p className="md:text-base text-sm text-gray-600">Uses Web Crypto API — the same security standard as online banking — for true randomness.</p>
                         </div>
 
                         <div className="bg-gradient-to-br from-purple-50 to-violet-50 md:p-5 p-4 md:rounded-xl rounded-lg border-2 border-purple-200 hover:shadow-lg transition-shadow">
                             <div className="bg-purple-100 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
                                 <IoSparklesOutline className="text-xl text-purple-600" />
                             </div>
-                            <h3 className="font-bold text-gray-900 mb-2">Fun Animations</h3>
-                            <p className="md:text-base text-sm text-gray-600">Gameshow-like spin with ticking sounds builds real suspense.</p>
+                            <h3 className="font-bold text-gray-900 mb-2">Gamified Experience</h3>
+                            <p className="md:text-base text-sm text-gray-600">The spinning animation builds suspense and makes random selection feel exciting, not mechanical.</p>
                         </div>
 
                         <div className="bg-gradient-to-br from-green-50 to-emerald-50 md:p-5 p-4 md:rounded-xl rounded-lg border-2 border-green-200 hover:shadow-lg transition-shadow">
                             <div className="bg-green-100 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
                                 <FiList className="text-xl text-green-600" />
                             </div>
-                            <h3 className="font-bold text-gray-900 mb-2">Up to 1000 Items</h3>
-                            <p className="md:text-base text-sm text-gray-600">Handle massive lists without lag. Perfect for large rosters or surveys.</p>
+                            <h3 className="font-bold text-gray-900 mb-2">Up to 1,000 Options</h3>
+                            <p className="md:text-base text-sm text-gray-600">Handle massive option lists without lag. Paste from spreadsheets, docs, or type manually.</p>
                         </div>
                     </div>
                 </div>
@@ -120,68 +146,83 @@ export default function RandomizerWheelPage() {
                 <div className="container mx-auto px-4 max-w-4xl">
                     <div className="bg-white p-4 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100">
                         <h2 className="text-xl sm:text-3xl font-bold text-gray-900 lg:mb-6 mb-4">
-                            The Ultimate Randomizer Wheel Guide
+                            The Complete Guide to Randomizers: How Random Selection Works
                         </h2>
 
                         <div className="lg:space-y-6 space-y-4 text-gray-600 text-sm sm:text-base leading-relaxed">
                             <p>
-                                In a world full of endless options, making a decision can be paralyzing. From figuring out what movie to watch on Netflix, to deciding who pays the tab at dinner, human beings waste countless hours debating trivial choices. That is why we created the ultimate <strong>randomizer wheel</strong>—a flexible, digital spinning wheel designed to make any decision for you in seconds.
+                                A <strong>randomizer</strong> is any tool, algorithm, or system that produces unpredictable outcomes from a defined set of options. Unlike a simple coin flip that is limited to two outcomes, or a dice roll limited to six, a digital randomizer lets you define <em>any</em> number of custom options and select one (or more) at random. It is the most versatile form of random selection available.
                             </p>
                             <p>
-                                Unlike specialized tools that only do one thing, this <strong>random generator</strong> is a blank canvas. You can input literally anything into the text box, and our cryptographically secure algorithm will fairly and impartially select a winner. It is the perfect blend of utility and entertainment, adding a gameshow-like thrill to everyday decision-making.
-                            </p>
-
-                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">How to Use the Spin Wheel</h3>
-                            <p>
-                                We designed our <strong>randomizer</strong> to be as frictionless as possible. There are no accounts to create, no apps to download, and no limits on how many times you can spin. Here is how you get started:
-                            </p>
-                            <ol className="list-decimal pl-6 space-y-2">
-                                <li><strong>Brainstorm Your Options:</strong> Gather all the possible choices for your decision.</li>
-                                <li><strong>Type Them In:</strong> Use the input box located next to (or below, on mobile) the wheel. Type each option on a new line. The wheel will instantly update its slices in real-time as you type.</li>
-                                <li><strong>Customize (Optional):</strong> If you want to change the colors or adjust the spin duration, you can tweak the settings to make the wheel look exactly how you want.</li>
-                                <li><strong>Click to Spin:</strong> Click the center of the wheel. The wheel will accelerate, tick through the options, and slowly come to a dramatic stop on your random result.</li>
-                            </ol>
-                            <p>
-                                If you are specifically trying to decide between exactly two options, you might actually prefer using our <Link href="/flip-a-coin" className="text-blue-600 hover:underline">Flip a Coin</Link> tool or our binary <Link href="/yes-no-wheel" className="text-blue-600 hover:underline">Yes/No Wheel</Link> for a faster resolution.
+                                Our <strong>randomizer wheel</strong> brings this concept to life in a visual, interactive format. You type your options into the input panel, and each option becomes a color-coded slice on the wheel. When you click to spin, a cryptographically secure algorithm determines the result — the animated wheel is purely visual. The outcome is decided by math, not physics, ensuring perfect fairness every time.
                             </p>
 
-                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">Endless Use Cases for a Randomizer</h3>
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">Randomizer vs. Random Number Generator: When to Use Each</h3>
                             <p>
-                                Because the wheel is a blank slate, the possibilities are truly endless. Here are some of the most creative ways our users utilize the wheel:
+                                People often confuse randomizers with random number generators (RNGs), but they serve different purposes. A <strong>random number generator</strong> produces a number within a range — for example, a random integer between 1 and 100. This is useful when your options are inherently numeric, like lottery numbers or dice rolls. You can try our <Link href="/random-number-wheel/1-10" className="text-blue-600 hover:underline">Random Number Wheel</Link> for that purpose.
+                            </p>
+                            <p>
+                                A <strong>randomizer</strong>, on the other hand, works with labeled options. Instead of &quot;pick a number between 1 and 5,&quot; you say &quot;pick between Pizza, Sushi, Tacos, Burgers, and Salad.&quot; The output is the option itself, not a number that maps to an option. This eliminates the extra step of number-to-label conversion and makes the result immediately meaningful.
+                            </p>
+                            <p>
+                                <strong>Use a randomizer when:</strong> your options are words, phrases, actions, or anything that is not a simple number. <strong>Use a random number generator when:</strong> you need a number within a specific range, like rolling a virtual die.
+                            </p>
+
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">Creative Ways to Use a Randomizer</h3>
+                            <p>
+                                Because the randomizer is a blank canvas, the only limit is your creativity. Here are some of the most popular and inventive ways people use our random selector tool:
                             </p>
                             <ul className="list-disc pl-6 space-y-2">
-                                <li><strong>Entertainment Decisions:</strong> Put 5 movies, TV shows, or video games on the wheel. Spin it to decide how you&apos;ll spend your Friday night.</li>
-                                <li><strong>Workout Routines:</strong> Fitness instructors put different exercises (Pushups, Burpees, Planks, Squats) on the wheel and spin it to create a randomized, high-intensity interval training (HIIT) routine on the fly.</li>
-                                <li><strong>Travel Destinations:</strong> Can&apos;t decide where to go for your next vacation or weekend road trip? Put 4 destinations on the wheel and let fate decide your next adventure!</li>
-                                <li><strong>Gift Exchanges:</strong> Use it during the holidays to randomly assign who buys a gift for whom in a Secret Santa exchange.</li>
+                                <li><strong>Tabletop RPGs & D&D:</strong> Generate random encounters, pick random loot drops, determine turn order, or select random character traits. When you need more than 20 options, the randomizer wheel replaces physical dice entirely.</li>
+                                <li><strong>Content Creation:</strong> YouTubers and TikTokers use the randomizer to pick video topics, random challenges, or &quot;spin the wheel&quot; format content. The visual spin makes great on-camera content.</li>
+                                <li><strong>Workout Routines:</strong> Fitness coaches load exercises (Pushups, Burpees, Planks, Mountain Climbers, Squats) onto the wheel and spin to create randomized HIIT circuits that keep clients engaged and surprised.</li>
+                                <li><strong>Travel Planning:</strong> Can&apos;t decide on a vacation destination? Load your top 5 choices and let the randomizer break the deadlock. Commit to the result for maximum spontaneity!</li>
+                                <li><strong>Language Learning:</strong> ESL teachers put vocabulary words or conversation topics on the wheel. Each spin assigns a student a random word to define or a topic to discuss, making practice sessions more dynamic.</li>
+                                <li><strong>Writing Prompts:</strong> Authors and creative writing students use the randomizer to generate story elements — character names, plot twists, settings, or genre constraints — to overcome writer&apos;s block.</li>
                             </ul>
 
-                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">Why is a Visual Wheel Better Than a Random Number Generator?</h3>
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">The Psychology Behind Random Selection</h3>
                             <p>
-                                If you just want a random result, you could technically assign a number to each of your options and use our <Link href="/random-number-wheel/1-10" className="text-blue-600 hover:underline">Random Number Generator</Link> to pick the winner. So why bother typing out the words onto a colored wheel?
+                                Why do people prefer a visual wheel over a simple text-based generator that instantly spits out an answer? The answer lies in psychology. Watching a wheel spin engages the same neural pathways as slot machines and game shows — it triggers dopamine release through anticipation. The journey of the spin is as satisfying as the result.
                             </p>
                             <p>
-                                The answer is psychology. Humans are visual creatures. Watching a wheel spin builds anticipation and dopamine. When the flapper slows down and ticks past an option you <em>really</em> wanted to win, you feel a surge of excitement. A simple text-based number generator provides the result instantly, stripping away all the suspense and fun of the gamble. The journey of the spin is just as important as the final decision!
+                                This psychological effect has practical benefits too. When people <em>see</em> the random selection process happen in front of them — the wheel accelerating, ticking past options, and slowly decelerating — they are far more likely to accept the outcome as fair. This is critical in group settings where trust matters. A hidden algorithm that instantly outputs a result feels opaque and suspicious. A visible, animated wheel feels transparent and trustworthy.
+                            </p>
+                            <p>
+                                If you specifically need a simple yes-or-no answer, our <Link href="/yes-no-wheel" className="text-blue-600 hover:underline">Yes/No Wheel</Link> provides the same visual experience optimized for binary decisions. For choosing what to eat, try the <Link href="/food-picker-wheel" className="text-blue-600 hover:underline">Food Picker Wheel</Link> pre-loaded with popular cuisines.
                             </p>
 
-                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">Specialized Versions of the Wheel</h3>
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">How We Ensure True Randomness</h3>
                             <p>
-                                While this page serves as a great general-purpose <strong>randomizer wheel</strong>, we have actually built specialized versions of this tool pre-configured for specific scenarios. If you are doing any of the following tasks, you might want to check out our dedicated tools:
+                                Not all randomizers are created equal. Many websites use <code>Math.random()</code>, a pseudo-random number generator (PRNG) that produces <em>seemingly</em> random numbers from a deterministic seed. While adequate for casual use, PRNGs can theoretically be reverse-engineered.
+                            </p>
+                            <p>
+                                Our randomizer uses the browser&apos;s <strong>Web Crypto API</strong> (<code>crypto.getRandomValues()</code>), which is a cryptographically secure pseudo-random number generator (CSPRNG). This API harvests entropy from hardware-level sources — mouse movements, CPU timing jitter, and other unpredictable system events — to produce numbers that are provably impossible to predict. It is the same technology that secures your online banking transactions and HTTPS connections.
+                            </p>
+                            <p>
+                                In practical terms, this means every slice on the wheel has an exactly equal probability of being selected, and no amount of observation or analysis can predict the next result. Whether you are running a casual office lottery or a public giveaway, our randomizer meets the highest standard of fairness.
+                            </p>
+
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">Privacy and Local-Only Processing</h3>
+                            <p>
+                                Every option you type into our randomizer stays on your device. We use browser <code>localStorage</code> to persist your wheel state between sessions, so your custom options are still there when you come back tomorrow. But that data never leaves your browser — it is never transmitted to our servers, never logged, and never shared with third parties.
+                            </p>
+                            <p>
+                                This local-only architecture means you can use the randomizer with sensitive data — employee names for a raffle, student names for assignments, or private project codenames — without any privacy concerns. To clear all saved data, simply clear your browser&apos;s local storage or use incognito mode for a completely ephemeral session.
+                            </p>
+
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">Specialized Tools for Specific Needs</h3>
+                            <p>
+                                While this randomizer is the ultimate general-purpose tool, we have also built specialized versions for common scenarios. If your use case matches one of these, the dedicated tool may serve you better:
                             </p>
                             <ul className="list-disc pl-6 space-y-2">
-                                <li><strong>Choosing what to eat:</strong> Use the <Link href="/food-picker-wheel" className="text-blue-600 hover:underline">Food Picker Wheel</Link>, which is pre-loaded with the most popular cuisines.</li>
-                                <li><strong>Picking a student or employee:</strong> Use the <Link href="/name-picker" className="text-blue-600 hover:underline">Name Picker Wheel</Link>, optimized for handling large rosters of human names.</li>
-                                <li><strong>Creating teams:</strong> Don&apos;t use a standard wheel to draft teams one by one. Use our <Link href="/random-group-generator" className="text-blue-600 hover:underline">Random Group Generator</Link> to instantly divide a list of people into balanced squads.</li>
-                                <li><strong>Social Media Contests:</strong> Running a promo on Instagram? Use our <Link href="/instagram-giveaway-picker" className="text-blue-600 hover:underline">Instagram Giveaway Picker</Link> to ensure you pick a valid winner from your comments section.</li>
+                                <li><strong>Choosing what to eat:</strong> The <Link href="/food-picker-wheel" className="text-blue-600 hover:underline">Food Picker Wheel</Link> comes pre-loaded with popular cuisines and restaurant categories.</li>
+                                <li><strong>Picking a name from a roster:</strong> The <Link href="/name-picker" className="text-blue-600 hover:underline">Name Picker Wheel</Link> is optimized for handling large lists of human names with remove-after-pick functionality.</li>
+                                <li><strong>Making a yes/no decision:</strong> The <Link href="/yes-no-wheel" className="text-blue-600 hover:underline">Yes/No Wheel</Link> is streamlined for binary choices.</li>
+                                <li><strong>Assigning people to groups:</strong> The <Link href="/random-group-generator" className="text-blue-600 hover:underline">Random Group Generator</Link> helps teachers and coaches split rosters into balanced teams.</li>
+                                <li><strong>Flipping a coin:</strong> The <Link href="/flip-a-coin" className="text-blue-600 hover:underline">Coin Flip Simulator</Link> is the fastest way to settle a 50/50 decision.</li>
+                                <li><strong>Running a social media contest:</strong> The <Link href="/instagram-giveaway-picker" className="text-blue-600 hover:underline">Instagram Giveaway Picker</Link> is built specifically for selecting winners from comment sections.</li>
                             </ul>
-
-                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">Data Privacy and Local Storage</h3>
-                            <p>
-                                When you type personal options, names, or sensitive information into our <strong>random generator</strong>, you want to know that data is safe.
-                            </p>
-                            <p>
-                                Unlike many competitor websites that send your wheel data back to their servers to be logged and monetized, our application runs entirely in your local browser environment. We use browser localStorage to save your wheel state. This means your lists are saved on your specific device, so they will still be there if you refresh the page tomorrow, but they are never transmitted to our databases. You get the convenience of saved wheels with the absolute security of local processing.
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -192,17 +233,17 @@ export default function RandomizerWheelPage() {
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-6">
                         <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
-                            More Random Tools
+                            Explore More Tools
                         </h2>
                     </div>
                     <div className="flex flex-wrap justify-center gap-3">
                         {[
-                            { href: "/random-picker-wheel", label: "Random Picker" },
                             { href: "/food-picker-wheel", label: "Food Picker" },
                             { href: "/name-picker", label: "Name Picker" },
                             { href: "/flip-a-coin", label: "Flip a Coin" },
                             { href: "/decision-wheel", label: "Decision Wheel" },
-                            { href: "/random-number-wheel", label: "Number Wheel" },
+                            { href: "/random-number-wheel/1-10", label: "Number Generator" },
+                            { href: "/yes-no-wheel", label: "Yes/No Wheel" },
                         ].map((link) => (
                             <Link
                                 key={link.href}
