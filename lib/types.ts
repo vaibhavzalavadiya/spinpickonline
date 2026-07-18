@@ -15,6 +15,15 @@ export interface WheelState {
   description?: string;
 }
 
+export interface SavedWheel {
+  id: string;
+  name: string;
+  entries: WheelEntry[];
+  results: string[];
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface SharedWheel {
   id: string;
   entries: WheelEntry[];

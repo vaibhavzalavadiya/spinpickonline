@@ -1,4 +1,4 @@
-import { WheelEntry, WheelState } from "./types";
+import { WheelEntry, WheelState, SavedWheel } from "./types";
 import { SITE_CONFIG } from "./constants";
 
 // Generate cryptographically secure random number
@@ -68,9 +68,65 @@ export function generateEntryId(): string {
   return `entry-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
 }
 
-// Generate shareable wheel ID
+// ── Saved Wheels (multi-wheel localStorage) ──
+
+const SAVED_WHEELS_KEY = "savedWheels";
+const MAX_SAVED_WHEELS = 10;
+
+/** Get all saved wheels from localStorage */
+export function getSavedWheels(): SavedWheel[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const stored = localStorage.getItem(SAVED_WHEELS_KEY);
+    if (!stored) return [];
+    return JSON.parse(stored) as SavedWheel[];
+  } catch {
+    return [];
+  }
+}
+
+/** Save or update a wheel. Returns false if at max capacity (for new wheels). */
+export function saveWheelById(wheel: SavedWheel): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    const wheels = getSavedWheels();
+    const existingIndex = wheels.findIndex((w) => w.id === wheel.id);
+
+    if (existingIndex >= 0) {
+      // Update existing
+      wheels[existingIndex] = { ...wheel, updatedAt: new Date().toISOString() };
+    } else {
+      // Add new — check capacity
+      if (wheels.length >= MAX_SAVED_WHEELS) return false;
+      wheels.unshift({ ...wheel, updatedAt: new Date().toISOString() });
+    }
+
+    localStorage.setItem(SAVED_WHEELS_KEY, JSON.stringify(wheels));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/** Delete a saved wheel by ID */
+export function deleteSavedWheel(id: string): void {
+  if (typeof window === "undefined") return;
+  try {
+    const wheels = getSavedWheels().filter((w) => w.id !== id);
+    localStorage.setItem(SAVED_WHEELS_KEY, JSON.stringify(wheels));
+  } catch {
+    // silently fail
+  }
+}
+
+/** Get a single saved wheel by ID */
+export function getSavedWheelById(id: string): SavedWheel | null {
+  return getSavedWheels().find((w) => w.id === id) || null;
+}
+
+/** Generate a unique wheel ID */
 export function generateWheelId(): string {
-  return `wheel-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+  return `wheel-${Date.now()}-${Math.random().toString(36).substr(2, 6)}`;
 }
 
 // Validate wheel entries
@@ -116,11 +172,20 @@ interface ShareableWheelData {
 
 // Encode wheel data for sharing via URL
 export function encodeWheelForShare(entries: WheelEntry[], wheelName?: string, results?: string[]): string {
-  const data: ShareableWheelData = {
-    entries: entries.map(e => ({ l: e.label, c: e.color })),
-    name: wheelName,
-    results: results && results.length > 0 ? results : undefined,
-  };
+  // v2 format: ["v2", "wheelName", ["label1", "color1", "label2", "color2"], ["result1", "result2"]]
+  // This drastically reduces JSON bloat compared to array of objects.
+  const compactEntries: string[] = [];
+  entries.forEach((e) => {
+    compactEntries.push(e.label);
+    compactEntries.push(e.color.replace("#", ""));
+  });
+
+  const data = [
+    "v2",
+    wheelName || "",
+    compactEntries,
+    results || [],
+  ];
 
   try {
     const jsonString = JSON.stringify(data);
@@ -137,18 +202,42 @@ export function encodeWheelForShare(entries: WheelEntry[], wheelName?: string, r
 export function decodeWheelFromShare(encodedData: string): { entries: WheelEntry[]; wheelName?: string; results?: string[] } | null {
   try {
     const jsonString = decodeURIComponent(atob(encodedData));
-    const data: ShareableWheelData = JSON.parse(jsonString);
+    const data = JSON.parse(jsonString);
 
-    const entries: WheelEntry[] = data.entries.map((e) => ({
+    // Handle v2 (compact array format)
+    if (Array.isArray(data) && data[0] === "v2") {
+      const wheelName = data[1] || undefined;
+      const compactEntries = data[2] as string[];
+      const results = data[3] as string[];
+
+      const entries: WheelEntry[] = [];
+      for (let i = 0; i < compactEntries.length; i += 2) {
+        entries.push({
+          id: generateEntryId(),
+          label: compactEntries[i],
+          color: `#${compactEntries[i + 1]}`,
+        });
+      }
+
+      return {
+        entries,
+        wheelName,
+        results: results.length > 0 ? results : undefined,
+      };
+    }
+
+    // Handle v1 (legacy object format)
+    const legacyData = data as ShareableWheelData;
+    const entries: WheelEntry[] = legacyData.entries.map((e) => ({
       id: generateEntryId(),
       label: e.l,
-      color: e.c,
+      color: e.c.startsWith("#") ? e.c : `#${e.c}`,
     }));
 
     return {
       entries,
-      wheelName: data.name,
-      results: data.results,
+      wheelName: legacyData.name,
+      results: legacyData.results,
     };
   } catch (error) {
     console.error("Failed to decode wheel data:", error);

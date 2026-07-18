@@ -6,6 +6,9 @@ import Image from "next/image";
 import { NAV_ITEMS, TOOLS_DROPDOWN_ITEMS, SITE_CONFIG } from "@/lib/constants";
 import { FiMenu, FiX, FiChevronDown } from "react-icons/fi";
 import { IoSparkles } from "react-icons/io5";
+import dynamic from "next/dynamic";
+
+const SavedWheelsPanel = dynamic(() => import("@/components/SavedWheelsPanel"), { ssr: false });
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -44,7 +47,7 @@ export default function Header() {
       {/* HEADER */}
       <header className="sticky top-0 z-40 w-full border-b border-gray-200 bg-white/95 backdrop-blur-md shadow-sm supports-[backdrop-filter]:bg-white/80">
         <div className="container mx-auto px-4">
-          <nav className="flex items-center justify-between lg:py-4 py-3">
+          <nav className="flex items-center justify-between lg:py-4 py-3 gap-1">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 mt-1">
               <Image
@@ -58,7 +61,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-8">
+            <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
               {NAV_ITEMS.map((item) =>
                 'hasDropdown' in item && item.hasDropdown ? (
                   <div
@@ -144,6 +147,10 @@ export default function Header() {
                   </Link>
                 )
               )}
+
+              {/* Desktop Saved Wheels */}
+              <SavedWheelsPanel />
+
               <Link
                 href="/wheel"
                 className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-blue-600 to-purple-600 px-6 py-2.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:scale-105 transition-all"
@@ -154,12 +161,14 @@ export default function Header() {
             </div>
 
             {/* Mobile Actions */}
-            <div className="lg:hidden flex items-center gap-3">
+            <div className="lg:hidden flex items-center gap-1.5">
+              <SavedWheelsPanel />
+
               <Link
                 href="/wheel"
                 className="inline-flex items-center gap-1.5 rounded-full bg-linear-to-r from-blue-600 to-purple-600 px-3 py-2 text-sm font-semibold text-white shadow-md"
               >
-                <IoSparkles />
+                <IoSparkles className="sm:block hidden" />
                 Create
               </Link>
 
@@ -265,6 +274,17 @@ export default function Header() {
               </Link>
             )
           )}
+
+          <div className="pt-6 pb-2">
+            <Link
+              href="/wheel"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-center gap-2 rounded-full bg-linear-to-r from-blue-600 to-purple-600 px-6 py-3 text-base font-semibold text-white shadow-lg hover:shadow-xl transition-shadow w-full"
+            >
+              <IoSparkles className="text-xl" />
+              Create Wheel
+            </Link>
+          </div>
         </div>
       </div>
     </>

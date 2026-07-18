@@ -13,6 +13,7 @@ const ConfirmationModal = dynamic(() => import("@/components/ConfirmationModal")
 const BulkAddModal = dynamic(() => import("@/components/BulkAddModal"), { ssr: false });
 const ShareModal = dynamic(() => import("@/components/ShareModal"), { ssr: false });
 import { useSoundEffects } from "@/lib/useSoundEffects";
+import { useSavedWheelsEvents } from "@/lib/useSavedWheelsEvents";
 import {
   generateEntryId,
   generateDefaultColors,
@@ -134,6 +135,16 @@ export default function HomeWheel({
       if (newEntryTimeoutRef.current) clearTimeout(newEntryTimeoutRef.current);
     };
   }, []);
+
+  // Listen for save/load events from Header
+  useSavedWheelsEvents({
+    entries,
+    results,
+    setEntries,
+    setResults,
+    setResult,
+    setToast,
+  });
 
   const shareWheel = () => {
     playClick();

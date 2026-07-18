@@ -19,6 +19,7 @@ import {
   decodeWheelFromShare,
   generateShareUrl
 } from "@/lib/wheel-utils";
+import { useSavedWheelsEvents } from "@/lib/useSavedWheelsEvents";
 import ShareModal from "@/components/ShareModal";
 import {
   FiPlus,
@@ -137,6 +138,17 @@ function WheelPageContent() {
       saveWheelToStorage(state);
     }
   }, [entries, result, results, isSpinning, wheelName]);
+
+  // Listen for save/load events from Header
+  useSavedWheelsEvents({
+    entries,
+    results,
+    setEntries,
+    setResults,
+    setResult,
+    setWheelName,
+    setToast,
+  });
 
   const addEntry = () => {
     const trimmed = newEntry.trim();
