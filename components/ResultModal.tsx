@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { FiX, FiCopy, FiShare2 } from "react-icons/fi";
 import { IoSparkles, IoTrophyOutline } from "react-icons/io5";
 import { MdOutlineCasino } from "react-icons/md";
+import AdBanner from "@/components/AdBanner";
 
 interface ResultModalProps {
   result: string;
@@ -27,7 +28,7 @@ export default function ResultModal({
       await navigator.clipboard.writeText(result);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch {}
+    } catch { }
   };
 
   const shareResult = async () => {
@@ -37,7 +38,7 @@ export default function ResultModal({
           title: "SpinPickOnline Result",
           text: `🎉 The winner is: ${result}! Picked with SpinPickOnline.com`,
         });
-      } catch {}
+      } catch { }
     } else {
       copyResult();
     }
@@ -171,6 +172,10 @@ export default function ResultModal({
                 </button>
               )}
 
+              {/* Ad Banner */}
+              <div className="mt-1">
+                <AdBanner slot="banner-320x50" className="w-full flex justify-center" />
+              </div>
             </div>
           </div>
         </div>
