@@ -5,6 +5,7 @@ import { generateMetadata as genMeta, generateBreadcrumbSchema, generateHowToSch
 import { SITE_CONFIG } from "@/lib/constants";
 import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 import TeamPickerWheel from "@/components/TeamPickerWheel";
+import AdBanner from "@/components/AdBanner";
 
 export const metadata: Metadata = genMeta({
     title: "Random Team Picker – Free Team Generator Wheel | Split Groups Fast",
@@ -76,9 +77,9 @@ export default function TeamPickerPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
             />
-            <section className="py-10 lg:py-16">
+            <section className="py-8 lg:py-16">
                 <div className="container mx-auto px-4">
-                    <div className="text-center mb-8 lg:mb-12">
+                    <div className="text-center mb-6 lg:mb-12">
                         <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">Random Team Picker | Group Generator Wheel</h1>
                     </div>
                     <TeamPickerWheel />
@@ -88,6 +89,10 @@ export default function TeamPickerPage() {
             {/* What is Section */}
             <section className="bg-white pb-10 lg:pb-16">
                 <div className="container mx-auto px-4">
+                    {/* Ad Banner */}
+                    <div className="flex justify-center mb-6">
+                        <AdBanner slot="banner-320x50" />
+                    </div>
                     <h2 className="md:text-3xl text-xl font-bold text-gray-900 md:mb-6 mb-4">What is a Team Picker Wheel?</h2>
                     <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed md:text-base text-sm space-y-4">
                         <p>
