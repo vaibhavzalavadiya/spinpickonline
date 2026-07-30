@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { FiX, FiCopy, FiShare2 } from "react-icons/fi";
 import { IoSparkles, IoTrophyOutline } from "react-icons/io5";
 import { MdOutlineCasino } from "react-icons/md";
-import AdBanner from "@/components/AdBanner";
 
 interface ResultModalProps {
   result: string;
@@ -172,16 +171,12 @@ export default function ResultModal({
                 </button>
               )}
 
-              {/* Ad Banner */}
-              <div className="mt-1">
-                <AdBanner slot="banner-320x50" className="w-full flex justify-center" />
-              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes fade-in {
           from {
             opacity: 0;
