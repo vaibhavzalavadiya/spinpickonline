@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { FiX, FiCopy, FiShare2 } from "react-icons/fi";
 import { IoSparkles, IoTrophyOutline } from "react-icons/io5";
 import { MdOutlineCasino } from "react-icons/md";
+import AdBanner from "@/components/AdBanner";
 
 interface ResultModalProps {
   result: string;
@@ -170,7 +171,11 @@ export default function ResultModal({
                   <span>Remove &quot;{result}&quot; and continue</span>
                 </button>
               )}
+            </div>
 
+            {/* Ad Banner inside result modal (Below buttons) */}
+            <div className="flex justify-center mt-6">
+              <AdBanner slot="banner-320x50" />
             </div>
           </div>
         </div>
