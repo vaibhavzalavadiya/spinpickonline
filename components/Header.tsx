@@ -56,6 +56,7 @@ export default function Header() {
                 width={180}
                 height={50}
                 priority
+                sizes="(max-width: 768px) 150px, 180px"
                 className="max-w-[150px] md:max-w-[180px] w-full"
               />
             </Link>
@@ -211,6 +212,8 @@ export default function Header() {
               alt={SITE_CONFIG.name}
               width={150}
               height={40}
+              sizes="150px"
+              loading="lazy"
             />
           </Link>
 

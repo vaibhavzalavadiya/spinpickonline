@@ -34,17 +34,16 @@ import {
   FiArrowDown,
   FiShare2,
   FiVolume2,
-  FiVolumeX
+  FiVolumeX,
+  FiClipboard,
+  FiBarChart2,
+  FiDisc
 } from "react-icons/fi";
 import {
   IoTrophyOutline,
   IoRocketOutline
 } from "react-icons/io5";
-import {
-  BsClipboardCheck,
-  BsBarChart
-} from "react-icons/bs";
-import { MdOutlineCasino } from "react-icons/md";
+
 
 const DEFAULT_ENTRIES: WheelEntry[] = [
   { id: "1", label: "Alice", color: "#3b82f6" },
@@ -391,7 +390,7 @@ export default function HomeWheel({
                 }`}
             >
               <div className="flex items-center justify-center gap-2">
-                <BsClipboardCheck className="text-lg" />
+                <FiClipboard className="text-lg" />
                 <span>Entries ({entries.length})</span>
               </div>
               {activeTab === "entries" && (
@@ -596,12 +595,12 @@ export default function HomeWheel({
                 >
                   {isSpinning ? (
                     <>
-                      <MdOutlineCasino className="text-2xl animate-spin" />
+                      <FiDisc className="text-2xl animate-spin" />
                       <span>Spinning...</span>
                     </>
                   ) : (
                     <>
-                      <MdOutlineCasino className="lg:text-2xl text-lg" />
+                      <FiDisc className="lg:text-2xl text-lg" />
                       <span>Spin the Wheel!</span>
                     </>
                   )}
@@ -635,7 +634,7 @@ export default function HomeWheel({
                 {results.length > 0 ? (
                   <div>
                     <h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-                      <BsBarChart className="text-base text-blue-600" />
+                      <FiBarChart2 className="text-base text-blue-600" />
                       <span>Spin History</span>
                     </h3>
                     <div className="space-y-2 max-h-96 overflow-y-auto pr-2 custom-scrollbar">
@@ -664,7 +663,7 @@ export default function HomeWheel({
                   </div>
                 ) : (
                   <div className="text-center py-12 bg-linear-to-br from-gray-50 to-blue-50 rounded-xl border-2 border-dashed border-gray-300">
-                    <MdOutlineCasino className="text-6xl text-gray-400 mx-auto mb-4" />
+                    <FiDisc className="text-6xl text-gray-400 mx-auto mb-4" />
                     <p className="text-gray-600 font-medium mb-2">No results yet!</p>
                     <p className="text-sm text-gray-500">Switch to Entries tab and spin the wheel</p>
                   </div>

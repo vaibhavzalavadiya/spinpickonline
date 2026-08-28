@@ -21,6 +21,8 @@ export default function Footer() {
                 alt={SITE_CONFIG.name}
                 width={180}
                 height={50}
+                sizes="(max-width: 768px) 150px, 180px"
+                loading="lazy"
                 className="max-w-[150px] md:max-w-[180px] w-full"
               />
             </div>
