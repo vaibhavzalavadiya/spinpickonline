@@ -39,6 +39,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/randomizer-wheel",
     "/random-group-generator",
     "/instagram-giveaway-picker",
+    "/truth-or-dare-wheel",
+    "/color-wheel-spinner",
+    "/dice-roller",
     // Dedicated tool pages
     "/team-picker",
     "/classroom-activities",

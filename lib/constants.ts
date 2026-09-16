@@ -40,6 +40,9 @@ export const TOOLS_DROPDOWN_ITEMS = [
   { label: "Raffle Wheel", href: "/raffle-wheel", icon: "🎟️", description: "Spin for raffle draws" },
   { label: "Prize Wheel", href: "/prize-wheel", icon: "🎁", description: "Spin to win exciting prizes" },
   { label: "Flip a Coin", href: "/flip-a-coin", icon: "🪙", description: "Free online coin toss" },
+  { label: "Truth or Dare", href: "/truth-or-dare-wheel", icon: "🎭", description: "Spin for truth or dare" },
+  { label: "Color Picker", href: "/color-wheel-spinner", icon: "🎨", description: "Random color selector" },
+  { label: "Dice Roller", href: "/dice-roller", icon: "🎲", description: "Roll virtual dice online" },
 ] as const;
 
 // Use cases data for programmatic pages
