@@ -338,61 +338,92 @@ export default function WheelOfNamesPage() {
                 </div>
             </section>
 
-            {/* Related Tools */}
+            {/* Comparison: SpinPickOnline vs Alternatives */}
             <section className="py-8 lg:py-16 bg-white">
                 <div className="container mx-auto px-4">
-                    <div className="text-center md:mb-8 mb-6">
-                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-                            More Name &amp; Picker Tools
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+                            Best Free Wheel of Names Alternatives Compared
                         </h2>
+                        <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto text-center mb-8">
+                            Looking for the best name spinner wheel? Here&apos;s how SpinPickOnline compares to other wheel of names tools in 2026.
+                        </p>
+                        <div className="overflow-x-auto">
+                            <table className="w-full text-sm border-collapse">
+                                <thead>
+                                    <tr className="bg-purple-50">
+                                        <th className="text-left p-3 border border-gray-200 font-bold text-gray-900">Feature</th>
+                                        <th className="text-center p-3 border border-gray-200 font-bold text-purple-700">SpinPickOnline</th>
+                                        <th className="text-center p-3 border border-gray-200 font-bold text-gray-600">Other Wheel Tools</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {[
+                                        { feature: "Price", us: "100% Free Forever", them: "Free with limits / Paid plans" },
+                                        { feature: "Signup Required", us: "No signup needed", them: "Often requires account" },
+                                        { feature: "Name Limit", us: "Unlimited names", them: "Often 50-100 max free" },
+                                        { feature: "Shareable Links", us: "✅ Free sharing", them: "Premium feature" },
+                                        { feature: "Crypto-Secure RNG", us: "✅ Web Crypto API", them: "Basic Math.random()" },
+                                        { feature: "Mobile Optimized", us: "✅ Full touch support", them: "Varies" },
+                                        { feature: "Customizable Colors", us: "✅ Per-segment colors", them: "Limited themes" },
+                                        { feature: "Remove After Pick", us: "✅ Built-in", them: "Sometimes available" },
+                                        { feature: "Ads", us: "Non-intrusive", them: "Heavy ads / Paywall" },
+                                    ].map((row, i) => (
+                                        <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                                            <td className="p-3 border border-gray-200 font-medium text-gray-900">{row.feature}</td>
+                                            <td className="p-3 border border-gray-200 text-center text-green-700 font-medium">{row.us}</td>
+                                            <td className="p-3 border border-gray-200 text-center text-gray-500">{row.them}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+                </div>
+            </section>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 md:gap-6 gap-4 max-w-4xl mx-auto">
-                        <div className="bg-white md:p-5 p-4 md:rounded-xl rounded-lg border border-gray-200">
-                            <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                                <IoPersonOutline className="text-blue-500 text-lg" /> Name Picker
-                            </h3>
-                            <p className="md:text-base text-sm text-gray-600 mb-3">Dedicated name picker tool optimized for large rosters and classroom use.</p>
-                            <Link href="/name-picker" className="text-sm font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1">
-                                Name Picker <FiArrowRight className="text-xs" />
-                            </Link>
+            {/* Deep Article: The Complete Guide to Name Wheels */}
+            <section className="py-10 lg:py-16 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto space-y-6">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 text-center">
+                            The Complete Guide to Using a Wheel of Names
+                        </h2>
+                        <div className="bg-white md:p-6 p-4 md:rounded-xl rounded-lg border border-gray-200">
+                            <h3 className="font-bold text-gray-900 mb-3 text-lg">What Is a Wheel of Names?</h3>
+                            <p className="text-sm text-gray-700 leading-relaxed mb-3">
+                                A <strong>wheel of names</strong> is a digital random selection tool that displays names on a spinning wheel and picks one at random when you press Spin. Unlike drawing names from a hat or using a basic random number generator, a name wheel provides a visual, transparent, and engaging way to select from a list of people. The spinning animation creates anticipation and excitement — and because everyone can see the wheel spin and land, there&apos;s zero doubt about whether the selection was fair.
+                            </p>
+                            <p className="text-sm text-gray-700 leading-relaxed">
+                                Our <strong>wheel of names</strong> uses the Web Crypto API — the same cryptographic standard that protects online banking transactions — to generate truly random results. This means the outcome of every spin is statistically impossible to predict or manipulate. Every name on the wheel has an exactly equal chance of being selected, regardless of position, color, or order.
+                            </p>
                         </div>
-
-                        <div className="bg-white md:p-5 p-4 md:rounded-xl rounded-lg border border-gray-200">
-                            <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                                <IoPersonOutline className="text-purple-500 text-lg" /> Name Spinner
-                            </h3>
-                            <p className="md:text-base text-sm text-gray-600 mb-3">Spin to pick names with a visually stunning animated spinner wheel.</p>
-                            <Link href="/name-spinner" className="text-sm font-semibold text-purple-600 hover:text-purple-700 inline-flex items-center gap-1">
-                                Name Spinner <FiArrowRight className="text-xs" />
-                            </Link>
-                        </div>
-
-                        <div className="bg-white md:p-5 p-4 md:rounded-xl rounded-lg border border-gray-200">
-                            <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                                <IoTrophyOutline className="text-pink-500 text-lg" /> Giveaway Winner
-                            </h3>
-                            <p className="md:text-base text-sm text-gray-600 mb-3">Purpose-built for social media giveaways and contest winner selection.</p>
-                            <Link href="/giveaway-winner" className="text-sm font-semibold text-pink-600 hover:text-pink-700 inline-flex items-center gap-1">
-                                Giveaway Winner <FiArrowRight className="text-xs" />
-                            </Link>
-                        </div>
-
-                        <div className="bg-white md:p-5 p-4 md:rounded-xl rounded-lg border border-gray-200">
-                            <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                                <FiUsers className="text-green-500 text-lg" /> Team Picker
-                            </h3>
-                            <p className="md:text-base text-sm text-gray-600 mb-3">Build random, balanced teams from a group of names instantly.</p>
-                            <Link href="/team-picker" className="text-sm font-semibold text-green-600 hover:text-green-700 inline-flex items-center gap-1">
-                                Team Picker <FiArrowRight className="text-xs" />
-                            </Link>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="bg-white md:p-6 p-4 md:rounded-xl rounded-lg border border-gray-200">
+                                <h3 className="font-bold text-gray-900 mb-3 text-lg">Name Wheels for Remote Teams</h3>
+                                <p className="text-sm text-gray-700 leading-relaxed mb-3">
+                                    In the era of remote work, team meetings on Zoom, Teams, and Google Meet are the norm. Deciding who speaks first, who leads the standup, or who takes notes often becomes awkward or biased. A <strong>name spinner wheel</strong> eliminates this friction entirely. Simply paste your team roster, share your screen, and spin — the wheel picks randomly while everyone watches.
+                                </p>
+                                <p className="text-sm text-gray-700 leading-relaxed">
+                                    Many managers use our shareable wheel links to create a &quot;team wheel&quot; that the whole team can access. Bookmark it once and use it every meeting. The randomness keeps meetings fresh, ensures everyone participates equally, and removes the awkward &quot;any volunteers?&quot; silence.
+                                </p>
+                            </div>
+                            <div className="bg-white md:p-6 p-4 md:rounded-xl rounded-lg border border-gray-200">
+                                <h3 className="font-bold text-gray-900 mb-3 text-lg">Name Wheels for Content Creators</h3>
+                                <p className="text-sm text-gray-700 leading-relaxed mb-3">
+                                    YouTubers, Twitch streamers, and Instagram influencers use name wheels daily for live giveaways. The visual spin creates exciting content that viewers love watching — the suspense of the slowing wheel, the moment it lands on a name, the winner&apos;s reaction. It&apos;s far more engaging than simply announcing &quot;the random winner is...&quot;
+                                </p>
+                                <p className="text-sm text-gray-700 leading-relaxed">
+                                    Our <Link href="/shareable-wheels" className="text-blue-600 hover:underline">shareable wheel feature</Link> lets creators save their giveaway wheel and share a permanent link in the video description as proof of fair selection. Followers can click the link and see the exact wheel that was used, building trust and encouraging more entries in future giveaways.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Internal Link Pills */}
-            <section className="py-10 lg:py-12 bg-gray-50">
+            <section className="py-10 lg:py-12 bg-white">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-6">
                         <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
@@ -410,6 +441,9 @@ export default function WheelOfNamesPage() {
                             { href: "/random-choice-picker", label: "Random Choice Picker" },
                             { href: "/spin-wheel-for-giveaway", label: "Giveaway Wheel" },
                             { href: "/shareable-wheels", label: "Shareable Wheels" },
+                            { href: "/flip-a-coin", label: "Flip a Coin" },
+                            { href: "/truth-or-dare-wheel", label: "Truth or Dare" },
+                            { href: "/decision-wheel", label: "Decision Wheel" },
                         ].map((link) => (
                             <Link
                                 key={link.href}

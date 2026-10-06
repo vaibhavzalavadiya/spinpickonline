@@ -272,6 +272,10 @@ export default function RandomNumberWheelPage() {
                     </div>
                     <div className="flex flex-wrap justify-center gap-3">
                         {[
+                            { href: "/random-number-wheel/1-10", label: "Number Wheel 1-10" },
+                            { href: "/random-number-wheel/1-20", label: "Number Wheel 1-20" },
+                            { href: "/random-number-wheel/1-50", label: "Number Wheel 1-50" },
+                            { href: "/random-number-wheel/1-100", label: "Number Wheel 1-100" },
                             { href: "/random-picker-wheel", label: "Random Picker" },
                             { href: "/random-choice-picker", label: "Choice Picker" },
                             { href: "/decision-wheel", label: "Decision Wheel" },

@@ -7,7 +7,7 @@ import HomeWheel from "@/components/HomeWheel";
 import { FiLock, FiTarget, FiDollarSign, FiSmartphone, FiShare2, FiDroplet } from "react-icons/fi";
 
 export const metadata: Metadata = generateMetadata({
-  title: "Random Picker Wheel – Free Online Spinner | Instant Results",
+  title: "Random Picker Wheel – Free Spin to Pick Names & Winners",
   description: "Pick randomly from any list in one click. Free random picker wheel with no signup required. Perfect for giveaways, classrooms, and decisions. 100% fair RNG.",
   canonical: "/random-picker-wheel",
 });

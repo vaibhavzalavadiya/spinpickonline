@@ -168,7 +168,14 @@ export default function Wheel({ entries, onResult, isSpinning, result, onSpinReq
       // Create gradient for depth
       const gradient = ctx.createRadialGradient(centerX, centerY, radius * 0.2, centerX, centerY, radius);
       gradient.addColorStop(0, entry.color);
-      gradient.addColorStop(1, entry.color + 'CC');
+      
+      // Only append hex alpha 'CC' if the color is actually a standard 6-character hex code
+      let edgeColor = entry.color;
+      if (entry.color.startsWith('#') && entry.color.length === 7) {
+          edgeColor = entry.color + 'CC';
+      }
+      gradient.addColorStop(1, edgeColor);
+      
       ctx.fillStyle = gradient;
       ctx.fill();
       ctx.strokeStyle = "#fff";

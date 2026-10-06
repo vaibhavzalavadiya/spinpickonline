@@ -241,6 +241,7 @@ export default function Home() {
               { href: "/truth-or-dare-wheel", label: "Truth or Dare", desc: "Party game spinner" },
               { href: "/color-wheel-spinner", label: "Color Picker", desc: "Random colors" },
               { href: "/dice-roller", label: "Dice Roller", desc: "Virtual dice" },
+              { href: "/flip-a-coin", label: "Flip a Coin", desc: "Heads or Tails" },
               { href: "/guides/how-to-use-random-picker-wheel", label: "How to Guide", desc: "Step-by-step" },
             ].map((link) => (
               <Link

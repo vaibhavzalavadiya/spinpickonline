@@ -26,6 +26,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/raffle-wheel",
     "/prize-wheel",
     "/random-number-wheel",
+    "/random-number-wheel/1-10",
+    "/random-number-wheel/1-20",
+    "/random-number-wheel/1-50",
+    "/random-number-wheel/1-100",
     "/spin-wheel-for-giveaway",
     "/random-choice-picker",
     "/wheel-spinner",
@@ -42,6 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/truth-or-dare-wheel",
     "/color-wheel-spinner",
     "/dice-roller",
+    "/lucky-spin",
     // Dedicated tool pages
     "/team-picker",
     "/classroom-activities",

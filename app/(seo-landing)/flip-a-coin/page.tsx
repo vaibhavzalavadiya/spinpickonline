@@ -10,7 +10,7 @@ import { IoShuffleOutline, IoSparklesOutline, IoFlashOutline } from "react-icons
 import { FiShield, FiTrendingUp } from "react-icons/fi";
 
 export const metadata: Metadata = generateMetadata({
-  title: "Flip a Coin Online – Free Coin Toss | Heads or Tails",
+  title: "Flip a Coin Online – Free Coin Toss Simulator | Heads or Tails",
   description: "Flip a coin instantly with our free online coin toss. Fair, random 3D coin flipper for heads or tails. No signup needed. Perfect for quick decisions.",
   canonical: "/flip-a-coin",
 });
