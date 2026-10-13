@@ -29,20 +29,21 @@ export const NAV_ITEMS = [
 // Tools dropdown items
 export const TOOLS_DROPDOWN_ITEMS = [
   { label: "Name Picker", href: "/name-picker", icon: "🎯", description: "Randomly pick names from your list" },
+  { label: "Spin the Bottle", href: "/spin-the-bottle", icon: "🍾", description: "Virtual spin the bottle game" },
+  { label: "Truth or Dare", href: "/truth-or-dare-wheel", icon: "🎭", description: "Spin for truth or dare" },
   { label: "Wheel of Names", href: "/wheel-of-names", icon: "🎱", description: "Free name wheel, unlimited names" },
   { label: "Yes/No Wheel", href: "/yes-no-wheel", icon: "✅", description: "Spin to get a yes or no answer" },
+  { label: "Would You Rather", href: "/would-you-rather-wheel", icon: "🤷", description: "Funny dilemmas and debate game" },
   { label: "Team Picker", href: "/team-picker", icon: "👥", description: "Create random teams fairly" },
   { label: "Random Picker Wheel", href: "/random-picker-wheel", icon: "🎡", description: "Spin the wheel for any choice" },
+  { label: "Flip a Coin", href: "/flip-a-coin", icon: "🪙", description: "Free online coin toss" },
+  { label: "Dice Roller", href: "/dice-roller", icon: "🎲", description: "Roll virtual dice online" },
   { label: "Name Spinner", href: "/name-spinner", icon: "🔄", description: "Spin and pick a random name" },
   { label: "Giveaway Winner", href: "/giveaway-winner", icon: "🏆", description: "Pick fair giveaway winners" },
   { label: "Decision Wheel", href: "/decision-wheel", icon: "🤔", description: "Let the wheel decide for you" },
   { label: "Classroom Activities", href: "/classroom-activities", icon: "📚", description: "Random student picker for class" },
-  { label: "Raffle Wheel", href: "/raffle-wheel", icon: "🎟️", description: "Spin for raffle draws" },
   { label: "Prize Wheel", href: "/prize-wheel", icon: "🎁", description: "Spin to win exciting prizes" },
-  { label: "Flip a Coin", href: "/flip-a-coin", icon: "🪙", description: "Free online coin toss" },
-  { label: "Truth or Dare", href: "/truth-or-dare-wheel", icon: "🎭", description: "Spin for truth or dare" },
   { label: "Color Picker", href: "/color-wheel-spinner", icon: "🎨", description: "Random color selector" },
-  { label: "Dice Roller", href: "/dice-roller", icon: "🎲", description: "Roll virtual dice online" },
 ] as const;
 
 // Use cases data for programmatic pages

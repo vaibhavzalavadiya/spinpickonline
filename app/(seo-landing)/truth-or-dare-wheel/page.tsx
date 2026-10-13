@@ -431,6 +431,36 @@ export default function TruthOrDareWheelPage() {
                 </div>
             </section>
 
+            {/* Related Tools */}
+            <section className="py-10 lg:py-12 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="text-center mb-6">
+                        <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+                            Explore More Party & Game Wheels
+                        </h2>
+                    </div>
+                    <div className="flex flex-wrap justify-center gap-3">
+                        {[
+                            { href: "/would-you-rather-wheel", label: "Would You Rather Wheel" },
+                            { href: "/spin-the-bottle", label: "Spin the Bottle" },
+                            { href: "/decision-wheel", label: "Decision Wheel" },
+                            { href: "/yes-no-wheel", label: "Yes/No Wheel" },
+                            { href: "/dice-roller", label: "Dice Roller" },
+                            { href: "/flip-a-coin", label: "Flip a Coin" },
+                            { href: "/random-picker-wheel", label: "Random Picker Wheel" },
+                        ].map((link) => (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-full text-sm font-medium text-gray-700 hover:border-pink-300 hover:text-pink-600 transition-all"
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             <CallToAction />
         </div>
     );

@@ -44,6 +44,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/random-group-generator",
     "/instagram-giveaway-picker",
     "/truth-or-dare-wheel",
+    "/would-you-rather-wheel",
+    "/spin-the-bottle",
     "/color-wheel-spinner",
     "/dice-roller",
     "/lucky-spin",

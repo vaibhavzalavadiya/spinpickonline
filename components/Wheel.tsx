@@ -18,35 +18,28 @@ interface WheelProps {
 export default function Wheel({ entries, onResult, isSpinning, result, onSpinRequest, showButton = true, onSegmentTick }: WheelProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [rotation, setRotation] = useState(0);
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const animationRef = useRef<number | undefined>(undefined);
   const spinTriggerRef = useRef<boolean>(isSpinning);
   const [canvasSize, setCanvasSize] = useState({ width: 500, height: 500 });
   const prevSegmentRef = useRef<number>(-1);
 
-  // Calculate which segment is selected based on rotation (arrow on top)
+  // Calculate which segment is selected based on rotation (arrow on top) for audio tick
   useEffect(() => {
     if (entries.length === 0) return;
 
     const anglePerSegment = (2 * Math.PI) / entries.length;
 
-    // Calculate which segment the arrow is pointing to
-    // When rotation=0, segment 0 should be at top
-    // Segments drawn: startAngle = index * anglePerSegment + rotation - π/2
-    // Arrow at -π/2, so we need: index * anglePerSegment + rotation - π/2 ≤ -π/2 < (index+1) * anglePerSegment + rotation - π/2
-    // Simplifies to: index * anglePerSegment ≤ -rotation < (index+1) * anglePerSegment
     let normalizedRotation = (-rotation) % (2 * Math.PI);
     if (normalizedRotation < 0) normalizedRotation += 2 * Math.PI;
 
     const index = Math.floor(normalizedRotation / anglePerSegment) % entries.length;
-    setSelectedIndex(index);
 
     // Fire tick when crossing segment boundary
     if (prevSegmentRef.current !== -1 && prevSegmentRef.current !== index && isSpinning) {
       onSegmentTick?.();
     }
     prevSegmentRef.current = index;
-  }, [rotation, entries, isSpinning, onSegmentTick]);
+  }, [rotation, entries.length, isSpinning, onSegmentTick]);
 
   // Trigger spin when isSpinning changes from false to true externally
   useEffect(() => {
@@ -90,7 +83,6 @@ export default function Wheel({ entries, onResult, isSpinning, result, onSpinReq
           if (normalizedRotation < 0) normalizedRotation += 2 * Math.PI;
           const detectedIndex = Math.floor(normalizedRotation / anglePerSegment) % entries.length;
 
-          setSelectedIndex(detectedIndex);
           onResult(entries[detectedIndex].label);
         }
       };
@@ -260,7 +252,7 @@ export default function Wheel({ entries, onResult, isSpinning, result, onSpinReq
     ctx.fill();
 
     ctx.restore();
-  }, [entries, rotation, selectedIndex, isSpinning, canvasSize]);
+  }, [entries, rotation, isSpinning, canvasSize]);
 
   const handleSpin = () => {
     if (entries.length === 0 || isSpinning) return;
@@ -300,7 +292,6 @@ export default function Wheel({ entries, onResult, isSpinning, result, onSpinReq
           if (normalizedRotation < 0) normalizedRotation += 2 * Math.PI;
           const detectedIndex = Math.floor(normalizedRotation / anglePerSegment) % entries.length;
 
-          setSelectedIndex(detectedIndex);
           onResult(entries[detectedIndex].label);
         }
       };
