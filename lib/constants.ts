@@ -44,6 +44,8 @@ export const TOOLS_DROPDOWN_ITEMS = [
   { label: "Classroom Activities", href: "/classroom-activities", icon: "📚", description: "Random student picker for class" },
   { label: "Prize Wheel", href: "/prize-wheel", icon: "🎁", description: "Spin to win exciting prizes" },
   { label: "Color Picker", href: "/color-wheel-spinner", icon: "🎨", description: "Random color selector" },
+  { label: "Sports Team Wheel", href: "/random-sports-team-generator", icon: "⚽", description: "Pick teams for any sport" },
+  { label: "Tournament Draw", href: "/tournament-draw-generator", icon: "🏆", description: "Random brackets & matchups" },
 ] as const;
 
 // Use cases data for programmatic pages

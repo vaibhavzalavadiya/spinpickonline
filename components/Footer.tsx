@@ -65,6 +65,12 @@ export default function Footer() {
                   Flip a Coin
                 </Link>
               </li>
+              <li>
+                <Link href="/random-sports-team-generator" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 bg-blue-600 rounded-full group-hover:w-2 transition-all"></span>
+                  Sports Team Generator
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -94,6 +100,12 @@ export default function Footer() {
                 <Link href="/name-spinner" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 bg-purple-600 rounded-full group-hover:w-2 transition-all"></span>
                   Name Spinner
+                </Link>
+              </li>
+              <li>
+                <Link href="/tournament-draw-generator" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 bg-purple-600 rounded-full group-hover:w-2 transition-all"></span>
+                  Tournament Draw
                 </Link>
               </li>
             </ul>

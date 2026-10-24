@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // UPDATE this date whenever you make meaningful content changes and deploy.
   // Using new Date() was wrong — it told Google every page changed on every crawl,
   // causing Google to distrust our lastmod values entirely.
-  const lastContentUpdate = new Date("2026-07-13T00:00:00Z");
+  const lastContentUpdate = new Date("2026-10-24T00:00:00Z");
 
   // Core tool pages (highest priority)
   const corePages = [
@@ -49,6 +49,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/color-wheel-spinner",
     "/dice-roller",
     "/lucky-spin",
+    // Sports & Tournament tools
+    "/random-sports-team-generator",
+    "/cricket-team-picker",
+    "/ipl-team-wheel",
+    "/tournament-draw-generator",
+    "/nfl-team-wheel",
+    "/nba-team-wheel",
+    "/football-club-picker",
     // Dedicated tool pages
     "/team-picker",
     "/classroom-activities",
