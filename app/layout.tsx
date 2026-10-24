@@ -22,8 +22,8 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   ...genMeta({
-    title: "Random Picker Wheel – Free Online Spin the Wheel Tool",
-    description: "Spin the wheel instantly. Add names, spin, pick a random winner in seconds. Free forever, no signup, works on mobile. Used by teachers, creators & event hosts.",
+    title: "Free Spin Wheel – Create, Save & Share a Random Picker",
+    description: "Create a free custom spin wheel for names, teams, giveaways and decisions. Paste your list, spin instantly, remove winners, save and share.",
     canonical: "/",
     languages: HOMEPAGE_HREFLANG,
   }),
