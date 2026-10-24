@@ -359,7 +359,7 @@ export default function HomeWheel({
       {/* Confetti */}
       <Confetti isActive={showConfetti} />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr] gap-5 md:gap-10 lg:gap-16 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr] gap-4 sm:gap-6 md:gap-10 lg:gap-16 items-start">
         {/* Left: Wheel Section */}
         <div className="flex flex-col items-center justify-start">
           <div className="relative w-full max-w-3xl">

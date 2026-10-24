@@ -330,14 +330,14 @@ function WheelPageContent() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <div className="container px-4 mx-auto lg:py-12 py-8">
-        <div className="text-center lg:mb-12 sm:mb-8 mb-5">
-          <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+      <div className="container px-4 mx-auto lg:py-12 sm:py-8 py-4">
+        <div className="text-center lg:mb-12 sm:mb-8 mb-3">
+          <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">
             Create Your Random Picker Wheel
           </h1>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr] gap-5 md:gap-10 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr] gap-4 sm:gap-6 md:gap-10 lg:gap-16 items-start">
           {/* Left: Wheel Section */}
           <div className="flex flex-col items-center justify-start">
             {entries.length > 0 ? (

@@ -195,13 +195,13 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
     return (
       <div className="min-h-screen bg-white">
         {/* Hero + Wheel */}
-        <section className="pt-8 pb-10 lg:pt-12 lg:pb-14 bg-gradient-to-b from-blue-50/40 to-white">
+        <section className="pt-4 pb-8 sm:pt-8 sm:pb-10 lg:pt-12 lg:pb-14 bg-gradient-to-b from-blue-50/40 to-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <Breadcrumbs items={breadcrumbItems} />
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 mt-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-3 mt-3 sm:mt-4">
               {feature.h1}
             </h1>
-            <p className="text-gray-500 text-sm sm:text-base mb-8 max-w-2xl">
+            <p className="text-gray-500 text-sm sm:text-base mb-4 sm:mb-8 max-w-2xl">
               {feature.featureDescription}
             </p>
             <HomeWheel
@@ -303,13 +303,13 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
     return (
       <div className="min-h-screen bg-white">
         {/* Hero + Wheel */}
-        <section className="pt-8 pb-10 lg:pt-12 lg:pb-14 bg-gradient-to-b from-purple-50/40 to-white">
+        <section className="pt-4 pb-8 sm:pt-8 sm:pb-10 lg:pt-12 lg:pb-14 bg-gradient-to-b from-purple-50/40 to-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <Breadcrumbs items={breadcrumbItems} />
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 mt-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-3 mt-3 sm:mt-4">
               {useCase.h1}
             </h1>
-            <p className="text-gray-500 text-sm sm:text-base mb-8 max-w-2xl">
+            <p className="text-gray-500 text-sm sm:text-base mb-4 sm:mb-8 max-w-2xl">
               {useCase.context}
             </p>
             <HomeWheel

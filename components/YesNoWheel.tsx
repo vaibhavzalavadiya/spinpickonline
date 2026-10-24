@@ -101,7 +101,7 @@ export default function YesNoWheel() {
             {/* Confetti */}
             <Confetti isActive={showConfetti} />
 
-            <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] md:gap-8 gap-5 lg:gap-12 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-start">
 
                 {/* Left: Wheel Section */}
                 <div className="flex flex-col items-center justify-start order-1 lg:order-1">
