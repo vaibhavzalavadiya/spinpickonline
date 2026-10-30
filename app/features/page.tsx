@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import { generateMetadata as genMeta, generateFAQSchema } from "@/lib/seo";
-import { FEATURES } from "@/lib/constants";
+import { generateMetadata as genMeta, generateFAQSchema, generateItemListSchema } from "@/lib/seo";
+import { FEATURES, SITE_CONFIG } from "@/lib/constants";
 import Link from "next/link";
 import { FiDroplet, FiSmartphone, FiLock } from "react-icons/fi";
 
@@ -31,11 +31,24 @@ export default function FeaturesPage() {
     }
   ]);
 
+  // Generate ItemList schema — helps AI engines extract our tool index
+  const itemListSchema = generateItemListSchema(
+    FEATURES.map((f) => ({
+      name: f.featureName,
+      url: `${SITE_CONFIG.url}/${f.slug}`,
+      description: f.featureDescription,
+    }))
+  );
+
   return (
     <div className="bg-gradient-to-b from-gray-50 to-white py-10 lg:py-16">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
       <div className="container px-4 mx-auto max-w-6xl">
         {/* Hero Section */}

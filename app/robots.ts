@@ -43,6 +43,31 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/", "/admin/", "/test/"],
       },
+      {
+        userAgent: "Applebot-Extended",
+        allow: "/",
+        disallow: ["/api/", "/admin/", "/test/"],
+      },
+      {
+        userAgent: "GoogleOther",
+        allow: "/",
+        disallow: ["/api/", "/admin/", "/test/"],
+      },
+      {
+        userAgent: "YouBot",
+        allow: "/",
+        disallow: ["/api/", "/admin/", "/test/"],
+      },
+      {
+        userAgent: "Meta-ExternalAgent",
+        allow: "/",
+        disallow: ["/api/", "/admin/", "/test/"],
+      },
+      {
+        userAgent: "cohere-ai",
+        allow: "/",
+        disallow: ["/api/", "/admin/", "/test/"],
+      },
     ],
     sitemap: `${SITE_CONFIG.url}/sitemap.xml`,
   };

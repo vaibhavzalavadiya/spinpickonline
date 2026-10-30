@@ -224,3 +224,26 @@ export function generateBreadcrumbSchema(items: Array<{ name: string; item: stri
   };
 }
 
+// Generate ItemList schema — helps AI engines extract ranked tool listings
+export function generateItemListSchema(items: Array<{ name: string; url: string; description: string }>) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: item.url,
+      description: item.description,
+    })),
+  };
+}
+
+// Generate speakable CSS selectors for voice AI answers (Google Assistant, Siri, Alexa)
+export function getSpeakableProperty(cssSelectors: string[] = ["h1", ".speakable-summary"]) {
+  return {
+    "@type": "SpeakableSpecification",
+    cssSelector: cssSelectors,
+  };
+}
+

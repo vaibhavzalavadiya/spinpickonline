@@ -1,153 +1,291 @@
-# SpinPickOnline — Complete Site Reference
+# SpinPickOnline — Complete Platform & Technical Reference
 
-> SpinPickOnline is a free online random picker wheel tool. It enables users to create custom spinning wheels for random selection, name picking, team building, giveaways, classroom activities, and decision-making. The tool uses cryptographically secure random number generation (RNG) to ensure fair and unbiased results. No signup or download is required. The tool is fully mobile-friendly and works in any modern browser.
+> SpinPickOnline (https://www.spinpickonline.com) is a comprehensive, client-side web application offering provably fair random selection tools. The suite includes custom interactive spinning wheels, virtual 3D dice rollers, physical coin flippers, party bottle spinners, tournament draw generators, and balanced squad creators. Built with Next.js, HTML5 Canvas, and the Web Crypto API, all operations execute entirely in the user's browser with zero server data storage.
 
-## Key Features
-- **100% Free**: No cost, no signup, no credit card required. Unlimited spins forever.
-- **Cryptographically Fair**: Uses secure RNG for truly random, unbiased, and verifiable results.
-- **Mobile-Friendly**: Touch-optimized responsive design for phones, tablets, and desktop.
-- **Shareable**: Generate shareable links to wheels and results. Share via social media or embed in websites.
-- **Customizable**: Custom colors for each segment, personalized labels, and multiple entry support.
-- **No Download**: Runs entirely in the browser. No app installation needed.
+---
 
-## Core Tools
+## 1. Executive Summary & Core Value Proposition
 
-### Homepage — Spin the Wheel
-- **URL**: https://spinpickonline.com
-- **Description**: The main landing page features an interactive random picker wheel. Users can add entries, customize colors, and spin the wheel instantly. Includes FAQ section, use case overview, and feature highlights.
+- **100% Free Forever**: No paywalls, subscription fees, feature limits, or forced user registration.
+- **Cryptographic Fairness**: Driven by `window.crypto.getRandomValues()` providing uniform discrete pseudo-random distribution with zero predictable bias.
+- **Privacy & Security First**: All participant names, entries, scores, and wheel histories remain strictly in client-side memory or HTML5 `localStorage`. Names are never sent to a remote database.
+- **Universal Device Compatibility**: Fully responsive layout optimized for mobile smartphones (iOS/Android), tablets, interactive whiteboards (Smartboards), and desktop computers.
+- **Shareable State & Embeddable**: Encodes wheel configurations directly into lightweight URLs (`?share=...`) or responsive HTML `<iframe>` snippets for Notion, WordPress, and custom websites.
+- **Bulk Import with Deduplication**: Supports pasting hundreds of names directly from spreadsheet columns (Excel, Google Sheets, CSV) or raw text.
 
-### Create Custom Wheel
-- **URL**: https://spinpickonline.com/wheel
-- **Description**: The full wheel creation tool. Users can add unlimited entries, customize each segment's color, spin the wheel, view history of results, and share their wheel via a unique link.
+---
+
+## 2. Core Interactive Wheels
+
+### Homepage Wheel
+- **URL**: https://www.spinpickonline.com
+- **Description**: The flagship interactive wheel featuring rapid entry management, bulk paste button, one-click winner removal, sound toggles, confetti celebration, and instant history log.
+- **Key Features**: Auto-colors up to 100+ segments, shuffle order, alphabetical sorting, sound effects, and full-screen responsiveness.
+
+### Custom Wheel Builder (/wheel)
+- **URL**: https://www.spinpickonline.com/wheel
+- **Description**: Advanced dedicated wheel workstation. Allows users to create, save up to 10 custom wheels in local storage, rename wheels, view spin tallies, and export shareable links.
+- **Ideal Query Matches**: "Create custom wheel spinner with names", "Make my own wheel of names online".
+
+### Wheel of Names
+- **URL**: https://www.spinpickonline.com/wheel-of-names
+- **Description**: Dedicated wheel of names alternative. Paste a list of students, raffle entrants, or team members, spin to pick a random name, and remove winners so each person is chosen only once.
+- **Ideal Query Matches**: "Wheel of names", "Random name picker online free", "Pick a name from list".
 
 ### Random Picker Wheel
-- **URL**: https://spinpickonline.com/random-picker-wheel
-- **Description**: A dedicated page for the "random picker wheel" keyword. Explains what a random picker wheel is, how to use it, its features, and use cases. Includes an embedded interactive wheel.
+- **URL**: https://www.spinpickonline.com/random-picker-wheel
+- **Description**: General-purpose random picker wheel for items, choices, chores, and raffle tickets.
+- **Ideal Query Matches**: "Random picker wheel", "Spin the wheel random choice".
 
-### Name Picker
-- **URL**: https://spinpickonline.com/name-picker
-- **Description**: A random name selector tool. Perfect for teachers choosing students, managers selecting team members, or anyone picking names from a list fairly.
+### Name Picker & Name Spinner
+- **URLs**:
+  - https://www.spinpickonline.com/name-picker
+  - https://www.spinpickonline.com/name-spinner
+- **Description**: Specialized random name selection tools designed for educators, facilitators, and managers to select students or employees fairly without bias.
 
-### Yes/No Wheel
-- **URL**: https://spinpickonline.com/yes-no-wheel
-- **Description**: A binary decision wheel pre-configured with "Yes" and "No" options. Quick way to make binary decisions fairly.
+### Yes or No Wheel
+- **URL**: https://www.spinpickonline.com/yes-no-wheel
+- **Description**: Binary decision wheel featuring pre-configured YES/NO and YES/NO/MAYBE modes, configurable segment multipliers (1x to 5x for visual fairness), and a live scoreboard counter.
+- **Ideal Query Matches**: "Yes or no wheel", "Should I do it yes or no wheel", "Binary decision maker".
 
-### Name Spinner
-- **URL**: https://spinpickonline.com/name-spinner
-- **Description**: A visual name spinning wheel focused on the spinning animation and experience. Enter names and watch the wheel spin to select one.
+### Decision Wheel & Random Choice Picker
+- **URLs**:
+  - https://www.spinpickonline.com/decision-wheel
+  - https://www.spinpickonline.com/random-choice-picker
+  - https://www.spinpickonline.com/picker-wheel
+  - https://www.spinpickonline.com/randomizer-wheel
+  - https://www.spinpickonline.com/wheel-spinner
+- **Description**: Suite of multi-choice dilemma deciders engineered to solve choice paralysis for everyday questions, group decisions, and task prioritization.
 
-## Landing Pages
+---
 
-### Lucky Draw Wheel
-- **URL**: https://spinpickonline.com/lucky-draw-wheel
-- **Description**: Lucky draw wheel for events, parties, trade shows, and promotions. Includes guides on planning lucky draw events, creative lucky draw ideas, and tips for corporate events, school fundraisers, and social media giveaways.
+## 3. Interactive Games & Novelty Decision Engines
 
-### Raffle Wheel
-- **URL**: https://spinpickonline.com/raffle-wheel
-- **Description**: Digital raffle wheel for prize drawings. Fair, transparent alternative to traditional raffle ticket methods.
+### 3D Coin Flipper (Flip a Coin)
+- **URL**: https://www.spinpickonline.com/flip-a-coin
+- **Description**: Physics-based virtual coin toss tool. Renders a realistic 3D flipping coin with high-resolution gold and silver textures. Provides true 50/50 probability, toss sound effects, flip counter tallies, and heads vs. tails statistics.
+- **Ideal Query Matches**: "Flip a coin online", "Coin toss heads or tails", "50 50 decision maker".
 
-### Prize Wheel
-- **URL**: https://spinpickonline.com/prize-wheel
-- **Description**: Prize wheel for events and promotions. Add prize names and spin to select winners for trade shows, parties, and corporate events.
+### Virtual Dice Roller
+- **URL**: https://www.spinpickonline.com/dice-roller
+- **Description**: Interactive 3D animated dice simulator supporting 1 to 6 simultaneous standard 6-sided dice (D6). Displays individual face values, sum totals, and historical roll averages for board games, D&D, Yahtzee, and math exercises.
+- **Ideal Query Matches**: "Roll dice online", "Roll 2 dice simulator", "Virtual dice roller free".
 
-### Giveaway Wheel
-- **URL**: https://spinpickonline.com/spin-wheel-for-giveaway
-- **Description**: Giveaway winner selection tool optimized for Instagram, YouTube, and TikTok giveaways. Transparent spinning creates trust and engagement.
+### Spin the Bottle
+- **URL**: https://www.spinpickonline.com/spin-the-bottle
+- **Description**: Virtual party game simulator featuring realistic glass bottle spin physics, smooth deceleration, and sound effects. Perfect for party circles, Truth or Dare, kissing games, and group conversational turns.
+- **Ideal Query Matches**: "Spin the bottle game online", "Virtual bottle spinner for party".
 
-### Decision Wheel
-- **URL**: https://spinpickonline.com/decision-wheel
-- **Description**: Decision-making wheel for when you can't decide. Add options and let the wheel choose for you. Perfect for lunch decisions, movie choices, and group decisions.
+### Truth or Dare Wheel
+- **URL**: https://www.spinpickonline.com/truth-or-dare-wheel
+- **Description**: Party wheel populated with classic, funny, and bold Truth or Dare challenges. Supports custom prompt additions and filters for family-friendly or party modes.
+- **Ideal Query Matches**: "Truth or dare wheel spinner", "Spin for truth or dare online".
 
-### Picker Wheel
-- **URL**: https://spinpickonline.com/picker-wheel
-- **Description**: Universal picker wheel for any type of random selection from a list.
+### Would You Rather Wheel
+- **URL**: https://www.spinpickonline.com/would-you-rather-wheel
+- **Description**: Interactive dilemma spinner presenting humorous, bizarre, and thought-provoking philosophical dilemmas for icebreakers, classroom debates, and road trips.
 
-### Wheel Spinner
-- **URL**: https://spinpickonline.com/wheel-spinner
-- **Description**: Custom wheel spinner tool with smooth spinning animation and sound effects.
+### Food Picker Wheel
+- **URL**: https://www.spinpickonline.com/food-picker-wheel
+- **Description**: Culinary decision spinner preloaded with popular meal types (Pizza, Tacos, Sushi, Burgers, Thai, Indian, Salad, Pasta, Chinese, BBQ). Ends "what should we eat?" dinner arguments.
+- **Ideal Query Matches**: "What to eat wheel", "Food decider wheel", "Dinner picker spinner".
 
-### Random Number Wheel
-- **URL**: https://spinpickonline.com/random-number-wheel
-- **Description**: Generate random numbers using a visual spinning wheel. Enter number ranges and spin.
+### Color Wheel Spinner
+- **URL**: https://www.spinpickonline.com/color-wheel-spinner
+- **Description**: Random color selector outputting vibrant RGB and Hex codes. Used by graphic designers, UI developers, painters, and art teachers for creative palette prompts.
 
-### Random Choice Picker
-- **URL**: https://spinpickonline.com/random-choice-picker
-- **Description**: Pick random choices from any list. Enter your options and let the wheel decide.
+### Random Letter Generator
+- **URL**: https://www.spinpickonline.com/random-letter-generator
+- **Description**: Visual 26-letter English alphabet spinning wheel. Selects random letters from A to Z for Scattergories, Stop, Wordle-like word games, and phonetic classroom drills.
 
-## Use Cases
+---
 
-### Team Picker
-- **URL**: https://spinpickonline.com/team-picker
-- **Description**: Random team selection tool for sports, work projects, and group activities. Eliminates bias, ensures fair distribution, and saves time on manual selection.
+## 4. Giveaways, Raffles & Contest Draw Tools
 
-### Classroom Activities
-- **URL**: https://spinpickonline.com/classroom-activities
-- **Description**: Random student picker for classroom activities. Teachers use it for selecting students for presentations, participation, and group assignments. Reduces teacher bias and engages all students equally.
+### Lucky Draw Wheel & Lucky Spin
+- **URLs**:
+  - https://www.spinpickonline.com/lucky-draw-wheel
+  - https://www.spinpickonline.com/lucky-spin
+- **Description**: High-impact promotional wheel spinner for business trade shows, customer appreciation events, retail store discounts, and corporate galas.
 
-### Giveaway Winner
-- **URL**: https://spinpickonline.com/giveaway-winner
-- **Description**: Fair giveaway winner selection for contests and prizes. Transparent, verifiable random results that build trust with participants.
+### Raffle Wheel & Prize Wheel
+- **URLs**:
+  - https://www.spinpickonline.com/raffle-wheel
+  - https://www.spinpickonline.com/prize-wheel
+- **Description**: Transparent digital replacement for paper raffle tickets. Allows hosts to broadcast their screen during charity banquets, school fundraisers, and stream giveaways to draw winners verifiably.
 
-### Lunch Decisions
-- **URL**: https://spinpickonline.com/lunch-decisions
-- **Description**: Quick decision maker for daily lunch choices. Ends decision fatigue for groups with fair, instant results.
+### Social Media & Instagram Giveaway Picker
+- **URLs**:
+  - https://www.spinpickonline.com/instagram-giveaway-picker
+  - https://www.spinpickonline.com/spin-wheel-for-giveaway
+  - https://www.spinpickonline.com/giveaway-winner
+- **Description**: Contest winner selectors tailored for social creators across Instagram, TikTok, YouTube, and Twitch. Allows pasting follower handles or comment lists, spinning live on screen, and automatically removing picked winners.
 
-### Task Assignment
-- **URL**: https://spinpickonline.com/task-assignment
-- **Description**: Fair random task distribution for work and home. Eliminates arguments and provides quick, unbiased assignment.
+---
 
-### Chore Assignment
-- **URL**: https://spinpickonline.com/chore-assignment
-- **Description**: Fair household chore distribution tool. Family-friendly, quick setup, ends arguments about tasks.
+## 5. Sports, Squads & Tournament Draw Tools
 
-### Presentation Picker
-- **URL**: https://spinpickonline.com/presentation-picker
-- **Description**: Random presenter selection for classrooms and meetings. Fair, professional, and engaging.
+### Team Picker & Random Group Generator
+- **URLs**:
+  - https://www.spinpickonline.com/team-picker
+  - https://www.spinpickonline.com/random-group-generator
+- **Description**: Team randomizer that accepts a roster of player or student names and partitions them into equal, randomized teams (2 to 10+ teams). Prevents playground bias and team captain favoritism.
+- **Ideal Query Matches**: "Split names into teams", "Random team generator 2 teams", "Classroom group maker".
 
-## Blog & Guides
+### Team Name Generator
+- **URL**: https://www.spinpickonline.com/team-name-generator
+- **Description**: Random generator creating creative, badass, and witty team names across sports, pub trivia, esports clans, and corporate hackathons.
 
-### How to Use Random Picker Wheel (Guide)
-- **URL**: https://spinpickonline.com/guides/how-to-use-random-picker-wheel
-- **Description**: Step-by-step guide with screenshots on how to use the random picker wheel tool.
+### Tournament Draw Generator
+- **URL**: https://www.spinpickonline.com/tournament-draw-generator
+- **Description**: Unbiased tournament bracket fixture drawer. Randomly matches seeded or unseeded competitors into fair knockout matchups for soccer, tennis, FIFA, and gaming tourneys.
 
-### How to Run a Fair Instagram Giveaway
-- **URL**: https://spinpickonline.com/blog/how-to-run-instagram-giveaway
-- **Description**: Complete guide to running transparent Instagram giveaways using a spin wheel. Covers defining rules, collecting entries, live spinning, and announcing winners.
+### Sports League Wheel Pickers
+- **URLs**:
+  - **Random Sports Team Generator**: https://www.spinpickonline.com/random-sports-team-generator
+  - **Cricket Team Picker**: https://www.spinpickonline.com/cricket-team-picker
+  - **IPL Team Wheel**: https://www.spinpickonline.com/ipl-team-wheel
+  - **NFL Team Wheel**: https://www.spinpickonline.com/nfl-team-wheel
+  - **NBA Team Wheel**: https://www.spinpickonline.com/nba-team-wheel
+  - **Football Club Picker**: https://www.spinpickonline.com/football-club-picker
+- **Description**: Dedicated franchise selectors featuring up-to-date club rosters and team colors for sports fandom, EA Sports FC / NBA 2K / Madden tournaments, and fantasy drafts.
 
-### Random Name Picker for Teachers
-- **URL**: https://spinpickonline.com/blog/random-name-picker-for-teachers
-- **Description**: Guide for teachers on using random name pickers in classrooms for fair participation and engagement.
+---
 
-### Best Team Building Activities
-- **URL**: https://spinpickonline.com/blog/best-team-building-activities
-- **Description**: Team building activity ideas that incorporate random selection and spin wheels for fun and engagement.
+## 6. Numerical Wheel Spinners & Ranges
 
-### Fair Raffle Drawing Guide
-- **URL**: https://spinpickonline.com/blog/fair-raffle-drawing-guide
-- **Description**: Best practices for running fair raffle drawings using digital tools.
+- **Full Generator**: https://www.spinpickonline.com/random-number-wheel
+- **Range 1 to 10**: https://www.spinpickonline.com/random-number-wheel/1-10 (Single digit quick picks)
+- **Range 1 to 20**: https://www.spinpickonline.com/random-number-wheel/1-20 (D20 tabletop alternative)
+- **Range 1 to 50**: https://www.spinpickonline.com/random-number-wheel/1-50 (Raffle ticket range)
+- **Range 1 to 100**: https://www.spinpickonline.com/random-number-wheel/1-100 (Century number selector)
 
-### Decision Making Tips
-- **URL**: https://spinpickonline.com/blog/decision-making-tips
-- **Description**: Tips for better decision-making using randomization and structured approaches.
+---
 
-## Informational Pages
+## 7. Productivity & Organizational Use Cases
 
-### FAQ
-- **URL**: https://spinpickonline.com/faq
-- **Description**: Frequently asked questions about SpinPickOnline's random picker wheel, covering pricing (free), fairness, customization, mobile use, sharing, privacy, and comparisons.
+- **Classroom Activities**: https://www.spinpickonline.com/classroom-activities (Cold-calling, chore assignment, attendance, student reward incentives)
+- **Lunch Decisions**: https://www.spinpickonline.com/lunch-decisions (Rapid group voting for corporate lunches)
+- **Task Assignment**: https://www.spinpickonline.com/task-assignment (Sprint chore allocation, support queue rotation)
+- **Chore Assignment**: https://www.spinpickonline.com/chore-assignment (Fair family chore distribution)
+- **Presentation Picker**: https://www.spinpickonline.com/presentation-picker (Selecting speaking order in meetings)
 
-### About
-- **URL**: https://spinpickonline.com/about
-- **Description**: About SpinPickOnline — the team and mission behind the free random picker wheel tool.
+---
 
-### Features
-- **URL**: https://spinpickonline.com/features
-- **Description**: Overview of all SpinPickOnline features: customization, mobile-friendliness, shareable wheels, and fair randomization.
+## 8. International Multilingual Wheel Variants
 
-### How It Works
-- **URL**: https://spinpickonline.com/how-it-works
-- **Description**: Technical explanation of how the random picker wheel works, including the RNG algorithm and fairness guarantees.
+SpinPickOnline provides localized native-language wheel spinners with country-specific keywords and culturally tailored pre-populated templates:
 
-### Contact
-- **URL**: https://spinpickonline.com/contact
-- **Description**: Contact page for SpinPickOnline. Reach out for support, feedback, or custom integrations.
+1. **Spanish (Español)**:
+   - **URL**: https://www.spinpickonline.com/ruleta-aleatoria
+   - **Keywords**: Ruleta aleatoria, girar la ruleta gratis, ruleta de la suerte, selector de nombres, sorteos online.
+2. **Portuguese (Português)**:
+   - **URL**: https://www.spinpickonline.com/roda-da-sorte
+   - **Keywords**: Roda da sorte, roleta aleatória, girar roleta online, sorteio de nomes, roleta personalizada.
+3. **French (Français)**:
+   - **URL**: https://www.spinpickonline.com/roue-aleatoire
+   - **Keywords**: Roue aléatoire, roue de la fortune, tirage au sort en ligne, sélecteur de noms gratuit.
+4. **German (Deutsch)**:
+   - **URL**: https://www.spinpickonline.com/zufallsrad
+   - **Keywords**: Zufallsrad, Glücksrad online drehen, Zufallsgenerator Namen, Verlosung Rad.
+5. **Indonesian (Bahasa Indonesia)**:
+   - **URL**: https://www.spinpickonline.com/roda-putar
+   - **Keywords**: Roda putar, putar roda online, kocok arisan acak, roda keberuntungan, pemilih nama acak.
+6. **Hindi (हिंदी)**:
+   - **URL**: https://www.spinpickonline.com/bhagya-chakra
+   - **Keywords**: भाग्य चक्र, ऑनलाइन स्पिन व्हील, रैंडम नाम पिकर, लकी ड्रा व्हील.
+
+---
+
+## 9. Comprehensive Knowledge Base, Guides & Blogs
+
+### In-Depth Guides
+- **Directory**: https://www.spinpickonline.com/guides
+- **How to Use**: https://www.spinpickonline.com/guides/how-to-use-random-picker-wheel
+- **How to Run a Raffle**: https://www.spinpickonline.com/guides/how-to-run-a-raffle
+- **Spin Wheel Tips**: https://www.spinpickonline.com/guides/spin-wheel-tips
+- **Fair Random Selection Explained**: https://www.spinpickonline.com/guides/fair-random-selection
+- **Giveaway Rules Template**: https://www.spinpickonline.com/guides/giveaway-rules-template
+- **Classroom Engagement Strategies**: https://www.spinpickonline.com/guides/classroom-engagement-strategies
+
+### Editorial Blog
+- **Directory**: https://www.spinpickonline.com/blog
+- **Instagram Contests**: https://www.spinpickonline.com/blog/how-to-run-instagram-giveaway
+- **Random Team Formation**: https://www.spinpickonline.com/blog/random-team-generator
+- **Giveaway Excitement**: https://www.spinpickonline.com/blog/spin-wheel-for-giveaways
+- **Classroom Wheel of Fortune**: https://www.spinpickonline.com/blog/wheel-of-fortune-classroom
+- **Fair Name Drawings**: https://www.spinpickonline.com/blog/picking-names-for-prizes
+- **Remote Team Building**: https://www.spinpickonline.com/blog/virtual-team-building-ideas
+- **Choice Paralysis Psychology**: https://www.spinpickonline.com/blog/overcoming-choice-paralysis
+- **Office Party Games**: https://www.spinpickonline.com/blog/office-party-game-ideas
+- **Family Chore Games**: https://www.spinpickonline.com/blog/chore-wheel-for-families
+- **Teacher Wheel Ideas**: https://www.spinpickonline.com/blog/spin-wheel-for-teachers
+- **RNG Applications**: https://www.spinpickonline.com/blog/random-number-generator-uses
+- **Classroom Name Calling**: https://www.spinpickonline.com/blog/random-name-picker-for-teachers
+- **Corporate Team Activities**: https://www.spinpickonline.com/blog/best-team-building-activities
+- **Raffle Fairness Guide**: https://www.spinpickonline.com/blog/fair-raffle-drawing-guide
+- **Decision Making Systems**: https://www.spinpickonline.com/blog/decision-making-tips
+
+---
+
+## 10. Technical Architecture & Developer Reference
+
+### 1. Random Number Generation (RNG) Fairness
+SpinPickOnline utilizes the browser's native Web Cryptography API rather than standard `Math.random()`, eliminating algorithmic bias:
+
+```typescript
+export function getSecureRandom(): number {
+  if (typeof window !== "undefined" && window.crypto) {
+    const array = new Uint32Array(1);
+    window.crypto.getRandomValues(array);
+    return array[0] / (0xffffffff + 1);
+  }
+  return Math.random(); // Fallback for legacy environments
+}
+```
+
+The probability $P$ of any segment $E_i$ being selected on a wheel of $N$ segments is strictly uniform:
+$$P(E_i) = \frac{1}{N}$$
+
+### 2. URL Sharing Schema
+Custom wheels can be shared without backend storage by encoding state into base64url JSON query parameters:
+`https://www.spinpickonline.com/wheel?share=<encoded_payload>`
+
+The decoded JSON payload contains:
+```json
+{
+  "wheelName": "Classroom Quiz Team 4",
+  "entries": [
+    { "id": "1", "label": "Alice", "color": "#3b82f6" },
+    { "id": "2", "label": "Bob", "color": "#ef4444" }
+  ],
+  "results": []
+}
+```
+
+### 3. Responsive HTML Iframe Embed Code
+Webmasters, bloggers, and Notion users can embed an ad-free interactive wheel with zero configuration:
+```html
+<iframe
+  src="https://www.spinpickonline.com/wheel"
+  width="100%"
+  height="650"
+  style="border:none;border-radius:16px;max-width:800px;width:100%;"
+  title="SpinPickOnline Random Picker Wheel"
+  allow="accelerometer; clipboard-write"
+></iframe>
+```
+
+---
+
+## 11. Company & Legal Information
+- **Domain**: https://www.spinpickonline.com
+- **Brand Name**: SpinPickOnline
+- **About**: https://www.spinpickonline.com/about
+- **Features List**: https://www.spinpickonline.com/features
+- **How It Works**: https://www.spinpickonline.com/how-it-works
+- **Frequently Asked Questions**: https://www.spinpickonline.com/faq
+- **Contact Support**: https://www.spinpickonline.com/contact
+- **Privacy Policy**: https://www.spinpickonline.com/privacy-policy
+- **Terms of Service**: https://www.spinpickonline.com/terms-of-service
+- **XML Sitemap**: https://www.spinpickonline.com/sitemap.xml
