@@ -128,6 +128,18 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/guides/spin-wheel-tips" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 bg-green-600 rounded-full group-hover:w-2 transition-all"></span>
+                  Spin Wheel Tips
+                </Link>
+              </li>
+              <li>
+                <Link href="/how-it-works" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 bg-green-600 rounded-full group-hover:w-2 transition-all"></span>
+                  How It Works
+                </Link>
+              </li>
+              <li>
                 <Link href="/use-cases" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 bg-green-600 rounded-full group-hover:w-2 transition-all"></span>
                   Use Cases
@@ -152,6 +164,24 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
+          </div>
+        </div>
+
+        {/* International Language Links */}
+        <div className="border-t border-gray-200 pt-6 pb-4 mb-4 text-center">
+          <p className="text-xs text-gray-500 mb-2 font-semibold uppercase tracking-wider">Language Versions</p>
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs text-gray-600">
+            <Link href="/" className="hover:text-blue-600 transition-colors">English</Link>
+            <span className="text-gray-300">·</span>
+            <Link href="/ruleta-aleatoria" className="hover:text-blue-600 transition-colors">Español (Ruleta)</Link>
+            <span className="text-gray-300">·</span>
+            <Link href="/roda-da-sorte" className="hover:text-blue-600 transition-colors">Português (Roda da Sorte)</Link>
+            <span className="text-gray-300">·</span>
+            <Link href="/roue-aleatoire" className="hover:text-blue-600 transition-colors">Français (Roue Aléatoire)</Link>
+            <span className="text-gray-300">·</span>
+            <Link href="/zufallsrad" className="hover:text-blue-600 transition-colors">Deutsch (Zufallsrad)</Link>
+            <span className="text-gray-300">·</span>
+            <Link href="/roda-putar" className="hover:text-blue-600 transition-colors">Bahasa Indonesia</Link>
           </div>
         </div>
 

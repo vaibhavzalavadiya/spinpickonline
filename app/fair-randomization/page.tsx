@@ -5,7 +5,7 @@ import { CallToAction } from "@/components/CallToAction";
 import { generateMetadata as genMeta } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
 import Link from "next/link";
-import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
+import { generateFAQSchema, generateWebApplicationSchema, generateBreadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = genMeta({
     title: "Fair Randomization Wheel | Cryptographically Secure Picker | SpinPickOnline",
@@ -26,6 +26,11 @@ const FAIR_ENTRIES = [
 export default function FairRandomizationPage() {
     // Generate schemas for SEO
     const webAppSchema = generateWebApplicationSchema();
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: "Home", item: SITE_CONFIG.url },
+        { name: "Features", item: `${SITE_CONFIG.url}/features` },
+        { name: "Fair Randomization", item: `${SITE_CONFIG.url}/fair-randomization` },
+    ]);
     const faqSchema = generateFAQSchema([
         {
             question: "What makes this picker wheel 'fair'?",
@@ -54,6 +59,10 @@ export default function FairRandomizationPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
             <WheelPageTemplate
                 title="Fair Randomization"

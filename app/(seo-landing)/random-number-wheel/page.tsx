@@ -256,7 +256,7 @@ export default function RandomNumberWheelPage() {
                             </div>
                         </div>
                         <p className="text-center mt-6 md:text-base text-sm text-gray-600">
-                            Both use cryptographically secure randomization. Choose the number wheel when you want the visual experience, or combine both for different needs.
+                            Both use cryptographically secure randomization. Choose the number wheel when you want the visual experience, or explore our guide on <Link href="/blog/random-number-generator-uses" className="text-blue-600 font-semibold underline hover:text-blue-700">10 creative ways to use a random number generator</Link> for practical everyday ideas.
                         </p>
                     </div>
                 </div>
@@ -276,6 +276,7 @@ export default function RandomNumberWheelPage() {
                             { href: "/random-number-wheel/1-20", label: "Number Wheel 1-20" },
                             { href: "/random-number-wheel/1-50", label: "Number Wheel 1-50" },
                             { href: "/random-number-wheel/1-100", label: "Number Wheel 1-100" },
+                            { href: "/blog/random-number-generator-uses", label: "10 RNG Uses Guide" },
                             { href: "/random-picker-wheel", label: "Random Picker" },
                             { href: "/random-choice-picker", label: "Choice Picker" },
                             { href: "/decision-wheel", label: "Decision Wheel" },

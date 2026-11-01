@@ -5,7 +5,7 @@ import { CallToAction } from "@/components/CallToAction";
 import { generateMetadata as genMeta } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
 import Link from "next/link";
-import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
+import { generateFAQSchema, generateWebApplicationSchema, generateBreadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = genMeta({
     title: "Chore Assignment Wheel | Randomly Assign House Chores | SpinPickOnline",
@@ -26,6 +26,10 @@ const CHORE_ENTRIES = [
 export default function ChoreAssignmentPage() {
     // Generate schemas for SEO
     const webAppSchema = generateWebApplicationSchema();
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: "Home", item: SITE_CONFIG.url },
+        { name: "Chore Assignment", item: `${SITE_CONFIG.url}/chore-assignment` },
+    ]);
     const faqSchema = generateFAQSchema([
         {
             question: "How do I fairly assign chores to roommates?",
@@ -54,6 +58,10 @@ export default function ChoreAssignmentPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
             <WheelPageTemplate
                 title="Chore Assignment"

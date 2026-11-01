@@ -73,6 +73,7 @@ export default function FootballClubPickerPage() {
                         <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                             Football Club Picker – Spin &amp; Select
                         </h1>
+                        <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">Randomly select a football club for FIFA matches, FPL drafts, or UCL predictions. Top European clubs pre-loaded — add any league or team in seconds.</p>
                     </div>
                     <HomeWheel defaultEntries={DEFAULT_ENTRIES} storageKey="footballClubPickerState" />
                 </div>

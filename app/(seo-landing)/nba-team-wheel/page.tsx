@@ -73,6 +73,7 @@ export default function NbaTeamWheelPage() {
                         <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                             NBA Team Wheel – Spin &amp; Pick a Team
                         </h1>
+                        <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">Pick a random NBA team for your fantasy basketball draft, NBA 2K matchup, or prediction contest. All 12 popular teams are pre-loaded — add any of the 30 NBA franchises in seconds.</p>
                     </div>
                     <HomeWheel defaultEntries={DEFAULT_ENTRIES} storageKey="nbaTeamWheelState" />
                 </div>

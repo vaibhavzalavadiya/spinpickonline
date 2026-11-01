@@ -69,6 +69,7 @@ export default function TournamentDrawGeneratorPage() {
                         <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                             Tournament Draw Generator
                         </h1>
+                        <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">Create fair tournament brackets and random draw matchups for sports leagues, esports events, or office competitions. Add your teams or players and let the wheel decide seeding.</p>
                     </div>
                     <HomeWheel defaultEntries={DEFAULT_ENTRIES} storageKey="tournamentDrawState" />
                 </div>

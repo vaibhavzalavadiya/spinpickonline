@@ -12,6 +12,7 @@ export const metadata: Metadata = genMeta({
     description: "Gire a roda da sorte grátis e escolha ao acaso entre suas opções. Sem cadastro, funciona no celular. Ideal para sorteio online, aulas e decisões em grupo.",
     canonical: "/roda-da-sorte",
     languages: HOMEPAGE_HREFLANG,
+    locale: "pt_BR",
 });
 
 const RODA_ENTRIES = [

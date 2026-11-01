@@ -2,18 +2,26 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { FiArrowLeft, FiCpu } from "react-icons/fi";
 import { IoShieldCheckmarkOutline, IoSpeedometerOutline, IoLockClosedOutline, IoEyeOffOutline } from "react-icons/io5";
-import { generateMetadata as genMeta } from "@/lib/seo";
+import { generateMetadata as genMeta, generateBreadcrumbSchema } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = genMeta({
     title: "How It Works | Random Wheel Technology | SpinPickOnline",
-    description: "Learn how our spin the wheel, random picker wheel, and wheel of names use cryptographic RNG for fair, unbiased results. Transparent randomizer technology explained.",
+    description: "Step-by-step guide: add entries, customize colors, spin the wheel, and share your results. Learn how to use SpinPickOnline for classrooms, giveaways, team picks, and decisions.",
     canonical: "/how-it-works",
 });
 
 export default function HowItWorksPage() {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", item: SITE_CONFIG.url },
+    { name: "How It Works", item: `/how-it-works` },
+  ]);
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-6 sm:py-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
         {/* Back Button */}
         <Link
@@ -33,7 +41,7 @@ export default function HowItWorksPage() {
           </div>
           <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-2">How Our Random Picker Wheel Works</h1>
           <p className="text-xs sm:text-sm text-gray-600 max-w-2xl mx-auto">
-            The technology behind our spin the wheel, wheel of names, and randomizer - ensuring fair, unbiased results every time
+            Step-by-step guide to using SpinPickOnline — add entries, customize your wheel, spin to pick a winner, and share results. Simple enough for classrooms, powerful enough for live giveaways.
           </p>
         </div>
 

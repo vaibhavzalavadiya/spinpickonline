@@ -71,6 +71,7 @@ export default function CricketTeamPickerPage() {
                         <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                             Cricket Team Picker – Spin &amp; Select
                         </h1>
+                        <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">Randomly pick a cricket team for gully cricket, fantasy leagues, or T20 watch parties. Top international and IPL teams pre-loaded — customize with any squad.</p>
                     </div>
                     <HomeWheel defaultEntries={DEFAULT_ENTRIES} storageKey="cricketTeamPickerState" />
                 </div>

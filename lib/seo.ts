@@ -28,6 +28,7 @@ export function generateMetadata({
   ogImage,
   ogType = "website",
   languages,
+  locale = "en_US",
 }: {
   title: string;
   description: string;
@@ -36,6 +37,7 @@ export function generateMetadata({
   ogImage?: string;
   ogType?: "website" | "article";
   languages?: Record<string, string>;
+  locale?: string;
 }): Metadata {
   // Validate title length (30-60 chars)
   // if (title.length < 30 || title.length > 60) {
@@ -67,7 +69,7 @@ export function generateMetadata({
       type: ogType,
       url: canonicalUrl,
       siteName: SITE_CONFIG.name,
-      locale: "en_US",
+      locale,
       images: [
         {
           url: ogImage || `${SITE_CONFIG.url}/opengraph-image.png`,

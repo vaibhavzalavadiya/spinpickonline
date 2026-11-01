@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { FAQS } from "@/lib/constants";
-import { generateFAQSchema } from "@/lib/seo";
+import { generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo";
 import Link from "next/link";
 import { FiArrowLeft, FiHelpCircle } from "react-icons/fi";
 import { IoSparklesOutline } from "react-icons/io5";
@@ -51,12 +51,20 @@ export default function FAQPage() {
     },
   ];
   const faqSchema = generateFAQSchema(allFAQs);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", item: SITE_CONFIG.url },
+    { name: "FAQ", item: `/faq` },
+  ]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-6 sm:py-10">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         {/* Back Button */}
@@ -77,7 +85,7 @@ export default function FAQPage() {
           </div>
           <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-2">Frequently Asked Questions</h1>
           <p className="text-xs sm:text-sm text-gray-600 max-w-xl mx-auto">
-            Everything about our spin the wheel and random picker
+            Find answers about our free spin wheel, random picker, name selector, team generator, and all randomization tools — updated for 2026.
           </p>
         </div>
 

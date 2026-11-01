@@ -71,6 +71,7 @@ export default function IplTeamWheelPage() {
                         <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                             IPL Team Wheel – Spin &amp; Pick a Franchise
                         </h1>
+                        <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">Spin the IPL team wheel and randomly pick a franchise for fantasy cricket, trivia nights, or watch party assignments. All 10 IPL 2024 teams pre-loaded with official colors.</p>
                     </div>
                     <HomeWheel defaultEntries={DEFAULT_ENTRIES} storageKey="iplTeamWheelState" />
                 </div>

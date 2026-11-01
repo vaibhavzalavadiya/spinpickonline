@@ -73,6 +73,7 @@ export default function NflTeamWheelPage() {
                         <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                             NFL Team Wheel – Spin &amp; Pick a Team
                         </h1>
+                        <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">Spin to randomly pick an NFL team for Madden games, fantasy football drafts, or Super Bowl prediction pools. Popular AFC and NFC teams pre-loaded and ready to spin.</p>
                     </div>
                     <HomeWheel defaultEntries={DEFAULT_ENTRIES} storageKey="nflTeamWheelState" />
                 </div>

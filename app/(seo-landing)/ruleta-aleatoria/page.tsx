@@ -12,6 +12,7 @@ export const metadata: Metadata = genMeta({
     description: "Gira la ruleta aleatoria gratis y elige al azar entre tus opciones. Sin registro, funciona en móvil. Perfecta para sorteos onilne, clases y decisiones en grupo.",
     canonical: "/ruleta-aleatoria",
     languages: HOMEPAGE_HREFLANG,
+    locale: "es_ES",
 });
 
 const RULETA_ENTRIES = [

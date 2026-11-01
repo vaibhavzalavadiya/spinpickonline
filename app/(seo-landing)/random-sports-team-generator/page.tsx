@@ -68,6 +68,7 @@ export default function RandomSportsTeamGeneratorPage() {
                         <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                             Random Sports Team Generator
                         </h1>
+                        <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">Generate random teams across any sport — NBA, NFL, football, cricket, or IPL. Perfect for fantasy drafts, video game matchups, and prediction contests. Free, instant, and completely fair.</p>
                     </div>
                     <HomeWheel defaultEntries={DEFAULT_ENTRIES} storageKey="sportsTeamGenState" />
                 </div>

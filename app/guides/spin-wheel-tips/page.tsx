@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import SchemaScript from "@/components/SchemaScript";
-import { generateMetadata as genMeta } from "@/lib/seo";
+import { generateMetadata as genMeta, generateBreadcrumbSchema } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = genMeta({
@@ -79,9 +79,15 @@ const tips = [
 ];
 
 export default function SpinWheelTipsPage() {
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: "Home", item: SITE_CONFIG.url },
+        { name: "Guides", item: `${SITE_CONFIG.url}/guides` },
+        { name: "10 Spin Wheel Tips", item: `${SITE_CONFIG.url}/guides/spin-wheel-tips` },
+    ]);
     return (
         <div className="min-h-screen bg-white">
             <SchemaScript schema={articleSchema} />
+            <SchemaScript schema={breadcrumbSchema} />
             <article className="container mx-auto px-4 py-8 lg:py-12">
                 <div className="max-w-3xl mx-auto">
                     <Link href="/guides" className="text-sm text-blue-600 hover:text-blue-700 inline-flex items-center gap-1 mb-6">
