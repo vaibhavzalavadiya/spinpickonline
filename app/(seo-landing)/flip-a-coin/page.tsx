@@ -3,7 +3,6 @@ import { generateMetadata, generateWebApplicationSchema, generateFAQSchema, gene
 import { SITE_CONFIG } from "@/lib/constants";
 import CoinFlip from "@/components/CoinFlip";
 import { CallToAction } from "@/components/CallToAction";
-import AdBanner from "@/components/AdBanner";
 import Link from "next/link";
 import { FiCheck, FiArrowRight, FiList } from "react-icons/fi";
 import { IoShuffleOutline, IoSparklesOutline, IoFlashOutline } from "react-icons/io5";
@@ -86,10 +85,7 @@ export default function FlipACoinPage() {
         </div>
       </section>
 
-      {/* Ad Banner */}
-      <div className="container mx-auto px-4">
-        <AdBanner slot="banner-320x50" className="flex justify-center" />
-      </div>
+
 
       {/* Benefits */}
       <section className="py-8 lg:py-16 bg-white">

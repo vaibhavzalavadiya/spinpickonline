@@ -7,7 +7,6 @@ import { useSoundEffects } from "@/lib/useSoundEffects";
 import ResultModal from "@/components/ResultModal";
 import Confetti from "@/components/Confetti";
 import Toast from "@/components/Toast";
-import AdBanner from "@/components/AdBanner";
 
 export interface BottlePlayer {
     id: string;
@@ -443,8 +442,7 @@ export default function BottleSpinner() {
                         Tap the bottle or click <strong>SPIN THE BOTTLE</strong> to let fate choose!
                     </p>
 
-                    {/* Ad Banner on desktop */}
-                    <AdBanner slot="banner-320x50" className="hidden md:flex mt-8" />
+
                 </div>
 
                 {/* RIGHT: Control Panel (Entries & Results) */}

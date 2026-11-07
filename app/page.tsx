@@ -5,7 +5,6 @@ import SchemaScript from "@/components/SchemaScript";
 import { FAQS, SITE_CONFIG } from "@/lib/constants";
 import { generateFAQSchema } from "@/lib/seo";
 import HomeWheel from "@/components/HomeWheel";
-import AdBanner from "@/components/AdBanner";
 import { FiUsers, FiShield, FiSmartphone, FiShare2, FiChevronRight, FiArrowRight } from 'react-icons/fi';
 import { IoFastFoodOutline, IoSchoolOutline, IoGiftOutline } from 'react-icons/io5';
 import { HiOutlineUserGroup } from 'react-icons/hi';
@@ -65,10 +64,7 @@ export default function Home() {
       <section className="pb-10 lg:pb-16 bg-white">
         <div className="container mx-auto px-4">
 
-          {/* Ad banner above section title – lazy-loads via IntersectionObserver */}
-          <div className="flex justify-center mb-6">
-            <AdBanner slot="banner-320x50" />
-          </div>
+
 
           <div className="text-center mb-6 sm:mb-12 lg:mb-14">
             <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">How Our Random Picker Wheel Works</h2>
@@ -185,10 +181,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mid-content ad – mobile only, between sections (SEO safe: well below fold) */}
-      <div className="md:hidden w-full flex justify-center py-3 bg-white">
-        <AdBanner slot="banner-320x50" />
-      </div>
+
 
       {/* Why Choose - Enhanced with Keywords */}
       <section className="pb-10 lg:pb-16 bg-white">

@@ -4,7 +4,6 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { WheelEntry } from "@/lib/types";
 import Wheel from "@/components/Wheel";
 import Toast from "@/components/Toast";
-import AdBanner from "@/components/AdBanner";
 import dynamic from "next/dynamic";
 
 const ResultModal = dynamic(() => import("@/components/ResultModal"), { ssr: false });
@@ -374,8 +373,7 @@ export default function HomeWheel({
             />
           </div>
 
-          {/* Ad Banner – below wheel, desktop only */}
-          <AdBanner slot="banner-320x50" className="hidden md:flex mt-8" />
+
         </div>
 
         {/* Right: Enhanced Control Panel */}
@@ -606,8 +604,7 @@ export default function HomeWheel({
                   )}
                 </button>
 
-                {/* Ad Banner – mobile only (below md/768px) */}
-                <AdBanner slot="banner-320x50" className="md:hidden flex" />
+
 
                 {/* Share Button */}
                 {entries.length > 0 && (

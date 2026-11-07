@@ -1,11 +1,9 @@
 import { Metadata } from "next";
 import { generateMetadata, generateWebApplicationSchema, generateFAQSchema, generateBreadcrumbSchema, generateHowToSchema } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
-import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { FiZap, FiTarget, FiSmile, FiSmartphone, FiArrowRight, FiCheckCircle } from "react-icons/fi";
 import Link from "next/link";
 import YesNoWheel from "@/components/YesNoWheel";
-import AdBanner from "@/components/AdBanner";
 
 export const metadata: Metadata = generateMetadata({
   title: "Yes or No Wheel – Free Decision Spinner | Instant Answer",
@@ -50,24 +48,7 @@ export default function YesNoWheelPage() {
   });
 
   return (
-    <WheelPageTemplate
-      title="Yes or No Wheel"
-      description="Make quick decisions with our yes or no wheel"
-      h1="Yes or No Wheel – Free Decision Maker"
-      showWheel={false}
-      benefits={[
-        "Instant yes/no decisions",
-        "Fair 50/50 random selection",
-        "Perfect for quick choices",
-        "No bias or overthinking"
-      ]}
-      useCases={[
-        "Daily decision making",
-        "Breaking ties",
-        "Quick choices",
-        "Fun with friends"
-      ]}
-    >
+    <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(applicationSchema) }}
@@ -98,10 +79,7 @@ export default function YesNoWheelPage() {
       {/* What is Section */}
       <section className="pb-10 lg:pb-16 bg-white">
         <div className="container mx-auto px-4">
-          {/* Ad banner above section title */}
-          <div className="flex justify-center mb-6">
-            <AdBanner slot="banner-320x50" />
-          </div>
+
           <h2 className="text-xl md:text-3xl font-bold text-gray-900 mb-4">What is a Yes or No Wheel?</h2>
           <p className="text-gray-700 mb-4 leading-relaxed md:text-base text-sm">
             A yes or no wheel (also known as yes no spinner, decision wheel, or choice maker) is a simple random picker tool that randomly selects between "Yes" and "No" answers. Our free spinner wheel provides a fair 50/50 chance for each option, making it perfect for quick decisions when you're stuck between two choices.
@@ -389,6 +367,6 @@ export default function YesNoWheelPage() {
           </div>
         </div>
       </section>
-    </WheelPageTemplate>
+    </div>
   );
 }

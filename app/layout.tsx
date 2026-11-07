@@ -6,7 +6,6 @@ import Footer from "@/components/Footer";
 import { generateMetadata as genMeta, generateOrganizationSchema, generateWebSiteSchema, HOMEPAGE_HREFLANG } from "@/lib/seo";
 import SchemaScript from "@/components/SchemaScript";
 import Script from "next/script";
-import SideAds from "@/components/SideAds";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -66,8 +65,6 @@ export default function RootLayout({
         <main className="min-h-screen">{children}</main>
         <Footer />
 
-        {/* Side skyscraper ads – fixed left & right, visible only ≥ 1400px */}
-        <SideAds slot="skyscraper-160x600" />
 
         {/* Google Tag Manager */}
         <Script

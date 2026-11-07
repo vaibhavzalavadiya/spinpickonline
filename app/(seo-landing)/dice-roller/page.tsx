@@ -3,7 +3,6 @@ import { generateMetadata, generateWebApplicationSchema, generateFAQSchema, gene
 import { SITE_CONFIG } from "@/lib/constants";
 import DiceRoller from "@/components/DiceRoller";
 import { CallToAction } from "@/components/CallToAction";
-import AdBanner from "@/components/AdBanner";
 import Link from "next/link";
 import { FiCheck, FiArrowRight } from "react-icons/fi";
 import { FiShield, FiTrendingUp } from "react-icons/fi";
@@ -98,10 +97,7 @@ export default function DiceRollerPage() {
                 </div>
             </section>
 
-            {/* Ad Banner */}
-            <div className="container mx-auto px-4">
-                <AdBanner slot="banner-320x50" className="flex justify-center" />
-            </div>
+
 
             {/* Benefits */}
             <section className="py-8 lg:py-16 bg-white">
