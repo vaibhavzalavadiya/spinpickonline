@@ -66,6 +66,15 @@ export default function RootLayout({
         <Footer />
 
 
+        {/* Google AdSense */}
+        <Script
+          id="adsbygoogle-init"
+          async
+          strategy="afterInteractive"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9187153323911677"
+          crossOrigin="anonymous"
+        />
+
         {/* Google Tag Manager */}
         <Script
           id="gtm-script"
@@ -80,14 +89,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
         {/* End Google Tag Manager */}
 
-        {/* Google AdSense – lazyOnload to protect LCP */}
-        <Script
-          id="adsbygoogle-init"
-          strategy="lazyOnload"
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9187153323911677"
-          crossOrigin="anonymous"
-        />
-        {/* End Google AdSense */}
+
 
         <Script
           id="microsoft-clarity"
