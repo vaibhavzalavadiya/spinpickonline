@@ -21,35 +21,34 @@ export default function AdSenseDisplay({
 }: AdSenseDisplayProps) {
   const adRef = useRef<HTMLModElement | null>(null);
   const isInitialized = useRef(false);
-  const [adLoaded, setAdLoaded] = useState(false);
+  const [isLocalhost, setIsLocalhost] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const el = adRef.current;
-    if (!el) return;
+    const isLocal =
+      window.location.hostname === "localhost" ||
+      window.location.hostname === "127.0.0.1";
 
-    // Observe when Google inserts the ad iframe into <ins>
-    const observer = new MutationObserver(() => {
-      if (
-        el.getAttribute("data-ad-status") === "filled" ||
-        el.querySelector("iframe") !== null
-      ) {
-        setAdLoaded(true);
-      }
-    });
-
-    observer.observe(el, {
-      attributes: true,
-      attributeFilter: ["data-ad-status", "data-adsbygoogle-status"],
-      childList: true,
-    });
+    if (isLocal) {
+      setIsLocalhost(true);
+      // On localhost, Google AdSense never serves ads and throws "availableWidth=0".
+      // Do not push to adsbygoogle on localhost.
+      return;
+    }
 
     const tryPushAd = () => {
       const currentEl = adRef.current;
       if (!currentEl || isInitialized.current) return false;
 
+      // Element must be visible and have actual width
       if (currentEl.offsetParent === null) {
+        return false;
+      }
+
+      // Check parent and element width
+      const computedWidth = currentEl.parentElement?.offsetWidth || currentEl.offsetWidth;
+      if (computedWidth === 0) {
         return false;
       }
 
@@ -74,7 +73,7 @@ export default function AdSenseDisplay({
 
       const timer = setTimeout(() => {
         tryPushAd();
-      }, 300);
+      }, 500);
 
       const onResize = () => {
         if (tryPushAd()) {
@@ -92,7 +91,6 @@ export default function AdSenseDisplay({
     const cleanupRef = { current: () => {} };
 
     return () => {
-      observer.disconnect();
       cancelAnimationFrame(rafId);
       cleanupRef.current();
     };
@@ -100,25 +98,34 @@ export default function AdSenseDisplay({
 
   return (
     <div className={`adsense-wrapper overflow-hidden text-center ${className}`}>
-      {/* Show "ADVERTISEMENT" only while the ad is loading; hide once live ad renders */}
-      {!adLoaded && (
-        <span className="block text-[10px] tracking-wider uppercase text-gray-400 mb-1">
-          Advertisement
-        </span>
+      {/* Dev placeholder for localhost */}
+      {isLocalhost && (
+        <div className="py-2.5 px-3 border border-dashed border-gray-300 rounded-lg bg-gray-50 text-gray-500 text-xs my-2">
+          <span className="font-semibold block uppercase tracking-wider text-[10px] text-gray-600">
+            Google Ad Placeholder (Localhost)
+          </span>
+          <span className="text-[10px] text-gray-400">
+            Slot: {slotId} • Real ads render on live domain
+          </span>
+        </div>
       )}
-      <ins
-        ref={adRef}
-        className="adsbygoogle"
-        style={style}
-        data-ad-client={client}
-        data-ad-slot={slotId}
-        {...(responsive
-          ? {
-              "data-ad-format": format,
-              "data-full-width-responsive": "true",
-            }
-          : {})}
-      />
+
+      {/* Only render the actual <ins> on production / non-localhost */}
+      {!isLocalhost && (
+        <ins
+          ref={adRef}
+          className="adsbygoogle"
+          style={style}
+          data-ad-client={client}
+          data-ad-slot={slotId}
+          {...(responsive
+            ? {
+                "data-ad-format": format,
+                "data-full-width-responsive": "true",
+              }
+            : {})}
+        />
+      )}
     </div>
   );
 }
