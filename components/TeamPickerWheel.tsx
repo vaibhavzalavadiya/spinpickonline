@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { WheelEntry } from "@/lib/types";
 import Wheel from "@/components/Wheel";
+import AdSenseDisplay from "@/components/AdSenseDisplay";
 import Toast from "@/components/Toast";
 import BulkAddModal from "@/components/BulkAddModal";
 import { generateEntryId, generateDefaultColors, generateShareUrl, copyToClipboard } from "@/lib/wheel-utils";
@@ -164,6 +165,11 @@ export default function TeamPickerWheel() {
               showButton={false}
               onSpinRequest={generateTeams}
             />
+          </div>
+
+          {/* Desktop Ad: Empty space under wheel (desktop only) */}
+          <div className="hidden lg:block w-full max-w-2xl mt-6">
+            <AdSenseDisplay slotId="6084518347" />
           </div>
         </div>
 

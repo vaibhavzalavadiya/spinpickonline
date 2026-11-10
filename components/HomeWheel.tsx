@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { WheelEntry } from "@/lib/types";
 import Wheel from "@/components/Wheel";
+import AdSenseDisplay from "@/components/AdSenseDisplay";
 import Toast from "@/components/Toast";
 import dynamic from "next/dynamic";
 
@@ -56,12 +57,14 @@ interface HomeWheelProps {
   defaultEntries?: WheelEntry[];
   storageKey?: string;
   disableStorage?: boolean;
+  showAd?: boolean;
 }
 
 export default function HomeWheel({
   defaultEntries,
   storageKey = "homeWheelState",
-  disableStorage = false
+  disableStorage = false,
+  showAd = true
 }: HomeWheelProps = {}) {
 
   const initialEntries = defaultEntries || DEFAULT_ENTRIES;
@@ -373,7 +376,12 @@ export default function HomeWheel({
             />
           </div>
 
-
+          {/* Desktop Ad: Empty space under wheel (desktop only) */}
+          {showAd && (
+            <div className="hidden lg:block w-full max-w-2xl mt-6">
+              <AdSenseDisplay slotId="6084518347" />
+            </div>
+          )}
         </div>
 
         {/* Right: Enhanced Control Panel */}
@@ -665,6 +673,17 @@ export default function HomeWheel({
                     <p className="text-sm text-gray-500">Switch to Entries tab and spin the wheel</p>
                   </div>
                 )}
+              </div>
+            )}
+
+            {/* Mobile Ad: below Share Wheel button (mobile only) */}
+            {showAd && (
+              <div className="lg:hidden w-full my-3 flex justify-center overflow-hidden">
+                <AdSenseDisplay
+                  slotId="9896604995"
+                  responsive={false}
+                  style={{ display: "inline-block", width: "330px", height: "80px" }}
+                />
               </div>
             )}
 

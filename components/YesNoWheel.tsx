@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useCallback } from "react";
 import Wheel from "@/components/Wheel";
+import AdSenseDisplay from "@/components/AdSenseDisplay";
 import dynamic from "next/dynamic";
 
 const ResultModal = dynamic(() => import("@/components/ResultModal"), { ssr: false });
@@ -116,6 +117,10 @@ export default function YesNoWheel() {
                         />
                     </div>
 
+                    {/* Desktop Ad: Empty space under wheel (desktop only) */}
+                    <div className="hidden lg:block w-full max-w-xl mt-6">
+                        <AdSenseDisplay slotId="6084518347" />
+                    </div>
                 </div>
 
                 {/* Right: Controls Section */}
@@ -126,8 +131,8 @@ export default function YesNoWheel() {
                         <div className="flex justify-between items-center mb-3.5">
                             <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider">Results</h3>
                             <div className="flex items-center gap-4">
-                               
-                                 <button
+
+                                <button
                                     onClick={resetCounts}
                                     className="text-gray-400 cursor-pointer hover:text-blue-600 text-xs font-semibold flex items-center gap-1 transition-colors rounded hover:bg-blue-50"
                                 >
@@ -145,7 +150,7 @@ export default function YesNoWheel() {
                                         <FiVolume2 className="text-base text-blue-600" />
                                     )}
                                 </button>
-                              
+
                             </div>
                         </div>
                         <div className={`grid ${mode === 'yes-no-maybe' ? 'grid-cols-3' : 'grid-cols-2'} gap-3`}>
@@ -165,27 +170,6 @@ export default function YesNoWheel() {
                             )}
                         </div>
                     </div>
-
-                    {/* PRIMARY ACTION BUTTON */}
-                    <button
-                        onClick={handleSpin}
-                        disabled={isSpinning}
-                        className="w-full cursor-pointer md:py-5 py-2 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-black text-base md:text-xl md:rounded-2xl rounded-xl shadow-xl hover:shadow-2xl hover:shadow-blue-300 transform hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed group"
-                    >
-                        {isSpinning ? (
-                            <>
-                                <MdOutlineCasino className="md:text-3xl text-xl animate-spin" />
-                                <span>SPINNING...</span>
-                            </>
-                        ) : (
-                            <>
-                                <MdOutlineCasino className="md:text-3xl text-xl group-hover:rotate-12 transition-transform" />
-                                <span>SPIN THE WHEEL</span>
-                            </>
-                        )}
-                    </button>
-
-
 
                     {/* Settings Panel */}
                     <div className="bg-white rounded-2xl border-2 border-gray-100 overflow-hidden">
@@ -247,6 +231,27 @@ export default function YesNoWheel() {
                                 <p className="text-xs text-gray-400 mt-2 text-center">
                                     Increases fairness by adding more segments
                                 </p>
+                            </div>
+
+                            {/* Spin Button */}
+                            <div>
+                                <button
+                                    onClick={handleSpin}
+                                    disabled={isSpinning}
+                                    className="w-full cursor-pointer md:py-4 py-3 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-black lg:text-base text-sm md:text-lg rounded-xl shadow-lg hover:shadow-xl hover:shadow-blue-300 transform hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed group"
+                                >
+                                    {isSpinning ? (
+                                        <>
+                                            <MdOutlineCasino className="md:text-2xl text-xl animate-spin" />
+                                            <span>SPINNING...</span>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <MdOutlineCasino className="md:text-2xl text-xl group-hover:rotate-12 transition-transform" />
+                                            <span>SPIN THE WHEEL</span>
+                                        </>
+                                    )}
+                                </button>
                             </div>
 
                             {/* Share Wheel */}

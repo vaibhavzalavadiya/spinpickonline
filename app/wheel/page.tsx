@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { WheelEntry, WheelState } from "@/lib/types";
 import Wheel from "@/components/Wheel";
+import AdSenseDisplay from "@/components/AdSenseDisplay";
 import ResultModal from "@/components/ResultModal";
 import Toast from "@/components/Toast";
 import ConfirmationModal from "@/components/ConfirmationModal";
@@ -354,6 +355,10 @@ function WheelPageContent() {
                   />
                 </div>
 
+                {/* Desktop Ad: Empty space under wheel (desktop only) */}
+                <div className="hidden lg:block w-full max-w-2xl mt-6">
+                  <AdSenseDisplay slotId="6084518347" />
+                </div>
               </>
             ) : (
               <div className="w-full max-w-[600px] aspect-square flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-2xl bg-linear-to-br from-gray-50 to-blue-50">
