@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface AdSenseDisplayProps {
   slotId?: string;
@@ -21,21 +21,39 @@ export default function AdSenseDisplay({
 }: AdSenseDisplayProps) {
   const adRef = useRef<HTMLModElement | null>(null);
   const isInitialized = useRef(false);
+  const [adLoaded, setAdLoaded] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const tryPushAd = () => {
-      const el = adRef.current;
-      if (!el || isInitialized.current) return false;
+    const el = adRef.current;
+    if (!el) return;
 
-      // Element must not be hidden via display: none (offsetParent is null when hidden via display:none)
-      if (el.offsetParent === null) {
+    // Observe when Google inserts the ad iframe into <ins>
+    const observer = new MutationObserver(() => {
+      if (
+        el.getAttribute("data-ad-status") === "filled" ||
+        el.querySelector("iframe") !== null
+      ) {
+        setAdLoaded(true);
+      }
+    });
+
+    observer.observe(el, {
+      attributes: true,
+      attributeFilter: ["data-ad-status", "data-adsbygoogle-status"],
+      childList: true,
+    });
+
+    const tryPushAd = () => {
+      const currentEl = adRef.current;
+      if (!currentEl || isInitialized.current) return false;
+
+      if (currentEl.offsetParent === null) {
         return false;
       }
 
-      // Check if AdSense has already processed this ins element
-      if (el.getAttribute("data-adsbygoogle-status") === "done") {
+      if (currentEl.getAttribute("data-adsbygoogle-status") === "done") {
         isInitialized.current = true;
         return true;
       }
@@ -51,11 +69,9 @@ export default function AdSenseDisplay({
       return false;
     };
 
-    // Try on next frame
     const rafId = requestAnimationFrame(() => {
       if (tryPushAd()) return;
 
-      // Fallback timer in case layout takes a moment to compute
       const timer = setTimeout(() => {
         tryPushAd();
       }, 300);
@@ -76,6 +92,7 @@ export default function AdSenseDisplay({
     const cleanupRef = { current: () => {} };
 
     return () => {
+      observer.disconnect();
       cancelAnimationFrame(rafId);
       cleanupRef.current();
     };
@@ -83,9 +100,12 @@ export default function AdSenseDisplay({
 
   return (
     <div className={`adsense-wrapper overflow-hidden text-center ${className}`}>
-      <span className="block text-[10px] tracking-wider uppercase text-gray-400 mb-1">
-        Advertisement
-      </span>
+      {/* Show "ADVERTISEMENT" only while the ad is loading; hide once live ad renders */}
+      {!adLoaded && (
+        <span className="block text-[10px] tracking-wider uppercase text-gray-400 mb-1">
+          Advertisement
+        </span>
+      )}
       <ins
         ref={adRef}
         className="adsbygoogle"
