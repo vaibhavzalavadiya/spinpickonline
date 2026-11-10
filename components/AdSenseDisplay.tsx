@@ -24,19 +24,17 @@ export default function AdSenseDisplay({
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (isInitialized.current) return;
 
     const tryPushAd = () => {
       const el = adRef.current;
       if (!el || isInitialized.current) return false;
 
-      // Guard: element must be visible AND have a real width
-      // This prevents the "No slot size for availableWidth=0" error
-      if (el.offsetParent === null || el.clientWidth === 0) {
+      // Element must not be hidden via display: none (offsetParent is null when hidden via display:none)
+      if (el.offsetParent === null) {
         return false;
       }
 
-      // Already processed by AdSense
+      // Check if AdSense has already processed this ins element
       if (el.getAttribute("data-adsbygoogle-status") === "done") {
         isInitialized.current = true;
         return true;
@@ -46,17 +44,22 @@ export default function AdSenseDisplay({
         isInitialized.current = true;
         const w = window as unknown as { adsbygoogle?: unknown[] };
         (w.adsbygoogle = w.adsbygoogle || []).push({});
-      } catch {
-        // Silently ignore — ad blockers or missing script
+        return true;
+      } catch (err) {
+        console.warn("AdSense push:", err);
       }
-      return true;
+      return false;
     };
 
-    // Wait for layout to stabilize before first attempt
+    // Try on next frame
     const rafId = requestAnimationFrame(() => {
       if (tryPushAd()) return;
 
-      // If element is hidden now (e.g. mobile), watch for resize to desktop
+      // Fallback timer in case layout takes a moment to compute
+      const timer = setTimeout(() => {
+        tryPushAd();
+      }, 300);
+
       const onResize = () => {
         if (tryPushAd()) {
           window.removeEventListener("resize", onResize);
@@ -64,8 +67,10 @@ export default function AdSenseDisplay({
       };
       window.addEventListener("resize", onResize);
 
-      // Cleanup listener if component unmounts
-      cleanupRef.current = () => window.removeEventListener("resize", onResize);
+      cleanupRef.current = () => {
+        clearTimeout(timer);
+        window.removeEventListener("resize", onResize);
+      };
     });
 
     const cleanupRef = { current: () => {} };
@@ -87,8 +92,12 @@ export default function AdSenseDisplay({
         style={style}
         data-ad-client={client}
         data-ad-slot={slotId}
-        data-ad-format={format}
-        data-full-width-responsive={responsive ? "true" : "false"}
+        {...(responsive
+          ? {
+              "data-ad-format": format,
+              "data-full-width-responsive": "true",
+            }
+          : {})}
       />
     </div>
   );
