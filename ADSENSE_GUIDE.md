@@ -10,7 +10,7 @@
 |---|---|
 | **Publisher ID** | `ca-pub-9187153323911677` |
 | **Display Ad Slot ID (Desktop)** | `6084518347` (Responsive, auto) |
-| **Display Ad Slot ID (Mobile Small)** | `9896604995` (Fixed: 330×80) |
+| **Display Ad Slot ID (Mobile Small)** | `6196712335` (Fixed: 330×80) |
 | **Auto Ads** | ✅ Enabled (via the global loader script) |
 | **Manual Desktop Ad** | ✅ Desktop-only below wheel (`hidden lg:block`) |
 | **Manual Mobile Ad** | ✅ Mobile-only below Share button (`lg:hidden`) |
