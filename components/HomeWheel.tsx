@@ -678,8 +678,12 @@ export default function HomeWheel({
 
             {/* Mobile Ad: below Share Wheel button (mobile only) */}
             {showAd && (
-              <div className="lg:hidden w-full my-3 overflow-hidden text-center">
-                <AdSenseDisplay slotId="6196712335" />
+              <div className="lg:hidden w-full my-3 flex justify-center text-center">
+                <AdSenseDisplay
+                  slotId="6196712335"
+                  format="horizontal"
+                  fullWidthResponsive={false}
+                />
               </div>
             )}
 

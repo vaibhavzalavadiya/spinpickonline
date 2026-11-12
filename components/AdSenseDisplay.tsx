@@ -7,6 +7,7 @@ interface AdSenseDisplayProps {
   client?: string;
   format?: string;
   responsive?: boolean;
+  fullWidthResponsive?: boolean;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -16,6 +17,7 @@ export default function AdSenseDisplay({
   client = "ca-pub-9187153323911677",
   format = "auto",
   responsive = true,
+  fullWidthResponsive = true,
   className = "",
   style = { display: "block" },
 }: AdSenseDisplayProps) {
@@ -121,7 +123,7 @@ export default function AdSenseDisplay({
           {...(responsive
             ? {
                 "data-ad-format": format,
-                "data-full-width-responsive": "true",
+                "data-full-width-responsive": fullWidthResponsive ? "true" : "false",
               }
             : {})}
         />
