@@ -17,7 +17,7 @@ export default function AdSenseDisplay({
   client = "ca-pub-9187153323911677",
   format = "auto",
   responsive = true,
-  fullWidthResponsive = false,
+  fullWidthResponsive = true,
   className = "",
   style = { display: "block" },
 }: AdSenseDisplayProps) {
@@ -99,7 +99,7 @@ export default function AdSenseDisplay({
   }, []);
 
   return (
-    <div className={`adsense-wrapper w-full flex justify-center text-center ${className}`}>
+    <div className={`adsense-wrapper w-full text-center ${className}`}>
       {/* Dev placeholder for localhost */}
       {isLocalhost && (
         <div className="py-2.5 px-3 border border-dashed border-gray-300 rounded-lg bg-gray-50 text-gray-500 text-xs my-2">
@@ -117,7 +117,7 @@ export default function AdSenseDisplay({
         <ins
           ref={adRef}
           className="adsbygoogle"
-          style={style}
+          style={{ display: "block", width: "100%", ...style }}
           data-ad-client={client}
           data-ad-slot={slotId}
           {...(responsive
