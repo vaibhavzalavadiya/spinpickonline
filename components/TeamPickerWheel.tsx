@@ -119,7 +119,7 @@ export default function TeamPickerWheel() {
     }
     if (isSpinning) return;
     setIsSpinning(true);
-    
+
     // Generate teams after spin completes
     setTimeout(() => {
       const shuffled = [...entries].sort(() => Math.random() - 0.5);
@@ -157,18 +157,18 @@ export default function TeamPickerWheel() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr] gap-5 md:gap-10 lg:gap-16 items-start">
         <div className="flex flex-col items-center justify-start">
           <div className="relative w-full max-w-3xl">
-            <Wheel 
-              entries={entries} 
-              onResult={() => {}} 
-              isSpinning={isSpinning} 
-              result={null} 
+            <Wheel
+              entries={entries}
+              onResult={() => { }}
+              isSpinning={isSpinning}
+              result={null}
               showButton={false}
               onSpinRequest={generateTeams}
             />
           </div>
 
           {/* Desktop Ad: Empty space under wheel (desktop only) */}
-          <div className="hidden lg:block w-full max-w-2xl mt-6">
+          <div className="hidden lg:block w-full max-w-2xl mt-7">
             <AdSenseDisplay slotId="6084518347" />
           </div>
         </div>
@@ -263,10 +263,10 @@ export default function TeamPickerWheel() {
 
                 <div className="bg-gradient-to-r from-green-50 to-green-100 p-3 rounded-xl border-2 border-green-200">
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Number of Teams</label>
-                  <input 
-                    type="number" 
-                    min="2" 
-                    value={numTeams} 
+                  <input
+                    type="number"
+                    min="2"
+                    value={numTeams}
                     onChange={(e) => {
                       const num = parseInt(e.target.value);
                       if (!isNaN(num) && num >= 2) {
@@ -285,7 +285,7 @@ export default function TeamPickerWheel() {
                         generateTeams();
                       }
                     }}
-                    className="w-full px-4 py-2.5 text-sm border-2 border-gray-200 rounded-lg focus:border-green-400 focus:outline-none" 
+                    className="w-full px-4 py-2.5 text-sm border-2 border-gray-200 rounded-lg focus:border-green-400 focus:outline-none"
                   />
                 </div>
 

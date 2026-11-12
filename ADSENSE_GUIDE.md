@@ -170,7 +170,7 @@ The `<AdSenseDisplay />` component is placed in the **left column below the whee
 ```tsx
 {/* Desktop Ad: Empty space under wheel (desktop only) */}
 {showAd && (
-  <div className="hidden lg:block w-full max-w-2xl mt-6">
+  <div className="hidden lg:block w-full max-w-2xl mt-7">
     <AdSenseDisplay slotId="6084518347" />
   </div>
 )}
@@ -239,7 +239,7 @@ Should return **zero results** (except this guide file).
    import AdSenseDisplay from "@/components/AdSenseDisplay";
 
    {/* Desktop Ad: below wheel, desktop only */}
-   <div className="hidden lg:block w-full max-w-2xl mt-6">
+   <div className="hidden lg:block w-full max-w-2xl mt-7">
      <AdSenseDisplay slotId="6084518347" />
    </div>
    ```

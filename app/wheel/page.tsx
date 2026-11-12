@@ -356,7 +356,7 @@ function WheelPageContent() {
                 </div>
 
                 {/* Desktop Ad: Empty space under wheel (desktop only) */}
-                <div className="hidden lg:block w-full max-w-2xl mt-6">
+                <div className="hidden lg:block w-full max-w-2xl mt-7">
                   <AdSenseDisplay slotId="6084518347" />
                 </div>
               </>
@@ -437,9 +437,8 @@ function WheelPageContent() {
                     </button>
                     <button
                       onClick={sortEntries}
-                      className={`flex items-center gap-2 sm:px-4 px-3 py-2.5 text-sm bg-linear-to-r from-purple-50 to-purple-100 text-purple-700 rounded-lg hover:from-purple-100 hover:to-purple-200 transition-all font-medium border cursor-pointer active:scale-95 ${
-                        sortDirection ? "border-purple-400 ring-2 ring-purple-200" : "border-purple-200"
-                      }`}
+                      className={`flex items-center gap-2 sm:px-4 px-3 py-2.5 text-sm bg-linear-to-r from-purple-50 to-purple-100 text-purple-700 rounded-lg hover:from-purple-100 hover:to-purple-200 transition-all font-medium border cursor-pointer active:scale-95 ${sortDirection ? "border-purple-400 ring-2 ring-purple-200" : "border-purple-200"
+                        }`}
                       title={sortDirection === "asc" ? "Sort Z→A" : "Sort A→Z"}
                     >
                       {sortDirection === "asc" ? (

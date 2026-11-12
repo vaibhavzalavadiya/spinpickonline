@@ -378,7 +378,7 @@ export default function HomeWheel({
 
           {/* Desktop Ad: Empty space under wheel (desktop only) */}
           {showAd && (
-            <div className="hidden lg:block w-full max-w-2xl mt-6">
+            <div className="hidden lg:block w-full max-w-2xl mt-7">
               <AdSenseDisplay slotId="6084518347" />
             </div>
           )}
