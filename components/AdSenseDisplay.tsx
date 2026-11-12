@@ -97,7 +97,7 @@ export default function AdSenseDisplay({
   }, []);
 
   return (
-    <div className={`adsense-wrapper overflow-hidden text-center ${className}`}>
+    <div className={`adsense-wrapper w-full overflow-hidden text-center ${className}`}>
       {/* Dev placeholder for localhost */}
       {isLocalhost && (
         <div className="py-2.5 px-3 border border-dashed border-gray-300 rounded-lg bg-gray-50 text-gray-500 text-xs my-2">
