@@ -687,12 +687,13 @@ export default function HomeWheel({
                 <FiArrowRight className="text-base group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
-            {/* Mobile Ad: below Share Wheel button (mobile only) */}
+
+            {/* Mobile Ad: below Open Full Editor button (mobile only) */}
             {showAd && (
               <div className="lg:hidden w-full mt-3 flex justify-center text-center">
                 <AdSenseDisplay
                   slotId="6196712335"
-                  format="horizontal"
+                  format="auto"
                   fullWidthResponsive={false}
                 />
               </div>
