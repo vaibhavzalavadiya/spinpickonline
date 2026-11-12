@@ -676,17 +676,6 @@ export default function HomeWheel({
               </div>
             )}
 
-            {/* Mobile Ad: below Share Wheel button (mobile only) */}
-            {showAd && (
-              <div className="lg:hidden w-full my-3 flex justify-center text-center">
-                <AdSenseDisplay
-                  slotId="6196712335"
-                  format="horizontal"
-                  fullWidthResponsive={false}
-                />
-              </div>
-            )}
-
             {/* Link to Full Editor */}
             <div className="lg:mt-5 mt-3 text-center">
               <Link
@@ -698,6 +687,16 @@ export default function HomeWheel({
                 <FiArrowRight className="text-base group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
+            {/* Mobile Ad: below Share Wheel button (mobile only) */}
+            {showAd && (
+              <div className="lg:hidden w-full mt-3 flex justify-center text-center">
+                <AdSenseDisplay
+                  slotId="6196712335"
+                  format="horizontal"
+                  fullWidthResponsive={false}
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>
