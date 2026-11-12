@@ -70,15 +70,35 @@ export default function AdSenseDisplay({
       return false;
     };
 
+    let observer: IntersectionObserver | null = null;
+    if (typeof IntersectionObserver !== "undefined" && adRef.current) {
+      observer = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting || entry.intersectionRatio > 0) {
+            if (tryPushAd()) {
+              observer?.disconnect();
+            }
+          }
+        }
+      });
+      observer.observe(adRef.current);
+    }
+
     const rafId = requestAnimationFrame(() => {
-      if (tryPushAd()) return;
+      if (tryPushAd()) {
+        observer?.disconnect();
+        return;
+      }
 
       const timer = setTimeout(() => {
-        tryPushAd();
+        if (tryPushAd()) {
+          observer?.disconnect();
+        }
       }, 500);
 
       const onResize = () => {
         if (tryPushAd()) {
+          observer?.disconnect();
           window.removeEventListener("resize", onResize);
         }
       };
@@ -87,6 +107,7 @@ export default function AdSenseDisplay({
       cleanupRef.current = () => {
         clearTimeout(timer);
         window.removeEventListener("resize", onResize);
+        observer?.disconnect();
       };
     });
 
@@ -117,7 +138,7 @@ export default function AdSenseDisplay({
         <ins
           ref={adRef}
           className="adsbygoogle"
-          style={{ display: "block", width: "100%", ...style }}
+          style={style}
           data-ad-client={client}
           data-ad-slot={slotId}
           {...(responsive

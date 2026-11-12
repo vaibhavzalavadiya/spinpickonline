@@ -691,11 +691,7 @@ export default function HomeWheel({
             {/* Mobile Ad: below Open Full Editor button (mobile only) */}
             {showAd && (
               <div className="lg:hidden w-full mt-3 text-center">
-                <AdSenseDisplay
-                  slotId="6196712335"
-                  format="auto"
-                  fullWidthResponsive={false}
-                />
+                <AdSenseDisplay slotId="6196712335" />
               </div>
             )}
           </div>
