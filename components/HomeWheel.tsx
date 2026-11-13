@@ -422,7 +422,7 @@ export default function HomeWheel({
             {/* Sound Toggle */}
             <button
               onClick={toggleMute}
-              className="sound-btn pe-3 py-4 ps-2 cursor-pointer text-gray-500 hover:text-gray-900 transition-colors flex items-center"
+              className="sound-btn pe-3 py-4 ps-2 cursor-pointer text-gray-700 hover:text-gray-900 transition-colors flex items-center"
               aria-label={isMuted ? "Unmute sounds" : "Mute sounds"}
               title={isMuted ? "Turn on sounds" : "Mute sounds"}
             >
@@ -512,7 +512,7 @@ export default function HomeWheel({
                       <FiList className="text-base text-blue-600" />
                       <span>Your Entries</span>
                     </h3>
-                    <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
+                    <span className="text-xs font-medium text-gray-700 bg-gray-100 px-2.5 py-1 rounded-full">
                       {entries.length} items
                     </span>
                   </div>
@@ -651,13 +651,13 @@ export default function HomeWheel({
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-3">
                               <IoTrophyOutline className={`text-xl ${index === 0 ? "text-yellow-500" :
-                                index === 1 ? "text-gray-400" :
+                                index === 1 ? "text-gray-600" :
                                   index === 2 ? "text-orange-600" :
-                                    "text-blue-500"
+                                    "text-blue-600"
                                 }`} />
                               <span className="text-base font-semibold text-gray-900">{res}</span>
                             </div>
-                            <span className="text-xs font-medium text-gray-500 bg-white px-3 py-1 rounded-full">
+                            <span className="text-xs font-semibold text-gray-700 bg-white px-3 py-1 rounded-full border border-gray-200">
                               #{results.length - index}
                             </span>
                           </div>
@@ -670,7 +670,7 @@ export default function HomeWheel({
                   <div className="text-center py-12 bg-linear-to-br from-gray-50 to-blue-50 rounded-xl border-2 border-dashed border-gray-300">
                     <FiDisc className="text-6xl text-gray-400 mx-auto mb-4" />
                     <p className="text-gray-600 font-medium mb-2">No results yet!</p>
-                    <p className="text-sm text-gray-500">Switch to Entries tab and spin the wheel</p>
+                    <p className="text-sm text-gray-600">Switch to Entries tab and spin the wheel</p>
                   </div>
                 )}
               </div>

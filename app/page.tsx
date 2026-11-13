@@ -262,7 +262,7 @@ export default function Home() {
                 className="group bg-gradient-to-br from-gray-50 to-gray-100 hover:from-blue-50 hover:to-blue-100 p-3 sm:p-4 rounded-xl border border-gray-200 hover:border-blue-300 transition-all hover:shadow-md"
               >
                 <span className="font-semibold text-gray-900 group-hover:text-blue-600 text-sm sm:text-base block mb-1 transition-colors">{link.label}</span>
-                <span className="text-xs text-gray-500">{link.desc}</span>
+                <span className="text-xs text-gray-700">{link.desc}</span>
               </Link>
             ))}
           </div>

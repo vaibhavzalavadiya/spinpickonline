@@ -42,6 +42,7 @@ export default function RootLayout({
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#3b82f6" />
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
       </head>
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}
@@ -70,7 +71,7 @@ export default function RootLayout({
         <Script
           id="adsbygoogle-init"
           async
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9187153323911677"
           crossOrigin="anonymous"
         />

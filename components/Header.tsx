@@ -94,7 +94,7 @@ export default function Header() {
                         <div className="relative bg-white rounded-2xl shadow-xl border border-gray-200/80 overflow-hidden z-20">
                           {/* Header */}
                           <div className="px-5 py-3 bg-gradient-to-r from-blue-50 to-purple-50 border-b border-gray-100">
-                            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                            <p className="text-xs font-semibold text-gray-700 uppercase tracking-wider">
                               🛠️ Our Tools
                             </p>
                           </div>
@@ -115,7 +115,7 @@ export default function Header() {
                                   <p className="text-sm font-semibold text-gray-800 group-hover/item:text-blue-600 transition-colors">
                                     {tool.label}
                                   </p>
-                                  <p className="text-xs text-gray-500 leading-snug mt-0.5">
+                                  <p className="text-xs text-gray-600 leading-snug mt-0.5">
                                     {tool.description}
                                   </p>
                                 </div>
