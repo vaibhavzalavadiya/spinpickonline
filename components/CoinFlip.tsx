@@ -92,71 +92,71 @@ export default function CoinFlip() {
           <div className="w-40 h-10 rounded-lg bg-gray-100 animate-pulse" />
         </div>
       ) : (
-      <div className="flex flex-col items-center gap-4 sm:gap-5">
+        <div className="flex flex-col items-center gap-4 sm:gap-5">
 
-        {/* Result Text — shown ABOVE the coin so user sees it instantly */}
-        <div className="text-center">
-          {result && !isFlipping && (
-            <p
-              className={`text-lg sm:text-2xl font-bold tracking-wide animate-fade-in ${result === "heads" ? "text-amber-600" : "text-blue-600"
-                }`}
-            >
-              {result === "heads" ? "🪙 HEADS!" : "🪙 TAILS!"}
-            </p>
-          )}
-          {isFlipping && (
-            <p className="text-base sm:text-lg text-gray-400 animate-pulse">Flipping...</p>
-          )}
-          {!result && !isFlipping && (
-            <p className="text-sm sm:text-base text-gray-400">Tap the coin or press the button</p>
-          )}
-        </div>
+          {/* Result Text — shown ABOVE the coin so user sees it instantly */}
+          <div className="text-center">
+            {result && !isFlipping && (
+              <p
+                className={`text-lg sm:text-2xl font-bold tracking-wide animate-fade-in ${result === "heads" ? "text-amber-600" : "text-blue-600"
+                  }`}
+              >
+                {result === "heads" ? "🪙 HEADS!" : "🪙 TAILS!"}
+              </p>
+            )}
+            {isFlipping && (
+              <p className="text-base sm:text-lg text-gray-400 animate-pulse">Flipping...</p>
+            )}
+            {!result && !isFlipping && (
+              <p className="text-sm sm:text-base text-gray-400">Tap the coin or press the button</p>
+            )}
+          </div>
 
-        {/* The Coin */}
-        <div
-          className="coin-container cursor-pointer select-none"
-          onClick={flipCoin}
-          role="button"
-          aria-label="Flip the coin"
-          tabIndex={0}
-        >
+          {/* The Coin */}
           <div
-            className={`coin ${isFlipping ? "flipping" : ""}`}
-            style={{
-              transform: `rotateY(${rotation}deg)`,
-              transition: isFlipping ? "transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)" : "transform 0.1s",
-            }}
+            className="coin-container cursor-pointer select-none"
+            onClick={flipCoin}
+            role="button"
+            aria-label="Flip the coin"
+            tabIndex={0}
           >
-            {/* Heads side */}
-            <div className="coin-face coin-heads">
-              <div className="coin-inner-ring">
-                <span className="coin-text">H</span>
-                <span className="coin-label">HEADS</span>
+            <div
+              className={`coin ${isFlipping ? "flipping" : ""}`}
+              style={{
+                transform: `rotateY(${rotation}deg)`,
+                transition: isFlipping ? "transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)" : "transform 0.1s",
+              }}
+            >
+              {/* Heads side */}
+              <div className="coin-face coin-heads">
+                <div className="coin-inner-ring">
+                  <span className="coin-text">H</span>
+                  <span className="coin-label">HEADS</span>
+                </div>
               </div>
-            </div>
-            {/* Tails side */}
-            <div className="coin-face coin-tails">
-              <div className="coin-inner-ring">
-                <span className="coin-text">T</span>
-                <span className="coin-label">TAILS</span>
+              {/* Tails side */}
+              <div className="coin-face coin-tails">
+                <div className="coin-inner-ring">
+                  <span className="coin-text">T</span>
+                  <span className="coin-label">TAILS</span>
+                </div>
               </div>
             </div>
           </div>
+
+          {/* Flip Button */}
+          <button
+            onClick={flipCoin}
+            disabled={isFlipping}
+            className="w-full max-w-[250px] cursor-pointer sm:max-w-[280px] py-2.5 sm:py-3 px-5 sm:px-8 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-sm sm:text-base rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95"
+          >
+            {isFlipping ? "Flipping..." : "FLIP COIN"}
+          </button>
+
+          <p className="text-xs text-gray-400 sm:block hidden">
+            or press <kbd className="px-1.5 py-0.5 bg-gray-100 rounded text-gray-500 font-mono text-xs border border-gray-200">Space</kbd>
+          </p>
         </div>
-
-        {/* Flip Button */}
-        <button
-          onClick={flipCoin}
-          disabled={isFlipping}
-          className="w-full max-w-[250px] sm:max-w-[280px] py-2.5 sm:py-3 px-5 sm:px-8 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-sm sm:text-base rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95"
-        >
-          {isFlipping ? "Flipping..." : "FLIP COIN"}
-        </button>
-
-        <p className="text-xs text-gray-400 sm:block hidden">
-          or press <kbd className="px-1.5 py-0.5 bg-gray-100 rounded text-gray-500 font-mono text-xs border border-gray-200">Space</kbd>
-        </p>
-      </div>
       )}
 
       {/* Stats Section */}

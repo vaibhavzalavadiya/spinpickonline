@@ -4,35 +4,47 @@ import { SITE_CONFIG } from "@/lib/constants";
 import CoinFlip from "@/components/CoinFlip";
 import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
-import { FiCheck, FiArrowRight, FiList } from "react-icons/fi";
-import { IoShuffleOutline, IoSparklesOutline, IoFlashOutline } from "react-icons/io5";
-import { FiShield, FiTrendingUp } from "react-icons/fi";
+import { FiCheck, FiArrowRight, FiList, FiShield, FiTrendingUp } from "react-icons/fi";
+import { IoSparklesOutline, IoFlashOutline, IoHelpCircleOutline } from "react-icons/io5";
 
 export const metadata: Metadata = generateMetadata({
-  title: "Flip a Coin Online – Free Coin Toss Simulator | Heads or Tails",
-  description: "Flip a coin instantly with our free online coin toss. Fair, random 3D coin flipper for heads or tails. No signup needed. Perfect for quick decisions.",
+  title: "Flip a Coin Online – Free Coin Flip Simulator (Heads or Tails)",
+  description: "Flip a coin online with our free 3D coin flip simulator. Fair heads or tails coin toss generator for instant decisions, sports, and games. Try it now!",
   canonical: "/flip-a-coin",
 });
 
 export default function FlipACoinPage() {
-  const applicationSchema = generateWebApplicationSchema();
+  const applicationSchema = generateWebApplicationSchema({
+    name: "Online Coin Flip Simulator",
+    url: `${SITE_CONFIG.url}/flip-a-coin`,
+    description: "Free online coin flip simulator for heads or tails. Fair cryptographic coin toss generator for quick decisions, games, and sports.",
+    featureList: "Coin flip simulator, Heads or tails, 3D coin toss, Flip a coin 3 times, Session statistics, Keyboard spacebar flip, Fair 50/50 probability",
+  });
 
   const faqSchema = generateFAQSchema([
     {
-      question: "Is this online coin flip truly random?",
-      answer: "Yes! Our coin flipper uses cryptographically secure random number generation (Web Crypto API) to ensure a perfectly fair 50/50 split between heads and tails, just like a real coin toss."
+      question: "Is this online coin flip truly random and 50/50?",
+      answer: "Yes! Our coin flip simulator uses the cryptographically secure Web Crypto API (crypto.getRandomValues). Unlike physical coins that have subtle weight imbalances from engravings, our digital coin flipper guarantees a mathematically unbiased, exact 50% chance of landing on Heads and 50% on Tails."
     },
     {
-      question: "How do I flip the coin?",
-      answer: "It's simple: just tap the coin, click the 'FLIP COIN' button, or press the Spacebar on your keyboard. The coin will flip in 3D and land on either heads or tails."
+      question: "How do I flip a coin on this website?",
+      answer: "You can flip the coin in three easy ways: click or tap the 3D coin directly, press the 'FLIP COIN' button, or simply press the Spacebar on your keyboard. The coin will spin in full 3D and land on either heads or tails."
     },
     {
-      question: "Does it track my flip history?",
-      answer: "Yes, our coin toss simulator automatically tracks your current session's statistics, showing you the total number of flips, how many were heads vs tails, and your recent flip history."
+      question: "How do I flip a coin 3 times for 'best 2 out of 3'?",
+      answer: "Simply tap or press Spacebar three times. Our built-in session statistics tracker records every flip in your recent history and shows the exact count and percentage of Heads vs. Tails, making it easy to determine the winner of a best-of-three or best-of-five contest."
     },
     {
-      question: "Can I use this for sports coin tosses?",
-      answer: "Absolutely. Many users use our digital coin flipper for football, basketball, or casual sports when they don't have a physical coin handy. It's fast, fair, and works perfectly on mobile devices."
+      question: "Is a physical coin flip actually 50/50?",
+      answer: "Surprisingly, no! Research conducted at Stanford University by mathematician Persi Diaconis revealed that physical coins land on the same face they started on roughly 51% of the time due to precession during the toss. Our digital coin toss generator eliminates this physical bias, making it fairer than tossing a real quarter."
+    },
+    {
+      question: "Can I use this coin toss generator for sports matches?",
+      answer: "Absolutely. Referees, coaches, and players regularly use our mobile-friendly coin flipper for football kickoffs, basketball possessions, cricket tosses, and casual pickup games when they don't have a physical coin."
+    },
+    {
+      question: "Can you flip a coin for me without downloading an app?",
+      answer: "Yes! SpinPickOnline's coin flip simulator works 100% in your browser on iPhone, Android, tablet, Mac, and Windows PC. No app download, signup, or installation required."
     }
   ]);
 
@@ -43,11 +55,11 @@ export default function FlipACoinPage() {
 
   const howToSchema = generateHowToSchema({
     name: "How to Flip a Coin Online",
-    description: "Get an instant heads or tails result using our free coin toss simulator.",
+    description: "Get an instant, fair heads or tails result using our free coin toss simulator.",
     steps: [
-      { name: "Tap to Flip", text: "Click the coin, press the Flip button, or hit Spacebar to start the toss.", position: 1 },
-      { name: "Wait for the Toss", text: "Watch the 3D coin flip animation in the air.", position: 2 },
-      { name: "See Your Result", text: "The coin lands on Heads or Tails, and your session stats update automatically.", position: 3 },
+      { name: "Tap to Flip", text: "Click the coin, tap the Flip button, or hit Spacebar on your keyboard.", position: 1 },
+      { name: "Watch the 3D Toss", text: "Watch the realistic 3D coin flip animation spin through the air.", position: 2 },
+      { name: "See Your Result & Stats", text: "The coin lands on Heads or Tails, and your session statistics update automatically.", position: 3 },
     ],
   });
 
@@ -73,145 +85,401 @@ export default function FlipACoinPage() {
       {/* Hero Section */}
       <section className="pb-6 sm:pb-10 lg:pb-16 lg:pt-10 pt-6 sm:pt-8 bg-gradient-to-b from-amber-50/50 to-white">
         <div className="container mx-auto px-4">
-          <div className="text-center lg:mb-12 sm:mb-8 mb-4">
-            <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Flip a Coin – Free Online Coin Toss
+          <div className="text-center lg:mb-10 sm:mb-8 mb-4">
+            <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+              Flip a Coin Online – Free Coin Flip Simulator
             </h1>
+            <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">
+              Need to make a fast decision or settle a bet? Use our fair, random 3D coin toss generator to get instant heads or tails results. Tap the coin or press Spacebar to flip!
+            </p>
           </div>
 
-          <div className="max-w-3xl mx-auto bg-white rounded-lg shadow border border-gray-100 p-3 sm:p-8">
+          <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-md border border-gray-100 p-4 sm:p-8">
             <CoinFlip />
           </div>
         </div>
       </section>
 
-
-
-      {/* Benefits */}
+      {/* Feature Highlights */}
       <section className="py-8 lg:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center md:mb-8 mb-6">
+          <div className="text-center md:mb-10 mb-6">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-              Why Use Our Online Coin Flipper?
+              Why Use Our Online Coin Flip Generator?
             </h2>
             <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">
-              The fastest, fairest digital coin toss on the internet
+              Designed for speed, mathematical fairness, and effortless decision-making
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 md:gap-6 gap-4">
-            <div className="bg-gradient-to-br from-amber-50 to-orange-50 md:p-5 p-4 md:rounded-xl rounded-lg border-2 border-amber-200 hover:shadow-lg transition-shadow">
-              <div className="bg-amber-100 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
-                <FiShield className="text-xl text-amber-600" />
+            <div className="bg-gradient-to-br from-amber-50 to-orange-50 md:p-6 p-4 md:rounded-2xl rounded-xl border border-amber-200 hover:shadow-md transition-shadow">
+              <div className="bg-amber-100 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+                <FiShield className="text-2xl text-amber-600" />
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">Truly Random</h3>
-              <p className="md:text-base text-sm text-gray-600">Web Crypto API ensures perfect 50/50 probability. No bias, completely fair every time.</p>
+              <h3 className="font-bold text-gray-900 mb-2 text-base sm:text-lg">100% Cryptographic Fairness</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">Powered by the browser&apos;s Web Crypto API for genuine 50/50 probability. No hidden algorithms, no weighted bias.</p>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-50 to-sky-50 md:p-5 p-4 md:rounded-xl rounded-lg border-2 border-blue-200 hover:shadow-lg transition-shadow">
-              <div className="bg-blue-100 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
-                <FiTrendingUp className="text-xl text-blue-600" />
+            <div className="bg-gradient-to-br from-blue-50 to-sky-50 md:p-6 p-4 md:rounded-2xl rounded-xl border border-blue-200 hover:shadow-md transition-shadow">
+              <div className="bg-blue-100 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+                <FiTrendingUp className="text-2xl text-blue-600" />
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">Stat Tracking</h3>
-              <p className="md:text-base text-sm text-gray-600">Live heads vs tails ratio tracking and full flip history in your session.</p>
+              <h3 className="font-bold text-gray-900 mb-2 text-base sm:text-lg">Live Flip Stats & History</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">Tracks your total coin flips, live Heads vs. Tails percentage ratio, and displays your last 20 flip results.</p>
             </div>
 
-            <div className="bg-gradient-to-br from-emerald-50 to-green-50 md:p-5 p-4 md:rounded-xl rounded-lg border-2 border-emerald-200 hover:shadow-lg transition-shadow">
-              <div className="bg-emerald-100 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
-                <IoSparklesOutline className="text-xl text-emerald-600" />
+            <div className="bg-gradient-to-br from-emerald-50 to-green-50 md:p-6 p-4 md:rounded-2xl rounded-xl border border-emerald-200 hover:shadow-md transition-shadow">
+              <div className="bg-emerald-100 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+                <IoSparklesOutline className="text-2xl text-emerald-600" />
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">3D Animation</h3>
-              <p className="md:text-base text-sm text-gray-600">Watch the coin flip in realistic 3D. Builds suspense before revealing your result.</p>
+              <h3 className="font-bold text-gray-900 mb-2 text-base sm:text-lg">Realistic 3D Coin Animation</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">Enjoy smooth, hardware-accelerated 3D coin spins with suspenseful rotation before revealing Heads or Tails.</p>
             </div>
 
-            <div className="bg-gradient-to-br from-purple-50 to-violet-50 md:p-5 p-4 md:rounded-xl rounded-lg border-2 border-purple-200 hover:shadow-lg transition-shadow">
-              <div className="bg-purple-100 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
-                <IoFlashOutline className="text-xl text-purple-600" />
+            <div className="bg-gradient-to-br from-purple-50 to-violet-50 md:p-6 p-4 md:rounded-2xl rounded-xl border border-purple-200 hover:shadow-md transition-shadow">
+              <div className="bg-purple-100 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+                <IoFlashOutline className="text-2xl text-purple-600" />
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">Multiple Inputs</h3>
-              <p className="md:text-base text-sm text-gray-600">Tap the coin, click the button, or press Spacebar. Works on mobile and desktop.</p>
+              <h3 className="font-bold text-gray-900 mb-2 text-base sm:text-lg">Spacebar & Tap Controls</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">Click the coin, tap the button on mobile, or hit Spacebar on your desktop keyboard for instant rapid coin flipping.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Extensive SEO Content Section */}
+      {/* Unique Section: Streak Odds, Gambler's Fallacy & Comparison Matrix */}
+      <section className="py-10 lg:py-16 bg-white border-y border-gray-100">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="text-center mb-8 sm:mb-12">
+            <span className="text-xs font-bold text-amber-700 uppercase tracking-widest bg-amber-50 px-3.5 py-1.5 rounded-full border border-amber-200 inline-block mb-3">
+              Probability &amp; Science
+            </span>
+            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+              Coin Toss Streak Odds &amp; Probability Matrix
+            </h2>
+            <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
+              What are the odds of flipping 5 Heads in a row? Understand the true mathematics of coin tossing and why the Gambler&apos;s Fallacy tricks our brains.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
+            {/* Streak Probability Table */}
+            <div className="bg-gradient-to-br from-gray-50 to-amber-50/40 p-5 sm:p-7 rounded-2xl border border-amber-200/80 shadow-sm flex flex-col justify-between">
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 flex items-center gap-2">
+                  <span>📊</span> Consecutive Streak Probabilities
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-600 mb-4">
+                  The cumulative mathematical odds of flipping the same side multiple times consecutively:
+                </p>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs sm:text-sm">
+                    <thead>
+                      <tr className="border-b border-amber-200/70 text-gray-700">
+                        <th className="py-2 font-semibold">Consecutive Flips</th>
+                        <th className="py-2 font-semibold">Exact Formula</th>
+                        <th className="py-2 font-semibold">Odds</th>
+                        <th className="py-2 font-semibold">Percentage</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-amber-100/60 text-gray-800">
+                      <tr><td className="py-2 font-medium">1 Flip</td><td className="py-2 font-mono text-xs">(1/2)¹</td><td className="py-2">1 in 2</td><td className="py-2 font-bold text-amber-700">50.0%</td></tr>
+                      <tr><td className="py-2 font-medium">2 in a row</td><td className="py-2 font-mono text-xs">(1/2)²</td><td className="py-2">1 in 4</td><td className="py-2 font-bold text-amber-700">25.0%</td></tr>
+                      <tr><td className="py-2 font-medium">3 in a row</td><td className="py-2 font-mono text-xs">(1/2)³</td><td className="py-2">1 in 8</td><td className="py-2 font-bold text-amber-700">12.5%</td></tr>
+                      <tr><td className="py-2 font-medium">4 in a row</td><td className="py-2 font-mono text-xs">(1/2)⁴</td><td className="py-2">1 in 16</td><td className="py-2 font-bold text-amber-700">6.25%</td></tr>
+                      <tr><td className="py-2 font-medium">5 in a row</td><td className="py-2 font-mono text-xs">(1/2)⁵</td><td className="py-2">1 in 32</td><td className="py-2 font-bold text-amber-700">3.12%</td></tr>
+                      <tr><td className="py-2 font-medium">10 in a row</td><td className="py-2 font-mono text-xs">(1/2)¹⁰</td><td className="py-2">1 in 1,024</td><td className="py-2 font-bold text-amber-700">0.098%</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div className="mt-4 pt-3 border-t border-amber-200/60 text-xs text-gray-700 leading-relaxed bg-white/70 p-3 rounded-xl">
+                💡 <strong>The Gambler&apos;s Fallacy:</strong> Even if you flip Heads 9 times in a row, the 10th flip still has an <em>exact 50% probability</em> of landing on Heads! Coins have no memory.
+              </div>
+            </div>
+
+            {/* Comparison Matrix: Digital Simulator vs Google vs Physical Coin */}
+            <div className="bg-white p-5 sm:p-7 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between">
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 flex items-center gap-2">
+                  <span>⚖️</span> Digital Simulator vs. Google vs. Physical Coin
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-600 mb-4">
+                  How our online coin flipper compares to other ways of tossing a coin:
+                </p>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs sm:text-sm">
+                    <thead>
+                      <tr className="border-b border-gray-200 text-gray-700">
+                        <th className="py-2 font-semibold">Feature</th>
+                        <th className="py-2 font-semibold text-amber-700">SpinPickOnline</th>
+                        <th className="py-2 font-semibold text-gray-500">Google Coin</th>
+                        <th className="py-2 font-semibold text-gray-500">Physical Coin</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-100 text-gray-700">
+                      <tr>
+                        <td className="py-2.5 font-medium">Fairness</td>
+                        <td className="py-2.5 text-emerald-700 font-bold">100% Crypto Fair</td>
+                        <td className="py-2.5 text-gray-700">Standard Math</td>
+                        <td className="py-2.5 text-rose-600">51% Bias (Weight)</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2.5 font-medium">Session History</td>
+                        <td className="py-2.5 text-emerald-700 font-bold">✅ Live Stats &amp; History</td>
+                        <td className="py-2.5 text-rose-500">❌ No Tracking</td>
+                        <td className="py-2.5 text-rose-500">❌ Manual Count</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2.5 font-medium">Best of 3 / Stats</td>
+                        <td className="py-2.5 text-emerald-700 font-bold">✅ Heads/Tails Ratio %</td>
+                        <td className="py-2.5 text-rose-500">❌ None</td>
+                        <td className="py-2.5 text-rose-500">❌ None</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2.5 font-medium">Controls</td>
+                        <td className="py-2.5 text-emerald-700 font-bold">Tap, Button, Spacebar</td>
+                        <td className="py-2.5 text-gray-700">Click only</td>
+                        <td className="py-2.5 text-gray-700">Hand toss</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2.5 font-medium">No Coin Required</td>
+                        <td className="py-2.5 text-emerald-700 font-bold">✅ Any Device</td>
+                        <td className="py-2.5 text-emerald-700">✅ Browser</td>
+                        <td className="py-2.5 text-rose-500">❌ Need quarter</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <p className="mt-4 pt-3 border-t border-gray-100 text-xs text-gray-600 leading-relaxed">
+                Enjoy zero-bias randomness, full 3D physics animations, and instant session audits on any smartphone or desktop.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Unique Section: Streak Odds, Gambler's Fallacy & Comparison Matrix */}
+      <section className="py-10 lg:py-16 bg-white border-y border-gray-100">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="text-center mb-8 sm:mb-12">
+            <span className="text-xs font-bold text-amber-700 uppercase tracking-widest bg-amber-50 px-3.5 py-1.5 rounded-full border border-amber-200 inline-block mb-3">
+              Probability &amp; Science
+            </span>
+            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+              Coin Toss Streak Odds &amp; Probability Matrix
+            </h2>
+            <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
+              What are the odds of flipping 5 Heads in a row? Understand the true mathematics of coin tossing and why the Gambler&apos;s Fallacy tricks our brains.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
+            {/* Streak Probability Table */}
+            <div className="bg-gradient-to-br from-gray-50 to-amber-50/40 p-5 sm:p-7 rounded-2xl border border-amber-200/80 shadow-sm flex flex-col justify-between">
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 flex items-center gap-2">
+                  <span>📊</span> Consecutive Streak Probabilities
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-600 mb-4">
+                  The cumulative mathematical odds of flipping the same side multiple times consecutively:
+                </p>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs sm:text-sm">
+                    <thead>
+                      <tr className="border-b border-amber-200/70 text-gray-700">
+                        <th className="py-2 font-semibold">Consecutive Flips</th>
+                        <th className="py-2 font-semibold">Exact Formula</th>
+                        <th className="py-2 font-semibold">Odds</th>
+                        <th className="py-2 font-semibold">Percentage</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-amber-100/60 text-gray-800">
+                      <tr><td className="py-2 font-medium">1 Flip</td><td className="py-2 font-mono text-xs">(1/2)¹</td><td className="py-2">1 in 2</td><td className="py-2 font-bold text-amber-700">50.0%</td></tr>
+                      <tr><td className="py-2 font-medium">2 in a row</td><td className="py-2 font-mono text-xs">(1/2)²</td><td className="py-2">1 in 4</td><td className="py-2 font-bold text-amber-700">25.0%</td></tr>
+                      <tr><td className="py-2 font-medium">3 in a row</td><td className="py-2 font-mono text-xs">(1/2)³</td><td className="py-2">1 in 8</td><td className="py-2 font-bold text-amber-700">12.5%</td></tr>
+                      <tr><td className="py-2 font-medium">4 in a row</td><td className="py-2 font-mono text-xs">(1/2)⁴</td><td className="py-2">1 in 16</td><td className="py-2 font-bold text-amber-700">6.25%</td></tr>
+                      <tr><td className="py-2 font-medium">5 in a row</td><td className="py-2 font-mono text-xs">(1/2)⁵</td><td className="py-2">1 in 32</td><td className="py-2 font-bold text-amber-700">3.12%</td></tr>
+                      <tr><td className="py-2 font-medium">10 in a row</td><td className="py-2 font-mono text-xs">(1/2)¹⁰</td><td className="py-2">1 in 1,024</td><td className="py-2 font-bold text-amber-700">0.098%</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div className="mt-4 pt-3 border-t border-amber-200/60 text-xs text-gray-700 leading-relaxed bg-white/70 p-3 rounded-xl">
+                💡 <strong>The Gambler&apos;s Fallacy:</strong> Even if you flip Heads 9 times in a row, the 10th flip still has an <em>exact 50% probability</em> of landing on Heads! Coins have no memory.
+              </div>
+            </div>
+
+            {/* Comparison Matrix: Digital Simulator vs Google vs Physical Coin */}
+            <div className="bg-white p-4 sm:p-7 lg:rounded-2xl rounded-xl border border-gray-200 shadow-sm flex flex-col justify-between">
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 flex items-center gap-2">
+                  <span>⚖️</span> Digital Simulator vs. Google vs. Physical Coin
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-600 mb-4">
+                  How our online coin flipper compares to other ways of tossing a coin:
+                </p>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs sm:text-sm">
+                    <thead>
+                      <tr className="border-b border-gray-200 text-gray-700">
+                        <th className="py-2 font-semibold">Feature</th>
+                        <th className="py-2 font-semibold text-amber-700">SpinPickOnline</th>
+                        <th className="py-2 font-semibold text-gray-500">Google Coin</th>
+                        <th className="py-2 font-semibold text-gray-500">Physical Coin</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-100 text-gray-700">
+                      <tr>
+                        <td className="py-2.5 font-medium">Fairness</td>
+                        <td className="py-2.5 text-emerald-700 font-bold">100% Crypto Fair</td>
+                        <td className="py-2.5 text-gray-700">Standard Math</td>
+                        <td className="py-2.5 text-rose-600">51% Bias (Weight)</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2.5 font-medium">Session History</td>
+                        <td className="py-2.5 text-emerald-700 font-bold">✅ Live Stats &amp; History</td>
+                        <td className="py-2.5 text-rose-500">❌ No Tracking</td>
+                        <td className="py-2.5 text-rose-500">❌ Manual Count</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2.5 font-medium">Best of 3 / Stats</td>
+                        <td className="py-2.5 text-emerald-700 font-bold">✅ Heads/Tails Ratio %</td>
+                        <td className="py-2.5 text-rose-500">❌ None</td>
+                        <td className="py-2.5 text-rose-500">❌ None</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2.5 font-medium">Controls</td>
+                        <td className="py-2.5 text-emerald-700 font-bold">Tap, Button, Spacebar</td>
+                        <td className="py-2.5 text-gray-700">Click only</td>
+                        <td className="py-2.5 text-gray-700">Hand toss</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2.5 font-medium">No Coin Required</td>
+                        <td className="py-2.5 text-emerald-700 font-bold">✅ Any Device</td>
+                        <td className="py-2.5 text-emerald-700">✅ Browser</td>
+                        <td className="py-2.5 text-rose-500">❌ Need quarter</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <p className="mt-4 pt-3 border-t border-gray-100 text-xs text-gray-600 leading-relaxed">
+                Enjoy zero-bias randomness, full 3D physics animations, and instant session audits on any smartphone or desktop.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* In-Depth SEO Content Section */}
       <section className="py-10 lg:py-20 bg-gray-50">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="bg-white p-4 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100">
+          <div className="bg-white p-5 sm:p-8 md:p-12 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100">
             <h2 className="text-xl sm:text-3xl font-bold text-gray-900 lg:mb-6 mb-4">
-              The Ultimate Guide to Online Coin Flipping
+              The Ultimate Guide to Flipping a Coin Online
             </h2>
 
-            <div className="lg:space-y-6 space-y-4 text-gray-600 text-sm sm:text-base leading-relaxed">
+            <div className="lg:space-y-6 space-y-4 text-gray-700 text-sm sm:text-base leading-relaxed">
               <p>
-                Whether you need to break a tie, make a quick decision, or decide who gets the ball first in a sports game, our <strong>online coin toss</strong> is the perfect tool. You no longer need a physical quarter in your pocket when you have a digital <strong>coin flipper</strong> right on your smartphone. Over the centuries, flipping a coin—also known as heads or tails—has been the universally accepted method for settling disputes and making fair 50/50 decisions. Today, our free digital coin flip simulator brings that ancient tradition into the modern era with stunning 3D graphics and mathematically proven fairness.
+                Whether you need to break a tie, make a tough life choice, or decide who gets the ball first in a sports game, our <strong>online coin toss</strong> is the fastest and fairest tool available. When you don&apos;t have a physical nickel, dime, or quarter in your pocket, our digital <strong>coin flipper</strong> turns your smartphone or computer into a realistic, random coin toss simulator in seconds.
+              </p>
+              <p>
+                For millennia, flipping a coin—traditionally known as <strong>heads or tails</strong>—has served as humanity&apos;s go-to method for resolving binary dilemmas. From ancient Roman emperors deciding legal disputes to NFL referees conducting the pre-game coin toss, this simple act removes human bias and places the outcome in the hands of pure chance.
               </p>
 
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">Why Use Our Heads or Tails Simulator?</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-6 mb-3">
+                Is a Coin Flip Actually 50/50? (Physics vs. Cryptographic Randomness)
+              </h3>
               <p>
-                Many people wonder if an online <strong>heads or tails</strong> generator is truly random. Unlike simple randomizer scripts that can have hidden biases based on system time, our coin flip tool uses the highly advanced <code>Web Crypto API</code>. This ensures that every single toss has exactly a 50% chance of landing on Heads and a 50% chance of landing on Tails.
-              </p>
-              <p>
-                Furthermore, we built this tool with the user experience in mind. We've noticed that other coin flip websites are cluttered with ads or require you to click tiny buttons. Our interface is designed to be completely frictionless. You can click the coin, tap the large button, or even just smack the <strong>Spacebar</strong> on your keyboard to instantly trigger a coin flip. The fluid 3D animation builds just the right amount of suspense before revealing your fate.
-              </p>
-
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">Common Use Cases for a Coin Toss</h3>
-              <p>
-                A simple two-sided coin is incredibly versatile. Here are some of the most common ways our users utilize this heads or tails generator:
-              </p>
-              <ul className="list-disc pl-6 space-y-2">
-                <li><strong>Sports and Athletics:</strong> From the Super Bowl to local pickup basketball games, a coin toss determines who gets possession of the ball first or which side of the field a team defends. If you forgot your referee coin, this digital app works perfectly.</li>
-                <li><strong>Resolving Arguments:</strong> Can't decide who has to take out the trash or who gets to sit in the front seat? Leave it up to chance. It's the ultimate neutral arbitrator.</li>
-                <li><strong>Gaming and Board Games:</strong> Many tabletop RPGs (like Dungeons &amp; Dragons) and trading card games (like Pokémon TCG) require frequent coin flips. If you don't have physical dice or coins, you can also use our <Link href="/random-number-wheel/1-6" className="text-blue-600 hover:underline">1-6 Number Wheel</Link> as a digital dice roller.</li>
-                <li><strong>Financial Decisions:</strong> While we don't recommend making major investment choices based on a coin flip, many behavioral economists study the "coin flip test"—if you flip a coin to make a decision and feel disappointed by the result, it reveals what you actually wanted to do all along!</li>
-              </ul>
-
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">When to Use a Coin Flip vs. Other Randomizers</h3>
-              <p>
-                A coin flip is strictly for binary, 50/50 decisions. It gives you exactly two options: Heads or Tails. However, life is rarely just about two choices. If you find yourself needing to decide between three, four, or fifty different options, you will need a more robust tool.
-              </p>
-              <p>
-                For example, if you are trying to decide where to eat dinner and have five different restaurants in mind, a coin flip won't help you. Instead, you should use our <Link href="/food-picker-wheel" className="text-blue-600 hover:underline">Food Picker Wheel</Link>, which is specifically designed to handle multiple culinary options.
-              </p>
-              <p>
-                Similarly, if you are a teacher trying to randomly call on one student out of a class of 30, a coin toss is useless. For that scenario, we highly recommend our <Link href="/name-picker" className="text-blue-600 hover:underline">Random Name Picker</Link>. You simply paste your entire class roster into the tool, and the wheel will randomly select one student for you. If you just need a straightforward "Yes" or "No" answer to a burning question but want the visual excitement of a spinning wheel rather than a coin, our <Link href="/yes-no-wheel" className="text-blue-600 hover:underline">Yes/No Wheel</Link> is the perfect alternative.
-              </p>
-
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">The Mathematics of Flipping a Coin</h3>
-              <p>
-                The probability of a fair coin landing on heads is exactly 0.5 (or 50%). The probability of it landing on tails is also 0.5. However, this is a theoretical probability. In the real world, physical coins are not perfectly balanced. The side with the head is often slightly heavier due to the raised engraving, which can minutely skew the results over thousands of flips. Furthermore, Stanford researchers have proven that a physical coin is slightly more likely to land on the same face it started on before it was flipped (a 51% bias).
-              </p>
-              <p>
-                Because our digital <strong>coin flipper</strong> relies on algorithmic randomization, it completely eliminates these physical biases. It doesn't matter what face the coin starts on, and there is no physical weight disparity. The digital coin toss is actually <em>more</em> fair than flipping a physical quarter!
-              </p>
-              <p>
-                This is also why we included a <strong>Session Stats</strong> tracker directly below the coin. As you flip, you can watch the law of large numbers in action. If you flip the coin 10 times, you might get 7 Heads and 3 Tails. But if you sit there and flip it 1,000 times, you will see the ratio converge closer and closer to a perfect 50/50 split.
-              </p>
-
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-5 mb-3">Explore More Randomization Tools</h3>
-              <p>
-                We are obsessed with fair randomization and helping people make decisions easily. If you enjoyed using our heads or tails simulator, we have an entire suite of free tools designed to help you randomize anything:
+                Most people assume that tossing a real coin gives an exact 50% chance of landing on Heads and 50% on Tails. However, scientific studies have shown that <strong>physical coin flips are not completely 50/50</strong>:
               </p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>
-                  <strong><Link href="/randomizer-wheel" className="text-blue-600 hover:underline">The Ultimate Randomizer Wheel</Link>:</strong> A blank canvas where you can input anything—names, numbers, chores, or prizes—and spin the wheel to select a winner.
+                  <strong>Same-Side Bias (51% Odds):</strong> A famous study by Stanford mathematician Persi Diaconis proved that when a human flips a coin, it experiences precession (wobble) in midair, causing it to land on the <em>same side it started on</em> roughly 51% of the time.
                 </li>
                 <li>
-                  <strong><Link href="/team-name-generator" className="text-blue-600 hover:underline">Team Name Generator</Link>:</strong> Need a funny or clever name for your trivia team or fantasy football league? Spin this specialized wheel to get instant inspiration.
+                  <strong>Engraving Weight Disparities:</strong> On many physical coins, the &quot;Heads&quot; side with the portrait has slightly more metal raised than the &quot;Tails&quot; side, causing the center of gravity to subtly favor one side over thousands of flips.
                 </li>
                 <li>
-                  <strong><Link href="/random-group-generator" className="text-blue-600 hover:underline">Random Group Generator</Link>:</strong> The easiest way to split a large list of people into smaller, randomized teams or groups. Ideal for teachers, camp counselors, and corporate team-building events.
+                  <strong>Spinning on a Table:</strong> When spun on its edge on a table, a US penny lands on Tails almost 80% of the time because the Lincoln head side is heavier!
+                </li>
+              </ul>
+              <p>
+                Our <strong>coin flip online generator</strong> completely eliminates these physical flaws. By utilizing the <code>window.crypto.getRandomValues</code> API, our simulator produces hardware-level entropy where each outcome has an absolute, unskewed <strong>50.000% mathematical probability</strong>.
+              </p>
+
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-6 mb-3">
+                How to Flip a Coin 3 Times (Best 2 Out of 3 Rules)
+              </h3>
+              <p>
+                When a single coin flip feels too high-stakes, the universal standard is to <strong>flip a coin 3 times</strong> for a &quot;Best Two out of Three&quot; (Bo3) showdown. Here is how to run it fairly using our simulator:
+              </p>
+              <ol className="list-decimal pl-6 space-y-2">
+                <li><strong>Designate Sides:</strong> Player 1 calls Heads; Player 2 takes Tails.</li>
+                <li><strong>Flip #1:</strong> Click the coin or press Spacebar. Note the result in the live session tracker.</li>
+                <li><strong>Flip #2:</strong> Toss the coin a second time. If one player wins both flips (2-0), they win the contest immediately!</li>
+                <li><strong>Flip #3 (The Decider):</strong> If the score is tied 1-1, flip the coin one final time. Whichever side appears takes the tiebreaker.</li>
+              </ol>
+              <p>
+                Our tool tracks your total session count and history automatically, so you never have to argue about who scored what.
+              </p>
+
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-6 mb-3">
+                Popular Use Cases for an Online Coin Flipper
+              </h3>
+              <p>
+                A simple heads or tails coin toss simulator is one of the most versatile decision utilities in the world:
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+                <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                  <h4 className="font-bold text-gray-900 mb-1">🏈 Sports &amp; Games</h4>
+                  <p className="text-sm text-gray-600">Determine kickoff possession in football, serve order in tennis, or pick starting sides in soccer and pickup basketball games.</p>
+                </div>
+                <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                  <h4 className="font-bold text-gray-900 mb-1">🎮 Tabletop &amp; Card Games</h4>
+                  <p className="text-sm text-gray-600">Perfect for Pokémon TCG coin flips, Magic: The Gathering flip mechanics, and board game tiebreakers when physical coins aren&apos;t handy.</p>
+                </div>
+                <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                  <h4 className="font-bold text-gray-900 mb-1">🤝 Settle Friendly Arguments</h4>
+                  <p className="text-sm text-gray-600">Who washes the dishes? Who gets the front seat? Who picks the movie tonight? An impartial coin toss eliminates all bias.</p>
+                </div>
+                <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                  <h4 className="font-bold text-gray-900 mb-1">🧠 The Psychological &quot;Coin Test&quot;</h4>
+                  <p className="text-sm text-gray-600">Stuck between two choices? Flip a coin. If you feel relief when it lands on Heads, that&apos;s your answer. If you feel disappointed, choose Tails!</p>
+                </div>
+              </div>
+
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 lg:mt-8 mt-6 mb-3">
+                When to Use a Coin Flip vs. Our Other Randomizers
+              </h3>
+              <p>
+                A coin toss is the ultimate solution for <strong>binary (2-option) choices</strong>. But what if you have 3, 5, or 20 options? SpinPickOnline offers a full suite of free randomizers:
+              </p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>
+                  Need numbers or dice? Try our <Link href="/dice-roller" className="text-blue-600 hover:underline font-semibold">Online Dice Roller</Link> to roll D6, D20, or multi-dice sets (1-6).
                 </li>
                 <li>
-                  <strong><Link href="/instagram-giveaway-picker" className="text-blue-600 hover:underline">Instagram Giveaway Picker</Link>:</strong> Running a contest on social media? Paste the usernames of everyone who commented, and spin the wheel on camera to prove to your followers that you picked the winner fairly.
+                  Deciding between Yes and No with visual excitement? Check out our <Link href="/yes-no-wheel" className="text-blue-600 hover:underline font-semibold">Yes or No Wheel</Link>.
+                </li>
+                <li>
+                  Choosing where to eat dinner? Spin our specialized <Link href="/food-picker-wheel" className="text-blue-600 hover:underline font-semibold">Food Picker Wheel</Link>.
+                </li>
+                <li>
+                  Selecting a winner from a classroom or contest list? Use our custom <Link href="/random-picker-wheel" className="text-blue-600 hover:underline font-semibold">Random Picker Wheel</Link>.
                 </li>
               </ul>
 
-              <div className="mt-8 p-4 sm:p-6 bg-amber-50 rounded-xl md:rounded-2xl border border-amber-200">
-                <h4 className="font-bold text-amber-900 mb-2">Did You Know?</h4>
-                <p className="text-amber-800 text-sm">
-                  The practice of flipping coins to make decisions dates back to the Roman Empire! Back then, it was known as &quot;navia aut caput&quot; (ship or head), because some coins featured a ship&apos;s prow on one side and the head of the emperor on the other. If the coin landed on the emperor&apos;s head, it was believed to be an expression of the divine will of the gods.
+              <div className="mt-8 p-5 sm:p-6 bg-amber-50 rounded-2xl border border-amber-200">
+                <h4 className="font-bold text-amber-900 mb-2 flex items-center gap-2">
+                  <IoHelpCircleOutline className="text-xl text-amber-600" />
+                  Historical Fun Fact: Roman Coin Tossing
+                </h4>
+                <p className="text-amber-800 text-sm leading-relaxed">
+                  In ancient Rome, coin tossing was known as <em>&quot;Navia aut Caput&quot;</em> (Ship or Head) because early Roman bronze coins displayed the head of the two-faced god Janus or the Emperor on the obverse and a ship&apos;s prow on the reverse. Roman citizens frequently flipped coins to resolve legal disputes, believing the resulting face was an expression of divine justice!
                 </p>
               </div>
             </div>
@@ -219,27 +487,29 @@ export default function FlipACoinPage() {
         </div>
       </section>
 
-      {/* Internal Links */}
+      {/* Internal Navigation / Related Tools */}
       <section className="py-8 lg:py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-6">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
-              More Decision Tools
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
+              Explore More Random Decision Tools
             </h2>
+            <p className="text-sm text-gray-600">Quick, free randomizers for every situation</p>
           </div>
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
             {[
-              { href: "/yes-no-wheel", label: "Yes/No Wheel" },
-              { href: "/decision-wheel", label: "Decision Wheel" },
-              { href: "/random-picker-wheel", label: "Random Picker" },
-              { href: "/food-picker-wheel", label: "Food Picker" },
-              { href: "/randomizer-wheel", label: "Randomizer Wheel" },
-              { href: "/random-number-wheel", label: "Number Wheel" },
+              { href: "/dice-roller", label: "🎲 Dice Roller (D6, D20)" },
+              { href: "/yes-no-wheel", label: "✅ Yes/No Wheel" },
+              { href: "/random-picker-wheel", label: "🎡 Random Picker" },
+              { href: "/food-picker-wheel", label: "🍕 Food Picker" },
+              { href: "/randomizer-wheel", label: "⚙️ Randomizer Wheel" },
+              { href: "/random-number-wheel", label: "🔢 Number Wheel" },
+              { href: "/team-picker", label: "👥 Team Picker" },
             ].map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-700 hover:border-blue-300 hover:text-blue-600 transition-all"
+                className="px-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm font-semibold text-gray-700 hover:border-blue-400 hover:text-blue-600 hover:shadow-sm transition-all"
               >
                 {link.label}
               </Link>
