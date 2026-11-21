@@ -53,6 +53,7 @@ export function generateMetadata({
   const [index, follow] = robots.split(", ");
 
   return {
+    metadataBase: new URL(SITE_CONFIG.url),
     title,
     description,
     robots: {
@@ -75,6 +76,7 @@ export function generateMetadata({
           url: ogImage || `${SITE_CONFIG.url}/opengraph-image.png`,
           width: 1200,
           height: 630,
+          type: "image/png",
           alt: `${title} - ${SITE_CONFIG.name}`,
         },
       ],

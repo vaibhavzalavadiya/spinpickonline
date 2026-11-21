@@ -20,9 +20,10 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.spinpickonline.com"),
   ...genMeta({
     title: "Free Spin Wheel – Create, Save & Share a Random Picker",
-    description: "Create a free custom spin wheel for names, teams, giveaways and decisions. Paste your list, spin instantly, remove winners, save and share.",
+    description: "Create a free custom spin wheel for names, teams, giveaways & decisions. Paste your list, spin instantly, and share.",
     canonical: "/",
     languages: HOMEPAGE_HREFLANG,
   }),
