@@ -54,10 +54,10 @@ export default function Header() {
                 src="/images/logo.png"
                 alt={SITE_CONFIG.name}
                 width={180}
-                height={50}
+                height={24}
                 priority
                 sizes="(max-width: 768px) 150px, 180px"
-                className="max-w-[150px] md:max-w-[180px] w-full"
+                className="max-w-[150px] md:max-w-[180px] w-auto h-auto"
               />
             </Link>
 
@@ -211,9 +211,10 @@ export default function Header() {
               src="/images/logo.png"
               alt={SITE_CONFIG.name}
               width={150}
-              height={40}
+              height={20}
               sizes="150px"
               loading="lazy"
+              className="w-auto h-auto"
             />
           </Link>
 

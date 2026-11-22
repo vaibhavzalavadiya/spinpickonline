@@ -20,10 +20,10 @@ export default function Footer() {
                 src="/images/logo.png"
                 alt={SITE_CONFIG.name}
                 width={180}
-                height={50}
+                height={24}
                 sizes="(max-width: 768px) 150px, 180px"
                 loading="lazy"
-                className="max-w-[150px] md:max-w-[180px] w-full"
+                className="max-w-[150px] md:max-w-[180px] w-auto h-auto"
               />
             </div>
             <p className="text-sm text-gray-600 leading-relaxed">

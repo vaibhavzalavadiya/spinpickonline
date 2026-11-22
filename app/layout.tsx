@@ -43,6 +43,9 @@ export default function RootLayout({
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#3b82f6" />
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+        <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       </head>
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}
@@ -66,7 +69,6 @@ export default function RootLayout({
         <main className="min-h-screen">{children}</main>
         <Footer />
 
-
         {/* Google AdSense */}
         <Script
           id="adsbygoogle-init"
@@ -89,8 +91,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
         {/* End Google Tag Manager */}
-
-
 
         <Script
           id="microsoft-clarity"

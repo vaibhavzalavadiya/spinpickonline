@@ -72,50 +72,59 @@ export default function AdSenseDisplay({
 
     let observer: IntersectionObserver | null = null;
     if (typeof IntersectionObserver !== "undefined" && adRef.current) {
-      observer = new IntersectionObserver((entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting || entry.intersectionRatio > 0) {
-            if (tryPushAd()) {
-              observer?.disconnect();
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting || entry.intersectionRatio > 0) {
+              if (tryPushAd()) {
+                observer?.disconnect();
+              }
             }
           }
-        }
-      });
+        },
+        { rootMargin: "250px 0px" }
+      );
       observer.observe(adRef.current);
     }
 
-    const rafId = requestAnimationFrame(() => {
+    // Schedule push during idle time or when scrolled near, avoiding main-thread lockup during initial hydration
+    let idleId: number | null = null;
+    let timerId: ReturnType<typeof setTimeout> | null = null;
+
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      idleId = (window as unknown as { requestIdleCallback: (cb: () => void, opts?: { timeout: number }) => number }).requestIdleCallback(
+        () => {
+          if (tryPushAd()) {
+            observer?.disconnect();
+          }
+        },
+        { timeout: 1200 }
+      );
+    } else {
+      timerId = setTimeout(() => {
+        if (tryPushAd()) {
+          observer?.disconnect();
+        }
+      }, 600);
+    }
+
+    const onResize = () => {
       if (tryPushAd()) {
         observer?.disconnect();
-        return;
-      }
-
-      const timer = setTimeout(() => {
-        if (tryPushAd()) {
-          observer?.disconnect();
-        }
-      }, 500);
-
-      const onResize = () => {
-        if (tryPushAd()) {
-          observer?.disconnect();
-          window.removeEventListener("resize", onResize);
-        }
-      };
-      window.addEventListener("resize", onResize);
-
-      cleanupRef.current = () => {
-        clearTimeout(timer);
         window.removeEventListener("resize", onResize);
-        observer?.disconnect();
-      };
-    });
-
-    const cleanupRef = { current: () => {} };
+      }
+    };
+    window.addEventListener("resize", onResize);
 
     return () => {
-      cancelAnimationFrame(rafId);
-      cleanupRef.current();
+      if (idleId !== null && typeof window !== "undefined" && "cancelIdleCallback" in window) {
+        (window as unknown as { cancelIdleCallback: (id: number) => void }).cancelIdleCallback(idleId);
+      }
+      if (timerId !== null) {
+        clearTimeout(timerId);
+      }
+      window.removeEventListener("resize", onResize);
+      observer?.disconnect();
     };
   }, []);
 
