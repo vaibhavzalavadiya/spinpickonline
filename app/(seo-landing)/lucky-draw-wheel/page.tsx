@@ -4,11 +4,12 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight } from "react-icons/fi";
 import { IoGiftOutline, IoTrophyOutline, IoSparklesOutline, IoShieldCheckmarkOutline } from "react-icons/io5";
-import { generateFAQSchema, generateWebApplicationSchema, generateMetadata } from "@/lib/seo";
+import { generateFAQSchema, generateWebApplicationSchema, generateMetadata, generateBreadcrumbSchema } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = generateMetadata({
-    title: "Lucky Draw Wheel – Free Online Winner Picker | Pick Winners Instantly",
-    description: "Run a free lucky draw in seconds. Pick random winners for corporate events, parties, and promotions. Fair, mobile-friendly, no signup required. Spin now.",
+    title: "Lucky Draw Online – Free Lucky Draw Wheel & Winner Picker",
+    description: "Run a free lucky draw online in seconds. Spin the lucky draw wheel to pick fair random winners for events, giveaways, and contests. 100% free with no signup.",
     canonical: "/lucky-draw-wheel",
 });
 
@@ -23,7 +24,15 @@ const LUCKY_DRAW_ENTRIES = [
 ];
 
 export default function LuckyDrawWheelPage() {
-    const webAppSchema = generateWebApplicationSchema();
+    const webAppSchema = generateWebApplicationSchema({
+        name: "Lucky Draw Online – Free Winner Picker Wheel",
+        url: `${SITE_CONFIG.url}/lucky-draw-wheel`,
+        description: "Free online lucky draw wheel to pick random winners for events, giveaways, and contests.",
+    });
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: "Home", item: SITE_CONFIG.url },
+        { name: "Lucky Draw Wheel", item: `${SITE_CONFIG.url}/lucky-draw-wheel` },
+    ]);
     const faqSchema = generateFAQSchema([
         {
             question: "How does the lucky draw wheel ensure fairness?",
@@ -44,6 +53,10 @@ export default function LuckyDrawWheelPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
             <script
                 type="application/ld+json"

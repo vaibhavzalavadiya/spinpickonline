@@ -4,11 +4,11 @@ import { FiUserPlus, FiSettings, FiRotateCw, FiSave } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import { generateMetadata as genMeta } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
-import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
+import { generateFAQSchema, generateWebApplicationSchema, generateBreadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = genMeta({
-    title: "Classroom Spin Wheel – Free Teacher Random Picker | Student Selector",
-    description: "Free spin wheel for teachers. Pick random students, assign tasks, run classroom activities fairly. Used by thousands of teachers worldwide. No signup required.",
+    title: "Classroom Spin Wheel – Free Student Selector & Random Picker",
+    description: "Free classroom spin wheel for teachers. Pick random students, assign tasks, and run activities fairly. 100% free with no account required.",
     canonical: "/classroom-activities",
 });
 
@@ -23,7 +23,15 @@ const CLASSROOM_ENTRIES = [
 
 export default function ClassroomActivitiesPage() {
     // Generate schemas for SEO
-    const webAppSchema = generateWebApplicationSchema();
+    const webAppSchema = generateWebApplicationSchema({
+        name: "Classroom Spin Wheel – Teacher Random Name Picker",
+        url: `${SITE_CONFIG.url}/classroom-activities`,
+        description: "Free random student name picker and classroom activities spinner for teachers.",
+    });
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: "Home", item: SITE_CONFIG.url },
+        { name: "Classroom Activities", item: `${SITE_CONFIG.url}/classroom-activities` },
+    ]);
     const faqSchema = generateFAQSchema([
         {
             question: "Is this random name picker truly fair for students?",
@@ -48,6 +56,10 @@ export default function ClassroomActivitiesPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
             <script
                 type="application/ld+json"

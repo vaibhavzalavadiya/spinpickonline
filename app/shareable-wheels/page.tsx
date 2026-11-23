@@ -3,18 +3,26 @@ import { WheelPageTemplate } from "@/components/WheelPageTemplate";
 import { CallToAction } from "@/components/CallToAction";
 import { generateMetadata as genMeta } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
-import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
+import { generateFAQSchema, generateWebApplicationSchema, generateBreadcrumbSchema } from "@/lib/seo";
 import Link from "next/link";
 import { FiLink, FiShare2, FiSave, FiUsers, FiArrowRight } from "react-icons/fi";
 
 export const metadata: Metadata = genMeta({
-    title: "Shareable Spin Wheel – Free Create & Share Custom Wheels | SpinPickOnline",
-    description: "Create a custom spin wheel and share it instantly via link. Free shareable wheel for teachers, teams, and giveaways. No signup needed. Share with anyone.",
+    title: "Spin Wheel – Free Custom Random Picker & Shareable Wheel | SpinPickOnline",
+    description: "Free spin wheel for names, numbers, raffles & decisions. Spin instantly, customize colors, and share permanent links with zero signup. 100% fair and fast.",
     canonical: "/shareable-wheels",
 });
 
 export default function ShareableWheelsPage() {
-    const webAppSchema = generateWebApplicationSchema();
+    const webAppSchema = generateWebApplicationSchema({
+        name: "Spin Wheel – Free Custom Random Picker",
+        url: `${SITE_CONFIG.url}/shareable-wheels`,
+        description: "Free online custom spin wheel and random picker for names, raffles, and team decisions.",
+    });
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: "Home", item: SITE_CONFIG.url },
+        { name: "Spin Wheel", item: `${SITE_CONFIG.url}/shareable-wheels` },
+    ]);
     const faqSchema = generateFAQSchema([
         {
             question: "How do I share my spin wheel with others?",
@@ -39,6 +47,10 @@ export default function ShareableWheelsPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
             <script
                 type="application/ld+json"
@@ -265,6 +277,40 @@ export default function ShareableWheelsPage() {
                     </div>
                 </div>
             </section>
+            {/* Guides & Fair Selection Resources */}
+            <section className="bg-white py-12 lg:py-16 border-t border-gray-200">
+                <div className="container mx-auto px-4">
+                    <h2 className="md:text-3xl text-xl font-bold text-gray-900 md:mb-4 mb-2 text-center">
+                        Guides & Fair Selection Resources
+                    </h2>
+                    <p className="text-gray-600 text-sm md:text-base text-center max-w-2xl mx-auto mb-8">
+                        Explore expert guides on running fair giveaways, managing group decisions, and building engagement with custom spin wheels.
+                    </p>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <Link href="/guides/classroom-engagement-strategies" className="bg-gray-50 p-5 rounded-xl border border-gray-200 hover:border-blue-400 hover:shadow-md transition-all group">
+                            <span className="text-2xl mb-2 block">🎯</span>
+                            <h3 className="font-bold text-gray-900 text-base mb-1 group-hover:text-blue-600 transition-colors">Classroom Engagement</h3>
+                            <p className="text-xs text-gray-600 line-clamp-3">Proven strategies for boosting student attention using interactive spin wheels and random draws.</p>
+                        </Link>
+                        <Link href="/guides/fair-random-selection" className="bg-gray-50 p-5 rounded-xl border border-gray-200 hover:border-blue-400 hover:shadow-md transition-all group">
+                            <span className="text-2xl mb-2 block">⚖️</span>
+                            <h3 className="font-bold text-gray-900 text-base mb-1 group-hover:text-blue-600 transition-colors">Fair Random Selection</h3>
+                            <p className="text-xs text-gray-600 line-clamp-3">How cryptographic random number generation ensures verifiable, audit-proof raffle results.</p>
+                        </Link>
+                        <Link href="/blog/spin-wheel-for-giveaways" className="bg-gray-50 p-5 rounded-xl border border-gray-200 hover:border-blue-400 hover:shadow-md transition-all group">
+                            <span className="text-2xl mb-2 block">🎁</span>
+                            <h3 className="font-bold text-gray-900 text-base mb-1 group-hover:text-blue-600 transition-colors">Giveaway Spin Wheels</h3>
+                            <p className="text-xs text-gray-600 line-clamp-3">Step-by-step instructions for hosting fair giveaway drawings for social media and events.</p>
+                        </Link>
+                        <Link href="/blog/how-to-run-instagram-giveaway" className="bg-gray-50 p-5 rounded-xl border border-gray-200 hover:border-blue-400 hover:shadow-md transition-all group">
+                            <span className="text-2xl mb-2 block">📸</span>
+                            <h3 className="font-bold text-gray-900 text-base mb-1 group-hover:text-blue-600 transition-colors">Instagram Giveaways</h3>
+                            <p className="text-xs text-gray-600 line-clamp-3">Best practices for picking random winners on Instagram, rules templates, and compliance.</p>
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
             <CallToAction />
         </>
     );

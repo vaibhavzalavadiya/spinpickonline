@@ -4,11 +4,12 @@ import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight, FiUsers, FiGift, FiZap, FiShare2 } from "react-icons/fi";
 import { IoPersonOutline, IoSchoolOutline, IoTrophyOutline, IoGameControllerOutline, IoShieldCheckmarkOutline, IoInfiniteOutline } from "react-icons/io5";
-import { generateFAQSchema, generateWebApplicationSchema, generateHowToSchema, generateMetadata } from "@/lib/seo";
+import { generateFAQSchema, generateWebApplicationSchema, generateHowToSchema, generateMetadata, generateBreadcrumbSchema } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = generateMetadata({
-    title: "Wheel of Names – Free Random Name Spinner Wheel | Pick Instantly",
-    description: "Spin the wheel of names and pick a random name instantly. Free name wheel for teachers, giveaways, and team selection. No signup, unlimited names.",
+    title: "Wheel of Names – Free Random Name Picker Wheel Online",
+    description: "Spin the free wheel of names to pick random winners, students, or raffle entries instantly. Unlimited names, winner removal mode, and zero signup required.",
     canonical: "/wheel-of-names",
 });
 
@@ -23,7 +24,15 @@ const NAME_ENTRIES = [
 ];
 
 export default function WheelOfNamesPage() {
-    const webAppSchema = generateWebApplicationSchema();
+    const webAppSchema = generateWebApplicationSchema({
+        name: "Wheel of Names – Free Random Name Picker Wheel",
+        url: `${SITE_CONFIG.url}/wheel-of-names`,
+        description: "Spin a free wheel of names to randomly pick a winner, student, or team member in seconds.",
+    });
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: "Home", item: SITE_CONFIG.url },
+        { name: "Wheel of Names", item: `${SITE_CONFIG.url}/wheel-of-names` },
+    ]);
     const howToSchema = generateHowToSchema({
         name: "How to Use the Wheel of Names",
         description: "Spin a free wheel of names to randomly pick a winner, student, or team member in seconds.",
@@ -61,6 +70,10 @@ export default function WheelOfNamesPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
             <script
                 type="application/ld+json"

@@ -264,6 +264,25 @@ export default function YesNoWheel() {
                                     <span>Share Wheel</span>
                                 </button>
                             </div>
+
+                            {/* Alternative Decision Pickers */}
+                            <div className="pt-2 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                                <span className="font-medium text-gray-400">Other Pickers:</span>
+                                <div className="flex gap-2">
+                                    <a
+                                        href="/flip-a-coin"
+                                        className="px-2.5 py-1 bg-gray-50 hover:bg-blue-50 hover:text-blue-600 rounded-lg border border-gray-200 transition-colors font-medium flex items-center gap-1"
+                                    >
+                                        <span>🪙 Flip Coin</span>
+                                    </a>
+                                    <a
+                                        href="/dice-roller"
+                                        className="px-2.5 py-1 bg-gray-50 hover:bg-blue-50 hover:text-blue-600 rounded-lg border border-gray-200 transition-colors font-medium flex items-center gap-1"
+                                    >
+                                        <span>🎲 Dice Roller</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

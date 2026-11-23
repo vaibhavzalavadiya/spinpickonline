@@ -172,6 +172,11 @@ export default function ResultModal({
               )}
             </div>
 
+            {/* Subtle bookmark tip */}
+            <p className="text-[11px] lg:block hidden text-gray-400 mt-3 text-center">
+              💡 Tip: Press <kbd className="px-1 py-0.5 bg-gray-100 border border-gray-200 rounded text-gray-600 font-mono text-[10px]">Ctrl+D</kbd> or bookmark to save this wheel for later.
+            </p>
+
 
           </div>
         </div>

@@ -4,6 +4,7 @@ import { SITE_CONFIG } from "@/lib/constants";
 import { FiZap, FiTarget, FiSmile, FiSmartphone, FiArrowRight, FiCheckCircle } from "react-icons/fi";
 import Link from "next/link";
 import YesNoWheel from "@/components/YesNoWheel";
+import { CallToAction } from "@/components/CallToAction";
 
 export const metadata: Metadata = generateMetadata({
   title: "Yes or No Wheel – Free Decision Spinner | Instant Answer",
@@ -367,6 +368,42 @@ export default function YesNoWheelPage() {
           </div>
         </div>
       </section>
+
+      {/* Decision-Making Tools & Guides */}
+      <section className="py-10 lg:py-16 bg-gray-50 border-t border-gray-200">
+        <div className="container mx-auto px-4">
+          <h2 className="sm:text-2xl md:text-3xl text-xl font-bold text-gray-900 mb-4 text-center">
+            More Random Decision Tools & Guides
+          </h2>
+          <p className="text-gray-600 text-sm md:text-base text-center max-w-2xl mx-auto mb-8">
+            Explore alternative randomizers and science-backed strategies for fast, regret-free decision making.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Link href="/flip-a-coin" className="bg-white p-5 rounded-xl border-2 border-gray-200 hover:border-blue-400 hover:shadow-md transition-all group">
+              <span className="text-2xl mb-2 block">🪙</span>
+              <h3 className="font-bold text-gray-900 text-base mb-1 group-hover:text-blue-600 transition-colors">Flip a Coin</h3>
+              <p className="text-xs text-gray-600 line-clamp-3">3D coin toss simulator with heads or tails odds, streak tracking, and instant results.</p>
+            </Link>
+            <Link href="/dice-roller" className="bg-white p-5 rounded-xl border-2 border-gray-200 hover:border-blue-400 hover:shadow-md transition-all group">
+              <span className="text-2xl mb-2 block">🎲</span>
+              <h3 className="font-bold text-gray-900 text-base mb-1 group-hover:text-blue-600 transition-colors">Dice Roller</h3>
+              <p className="text-xs text-gray-600 line-clamp-3">Roll 6-sided dice, D20, or custom polyhedral dice with sum calculations.</p>
+            </Link>
+            <Link href="/blog/decision-making-tips" className="bg-white p-5 rounded-xl border-2 border-gray-200 hover:border-blue-400 hover:shadow-md transition-all group">
+              <span className="text-2xl mb-2 block">💡</span>
+              <h3 className="font-bold text-gray-900 text-base mb-1 group-hover:text-blue-600 transition-colors">Decision Making Tips</h3>
+              <p className="text-xs text-gray-600 line-clamp-3">Science-backed techniques to eliminate decision fatigue and make confident choices fast.</p>
+            </Link>
+            <Link href="/blog/overcoming-choice-paralysis" className="bg-white p-5 rounded-xl border-2 border-gray-200 hover:border-blue-400 hover:shadow-md transition-all group">
+              <span className="text-2xl mb-2 block">⚡</span>
+              <h3 className="font-bold text-gray-900 text-base mb-1 group-hover:text-blue-600 transition-colors">Overcome Choice Paralysis</h3>
+              <p className="text-xs text-gray-600 line-clamp-3">How randomizers help short-circuit overthinking when you are stuck between options.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <CallToAction />
     </div>
   );
 }

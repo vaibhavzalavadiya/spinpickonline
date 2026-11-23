@@ -5,15 +5,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
 
   // Use a fixed date that reflects the actual last deployment/content update.
-  // UPDATE this date whenever you make meaningful content changes and deploy.
-  // Using new Date() was wrong — it told Google every page changed on every crawl,
-  // causing Google to distrust our lastmod values entirely.
-  const lastContentUpdate = new Date("2026-10-24T00:00:00Z");
+  const lastContentUpdate = new Date("2026-11-23T00:00:00Z");
 
   // Core tool pages (highest priority)
   const corePages = [
     { path: "", priority: 1, changeFrequency: "daily" as const },
     { path: "/wheel", priority: 0.95, changeFrequency: "daily" as const },
+    { path: "/shareable-wheels", priority: 0.95, changeFrequency: "daily" as const },
+    { path: "/team-picker", priority: 0.95, changeFrequency: "daily" as const },
     { path: "/random-picker-wheel", priority: 0.9, changeFrequency: "weekly" as const },
     { path: "/name-picker", priority: 0.9, changeFrequency: "weekly" as const },
     { path: "/name-spinner", priority: 0.9, changeFrequency: "weekly" as const },
@@ -58,7 +57,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/nba-team-wheel",
     "/football-club-picker",
     // Dedicated tool pages
-    "/team-picker",
     "/classroom-activities",
     "/giveaway-winner",
     // International language pages
@@ -113,7 +111,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // NOTE: Thin template pages (lunch-decisions, chore-assignment, task-assignment,
-  // presentation-picker, customization, mobile-friendly, shareable-wheels,
+  // presentation-picker, customization, mobile-friendly,
   // fair-randomization) are intentionally excluded from the sitemap.
   // They still exist as routes via [slug] but we don't ask Google to index them
   // because they use generic template content and dilute crawl quality signals.

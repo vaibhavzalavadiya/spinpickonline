@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import { FiUsers, FiHash, FiRotateCw, FiShare2 } from "react-icons/fi";
 import { CallToAction } from "@/components/CallToAction";
 import { generateMetadata as genMeta, generateBreadcrumbSchema, generateHowToSchema } from "@/lib/seo";
@@ -7,8 +8,8 @@ import { generateFAQSchema, generateWebApplicationSchema } from "@/lib/seo";
 import TeamPickerWheel from "@/components/TeamPickerWheel";
 
 export const metadata: Metadata = genMeta({
-    title: "Random Team Picker – Free Team Generator Wheel | Split Groups Fast",
-    description: "Divide people into random teams instantly. Free team picker wheel for sports, classrooms, offices and events. Fair, fast, no signup. Works on any device.",
+    title: "Team Picker Wheel – Free Random Team Generator & Group Maker",
+    description: "Generate balanced random teams instantly with our free team picker wheel. Fair group maker for sports, classrooms, games, and events with no signup needed.",
     canonical: "/team-picker",
 });
 
@@ -306,6 +307,41 @@ export default function TeamPickerPage() {
                     </div>
                 </div>
             </section>
+
+            {/* Classroom & Team Building Resources */}
+            <section className="bg-gray-50 py-12 lg:py-16 border-t border-gray-200">
+                <div className="container mx-auto px-4">
+                    <h2 className="md:text-3xl text-xl font-bold text-gray-900 md:mb-4 mb-2 text-center">
+                        Classroom & Team Building Resources
+                    </h2>
+                    <p className="text-gray-600 text-sm md:text-base text-center max-w-2xl mx-auto mb-8">
+                        Learn how educators and team leaders use randomized wheels for fairness, active participation, and memorable group activities.
+                    </p>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <Link href="/blog/wheel-of-fortune-classroom" className="bg-white p-5 rounded-xl border-2 border-gray-200 hover:border-blue-400 hover:shadow-md transition-all group">
+                            <span className="text-2xl mb-2 block">🎓</span>
+                            <h3 className="font-bold text-gray-900 text-base mb-1 group-hover:text-blue-600 transition-colors">15 Classroom Wheel Games</h3>
+                            <p className="text-xs text-gray-600 line-clamp-3">Wheel of Fortune-style activities for vocabulary, math facts, and student participation.</p>
+                        </Link>
+                        <Link href="/blog/random-name-picker-for-teachers" className="bg-white p-5 rounded-xl border-2 border-gray-200 hover:border-blue-400 hover:shadow-md transition-all group">
+                            <span className="text-2xl mb-2 block">📋</span>
+                            <h3 className="font-bold text-gray-900 text-base mb-1 group-hover:text-blue-600 transition-colors">Name Pickers for Teachers</h3>
+                            <p className="text-xs text-gray-600 line-clamp-3">Why randomized cold-calling increases classroom engagement by 30-50% with zero favoritism.</p>
+                        </Link>
+                        <Link href="/blog/best-team-building-activities" className="bg-white p-5 rounded-xl border-2 border-gray-200 hover:border-blue-400 hover:shadow-md transition-all group">
+                            <span className="text-2xl mb-2 block">🤝</span>
+                            <h3 className="font-bold text-gray-900 text-base mb-1 group-hover:text-blue-600 transition-colors">Team Building Activities</h3>
+                            <p className="text-xs text-gray-600 line-clamp-3">High-energy team building games for corporate workshops, classrooms, and sports squads.</p>
+                        </Link>
+                        <Link href="/blog/virtual-team-building-ideas" className="bg-white p-5 rounded-xl border-2 border-gray-200 hover:border-blue-400 hover:shadow-md transition-all group">
+                            <span className="text-2xl mb-2 block">💻</span>
+                            <h3 className="font-bold text-gray-900 text-base mb-1 group-hover:text-blue-600 transition-colors">Virtual Team Games</h3>
+                            <p className="text-xs text-gray-600 line-clamp-3">Engaging remote icebreakers and online team randomizer ideas for Zoom and Slack teams.</p>
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
             <CallToAction />
 
         </>
