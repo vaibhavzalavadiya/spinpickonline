@@ -33,7 +33,7 @@ export default function Footer() {
 
           {/* Use Cases */}
           <div>
-            <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Use Cases</h4>
+            <p className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Use Cases</p>
             <ul className="space-y-3">
               <li>
                 <Link href="/random-picker-wheel" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
@@ -76,7 +76,7 @@ export default function Footer() {
 
           {/* Features */}
           <div>
-            <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Features</h4>
+            <p className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Features</p>
             <ul className="space-y-3">
               <li>
                 <Link href="/customization" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
@@ -103,6 +103,30 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/features" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 bg-purple-600 rounded-full group-hover:w-2 transition-all"></span>
+                  All Features
+                </Link>
+              </li>
+              <li>
+                <Link href="/embed" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 bg-purple-600 rounded-full group-hover:w-2 transition-all"></span>
+                  Embed &amp; OBS Overlay
+                </Link>
+              </li>
+              <li>
+                <Link href="/random-letter-generator" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 bg-purple-600 rounded-full group-hover:w-2 transition-all"></span>
+                  Random Letter Generator
+                </Link>
+              </li>
+              <li>
+                <Link href="/random-number-wheel/1-100" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 bg-purple-600 rounded-full group-hover:w-2 transition-all"></span>
+                  Number Wheel (1–100)
+                </Link>
+              </li>
+              <li>
                 <Link href="/tournament-draw-generator" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 bg-purple-600 rounded-full group-hover:w-2 transition-all"></span>
                   Tournament Draw
@@ -113,7 +137,7 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Resources</h4>
+            <p className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Resources</p>
             <ul className="space-y-3">
               <li>
                 <Link href="/blog" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
@@ -131,6 +155,24 @@ export default function Footer() {
                 <Link href="/guides/spin-wheel-tips" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 bg-green-600 rounded-full group-hover:w-2 transition-all"></span>
                   Spin Wheel Tips
+                </Link>
+              </li>
+              <li>
+                <Link href="/guides/fair-random-selection" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 bg-green-600 rounded-full group-hover:w-2 transition-all"></span>
+                  Fair RNG Explained
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog/wheel-of-fortune-classroom" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 bg-green-600 rounded-full group-hover:w-2 transition-all"></span>
+                  Classroom Wheel Guide
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog/random-name-picker-for-teachers" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 bg-green-600 rounded-full group-hover:w-2 transition-all"></span>
+                  Teacher Name Picker
                 </Link>
               </li>
               <li>

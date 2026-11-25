@@ -14,7 +14,7 @@ export const metadata: Metadata = genMeta({
 export default function HowItWorksPage() {
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", item: SITE_CONFIG.url },
-    { name: "How It Works", item: `/how-it-works` },
+    { name: "How It Works", item: `${SITE_CONFIG.url}/how-it-works` },
   ]);
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-6 sm:py-10">

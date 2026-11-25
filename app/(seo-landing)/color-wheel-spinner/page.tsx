@@ -14,14 +14,42 @@ export const metadata: Metadata = generateMetadata({
 });
 
 const COLOR_ENTRIES = [
-    { id: "1", label: "Red 🔴", color: "#ef4444" },
-    { id: "2", label: "Blue 🔵", color: "#3b82f6" },
-    { id: "3", label: "Green 🟢", color: "#22c55e" },
-    { id: "4", label: "Yellow 🟡", color: "#eab308" },
-    { id: "5", label: "Purple 🟣", color: "#a855f7" },
-    { id: "6", label: "Orange 🟠", color: "#f97316" },
-    { id: "7", label: "Pink 💗", color: "#ec4899" },
-    { id: "8", label: "Cyan 💎", color: "#06b6d4" },
+    { id: "1", label: "Red", color: "#ef4444" },
+    { id: "2", label: "Blue", color: "#3b82f6" },
+    { id: "3", label: "Green", color: "#22c55e" },
+    { id: "4", label: "Yellow", color: "#eab308" },
+    { id: "5", label: "Purple", color: "#a855f7" },
+    { id: "6", label: "Orange", color: "#f97316" },
+    { id: "7", label: "Pink", color: "#ec4899" },
+    { id: "8", label: "Cyan", color: "#06b6d4" },
+];
+
+const COLOR_PRESET_MODES = [
+    { id: "classic", label: "Classic Colors", entries: COLOR_ENTRIES },
+    {
+        id: "pastel",
+        label: "Soft Pastel",
+        entries: [
+            { id: "p1", label: "Rose Blush", color: "#fda4af" },
+            { id: "p2", label: "Sky Mist", color: "#93c5fd" },
+            { id: "p3", label: "Mint Leaf", color: "#86efac" },
+            { id: "p4", label: "Buttercream", color: "#fde047" },
+            { id: "p5", label: "Lavender", color: "#d8b4fe" },
+            { id: "p6", label: "Peach", color: "#fdba74" },
+        ],
+    },
+    {
+        id: "neon",
+        label: "Neon Pop",
+        entries: [
+            { id: "n1", label: "Electric Cyan", color: "#00e5ff" },
+            { id: "n2", label: "Hot Magenta", color: "#ff2a85" },
+            { id: "n3", label: "Laser Lime", color: "#a3e635" },
+            { id: "n4", label: "Solar Yellow", color: "#facc15" },
+            { id: "n5", label: "Ultraviolet", color: "#8b5cf6" },
+            { id: "n6", label: "Blaze Orange", color: "#ff6d00" },
+        ],
+    },
 ];
 
 export default function ColorWheelSpinnerPage() {
@@ -94,7 +122,12 @@ export default function ColorWheelSpinnerPage() {
                             Color Wheel Spinner – Random Color Picker
                         </h1>
                     </div>
-                    <HomeWheel defaultEntries={COLOR_ENTRIES} storageKey="colorWheelSpinnerState" />
+                    <HomeWheel
+                        defaultEntries={COLOR_ENTRIES}
+                        storageKey="colorWheelSpinnerState"
+                        presetModes={COLOR_PRESET_MODES}
+                        showColorHexCopy
+                    />
                 </div>
             </section>
 

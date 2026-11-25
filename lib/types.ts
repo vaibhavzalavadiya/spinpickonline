@@ -4,6 +4,7 @@ export interface WheelEntry {
   id: string;
   label: string;
   color: string;
+  weight?: number;
 }
 
 export interface WheelState {

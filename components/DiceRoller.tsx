@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { getSecureRandomInt } from "@/lib/wheel-utils";
+import { trackEvent } from "@/lib/analytics";
 
 interface DiceResult {
     value: number;
@@ -30,21 +32,13 @@ export default function DiceRoller() {
         // Animate through random values
         let animCount = 0;
         const animInterval = setInterval(() => {
-            const tempResults = Array.from({ length: diceCount }, () => {
-                const arr = new Uint32Array(1);
-                crypto.getRandomValues(arr);
-                return (arr[0] % sides) + 1;
-            });
+            const tempResults = Array.from({ length: diceCount }, () => getSecureRandomInt(sides) + 1);
             setResults(tempResults);
             animCount++;
             if (animCount >= 12) {
                 clearInterval(animInterval);
-                // Final roll with crypto
-                const finalResults = Array.from({ length: diceCount }, () => {
-                    const arr = new Uint32Array(1);
-                    crypto.getRandomValues(arr);
-                    return (arr[0] % sides) + 1;
-                });
+                // Final roll with rejection-sampled Web Crypto CSPRNG
+                const finalResults = Array.from({ length: diceCount }, () => getSecureRandomInt(sides) + 1);
                 setResults(finalResults);
                 setHistory((prev) => [
                     { value: finalResults.reduce((a, b) => a + b, 0), timestamp: Date.now() },
@@ -52,6 +46,11 @@ export default function DiceRoller() {
                 ]);
                 setTotalRolls((prev) => prev + 1);
                 setIsRolling(false);
+                trackEvent("tool_action", {
+                    tool_type: "dice_roller",
+                    dice_count: diceCount,
+                    sides,
+                });
             }
         }, 60);
     }, [isRolling, diceCount, sides]);
@@ -95,8 +94,10 @@ export default function DiceRoller() {
             {/* Controls */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <div className="flex items-center gap-3">
-                    <label className="text-sm font-medium text-gray-700">Dice:</label>
+                    <label htmlFor="dice-count-select" className="text-sm font-medium text-gray-700">Dice:</label>
                     <select
+                        id="dice-count-select"
+                        name="diceCount"
                         value={diceCount}
                         onChange={(e) => { setDiceCount(Number(e.target.value)); setResults([]); }}
                         className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
@@ -107,8 +108,10 @@ export default function DiceRoller() {
                     </select>
                 </div>
                 <div className="flex items-center gap-3">
-                    <label className="text-sm font-medium text-gray-700">Sides:</label>
+                    <label htmlFor="dice-sides-select" className="text-sm font-medium text-gray-700">Sides:</label>
                     <select
+                        id="dice-sides-select"
+                        name="diceSides"
                         value={sides}
                         onChange={(e) => { setSides(Number(e.target.value)); setResults([]); }}
                         className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"

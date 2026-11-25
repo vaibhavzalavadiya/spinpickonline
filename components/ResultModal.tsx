@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FiX, FiCopy, FiShare2 } from "react-icons/fi";
+import { FiX, FiCopy, FiShare2, FiSave } from "react-icons/fi";
 import { IoSparkles, IoTrophyOutline } from "react-icons/io5";
 import { MdOutlineCasino } from "react-icons/md";
 
@@ -10,6 +10,7 @@ interface ResultModalProps {
   onClose: () => void;
   onContinue: () => void;
   onRemove?: () => void;
+  onSaveWheel?: () => void;
   isOpen: boolean;
 }
 
@@ -18,6 +19,7 @@ export default function ResultModal({
   onClose,
   onContinue,
   onRemove,
+  onSaveWheel,
   isOpen,
 }: ResultModalProps) {
   const [copied, setCopied] = useState(false);
@@ -170,10 +172,21 @@ export default function ResultModal({
                   <span>Remove &quot;{result}&quot; and continue</span>
                 </button>
               )}
+
+              {onSaveWheel && (
+                <button
+                  type="button"
+                  onClick={onSaveWheel}
+                  className="w-full cursor-pointer md:text-xs text-xs px-4 py-2 bg-blue-50/70 hover:bg-blue-100 text-blue-700 border border-blue-200 font-semibold rounded-xl transition-all flex items-center justify-center gap-1.5"
+                >
+                  <FiSave className="text-sm" />
+                  <span>Save this list locally for next time</span>
+                </button>
+              )}
             </div>
 
             {/* Subtle bookmark tip */}
-            <p className="text-[11px] lg:block hidden text-gray-400 mt-3 text-center">
+            <p className="text-[11px] lg:block hidden text-gray-500 mt-3 text-center">
               💡 Tip: Press <kbd className="px-1 py-0.5 bg-gray-100 border border-gray-200 rounded text-gray-600 font-mono text-[10px]">Ctrl+D</kbd> or bookmark to save this wheel for later.
             </p>
 

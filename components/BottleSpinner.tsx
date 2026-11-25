@@ -4,6 +4,9 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { FiPlus, FiTrash2, FiRotateCcw, FiShuffle, FiVolume2, FiVolumeX, FiEdit2, FiCheck, FiX, FiPlay } from "react-icons/fi";
 import { IoSparkles, IoTrophyOutline, IoWineOutline } from "react-icons/io5";
 import { useSoundEffects } from "@/lib/useSoundEffects";
+import { getSecureRandom, getSecureRandomInt, shuffleArraySecure } from "@/lib/wheel-utils";
+import { trackEvent } from "@/lib/analytics";
+import AdSenseDisplay from "@/components/AdSenseDisplay";
 import ResultModal from "@/components/ResultModal";
 import Confetti from "@/components/Confetti";
 import Toast from "@/components/Toast";
@@ -106,16 +109,16 @@ export default function BottleSpinner() {
         const numPlayers = players.length;
         const anglePerPlayer = (2 * Math.PI) / numPlayers;
 
-        // Choose random target player
-        const targetIndex = Math.floor(Math.random() * numPlayers);
+        // Choose random target player via Web Crypto API
+        const targetIndex = getSecureRandomInt(numPlayers);
         // Angle pointing to that player (offset by small random jitter so it doesn't land dead center)
-        const jitter = (Math.random() * 0.4 - 0.2) * anglePerPlayer;
+        const jitter = (getSecureRandom() * 0.4 - 0.2) * anglePerPlayer;
         
         // In our coordinate system, 0 radians points UP (north) where index 0 is located.
         const targetAngle = targetIndex * anglePerPlayer + jitter;
 
-        // Full spins (between 6 and 9 full spins for dramatic suspense)
-        const extraSpins = 6 + Math.floor(Math.random() * 3);
+        // Full spins (between 6 and 8 full spins for dramatic suspense)
+        const extraSpins = 6 + getSecureRandomInt(3);
         const totalTargetRotation = rotation + (extraSpins * 2 * Math.PI) + (targetAngle - (rotation % (2 * Math.PI)));
 
         const startRotation = rotation;
@@ -155,6 +158,7 @@ export default function BottleSpinner() {
                 setShowConfetti(true);
                 setShowModal(true);
                 playWinFanfare();
+                trackEvent("tool_action", { tool_type: "spin_the_bottle", entry_count: players.length });
 
                 setTimeout(() => setShowConfetti(false), 4500);
             }
@@ -200,7 +204,7 @@ export default function BottleSpinner() {
 
     const shufflePlayers = () => {
         playClick();
-        const shuffled = [...players].sort(() => Math.random() - 0.5);
+        const shuffled = shuffleArraySecure(players);
         setPlayers(shuffled);
         savePlayersToStorage(shuffled);
         setToast({ message: "Shuffled players order!", type: "info" });
@@ -438,11 +442,14 @@ export default function BottleSpinner() {
                     </button>
 
                     {/* Quick Helper Subtitle */}
-                    <p className="text-xs text-gray-500 mt-2.5 text-center">
+                    <p className="text-xs text-gray-600 mt-2.5 text-center">
                         Tap the bottle or click <strong>SPIN THE BOTTLE</strong> to let fate choose!
                     </p>
 
-
+                    {/* Bounded Display Ad below controls on Mobile & Desktop */}
+                    <div className="w-full max-w-xl mt-6">
+                        <AdSenseDisplay slotId="6084518347" />
+                    </div>
                 </div>
 
                 {/* RIGHT: Control Panel (Entries & Results) */}
@@ -574,20 +581,24 @@ export default function BottleSpinner() {
                                         <div className="flex items-center gap-1">
                                             {editingId !== p.id && (
                                                 <button
+                                                    type="button"
                                                     onClick={() => startEditing(p)}
-                                                    className="p-1.5 text-gray-400 hover:text-blue-600 transition-colors"
+                                                    className="min-w-[36px] min-h-[36px] inline-flex items-center justify-center p-2 text-gray-600 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition-colors cursor-pointer"
                                                     title="Edit player name"
+                                                    aria-label={`Edit ${p.label}`}
                                                 >
-                                                    <FiEdit2 className="text-xs" />
+                                                    <FiEdit2 className="text-sm" />
                                                 </button>
                                             )}
                                             {players.length > 2 && (
                                                 <button
+                                                    type="button"
                                                     onClick={() => removePlayer(p.id)}
-                                                    className="p-1.5 text-gray-400 hover:text-rose-600 transition-colors"
+                                                    className="min-w-[36px] min-h-[36px] inline-flex items-center justify-center p-2 text-gray-600 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition-colors cursor-pointer"
                                                     title="Remove player"
+                                                    aria-label={`Remove ${p.label}`}
                                                 >
-                                                    <FiTrash2 className="text-xs" />
+                                                    <FiTrash2 className="text-sm" />
                                                 </button>
                                             )}
                                         </div>

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { generateMetadata, generateWebApplicationSchema, generateFAQSchema, generateBreadcrumbSchema, generateHowToSchema } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
 import CoinFlip from "@/components/CoinFlip";
+import AdSenseDisplay from "@/components/AdSenseDisplay";
 import { CallToAction } from "@/components/CallToAction";
 import Link from "next/link";
 import { FiCheck, FiArrowRight, FiList, FiShield, FiTrendingUp } from "react-icons/fi";
@@ -90,12 +91,15 @@ export default function FlipACoinPage() {
               Flip a Coin Online – Free Coin Flip Simulator
             </h1>
             <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">
-              Need to make a fast decision or settle a bet? Use our fair, random 3D coin toss generator to get instant heads or tails results. Tap the coin or press Spacebar to flip!
+              Need to make a fast decision or settle a bet? Flip 1, 2, 3, or 5 coins at once or customize coin labels with our cryptographically fair 3D heads or tails coin toss generator.
             </p>
           </div>
 
           <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-md border border-gray-100 p-4 sm:p-8">
             <CoinFlip />
+          </div>
+          <div className="max-w-3xl mx-auto mt-6">
+            <AdSenseDisplay slotId="6084518347" />
           </div>
         </div>
       </section>
@@ -201,119 +205,6 @@ export default function FlipACoinPage() {
 
             {/* Comparison Matrix: Digital Simulator vs Google vs Physical Coin */}
             <div className="bg-white p-5 sm:p-7 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between">
-              <div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 flex items-center gap-2">
-                  <span>⚖️</span> Digital Simulator vs. Google vs. Physical Coin
-                </h3>
-                <p className="text-xs sm:text-sm text-gray-600 mb-4">
-                  How our online coin flipper compares to other ways of tossing a coin:
-                </p>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left text-xs sm:text-sm">
-                    <thead>
-                      <tr className="border-b border-gray-200 text-gray-700">
-                        <th className="py-2 font-semibold">Feature</th>
-                        <th className="py-2 font-semibold text-amber-700">SpinPickOnline</th>
-                        <th className="py-2 font-semibold text-gray-500">Google Coin</th>
-                        <th className="py-2 font-semibold text-gray-500">Physical Coin</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-100 text-gray-700">
-                      <tr>
-                        <td className="py-2.5 font-medium">Fairness</td>
-                        <td className="py-2.5 text-emerald-700 font-bold">100% Crypto Fair</td>
-                        <td className="py-2.5 text-gray-700">Standard Math</td>
-                        <td className="py-2.5 text-rose-600">51% Bias (Weight)</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2.5 font-medium">Session History</td>
-                        <td className="py-2.5 text-emerald-700 font-bold">✅ Live Stats &amp; History</td>
-                        <td className="py-2.5 text-rose-500">❌ No Tracking</td>
-                        <td className="py-2.5 text-rose-500">❌ Manual Count</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2.5 font-medium">Best of 3 / Stats</td>
-                        <td className="py-2.5 text-emerald-700 font-bold">✅ Heads/Tails Ratio %</td>
-                        <td className="py-2.5 text-rose-500">❌ None</td>
-                        <td className="py-2.5 text-rose-500">❌ None</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2.5 font-medium">Controls</td>
-                        <td className="py-2.5 text-emerald-700 font-bold">Tap, Button, Spacebar</td>
-                        <td className="py-2.5 text-gray-700">Click only</td>
-                        <td className="py-2.5 text-gray-700">Hand toss</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2.5 font-medium">No Coin Required</td>
-                        <td className="py-2.5 text-emerald-700 font-bold">✅ Any Device</td>
-                        <td className="py-2.5 text-emerald-700">✅ Browser</td>
-                        <td className="py-2.5 text-rose-500">❌ Need quarter</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <p className="mt-4 pt-3 border-t border-gray-100 text-xs text-gray-600 leading-relaxed">
-                Enjoy zero-bias randomness, full 3D physics animations, and instant session audits on any smartphone or desktop.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Unique Section: Streak Odds, Gambler's Fallacy & Comparison Matrix */}
-      <section className="py-10 lg:py-16 bg-white border-y border-gray-100">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center mb-8 sm:mb-12">
-            <span className="text-xs font-bold text-amber-700 uppercase tracking-widest bg-amber-50 px-3.5 py-1.5 rounded-full border border-amber-200 inline-block mb-3">
-              Probability &amp; Science
-            </span>
-            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-              Coin Toss Streak Odds &amp; Probability Matrix
-            </h2>
-            <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
-              What are the odds of flipping 5 Heads in a row? Understand the true mathematics of coin tossing and why the Gambler&apos;s Fallacy tricks our brains.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
-            {/* Streak Probability Table */}
-            <div className="bg-gradient-to-br from-gray-50 to-amber-50/40 p-5 sm:p-7 rounded-2xl border border-amber-200/80 shadow-sm flex flex-col justify-between">
-              <div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 flex items-center gap-2">
-                  <span>📊</span> Consecutive Streak Probabilities
-                </h3>
-                <p className="text-xs sm:text-sm text-gray-600 mb-4">
-                  The cumulative mathematical odds of flipping the same side multiple times consecutively:
-                </p>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left text-xs sm:text-sm">
-                    <thead>
-                      <tr className="border-b border-amber-200/70 text-gray-700">
-                        <th className="py-2 font-semibold">Consecutive Flips</th>
-                        <th className="py-2 font-semibold">Exact Formula</th>
-                        <th className="py-2 font-semibold">Odds</th>
-                        <th className="py-2 font-semibold">Percentage</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-amber-100/60 text-gray-800">
-                      <tr><td className="py-2 font-medium">1 Flip</td><td className="py-2 font-mono text-xs">(1/2)¹</td><td className="py-2">1 in 2</td><td className="py-2 font-bold text-amber-700">50.0%</td></tr>
-                      <tr><td className="py-2 font-medium">2 in a row</td><td className="py-2 font-mono text-xs">(1/2)²</td><td className="py-2">1 in 4</td><td className="py-2 font-bold text-amber-700">25.0%</td></tr>
-                      <tr><td className="py-2 font-medium">3 in a row</td><td className="py-2 font-mono text-xs">(1/2)³</td><td className="py-2">1 in 8</td><td className="py-2 font-bold text-amber-700">12.5%</td></tr>
-                      <tr><td className="py-2 font-medium">4 in a row</td><td className="py-2 font-mono text-xs">(1/2)⁴</td><td className="py-2">1 in 16</td><td className="py-2 font-bold text-amber-700">6.25%</td></tr>
-                      <tr><td className="py-2 font-medium">5 in a row</td><td className="py-2 font-mono text-xs">(1/2)⁵</td><td className="py-2">1 in 32</td><td className="py-2 font-bold text-amber-700">3.12%</td></tr>
-                      <tr><td className="py-2 font-medium">10 in a row</td><td className="py-2 font-mono text-xs">(1/2)¹⁰</td><td className="py-2">1 in 1,024</td><td className="py-2 font-bold text-amber-700">0.098%</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div className="mt-4 pt-3 border-t border-amber-200/60 text-xs text-gray-700 leading-relaxed bg-white/70 p-3 rounded-xl">
-                💡 <strong>The Gambler&apos;s Fallacy:</strong> Even if you flip Heads 9 times in a row, the 10th flip still has an <em>exact 50% probability</em> of landing on Heads! Coins have no memory.
-              </div>
-            </div>
-
-            {/* Comparison Matrix: Digital Simulator vs Google vs Physical Coin */}
-            <div className="bg-white p-4 sm:p-7 lg:rounded-2xl rounded-xl border border-gray-200 shadow-sm flex flex-col justify-between">
               <div>
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 flex items-center gap-2">
                   <span>⚖️</span> Digital Simulator vs. Google vs. Physical Coin

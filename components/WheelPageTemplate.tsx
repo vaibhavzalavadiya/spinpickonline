@@ -1,4 +1,5 @@
 
+import Link from "next/link";
 import HomeWheel from "@/components/HomeWheel";
 import { WheelEntry } from "@/lib/types";
 
@@ -80,6 +81,38 @@ export function WheelPageTemplate({
                     </div>
                 </section>
             )}
+
+            {/* Helpful Internal Links to Boost Discovery */}
+            <section className="py-6 bg-gray-50 border-t border-gray-100">
+                <div className="container mx-auto px-4 max-w-4xl text-center">
+                    <p className="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-3">
+                        Related Generators &amp; Teacher Resources
+                    </p>
+                    <div className="flex flex-wrap justify-center gap-2 text-xs">
+                        <Link href="/random-letter-generator" className="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-gray-700 hover:border-blue-400 hover:text-blue-700 font-medium transition-colors">
+                            Random Letter Generator
+                        </Link>
+                        <Link href="/random-number-wheel/1-100" className="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-gray-700 hover:border-blue-400 hover:text-blue-700 font-medium transition-colors">
+                            1–100 Number Wheel
+                        </Link>
+                        <Link href="/flip-a-coin" className="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-gray-700 hover:border-blue-400 hover:text-blue-700 font-medium transition-colors">
+                            Flip a Coin
+                        </Link>
+                        <Link href="/guides/how-to-use-random-picker-wheel" className="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-gray-700 hover:border-blue-400 hover:text-blue-700 font-medium transition-colors">
+                            How to Use Guide
+                        </Link>
+                        <Link href="/blog/wheel-of-fortune-classroom" className="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-gray-700 hover:border-blue-400 hover:text-blue-700 font-medium transition-colors">
+                            Classroom Review Games
+                        </Link>
+                        <Link href="/blog/random-name-picker-for-teachers" className="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-gray-700 hover:border-blue-400 hover:text-blue-700 font-medium transition-colors">
+                            Teacher Picker Tips
+                        </Link>
+                        <Link href="/features" className="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-gray-700 hover:border-blue-400 hover:text-blue-700 font-medium transition-colors">
+                            All Features
+                        </Link>
+                    </div>
+                </div>
+            </section>
 
             {children}
         </div>

@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import HomeWheel from "@/components/HomeWheel";
+import DocumentLangSync from "@/components/DocumentLangSync";
 import { CallToAction } from "@/components/CallToAction";
 import { generateMetadata as genMeta, HOMEPAGE_HREFLANG } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
@@ -12,6 +13,7 @@ export const metadata: Metadata = genMeta({
     description: "Putar roda keberuntungan gratis secara online. Pengacak nama, undian online, spin wheel untuk kelas, event dan keputusan grup. Tanpa daftar, bisa di HP.",
     canonical: "/roda-putar",
     languages: HOMEPAGE_HREFLANG,
+    locale: "id_ID",
 });
 
 const RODA_PUTAR_ENTRIES = [
@@ -54,6 +56,7 @@ export default function RodaPutarPage() {
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white" lang="id">
+            <DocumentLangSync lang="id" />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
@@ -72,7 +75,7 @@ export default function RodaPutarPage() {
                             Tambahkan pilihan, putar <strong>roda putar</strong>, dan dapatkan hasil acak seketika. Gratis, tanpa daftar, bisa di HP semua perangkat.
                         </p>
                     </div>
-                    <HomeWheel defaultEntries={RODA_PUTAR_ENTRIES} storageKey="rodaPutarState" />
+                    <HomeWheel defaultEntries={RODA_PUTAR_ENTRIES} storageKey="rodaPutarState" locale="id" />
                 </div>
             </section>
 

@@ -11,8 +11,15 @@
 body {
   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
 }
-input,textarea,button,a{
-  outline: unset ;
+:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+input:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+  outline: none;
 }
 .container {
   max-width: 1300px;

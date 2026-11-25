@@ -13,18 +13,25 @@ export const metadata: Metadata = generateMetadata({
 });
 
 
-// Default number entries (1-10)
-const NUMBER_ENTRIES = [
-    { id: "1", label: "1", color: "#3b82f6" },   // Blue
-    { id: "2", label: "2", color: "#ef4444" },   // Red
-    { id: "3", label: "3", color: "#22c55e" },   // Green
-    { id: "4", label: "4", color: "#f59e0b" },   // Amber
-    { id: "5", label: "5", color: "#8b5cf6" },   // Purple
-    { id: "6", label: "6", color: "#ec4899" },   // Pink
-    { id: "7", label: "7", color: "#14b8a6" },   // Teal
-    { id: "8", label: "8", color: "#f97316" },   // Orange
-    { id: "9", label: "9", color: "#6366f1" },   // Indigo
-    { id: "10", label: "10", color: "#84cc16" }, // Lime
+const NUMBER_PALETTE = [
+    "#3b82f6", "#ef4444", "#22c55e", "#f59e0b", "#8b5cf6",
+    "#ec4899", "#14b8a6", "#f97316", "#6366f1", "#84cc16",
+];
+
+function buildNumberEntries(max: number) {
+    return Array.from({ length: max }, (_, i) => ({
+        id: String(i + 1),
+        label: String(i + 1),
+        color: NUMBER_PALETTE[i % NUMBER_PALETTE.length],
+    }));
+}
+
+const NUMBER_ENTRIES = buildNumberEntries(10);
+const NUMBER_PRESET_MODES = [
+    { id: "1-10", label: "1 to 10", entries: NUMBER_ENTRIES },
+    { id: "1-20", label: "1 to 20", entries: buildNumberEntries(20) },
+    { id: "1-50", label: "1 to 50", entries: buildNumberEntries(50) },
+    { id: "1-100", label: "1 to 100", entries: buildNumberEntries(100) },
 ];
 
 export default function RandomNumberWheelPage() {
@@ -62,7 +69,27 @@ export default function RandomNumberWheelPage() {
                             Random Number Wheel – Free Number Spinner
                         </h1>
                     </div>
-                    <HomeWheel defaultEntries={NUMBER_ENTRIES} storageKey="randomNumberWheelState" />
+                    <div className="flex flex-wrap justify-center gap-2 mb-5">
+                        {[
+                            { href: "/random-number-wheel/1-10", label: "Dedicated 1–10 Wheel" },
+                            { href: "/random-number-wheel/1-20", label: "Dedicated 1–20 Wheel" },
+                            { href: "/random-number-wheel/1-50", label: "Dedicated 1–50 Wheel" },
+                            { href: "/random-number-wheel/1-100", label: "Dedicated 1–100 Wheel" },
+                        ].map((item) => (
+                            <Link
+                                key={item.href}
+                                href={item.href}
+                                className="px-3 py-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold rounded-full border border-indigo-200 transition-colors"
+                            >
+                                {item.label} →
+                            </Link>
+                        ))}
+                    </div>
+                    <HomeWheel
+                        defaultEntries={NUMBER_ENTRIES}
+                        storageKey="randomNumberWheelState"
+                        presetModes={NUMBER_PRESET_MODES}
+                    />
                 </div>
             </section>
 

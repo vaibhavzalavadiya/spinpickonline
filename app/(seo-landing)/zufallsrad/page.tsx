@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import HomeWheel from "@/components/HomeWheel";
+import DocumentLangSync from "@/components/DocumentLangSync";
 import { CallToAction } from "@/components/CallToAction";
 import { generateMetadata as genMeta, HOMEPAGE_HREFLANG } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
@@ -12,6 +13,7 @@ export const metadata: Metadata = genMeta({
     description: "Drehen Sie das Glücksrad kostenlos online. Zufallsgenerator für Namen, Verlosung online, Entscheidungsrad. Ohne Anmeldung, für Schule, Events und Gruppen.",
     canonical: "/zufallsrad",
     languages: HOMEPAGE_HREFLANG,
+    locale: "de_DE",
 });
 
 const GLUECKSRAD_ENTRIES = [
@@ -54,6 +56,7 @@ export default function ZufallsradPage() {
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white" lang="de">
+            <DocumentLangSync lang="de" />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
@@ -72,7 +75,7 @@ export default function ZufallsradPage() {
                             Optionen eintragen, das <strong>Glücksrad</strong> drehen und sofort zufällig auswählen. Kostenlos, ohne Anmeldung, auf allen Geräten.
                         </p>
                     </div>
-                    <HomeWheel defaultEntries={GLUECKSRAD_ENTRIES} storageKey="zufallsradState" />
+                    <HomeWheel defaultEntries={GLUECKSRAD_ENTRIES} storageKey="zufallsradState" locale="de" />
                 </div>
             </section>
 

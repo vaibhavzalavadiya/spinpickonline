@@ -34,15 +34,13 @@ const aboutSchema = {
         "name": SITE_CONFIG.name,
         "url": SITE_CONFIG.url,
         "description": SITE_CONFIG.description,
-        "foundingDate": "2024",
+        "foundingDate": "2026",
         "founder": {
             "@type": "Person",
-            // TODO: Replace with your real name
             "name": "Vaibhav Zalavadiya",
         },
         "address": {
             "@type": "PostalAddress",
-            // TODO: Replace with your actual location
             "addressLocality": "India",
             "addressCountry": "IN"
         },
@@ -50,8 +48,7 @@ const aboutSchema = {
             "@type": "ContactPoint",
             "contactType": "customer service",
             "url": `${SITE_CONFIG.url}/contact`,
-            // TODO: Replace with your real email
-            "email": "hello@spinpickonline.com"
+            "email": "support@spinpickonline.com"
         }
     }
 };
@@ -116,24 +113,21 @@ export default function AboutPage() {
                             <div className="md:flex">
                                 <div className="md:w-2/5 bg-gradient-to-br from-blue-500 to-purple-600 p-8 flex flex-col items-center justify-center text-center">
                                     <div className="w-28 h-28 md:w-36 md:h-36 bg-white/20 rounded-full flex items-center justify-center mb-4 border-4 border-white/30">
-                                        {/* TODO: Replace with your actual photo using Next.js Image component */}
                                         <span className="text-5xl md:text-6xl text-white font-bold">VZ</span>
                                     </div>
-                                    {/* TODO: Replace name below with your real name */}
                                     <h3 className="text-xl md:text-2xl font-bold text-white mb-1">Vaibhav Zalavadiya</h3>
                                     <p className="text-blue-100 text-sm mb-4">Founder &amp; Developer</p>
                                     <div className="flex gap-3">
-                                        <a href="mailto:hello@spinpickonline.com" className="w-9 h-9 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors" aria-label="Email">
+                                        <a href="mailto:support@spinpickonline.com" className="w-9 h-9 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors" aria-label="Email">
                                             <FiMail className="text-sm" />
                                         </a>
-                                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors" aria-label="GitHub">
+                                        <a href="https://github.com/vaibhavzalavadiya" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors" aria-label="GitHub">
                                             <IoLogoGithub className="text-sm" />
                                         </a>
                                     </div>
                                 </div>
                                 <div className="md:w-3/5 p-6 md:p-8">
                                     <h4 className="font-bold text-gray-900 text-lg mb-3">Hi there! 👋</h4>
-                                    {/* TODO: Personalize the story below with your real background */}
                                     <p className="text-sm text-gray-600 leading-relaxed mb-4">
                                         I&apos;m Vaibhav, a web developer from India. I built SpinPickOnline because I was frustrated with the state of random picker tools online. Every tool I found was either loaded with intrusive ads, required a paid account for basic features, or looked like it was built in 2005.
                                     </p>
@@ -590,16 +584,14 @@ export default function AboutPage() {
                                 <h3 className="font-bold text-gray-900 mb-1 text-sm">Contact Form</h3>
                                 <p className="text-xs text-gray-500">Send us a message anytime</p>
                             </Link>
-                            <a href="mailto:hello@spinpickonline.com" className="bg-white p-5 rounded-xl border border-gray-200 hover:shadow-md hover:border-green-300 transition-all group">
+                            <a href="mailto:support@spinpickonline.com" className="bg-white p-5 rounded-xl border border-gray-200 hover:shadow-md hover:border-green-300 transition-all group">
                                 <FiMail className="text-2xl text-green-500 mx-auto mb-3 group-hover:scale-110 transition-transform" />
                                 <h3 className="font-bold text-gray-900 mb-1 text-sm">Email Us</h3>
-                                {/* TODO: Replace with your real email */}
-                                <p className="text-xs text-gray-500">hello@spinpickonline.com</p>
+                                <p className="text-xs text-gray-500">support@spinpickonline.com</p>
                             </a>
                             <div className="bg-white p-5 rounded-xl border border-gray-200">
                                 <FiMapPin className="text-2xl text-purple-500 mx-auto mb-3" />
                                 <h3 className="font-bold text-gray-900 mb-1 text-sm">Location</h3>
-                                {/* TODO: Replace with your real location */}
                                 <p className="text-xs text-gray-500">India</p>
                             </div>
                         </div>
@@ -626,12 +618,12 @@ export default function AboutPage() {
                             {[
                                 { q: "What is SpinPickOnline and what does it offer?", a: "SpinPickOnline is a free online random picker wheel tool (also known as wheel of names or spin wheel). We provide fair, instant random selection tools including name pickers, decision wheels, yes/no wheels, team pickers, and giveaway spinners for teachers, content creators, event organizers, and anyone who needs unbiased random picks.", color: "blue" },
                                 { q: "Is SpinPickOnline completely free to use?", a: "Yes! SpinPickOnline is 100% free forever with no hidden fees, premium tiers, or feature limits. You get full access to our random picker wheel, name picker, decision wheel, yes/no wheel, and all customization options without paying anything or signing up.", color: "purple" },
-                                { q: "Who created SpinPickOnline?", a: "SpinPickOnline was created by Vaibhav Zalavadiya, a web developer from India who was frustrated with existing random picker tools that were bloated, slow, and filled with intrusive ads. It started as a side project in 2024 and has grown into a comprehensive suite of free random selection tools used by thousands daily.", color: "green" },
+                                { q: "Who created SpinPickOnline?", a: "SpinPickOnline was created by Vaibhav Zalavadiya, a web developer from India who was frustrated with existing random picker tools that were bloated, slow, and filled with intrusive ads. It started as a focused side project and has grown into a comprehensive suite of free random selection tools used by thousands daily.", color: "green" },
                                 { q: "How does the random picker wheel ensure fair results?", a: "We use cryptographically secure random number generation (RNG) via the Web Crypto API. This ensures every spin the wheel result is truly random and unbiased. Each entry on the wheel of names has exactly equal probability of being selected — no patterns, no bias.", color: "pink" },
                                 { q: "Who uses the SpinPickOnline wheel spinner?", a: "Teachers use our name picker for classroom activities. Content creators run transparent Instagram and YouTube giveaways. Event organizers use our spin wheel for raffles and prize draws. Teams use the random picker for fair task assignment. Families use the decision wheel for everyday choices. Anyone needing random selection!", color: "orange" },
                                 { q: "Is my data private when using the spin wheel?", a: "Absolutely! All wheel entries and random calculations happen locally in your browser. Your data is never sent to our servers. We don't collect, store, or track your wheel of names entries, making SpinPickOnline one of the most privacy-focused random picker tools available.", color: "teal" },
                                 { q: "Can I use SpinPickOnline on my phone or tablet?", a: "Yes! SpinPickOnline is fully optimized for mobile devices with a responsive design, touch-friendly interface, and fast loading times. Our spin wheel works perfectly on smartphones, tablets, laptops, and desktops — no app download required.", color: "indigo" },
-                                { q: "How can I contact the SpinPickOnline team?", a: "You can reach us through our contact page or email us directly at hello@spinpickonline.com. We read every message and typically respond within 24-48 hours. We love hearing feature requests, bug reports, and stories about how you use our tools!", color: "amber" },
+                                { q: "How can I contact the SpinPickOnline team?", a: "You can reach us through our contact page or email us directly at support@spinpickonline.com. We read every message and typically respond within 24-48 hours. We love hearing feature requests, bug reports, and stories about how you use our tools!", color: "amber" },
                             ].map((faq, i) => (
                                 <details key={i} className="group bg-white rounded-xl p-4 md:p-5 shadow-sm border border-gray-200 hover:shadow-md transition-all">
                                     <summary className="flex items-center gap-3 cursor-pointer list-none">

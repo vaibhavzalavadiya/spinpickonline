@@ -52,7 +52,7 @@ export default function Home() {
             <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">
               Free Random Spin Wheel
             </h1>
-            <p className="speakable-summary text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
+            <p className="speakable-summary text-xs sm:text-base text-gray-600 max-w-2xl mx-auto">
               Paste your names or options, spin the wheel, and get a fair random result in seconds.
             </p>
           </div>
@@ -156,7 +156,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors">Name Picker for Classrooms</h3>
                 <p className="text-sm text-gray-600 mb-4 leading-relaxed line-clamp-5">Perfect random name picker and name wheel for teachers. Fair participation spinner for classroom activities and questions.</p>
-                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-green-600 group-hover:gap-2.5 transition-all">
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-green-700 group-hover:gap-2.5 transition-all">
                   Learn more
                   <FiChevronRight className="w-4 h-4" />
                 </span>
@@ -240,7 +240,8 @@ export default function Home() {
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
             {[
               { href: "/name-picker", label: "Name Picker", desc: "Random name selector" },
-              { href: "/yes-no-wheel", label: "Yes/No Wheel", desc: "Quick decisions" },
+              { href: "/shareable-wheels", label: "Shareable Wheels", desc: "Permanent share & embed links" },
+              { href: "/yes-no-wheel", label: "Yes/No Wheel", desc: "Quick & Best-of-3 decisions" },
               { href: "/random-picker-wheel", label: "Random Picker", desc: "Pick anything" },
               { href: "/spin-wheel-for-giveaway", label: "Giveaway Wheel", desc: "Contest winners" },
               { href: "/decision-wheel", label: "Decision Wheel", desc: "Can't decide?" },
@@ -248,13 +249,16 @@ export default function Home() {
               { href: "/wheel-spinner", label: "Wheel Spinner", desc: "Custom wheels" },
               { href: "/lucky-draw-wheel", label: "Lucky Draw", desc: "Event drawings" },
               { href: "/raffle-wheel", label: "Raffle Wheel", desc: "Prize drawings" },
-              { href: "/prize-wheel", label: "Prize Wheel", desc: "Win prizes" },
-              { href: "/random-number-wheel", label: "Number Wheel", desc: "Random numbers" },
-              { href: "/truth-or-dare-wheel", label: "Truth or Dare", desc: "Party game spinner" },
-              { href: "/color-wheel-spinner", label: "Color Picker", desc: "Random colors" },
-              { href: "/dice-roller", label: "Dice Roller", desc: "Virtual dice" },
-              { href: "/flip-a-coin", label: "Flip a Coin", desc: "Heads or Tails" },
-              { href: "/guides/how-to-use-random-picker-wheel", label: "How to Guide", desc: "Step-by-step" },
+              { href: "/random-letter-generator", label: "Letter Generator", desc: "A–Z alphabet wheel" },
+              { href: "/random-number-wheel/1-100", label: "1–100 Number Wheel", desc: "Instant number draws" },
+              { href: "/cricket-team-picker", label: "Cricket & IPL Picker", desc: "Sports team wheels" },
+              { href: "/color-wheel-spinner", label: "Color Picker", desc: "Random HEX colors" },
+              { href: "/dice-roller", label: "Dice Roller", desc: "Virtual D4–D100 dice" },
+              { href: "/flip-a-coin", label: "Flip a Coin", desc: "Multi-coin 3D flip" },
+              { href: "/features", label: "All Features", desc: "Weights, dark stage & OBS" },
+              { href: "/guides/how-to-use-random-picker-wheel", label: "How to Guide", desc: "Step-by-step setup" },
+              { href: "/blog/wheel-of-fortune-classroom", label: "Classroom Games", desc: "Teacher review activities" },
+              { href: "/blog/random-name-picker-for-teachers", label: "Teacher Name Picker", desc: "Cold-calling strategies" },
             ].map((link) => (
               <Link
                 key={link.href}

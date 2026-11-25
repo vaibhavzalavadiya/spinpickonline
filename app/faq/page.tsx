@@ -53,7 +53,7 @@ export default function FAQPage() {
   const faqSchema = generateFAQSchema(allFAQs);
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", item: SITE_CONFIG.url },
-    { name: "FAQ", item: `/faq` },
+    { name: "FAQ", item: `${SITE_CONFIG.url}/faq` },
   ]);
 
   return (

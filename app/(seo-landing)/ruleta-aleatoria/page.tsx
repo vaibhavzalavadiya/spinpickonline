@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import HomeWheel from "@/components/HomeWheel";
+import DocumentLangSync from "@/components/DocumentLangSync";
 import { CallToAction } from "@/components/CallToAction";
 import { generateMetadata as genMeta, HOMEPAGE_HREFLANG } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
@@ -55,6 +56,7 @@ export default function RuletaAleatoriaPage() {
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white" lang="es">
+            <DocumentLangSync lang="es" />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
@@ -73,7 +75,7 @@ export default function RuletaAleatoriaPage() {
                             Añade tus opciones, gira la <strong>ruleta aleatoria</strong> y elige al azar al instante. Gratis, sin registro, en todos los dispositivos.
                         </p>
                     </div>
-                    <HomeWheel defaultEntries={RULETA_ENTRIES} storageKey="ruletaAleatoriaState" />
+                    <HomeWheel defaultEntries={RULETA_ENTRIES} storageKey="ruletaAleatoriaState" locale="es" />
                 </div>
             </section>
 

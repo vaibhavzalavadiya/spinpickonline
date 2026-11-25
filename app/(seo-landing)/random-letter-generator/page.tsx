@@ -15,13 +15,25 @@ export const metadata: Metadata = generateMetadata({
 // Default choice entries: A to Z
 const LETTER_ENTRIES = Array.from({ length: 26 }, (_, i) => {
     const letter = String.fromCharCode(65 + i); // A-Z
-    const hue = (i * 137.508) % 360; // Golden angle for nice color distribution
+    const hue = (i * 137.508) % 360;
     return {
         id: i.toString(),
         label: letter,
         color: `hsl(${hue}, 70%, 50%)`
     };
 });
+
+const VOWELS = new Set(["A", "E", "I", "O", "U"]);
+const LETTER_PRESET_MODES = [
+    { id: "all", label: "Full Alphabet (A–Z)", entries: LETTER_ENTRIES },
+    { id: "vowels", label: "Vowels Only (A, E, I, O, U)", entries: LETTER_ENTRIES.filter((e) => VOWELS.has(e.label)) },
+    { id: "consonants", label: "Consonants Only (21)", entries: LETTER_ENTRIES.filter((e) => !VOWELS.has(e.label)) },
+    {
+        id: "scattergories",
+        label: "Word Game Set (No Q/X/Z)",
+        entries: LETTER_ENTRIES.filter((e) => !["Q", "X", "Z"].includes(e.label)),
+    },
+];
 
 export default function RandomLetterGeneratorPage() {
     const webAppSchema = generateWebApplicationSchema();
@@ -65,7 +77,11 @@ export default function RandomLetterGeneratorPage() {
                             Need a random letter from the alphabet? Spin the wheel to instantly generate a random letter from A to Z for word games, naming, and teaching.
                         </p>
                     </div>
-                    <HomeWheel defaultEntries={LETTER_ENTRIES} storageKey="randomLetterGeneratorState" />
+                    <HomeWheel
+                        defaultEntries={LETTER_ENTRIES}
+                        storageKey="randomLetterGeneratorState"
+                        presetModes={LETTER_PRESET_MODES}
+                    />
                 </div>
             </section>
 

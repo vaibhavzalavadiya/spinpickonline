@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import HomeWheel from "@/components/HomeWheel";
+import DocumentLangSync from "@/components/DocumentLangSync";
 import { CallToAction } from "@/components/CallToAction";
 import { generateMetadata as genMeta, HOMEPAGE_HREFLANG } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
@@ -12,6 +13,7 @@ export const metadata: Metadata = genMeta({
     description: "Faites tourner la roue aléatoire gratuitement. Tirage au sort en ligne, générateur aléatoire de noms, sans inscription. Parfait pour les cours, concours et décisions de groupe.",
     canonical: "/roue-aleatoire",
     languages: HOMEPAGE_HREFLANG,
+    locale: "fr_FR",
 });
 
 const ROUE_ENTRIES = [
@@ -54,6 +56,7 @@ export default function RoueAleatoirePage() {
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white" lang="fr">
+            <DocumentLangSync lang="fr" />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
@@ -72,7 +75,7 @@ export default function RoueAleatoirePage() {
                             Ajoutez vos options, faites tourner la <strong>roue aléatoire</strong> et choisissez au hasard instantanément. Gratuit, sans inscription, sur tous les appareils.
                         </p>
                     </div>
-                    <HomeWheel defaultEntries={ROUE_ENTRIES} storageKey="roueAleaState" />
+                    <HomeWheel defaultEntries={ROUE_ENTRIES} storageKey="roueAleaState" locale="fr" />
                 </div>
             </section>
 

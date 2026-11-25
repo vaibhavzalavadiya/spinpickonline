@@ -1,25 +1,72 @@
 import { WheelEntry, WheelState, SavedWheel } from "./types";
 import { SITE_CONFIG } from "./constants";
 
-// Generate cryptographically secure random number
+// Generate cryptographically secure random number in [0, 1)
 export function getSecureRandom(): number {
-  // Use crypto.getRandomValues for secure randomness
-  if (typeof window !== "undefined" && window.crypto) {
+  const cryptoApi = typeof globalThis !== "undefined" ? globalThis.crypto : undefined;
+  if (cryptoApi?.getRandomValues) {
     const array = new Uint32Array(1);
-    window.crypto.getRandomValues(array);
-    return array[0] / (0xffffffff + 1);
+    cryptoApi.getRandomValues(array);
+    return array[0] / 4294967296;
   }
-  // Fallback to Math.random (less secure but works)
   return Math.random();
+}
+
+// Generate an unbiased cryptographically secure integer in [0, max)
+export function getSecureRandomInt(max: number): number {
+  if (max <= 1) return 0;
+  const cryptoApi = typeof globalThis !== "undefined" ? globalThis.crypto : undefined;
+  if (cryptoApi?.getRandomValues) {
+    const range = 4294967296;
+    const limit = range - (range % max);
+    const array = new Uint32Array(1);
+    let value = 0;
+    do {
+      cryptoApi.getRandomValues(array);
+      value = array[0];
+    } while (value >= limit);
+    return value % max;
+  }
+  return Math.floor(Math.random() * max);
+}
+
+// Unbiased Fisher-Yates shuffle backed by Web Crypto API
+export function shuffleArraySecure<T>(items: T[]): T[] {
+  const copy = [...items];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = getSecureRandomInt(i + 1);
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+// Clamp entry weight to a finite integer >= 1
+export function getEntryWeight(entry: Pick<WheelEntry, "weight">): number {
+  if (typeof entry.weight !== "number" || !Number.isFinite(entry.weight) || entry.weight < 1) {
+    return 1;
+  }
+  return Math.min(100, Math.round(entry.weight));
+}
+
+// Pick winning entry index respecting segment weights via CSPRNG
+export function pickWeightedEntryIndex(entries: WheelEntry[]): number {
+  if (entries.length === 0) return 0;
+  const totalWeight = entries.reduce((sum, entry) => sum + getEntryWeight(entry), 0);
+  const target = getSecureRandom() * totalWeight;
+  let cumulative = 0;
+  for (let i = 0; i < entries.length; i++) {
+    cumulative += getEntryWeight(entries[i]);
+    if (target < cumulative) {
+      return i;
+    }
+  }
+  return entries.length - 1;
 }
 
 // Generate random result from entries
 export function spinWheel(entries: WheelEntry[]): string {
   if (entries.length === 0) return "";
-
-  const random = getSecureRandom();
-  const index = Math.floor(random * entries.length);
-  return entries[index].label;
+  return entries[pickWeightedEntryIndex(entries)].label;
 }
 
 // Generate default colors for entries
@@ -126,21 +173,13 @@ export function getSavedWheelById(id: string): SavedWheel | null {
 
 /** Generate a unique wheel ID */
 export function generateWheelId(): string {
-  return `wheel-${Date.now()}-${Math.random().toString(36).substr(2, 6)}`;
+  return `wheel-${Date.now()}-${getSecureRandomInt(1000000).toString(36)}`;
 }
 
-// Validate wheel entries
+// Validate wheel entries (duplicates permitted so weighted odds & repeated names work cleanly)
 export function validateEntries(entries: WheelEntry[]): boolean {
   if (entries.length === 0) return false;
-
-  // Check for duplicate labels
-  const labels = entries.map(e => e.label.trim().toLowerCase());
-  const uniqueLabels = new Set(labels);
-
-  if (labels.length !== uniqueLabels.size) return false;
-
-  // Check for empty labels
-  return entries.every(e => e.label.trim().length > 0);
+  return entries.every((e) => e.label.trim().length > 0);
 }
 
 // Calculate wheel segment angles
@@ -170,28 +209,54 @@ interface ShareableWheelData {
   results?: string[]; // All spin results to share with other users
 }
 
-// Encode wheel data for sharing via URL
+function toUrlSafeBase64(input: string): string {
+  return btoa(encodeURIComponent(input))
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/, "");
+}
+
+function decodeBase64Flexible(encodedData: string): string {
+  let normalized = encodedData.trim();
+  // Restore space-mangled "+" if legacy URL wasn't percent-encoded
+  if (!normalized.includes("-") && !normalized.includes("_")) {
+    normalized = normalized.replace(/ /g, "+");
+  } else {
+    normalized = normalized.replace(/-/g, "+").replace(/_/g, "/");
+  }
+  while (normalized.length % 4 !== 0) {
+    normalized += "=";
+  }
+  return decodeURIComponent(atob(normalized));
+}
+
+// Encode wheel data for sharing via URL (URL-safe Base64)
 export function encodeWheelForShare(entries: WheelEntry[], wheelName?: string, results?: string[]): string {
-  // v2 format: ["v2", "wheelName", ["label1", "color1", "label2", "color2"], ["result1", "result2"]]
-  // This drastically reduces JSON bloat compared to array of objects.
+  // v2 format: ["v2", "wheelName", ["label1", "color1", ...], ["result1", ...], [optional weights]]
   const compactEntries: string[] = [];
+  const weights: number[] = [];
+  let hasCustomWeights = false;
+
   entries.forEach((e) => {
     compactEntries.push(e.label);
     compactEntries.push(e.color.replace("#", ""));
+    const w = getEntryWeight(e);
+    weights.push(w);
+    if (w !== 1) hasCustomWeights = true;
   });
 
-  const data = [
+  const data: unknown[] = [
     "v2",
     wheelName || "",
     compactEntries,
     results || [],
   ];
+  if (hasCustomWeights) {
+    data.push(weights);
+  }
 
   try {
-    const jsonString = JSON.stringify(data);
-    // Use base64 encoding for URL safety
-    const encoded = btoa(encodeURIComponent(jsonString));
-    return encoded;
+    return toUrlSafeBase64(JSON.stringify(data));
   } catch (error) {
     console.error("Failed to encode wheel data:", error);
     return "";
@@ -201,21 +266,26 @@ export function encodeWheelForShare(entries: WheelEntry[], wheelName?: string, r
 // Decode wheel data from shared URL
 export function decodeWheelFromShare(encodedData: string): { entries: WheelEntry[]; wheelName?: string; results?: string[] } | null {
   try {
-    const jsonString = decodeURIComponent(atob(encodedData));
+    const jsonString = decodeBase64Flexible(encodedData);
     const data = JSON.parse(jsonString);
 
-    // Handle v2 (compact array format)
-    if (Array.isArray(data) && data[0] === "v2") {
+    // Handle v2 (compact array format, with optional v2[4] weights)
+    if (Array.isArray(data) && (data[0] === "v2" || data[0] === "v3")) {
       const wheelName = data[1] || undefined;
       const compactEntries = data[2] as string[];
-      const results = data[3] as string[];
+      const results = (data[3] as string[]) || [];
+      const weights = Array.isArray(data[4]) ? (data[4] as number[]) : undefined;
 
       const entries: WheelEntry[] = [];
       for (let i = 0; i < compactEntries.length; i += 2) {
+        const entryIdx = i / 2;
+        const rawWeight = weights?.[entryIdx];
+        const weight = typeof rawWeight === "number" && rawWeight > 1 ? Math.round(rawWeight) : undefined;
         entries.push({
           id: generateEntryId(),
           label: compactEntries[i],
           color: `#${compactEntries[i + 1]}`,
+          ...(weight ? { weight } : {}),
         });
       }
 
@@ -245,16 +315,42 @@ export function decodeWheelFromShare(encodedData: string): { entries: WheelEntry
   }
 }
 
-// Generate share URL
-export function generateShareUrl(entries: WheelEntry[], wheelName?: string, results?: string[]): string {
+// Generate share URL (preserves current path when requested, defaults to /wheel)
+export function generateShareUrl(
+  entries: WheelEntry[],
+  wheelName?: string,
+  results?: string[],
+  targetPath?: string
+): string {
   const encoded = encodeWheelForShare(entries, wheelName, results);
   if (!encoded) return "";
 
-  const baseUrl = typeof window !== "undefined"
-    ? `${window.location.origin}/wheel`
-    : `${SITE_CONFIG.url}/wheel`;
+  const origin = typeof window !== "undefined" ? window.location.origin : SITE_CONFIG.url;
+  const resolvedPath =
+    targetPath ||
+    (typeof window !== "undefined" &&
+    window.location.pathname !== "/" &&
+    ["/wheel", "/shareable-wheels", "/team-picker", "/yes-no-wheel"].includes(window.location.pathname)
+      ? window.location.pathname
+      : "/wheel");
 
-  return `${baseUrl}?share=${encoded}`;
+  const cleanPath = resolvedPath.startsWith("/") ? resolvedPath : `/${resolvedPath}`;
+  const params = new URLSearchParams({ share: encoded });
+  return `${origin}${cleanPath}?${params.toString()}`;
+}
+
+export function generateEmbedUrl(
+  entries: WheelEntry[],
+  options?: { wheelName?: string; darkMode?: boolean; obsOverlay?: boolean }
+): string {
+  const encoded = encodeWheelForShare(entries, options?.wheelName, []);
+  const origin = typeof window !== "undefined" ? window.location.origin : SITE_CONFIG.url;
+  const params = new URLSearchParams();
+  if (encoded) params.set("share", encoded);
+  if (options?.darkMode) params.set("theme", "dark");
+  if (options?.obsOverlay) params.set("obs", "1");
+  const query = params.toString();
+  return query ? `${origin}/embed?${query}` : `${origin}/embed`;
 }
 
 // Robust copy to clipboard function (handles HTTP/HTTPS)

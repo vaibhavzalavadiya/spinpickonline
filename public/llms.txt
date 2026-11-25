@@ -69,7 +69,7 @@ For complete technical specifications, iframe embed snippets, and comprehensive 
 - [Roue Aléatoire](https://www.spinpickonline.com/roue-aleatoire): Roue de la fortune et sélecteur aléatoire en français pour tirages au sort et prises de décision.
 - [Zufallsrad](https://www.spinpickonline.com/zufallsrad): Kostenloses Online-Zufallsrad auf Deutsch für Verlosungen, Entscheidungen und Namensauswahl.
 - [Roda Putar](https://www.spinpickonline.com/roda-putar): Roda putar online gratis dalam Bahasa Indonesia untuk undian acak, arisan, dan pilihan nama.
-- [Bhagya Chakra](https://www.spinpickonline.com/bhagya-chakra): Online random spinner wheel in Hindi (भाग्य चक्र) for lucky draws and name picks.
+- [Embed & OBS Wheel](https://www.spinpickonline.com/embed): Ad-free embeddable iframe wheel and transparent OBS Browser Source giveaway overlay.
 
 ## Guides, Rules & Strategy
 - [Guides Index](https://www.spinpickonline.com/guides): Directory of practical tutorials for giveaways, teaching, and randomization.

@@ -8,20 +8,20 @@ import Link from "next/link";
 import { FiLink, FiShare2, FiSave, FiUsers, FiArrowRight } from "react-icons/fi";
 
 export const metadata: Metadata = genMeta({
-    title: "Spin Wheel – Free Custom Random Picker & Shareable Wheel | SpinPickOnline",
-    description: "Free spin wheel for names, numbers, raffles & decisions. Spin instantly, customize colors, and share permanent links with zero signup. 100% fair and fast.",
+    title: "Shareable Spin Wheel – Create, Save & Embed Custom Links",
+    description: "Create a custom shareable spin wheel, save presets, and share permanent links or iframe embeds for classes, teams & giveaways. Free and no signup required.",
     canonical: "/shareable-wheels",
 });
 
 export default function ShareableWheelsPage() {
     const webAppSchema = generateWebApplicationSchema({
-        name: "Spin Wheel – Free Custom Random Picker",
+        name: "Shareable Spin Wheel – Custom Link & Embed Builder",
         url: `${SITE_CONFIG.url}/shareable-wheels`,
-        description: "Free online custom spin wheel and random picker for names, raffles, and team decisions.",
+        description: "Create and share permanent links or embeddable spin wheels for names, teams, and giveaways.",
     });
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", item: SITE_CONFIG.url },
-        { name: "Spin Wheel", item: `${SITE_CONFIG.url}/shareable-wheels` },
+        { name: "Shareable Spin Wheels", item: `${SITE_CONFIG.url}/shareable-wheels` },
     ]);
     const faqSchema = generateFAQSchema([
         {

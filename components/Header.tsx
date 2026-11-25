@@ -167,7 +167,7 @@ export default function Header() {
 
               <Link
                 href="/wheel"
-                className="inline-flex items-center gap-1.5 rounded-full bg-linear-to-r from-blue-600 to-purple-600 px-3 py-2 text-sm font-semibold text-white shadow-md"
+                className="inline-flex items-center gap-1.5 rounded-full bg-linear-to-r from-blue-600 to-purple-600 px-3 py-1.5 text-sm font-semibold text-white shadow-md"
               >
                 <IoSparkles className="sm:block hidden" />
                 Create
@@ -176,7 +176,7 @@ export default function Header() {
               <button
                 onClick={() => setMobileMenuOpen(true)}
                 aria-label="Open menu"
-                className="cursor-pointer"
+                className="min-w-[36px] min-h-[36px] inline-flex items-center justify-center p-1.5 rounded-lg cursor-pointer"
               >
                 <FiMenu className="text-2xl text-gray-700" />
               </button>
@@ -221,7 +221,7 @@ export default function Header() {
           <button
             onClick={() => setMobileMenuOpen(false)}
             aria-label="Close menu"
-            className="cursor-pointer"
+            className="min-w-[36px] min-h-[36px] inline-flex items-center justify-center p-1.5 rounded-lg cursor-pointer"
           >
             <FiX className="text-2xl text-gray-700" />
           </button>

@@ -191,9 +191,9 @@ SpinPickOnline provides localized native-language wheel spinners with country-sp
 5. **Indonesian (Bahasa Indonesia)**:
    - **URL**: https://www.spinpickonline.com/roda-putar
    - **Keywords**: Roda putar, putar roda online, kocok arisan acak, roda keberuntungan, pemilih nama acak.
-6. **Hindi (हिंदी)**:
-   - **URL**: https://www.spinpickonline.com/bhagya-chakra
-   - **Keywords**: भाग्य चक्र, ऑनलाइन स्पिन व्हील, रैंडम नाम पिकर, लकी ड्रा व्हील.
+6. **Embed & OBS Stream Overlay**:
+   - **URL**: https://www.spinpickonline.com/embed
+   - **Parameters**: `?share=<base64url>`, `?entries=A,B,C`, `?theme=dark`, `?obs=1` (transparent OBS Browser Source).
 
 ---
 
@@ -264,15 +264,15 @@ The decoded JSON payload contains:
 ```
 
 ### 3. Responsive HTML Iframe Embed Code
-Webmasters, bloggers, and Notion users can embed an ad-free interactive wheel with zero configuration:
+Webmasters, educators (Notion/Canvas), and streamers can embed an ad-free interactive wheel with zero configuration via the dedicated `/embed` route:
 ```html
 <iframe
-  src="https://www.spinpickonline.com/wheel"
+  src="https://www.spinpickonline.com/embed"
   width="100%"
-  height="650"
-  style="border:none;border-radius:16px;max-width:800px;width:100%;"
+  height="560"
+  style="border:none;border-radius:16px;max-width:720px;width:100%;"
   title="SpinPickOnline Random Picker Wheel"
-  allow="accelerometer; clipboard-write"
+  loading="lazy"
 ></iframe>
 ```
 

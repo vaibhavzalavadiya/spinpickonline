@@ -3,6 +3,8 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ChromeShell from "@/components/ChromeShell";
+import ServiceWorkerRegistrar from "@/components/ServiceWorkerRegistrar";
 import { generateMetadata as genMeta, generateOrganizationSchema, generateWebSiteSchema, HOMEPAGE_HREFLANG } from "@/lib/seo";
 import SchemaScript from "@/components/SchemaScript";
 import Script from "next/script";
@@ -43,13 +45,14 @@ export default function RootLayout({
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#3b82f6" />
-        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       </head>
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}
       >
+        <ServiceWorkerRegistrar />
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
@@ -64,19 +67,9 @@ export default function RootLayout({
         {/* Global structured data — in body so Next.js manages <head> cleanly */}
         <SchemaScript schema={organizationSchema} />
         <SchemaScript schema={websiteSchema} />
-        <Header />
-
-        <main className="min-h-screen">{children}</main>
-        <Footer />
-
-        {/* Google AdSense */}
-        <Script
-          id="adsbygoogle-init"
-          async
-          strategy="afterInteractive"
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9187153323911677"
-          crossOrigin="anonymous"
-        />
+        <ChromeShell header={<Header />} footer={<Footer />}>
+          {children}
+        </ChromeShell>
 
         {/* Google Tag Manager */}
         <Script

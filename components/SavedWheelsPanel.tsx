@@ -24,7 +24,7 @@ export default function SavedWheelsPanel() {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editName, setEditName] = useState("");
   const panelRef = useRef<HTMLDivElement>(null);
-  
+
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" | "info" } | null>(null);
 
   // Load saved wheels when panel opens
@@ -60,7 +60,7 @@ export default function SavedWheelsPanel() {
       setToast({ message: "Please enter a name for your wheel", type: "error" });
       return;
     }
-    
+
     // Dispatch event to active wheel component
     window.dispatchEvent(new CustomEvent("requestSaveWheel", { detail: { name } }));
     setIsSaving(false);
@@ -104,7 +104,7 @@ export default function SavedWheelsPanel() {
         {/* Toggle Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center justify-center p-2 lg:px-3 lg:py-2 lg:gap-1.5 lg:bg-gray-100 lg:hover:bg-gray-200 text-gray-700 hover:text-blue-600 lg:hover:text-gray-900 rounded-full transition-colors cursor-pointer relative text-sm font-semibold"
+          className="flex items-center justify-center px-2 lg:px-3 lg:py-2 lg:gap-1.5 lg:bg-gray-100 lg:hover:bg-gray-200 text-gray-700 hover:text-blue-600 lg:hover:text-gray-900 rounded-full transition-colors cursor-pointer relative text-sm font-semibold"
           title="My Saved Wheels"
         >
           <FiFolder className="w-[22px] h-[22px] lg:w-4 lg:h-4 lg:text-blue-600" />

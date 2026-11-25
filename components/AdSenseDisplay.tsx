@@ -129,14 +129,17 @@ export default function AdSenseDisplay({
   }, []);
 
   return (
-    <div className={`adsense-wrapper w-full text-center ${className}`}>
+    <div
+      className={`adsense-wrapper w-full text-center ${className}`}
+      style={isLocalhost ? undefined : { minHeight: "100px" }}
+    >
       {/* Dev placeholder for localhost */}
       {isLocalhost && (
         <div className="py-2.5 px-3 border border-dashed border-gray-300 rounded-lg bg-gray-50 text-gray-500 text-xs my-2">
           <span className="font-semibold block uppercase tracking-wider text-[10px] text-gray-600">
             Google Ad Placeholder (Localhost)
           </span>
-          <span className="text-[10px] text-gray-400">
+          <span className="text-[10px] text-gray-500">
             Slot: {slotId} • Real ads render on live domain
           </span>
         </div>
@@ -144,19 +147,24 @@ export default function AdSenseDisplay({
 
       {/* Only render the actual <ins> on production / non-localhost */}
       {!isLocalhost && (
-        <ins
-          ref={adRef}
-          className="adsbygoogle"
-          style={style}
-          data-ad-client={client}
-          data-ad-slot={slotId}
-          {...(responsive
-            ? {
-                "data-ad-format": format,
-                "data-full-width-responsive": fullWidthResponsive ? "true" : "false",
-              }
-            : {})}
-        />
+        <>
+          <span className="block text-[10px] font-medium uppercase tracking-wider text-gray-500 mb-1">
+            Advertisement
+          </span>
+          <ins
+            ref={adRef}
+            className="adsbygoogle"
+            style={style}
+            data-ad-client={client}
+            data-ad-slot={slotId}
+            {...(responsive
+              ? {
+                  "data-ad-format": format,
+                  "data-full-width-responsive": fullWidthResponsive ? "true" : "false",
+                }
+              : {})}
+          />
+        </>
       )}
     </div>
   );

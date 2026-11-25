@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
 
   // Use a fixed date that reflects the actual last deployment/content update.
-  const lastContentUpdate = new Date("2026-11-23T00:00:00Z");
+  const lastContentUpdate = new Date("2026-11-25T00:00:00Z");
 
   // Core tool pages (highest priority)
   const corePages = [
@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/wheel", priority: 0.95, changeFrequency: "daily" as const },
     { path: "/shareable-wheels", priority: 0.95, changeFrequency: "daily" as const },
     { path: "/team-picker", priority: 0.95, changeFrequency: "daily" as const },
+    { path: "/embed", priority: 0.85, changeFrequency: "weekly" as const },
     { path: "/random-picker-wheel", priority: 0.9, changeFrequency: "weekly" as const },
     { path: "/name-picker", priority: 0.9, changeFrequency: "weekly" as const },
     { path: "/name-spinner", priority: 0.9, changeFrequency: "weekly" as const },
