@@ -233,7 +233,7 @@ export default function TeamPickerWheel() {
           <div className="relative w-full max-w-3xl">
             <Wheel
               entries={entries}
-              onResult={() => {}}
+              onResult={() => { }}
               isSpinning={isSpinning}
               result={null}
               showButton={false}
@@ -252,9 +252,8 @@ export default function TeamPickerWheel() {
             <button
               type="button"
               onClick={() => setActiveTab("entries")}
-              className={`flex-1 sm:px-6 px-4 py-4 cursor-pointer text-sm font-semibold transition-all relative ${
-                activeTab === "entries" ? "text-blue-700" : "text-gray-600 hover:text-gray-900"
-              }`}
+              className={`flex-1 sm:px-6 px-4 lg:py-4 py-3 cursor-pointer text-sm font-semibold transition-all relative ${activeTab === "entries" ? "text-blue-700" : "text-gray-600 hover:text-gray-900"
+                }`}
             >
               <div className="flex items-center justify-center gap-2">
                 <BsClipboardCheck className="text-lg" />
@@ -265,9 +264,8 @@ export default function TeamPickerWheel() {
             <button
               type="button"
               onClick={() => setActiveTab("teams")}
-              className={`flex-1 sm:px-6 px-4 py-4 cursor-pointer text-sm font-semibold transition-all relative ${
-                activeTab === "teams" ? "text-blue-700" : "text-gray-600 hover:text-gray-900"
-              }`}
+              className={`flex-1 sm:px-6 px-4 lg:py-4 py-3 cursor-pointer text-sm font-semibold transition-all relative ${activeTab === "teams" ? "text-blue-700" : "text-gray-600 hover:text-gray-900"
+                }`}
             >
               <div className="flex items-center justify-center gap-2">
                 <IoTrophyOutline className="text-lg" />
@@ -277,7 +275,7 @@ export default function TeamPickerWheel() {
             </button>
           </div>
 
-          <div className="lg:p-6 p-4 pb-16 sm:pb-6">
+          <div className="lg:p-6 p-4">
             {activeTab === "entries" ? (
               <div className="lg:space-y-5 space-y-4">
                 <div className="flex flex-wrap gap-2">
@@ -314,7 +312,7 @@ export default function TeamPickerWheel() {
                       onChange={(e) => setNewEntry(e.target.value)}
                       onKeyDown={(e) => e.key === "Enter" && addEntry()}
                       placeholder="Type a player name..."
-                      className="flex-1 w-full sm:px-4 px-3 sm:py-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:border-blue-400 transition-all bg-white"
+                      className="flex-1 w-full sm:px-4 px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:border-blue-400 transition-all bg-white"
                     />
                     <button type="button" onClick={addEntry} className="sm:px-6 px-3 py-2 sm:py-3 cursor-pointer bg-linear-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all text-sm font-semibold shadow-md hover:shadow-lg">Add</button>
                   </div>

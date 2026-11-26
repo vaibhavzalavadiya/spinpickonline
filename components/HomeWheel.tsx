@@ -167,7 +167,7 @@ export default function HomeWheel({
     isOpen: false,
     title: "",
     message: "",
-    onConfirm: () => {},
+    onConfirm: () => { },
   });
 
   const { isMuted, toggleMute, playTick, playWinFanfare, playClick } = useSoundEffects();
@@ -579,45 +579,12 @@ export default function HomeWheel({
         <div className="flex flex-col items-center justify-start">
           <div
             ref={stageRef}
-            className={`relative w-full transition-colors ${
-              isFullscreen
-                ? `fixed inset-0 z-50 flex flex-col items-center justify-center p-4 sm:p-8 overflow-y-auto ${
-                    darkStage ? "bg-slate-950 text-white" : "bg-white text-gray-900"
-                  }`
-                : `max-w-3xl rounded-2xl p-2 sm:p-4 ${darkStage ? "bg-slate-900 text-white shadow-xl" : ""}`
-            }`}
+            className={`relative w-full transition-colors ${isFullscreen
+              ? `fixed inset-0 z-50 flex flex-col items-center justify-center p-4 sm:p-8 overflow-y-auto ${darkStage ? "bg-slate-950 text-white" : "bg-white text-gray-900"
+              }`
+              : `max-w-3xl rounded-2xl p-2 sm:p-4 ${darkStage ? "bg-slate-900 text-white shadow-xl" : ""}`
+              }`}
           >
-            {/* Stage Utility Controls: Dark Projector & Fullscreen */}
-            <div className="flex items-center justify-end gap-2 mb-2 w-full">
-              <button
-                type="button"
-                onClick={() => { setDarkStage((v) => !v); playClick(); }}
-                className={`min-h-[36px] px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer border ${
-                  darkStage
-                    ? "bg-slate-800 border-slate-700 text-slate-200 hover:bg-slate-700"
-                    : "bg-gray-50 border-gray-200 text-gray-700 hover:bg-gray-100"
-                }`}
-                aria-label={darkStage ? ui.lightTheme : ui.darkTheme}
-                title={darkStage ? ui.lightTheme : ui.darkTheme}
-              >
-                {darkStage ? <FiSun className="text-sm text-amber-400" /> : <FiMoon className="text-sm text-slate-600" />}
-                <span>{darkStage ? ui.lightTheme : ui.darkTheme}</span>
-              </button>
-              <button
-                type="button"
-                onClick={toggleFullscreen}
-                className={`min-h-[36px] px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer border ${
-                  darkStage
-                    ? "bg-slate-800 border-slate-700 text-slate-200 hover:bg-slate-700"
-                    : "bg-gray-50 border-gray-200 text-gray-700 hover:bg-gray-100"
-                }`}
-                aria-label={isFullscreen ? ui.exitFullscreen : ui.fullscreen}
-                title={isFullscreen ? ui.exitFullscreen : ui.fullscreen}
-              >
-                {isFullscreen ? <FiMinimize2 className="text-sm" /> : <FiMaximize2 className="text-sm" />}
-                <span>{isFullscreen ? ui.exitFullscreen : ui.fullscreen}</span>
-              </button>
-            </div>
 
             {entries.length > 0 ? (
               <Wheel
@@ -644,14 +611,14 @@ export default function HomeWheel({
                   type="button"
                   onClick={handleSpin}
                   disabled={entries.length === 0 || isSpinning}
-                  className="px-7 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl shadow-lg hover:from-blue-700 hover:to-purple-700 cursor-pointer disabled:opacity-50"
+                  className="lg:px-7 px-4 py-3 lg:text-base text-sm bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl shadow-lg hover:from-blue-700 hover:to-purple-700 cursor-pointer disabled:opacity-50"
                 >
                   {isSpinning ? ui.spinningBtn : ui.spinBtn}
                 </button>
                 <button
                   type="button"
                   onClick={toggleFullscreen}
-                  className="px-5 py-3 bg-gray-200 text-gray-800 font-semibold rounded-xl hover:bg-gray-300 cursor-pointer"
+                  className="lg:px-7 px-4 py-3 lg:text-base text-sm bg-gray-200 text-gray-800 font-semibold rounded-xl hover:bg-gray-300 cursor-pointer"
                 >
                   {ui.exitFullscreen}
                 </button>
@@ -696,9 +663,8 @@ export default function HomeWheel({
             <button
               type="button"
               onClick={() => { setActiveTab("entries"); playClick(); }}
-              className={`flex-1 sm:px-6 px-4 py-4 cursor-pointer text-sm font-semibold transition-all relative ${
-                activeTab === "entries" ? "text-blue-700" : "text-gray-600 hover:text-gray-900"
-              }`}
+              className={`flex-1 sm:px-6 px-4 lg:py-4 py-3 cursor-pointer text-sm font-semibold transition-all relative ${activeTab === "entries" ? "text-blue-700" : "text-gray-600 hover:text-gray-900"
+                }`}
             >
               <div className="flex items-center justify-center gap-2">
                 <FiClipboard className="text-lg" />
@@ -712,9 +678,8 @@ export default function HomeWheel({
             <button
               type="button"
               onClick={() => { setActiveTab("results"); playClick(); }}
-              className={`flex-1 sm:px-6 px-4 py-4 cursor-pointer text-sm font-semibold transition-all relative ${
-                activeTab === "results" ? "text-blue-700" : "text-gray-600 hover:text-gray-900"
-              }`}
+              className={`flex-1 sm:px-6 px-4 lg:py-4 py-3 cursor-pointer text-sm font-semibold transition-all relative ${activeTab === "results" ? "text-blue-700" : "text-gray-600 hover:text-gray-900"
+                }`}
             >
               <div className="flex items-center justify-center gap-2">
                 <IoTrophyOutline className="text-lg" />
@@ -741,7 +706,7 @@ export default function HomeWheel({
           </div>
 
           {/* Tab Content */}
-          <div className="lg:p-6 p-4 pb-16 sm:pb-6">
+          <div className="lg:p-6 p-4">
             {activeTab === "entries" ? (
               <div className="lg:space-y-4 space-y-3.5">
                 {showWheelNameInput && (
@@ -771,7 +736,7 @@ export default function HomeWheel({
                     <button
                       type="button"
                       onClick={shuffleEntries}
-                      className="flex cursor-pointer items-center gap-1.5 px-3 py-2 text-xs sm:text-sm bg-linear-to-r from-blue-50 to-blue-100 text-blue-700 rounded-lg hover:from-blue-100 hover:to-blue-200 transition-all font-medium border border-blue-200 active:scale-95"
+                      className="flex cursor-pointer items-center gap-1.5 lg:px-3 px-2 lg:py-2 py-1.5 text-xs sm:text-sm bg-linear-to-r from-blue-50 to-blue-100 text-blue-700 rounded-lg hover:from-blue-100 hover:to-blue-200 transition-all font-medium border border-blue-200 active:scale-95"
                       title={ui.shuffle}
                     >
                       <FiShuffle className="text-sm flex-shrink-0" />
@@ -780,9 +745,8 @@ export default function HomeWheel({
                     <button
                       type="button"
                       onClick={sortEntries}
-                      className={`flex cursor-pointer items-center gap-1.5 px-3 py-2 text-xs sm:text-sm bg-linear-to-r from-purple-50 to-purple-100 text-purple-700 rounded-lg hover:from-purple-100 hover:to-purple-200 transition-all font-medium border active:scale-95 ${
-                        sortDirection ? "border-purple-400 ring-2 ring-purple-200" : "border-purple-200"
-                      }`}
+                      className={`flex cursor-pointer items-center gap-1.5 lg:px-3 px-2 lg:py-2 py-1.5 text-xs sm:text-sm bg-linear-to-r from-purple-50 to-purple-100 text-purple-700 rounded-lg hover:from-purple-100 hover:to-purple-200 transition-all font-medium border active:scale-95 ${sortDirection ? "border-purple-400 ring-2 ring-purple-200" : "border-purple-200"
+                        }`}
                       title={sortDirection === "asc" ? ui.sortDesc : ui.sortAsc}
                     >
                       {sortDirection === "asc" ? (
@@ -795,11 +759,30 @@ export default function HomeWheel({
                     <button
                       type="button"
                       onClick={resetToDefault}
-                      className="flex cursor-pointer items-center gap-1.5 px-3 py-2 text-xs sm:text-sm bg-linear-to-r from-gray-50 to-gray-100 text-gray-700 rounded-lg hover:from-gray-100 hover:to-gray-200 transition-all font-medium border border-gray-200 active:scale-95"
+                      className="flex cursor-pointer items-center gap-1.5 lg:px-3 px-2 lg:py-2 py-1.5 text-xs sm:text-sm bg-linear-to-r from-gray-50 to-gray-100 text-gray-700 rounded-lg hover:from-gray-100 hover:to-gray-200 transition-all font-medium border border-gray-200 active:scale-95"
                       title={ui.reset}
                     >
                       <FiRotateCcw className="text-sm flex-shrink-0" />
                       <span className="hidden sm:inline">{ui.reset}</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => { setDarkStage((v) => !v); playClick(); }}
+                      className={`flex cursor-pointer items-center gap-1.5 lg:px-3 px-2 lg:py-2 py-1.5 text-xs sm:text-sm rounded-lg transition-all font-medium border active:scale-95 ${darkStage
+                        ? "bg-slate-800 border-slate-600 text-amber-300 hover:bg-slate-700"
+                        : "bg-linear-to-r from-gray-50 to-gray-100 text-gray-700 hover:from-gray-100 hover:to-gray-200 border-gray-200"
+                        }`}
+                      title={darkStage ? ui.lightTheme : ui.darkTheme}
+                    >
+                      {darkStage ? <FiSun className="text-sm flex-shrink-0" /> : <FiMoon className="text-sm flex-shrink-0" />}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={toggleFullscreen}
+                      className="flex cursor-pointer items-center gap-1.5 lg:px-3 px-2 lg:py-2 py-1.5 text-xs sm:text-sm bg-linear-to-r from-gray-50 to-gray-100 text-gray-700 rounded-lg hover:from-gray-100 hover:to-gray-200 transition-all font-medium border border-gray-200 active:scale-95"
+                      title={isFullscreen ? ui.exitFullscreen : ui.fullscreen}
+                    >
+                      {isFullscreen ? <FiMinimize2 className="text-sm flex-shrink-0" /> : <FiMaximize2 className="text-sm flex-shrink-0" />}
                     </button>
                   </div>
 
@@ -808,18 +791,16 @@ export default function HomeWheel({
                     <button
                       type="button"
                       onClick={() => toggleInputMode("list")}
-                      className={`px-2.5 py-1 rounded-md text-xs font-semibold flex items-center gap-1 cursor-pointer transition-colors ${
-                        inputMode === "list" ? "bg-white text-blue-700 shadow-xs" : "text-gray-600 hover:text-gray-900"
-                      }`}
+                      className={`px-2.5 py-1 rounded-md text-xs font-semibold flex items-center gap-1 cursor-pointer transition-colors ${inputMode === "list" ? "bg-white text-blue-700 shadow-xs" : "text-gray-600 hover:text-gray-900"
+                        }`}
                     >
                       <FiList className="text-xs" /> {ui.listMode}
                     </button>
                     <button
                       type="button"
                       onClick={() => toggleInputMode("text")}
-                      className={`px-2.5 py-1 rounded-md text-xs font-semibold flex items-center gap-1 cursor-pointer transition-colors ${
-                        inputMode === "text" ? "bg-white text-blue-700 shadow-xs" : "text-gray-600 hover:text-gray-900"
-                      }`}
+                      className={`px-2.5 py-1 rounded-md text-xs font-semibold flex items-center gap-1 cursor-pointer transition-colors ${inputMode === "text" ? "bg-white text-blue-700 shadow-xs" : "text-gray-600 hover:text-gray-900"
+                        }`}
                     >
                       <FiFileText className="text-xs" /> {ui.textMode}
                     </button>
@@ -874,7 +855,7 @@ export default function HomeWheel({
                           onChange={(e) => setNewEntry(e.target.value)}
                           onKeyDown={(e) => e.key === "Enter" && addEntry()}
                           placeholder={ui.placeholder}
-                          className="flex-1 w-full sm:px-4 px-3 sm:py-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:border-blue-400 transition-all bg-white"
+                          className="flex-1 w-full sm:px-4 px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:border-blue-400 transition-all bg-white"
                         />
                         <button
                           type="button"
@@ -905,9 +886,8 @@ export default function HomeWheel({
                             return (
                               <div
                                 key={entry.id}
-                                className={`flex items-center justify-between last:pb-0 pb-2 border-b border-gray-200 last:border-b-0 ${
-                                  newlyAddedId === entry.id ? "animate-bounce-in" : ""
-                                }`}
+                                className={`flex items-center justify-between last:pb-0 pb-2 border-b border-gray-200 last:border-b-0 ${newlyAddedId === entry.id ? "animate-bounce-in" : ""
+                                  }`}
                               >
                                 {editingIndex === index ? (
                                   <div className="flex items-center gap-2 flex-1">
@@ -969,11 +949,10 @@ export default function HomeWheel({
                                       <button
                                         type="button"
                                         onClick={() => cycleEntryWeight(index)}
-                                        className={`min-h-[32px] px-2 py-1 text-xs font-bold rounded-md border transition-colors cursor-pointer ${
-                                          w > 1
-                                            ? "bg-blue-50 text-blue-700 border-blue-300"
-                                            : "bg-gray-50 text-gray-600 border-gray-200 hover:border-blue-300"
-                                        }`}
+                                        className={`min-h-[32px] px-2 py-1 text-xs font-bold rounded-md border transition-colors cursor-pointer ${w > 1
+                                          ? "bg-blue-50 text-blue-700 border-blue-300"
+                                          : "bg-gray-50 text-gray-600 border-gray-200 hover:border-blue-300"
+                                          }`}
                                         title="Click to adjust odds weight (1x, 2x, 3x, 5x)"
                                         aria-label={`Weight ${w}x for ${entry.label}`}
                                       >
@@ -1031,11 +1010,11 @@ export default function HomeWheel({
 
                 {/* Share & Quick Save Actions */}
                 {entries.length > 0 && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div className="grid grid-cols-2 gap-2.5">
                     <button
                       type="button"
                       onClick={shareWheel}
-                      className="w-full cursor-pointer px-4 py-2.5 bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-200 text-blue-700 font-semibold rounded-xl hover:from-blue-100 hover:to-purple-100 hover:border-blue-300 transition-all flex items-center justify-center gap-2 text-sm active:scale-[0.98]"
+                      className="w-full cursor-pointer px-3 py-2.5 bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-200 text-blue-700 font-semibold rounded-xl hover:from-blue-100 hover:to-purple-100 hover:border-blue-300 transition-all flex items-center justify-center gap-[7px] text-sm active:scale-[0.98]"
                     >
                       <FiShare2 className="text-base" />
                       <span>{ui.shareWheel}</span>
@@ -1043,7 +1022,7 @@ export default function HomeWheel({
                     <button
                       type="button"
                       onClick={handleQuickSaveOpen}
-                      className="w-full cursor-pointer px-4 py-2.5 bg-white border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all flex items-center justify-center gap-2 text-sm active:scale-[0.98]"
+                      className="w-full cursor-pointer px-3 py-2.5 bg-white border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all flex items-center justify-center gap-[7px] text-sm active:scale-[0.98]"
                     >
                       <FiSave className="text-base text-blue-600" />
                       <span>{ui.saveWheel}</span>
@@ -1090,15 +1069,14 @@ export default function HomeWheel({
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-3">
                               <IoTrophyOutline
-                                className={`text-xl ${
-                                  index === 0
-                                    ? "text-yellow-500"
-                                    : index === 1
-                                      ? "text-gray-600"
-                                      : index === 2
-                                        ? "text-orange-600"
-                                        : "text-blue-600"
-                                }`}
+                                className={`text-xl ${index === 0
+                                  ? "text-yellow-500"
+                                  : index === 1
+                                    ? "text-gray-600"
+                                    : index === 2
+                                      ? "text-orange-600"
+                                      : "text-blue-600"
+                                  }`}
                               />
                               <span className="text-base font-semibold text-gray-900">{res}</span>
                             </div>

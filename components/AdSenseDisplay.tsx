@@ -148,9 +148,6 @@ export default function AdSenseDisplay({
       {/* Only render the actual <ins> on production / non-localhost */}
       {!isLocalhost && (
         <>
-          <span className="block text-[10px] font-medium uppercase tracking-wider text-gray-500 mb-1">
-            Advertisement
-          </span>
           <ins
             ref={adRef}
             className="adsbygoogle"
@@ -159,9 +156,9 @@ export default function AdSenseDisplay({
             data-ad-slot={slotId}
             {...(responsive
               ? {
-                  "data-ad-format": format,
-                  "data-full-width-responsive": fullWidthResponsive ? "true" : "false",
-                }
+                "data-ad-format": format,
+                "data-full-width-responsive": fullWidthResponsive ? "true" : "false",
+              }
               : {})}
           />
         </>

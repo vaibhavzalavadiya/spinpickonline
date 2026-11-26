@@ -98,7 +98,7 @@ export default function DiceRollerPage() {
                         <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">
                             Dice Roller Online – Free Virtual Dice Roller
                         </h1>
-                        <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">
+                        <p className="md:text-base text-xs text-gray-600 max-w-2xl mx-auto">
                             Roll a die (1-6), roll 2 dice, or roll polyhedral D&amp;D dice (D20, D100, D12, D10, D8, D4). 100% free with multi-dice rolling, instant sums, and roll statistics.
                         </p>
                     </div>

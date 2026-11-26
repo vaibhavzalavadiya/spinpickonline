@@ -38,7 +38,7 @@ export function WheelPageTemplate({
                     <div className="container mx-auto px-4">
                         <div className="text-center lg:mb-12 sm:mb-8 mb-5">
                             <h1 className="text-lg sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">{h1}</h1>
-                            <p className="md:text-base text-sm text-gray-600 max-w-2xl mx-auto">{description}</p>
+                            <p className="text-xs lg:text-base text-gray-600 max-w-2xl mx-auto">{description}</p>
                         </div>
                         <HomeWheel 
                             defaultEntries={defaultEntries} 
