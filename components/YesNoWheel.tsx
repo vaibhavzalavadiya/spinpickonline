@@ -163,8 +163,8 @@ export default function YesNoWheel() {
             />
           </div>
 
-          {/* Bounded Display Ad below wheel on BOTH Mobile and Desktop */}
-          <div className="w-full max-w-xl mt-6">
+          {/* Bounded Display Ad below wheel (Desktop only — hidden on mobile) */}
+          <div className="hidden lg:block w-full max-w-xl mt-6">
             <AdSenseDisplay slotId="6084518347" />
           </div>
         </div>

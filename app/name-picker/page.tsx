@@ -87,7 +87,7 @@ export default function NamePickerPage() {
             <WheelPageTemplate
                 title="Random Name Picker"
                 h1="Wheel of Names - Random Name Picker"
-                description="Need to pick a name fairly? Our Random Name Picker wheel does the heavy lifting for you. Just enter the names and spin to see who the lucky winner is!"
+                description="Enter your names and spin the wheel to pick a fair, random winner in seconds."
                 ctaText="Pick a Name Now"
                 defaultEntries={NAME_ENTRIES}
                 storageKey="namePickerWheelState"

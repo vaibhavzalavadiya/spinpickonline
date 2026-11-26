@@ -106,7 +106,7 @@ export default function DiceRollerPage() {
                     <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-md border border-gray-100 p-4 sm:p-8">
                         <DiceRoller />
                     </div>
-                    <div className="max-w-3xl mx-auto mt-6">
+                    <div className="hidden lg:block max-w-3xl mx-auto mt-6">
                         <AdSenseDisplay slotId="6084518347" />
                     </div>
                 </div>

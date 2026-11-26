@@ -241,8 +241,8 @@ export default function TeamPickerWheel() {
             />
           </div>
 
-          {/* Bounded Display Ad below wheel on BOTH Mobile and Desktop */}
-          <div className="w-full max-w-2xl mt-7">
+          {/* Bounded Display Ad below wheel (Desktop only — hidden on mobile) */}
+          <div className="hidden lg:block w-full max-w-2xl mt-7">
             <AdSenseDisplay slotId="6084518347" />
           </div>
         </div>

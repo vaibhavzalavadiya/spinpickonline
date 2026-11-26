@@ -681,9 +681,9 @@ export default function HomeWheel({
             </div>
           )}
 
-          {/* Bounded Below-Wheel AdSense Slot (Rendered on BOTH Mobile and Desktop below controls) */}
+          {/* Bounded Below-Wheel AdSense Slot (Desktop only — hidden on mobile below wheel) */}
           {showAd && (
-            <div className="w-full max-w-2xl mt-5">
+            <div className="hidden lg:block w-full max-w-2xl mt-5">
               <AdSenseDisplay slotId="6084518347" />
             </div>
           )}
@@ -1129,30 +1129,32 @@ export default function HomeWheel({
                 >
                   Name your saved wheel list:
                 </label>
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <input
                     id={`${storageKey}-quickSave`}
                     type="text"
                     value={quickSaveName}
                     onChange={(e) => setQuickSaveName(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && handleConfirmQuickSave()}
-                    className="flex-1 px-3 py-2 text-sm bg-white border border-blue-300 rounded-lg"
+                    className="w-full min-w-0 sm:flex-1 px-3 py-2 text-sm bg-white border border-blue-300 rounded-lg"
                     autoFocus
                   />
-                  <button
-                    type="button"
-                    onClick={handleConfirmQuickSave}
-                    className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg cursor-pointer"
-                  >
-                    Save
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setSavePromptOpen(false)}
-                    className="px-3 py-2 bg-white border border-gray-300 text-gray-700 text-xs font-semibold rounded-lg cursor-pointer"
-                  >
-                    Cancel
-                  </button>
+                  <div className="flex gap-2 shrink-0">
+                    <button
+                      type="button"
+                      onClick={handleConfirmQuickSave}
+                      className="flex-1 sm:flex-none px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg cursor-pointer"
+                    >
+                      Save
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setSavePromptOpen(false)}
+                      className="flex-1 sm:flex-none px-3 py-2 bg-white border border-gray-300 text-gray-700 text-xs font-semibold rounded-lg cursor-pointer"
+                    >
+                      Cancel
+                    </button>
+                  </div>
                 </div>
               </div>
             )}
